@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinemate.API", "Cinemate.API\Cinemate.API.csproj", "{B8847B8B-3F91-411E-9C39-7E3F9C2092FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinemate.Web", "Cinemate.Web\Cinemate.Web.csproj", "{10CCB972-1282-4B03-8135-DB8D698B81C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinemate.Models", "Cinemate.Models\Cinemate.Models.csproj", "{691CE16A-0286-4674-83ED-37E6C0B3C02C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8847B8B-3F91-411E-9C39-7E3F9C2092FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8847B8B-3F91-411E-9C39-7E3F9C2092FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8847B8B-3F91-411E-9C39-7E3F9C2092FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8847B8B-3F91-411E-9C39-7E3F9C2092FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CCB972-1282-4B03-8135-DB8D698B81C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CCB972-1282-4B03-8135-DB8D698B81C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CCB972-1282-4B03-8135-DB8D698B81C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CCB972-1282-4B03-8135-DB8D698B81C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{691CE16A-0286-4674-83ED-37E6C0B3C02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691CE16A-0286-4674-83ED-37E6C0B3C02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691CE16A-0286-4674-83ED-37E6C0B3C02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691CE16A-0286-4674-83ED-37E6C0B3C02C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
