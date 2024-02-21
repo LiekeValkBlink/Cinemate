@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cinemate.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class ExpandMovieEntity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -81,7 +81,7 @@ namespace Cinemate.API.Migrations
                     email = table.Column<string>(type: "text", nullable: false),
                     name = table.Column<string>(type: "text", nullable: false),
                     password = table.Column<string>(type: "text", nullable: false),
-                    subscribed_to_newsletter = table.Column<bool>(type: "boolean", nullable: false)
+                    subscribed_to_newsletter = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -121,7 +121,11 @@ namespace Cinemate.API.Migrations
                     description = table.Column<string>(type: "text", nullable: false),
                     duration = table.Column<int>(type: "integer", nullable: false),
                     release_year = table.Column<int>(type: "integer", nullable: false),
-                    movie_category_id = table.Column<int>(type: "integer", nullable: false)
+                    movie_category_id = table.Column<int>(type: "integer", nullable: false),
+                    director = table.Column<string>(type: "text", nullable: false),
+                    cast = table.Column<string>(type: "text", nullable: false),
+                    review = table.Column<decimal>(type: "numeric", nullable: false),
+                    kijkwijzers = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yYnuWBK84zppfVgEJnyp3W0oMsAoWt+xz+KcDrtWO/tLgK1nkLiMqX3YFxyIZ28dUhakyBF3qNYUE8N2eBCqLw==",
+  "dgSpecHash": "hIgshmmF0mWrI/cTb+IcfKv5pmLlEuCc+GQXYC1sPfttV+PlkWmBAWf+SkL7F3toM+LSsg5w+MOOfwzFph93Tw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Web\\Cinemate.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Jeroen\\.nuget\\packages\\blazor.bootstrap\\1.11.1\\blazor.bootstrap.1.11.1.nupkg.sha512",
+    "C:\\Users\\Jeroen\\.nuget\\packages\\linqkit.core\\1.2.4\\linqkit.core.1.2.4.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.1\\microsoft.aspnetcore.authorization.8.0.1.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.1\\microsoft.aspnetcore.components.8.0.1.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.1\\microsoft.aspnetcore.components.analyzers.8.0.1.nupkg.sha512",
@@ -22,6 +24,7 @@
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\8.0.0\\microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\8.0.0\\microsoft.extensions.fileproviders.physical.8.0.0.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\8.0.0\\microsoft.extensions.filesystemglobbing.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\7.0.4\\microsoft.extensions.localization.abstractions.7.0.4.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.extensions.options\\8.0.1\\microsoft.extensions.options.8.0.1.nupkg.sha512",
@@ -33,6 +36,7 @@
     "C:\\Users\\Jeroen\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jeroen\\.nuget\\packages\\tabblazor\\0.8.15-alpha\\tabblazor.0.8.15-alpha.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.1\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.1.nupkg.sha512"
   ],
   "logs": []

@@ -96,14 +96,29 @@ namespace Cinemate.API.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Cast")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("cast");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("description");
 
+                    b.Property<string>("Director")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("director");
+
                     b.Property<int>("Duration")
                         .HasColumnType("integer")
                         .HasColumnName("duration");
+
+                    b.Property<string>("Kijkwijzers")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kijkwijzers");
 
                     b.Property<int>("MovieCategoryId")
                         .HasColumnType("integer")
@@ -112,6 +127,10 @@ namespace Cinemate.API.Migrations
                     b.Property<int>("ReleaseYear")
                         .HasColumnType("integer")
                         .HasColumnName("release_year");
+
+                    b.Property<decimal>("Review")
+                        .HasColumnType("numeric")
+                        .HasColumnName("review");
 
                     b.Property<string>("Title")
                         .IsRequired()

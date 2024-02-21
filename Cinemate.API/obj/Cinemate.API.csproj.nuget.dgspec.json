@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.api\\Cinemate.API.csproj": {}
+    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.api\\Cinemate.API.csproj": {
+    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.api\\Cinemate.API.csproj",
+        "projectUniqueName": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
         "projectName": "Cinemate.API",
-        "projectPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.api\\Cinemate.API.csproj",
+        "projectPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
         "packagesPath": "C:\\Users\\Jeroen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.api\\obj\\",
+        "outputPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jeroen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,7 +27,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj": {
+                "projectPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -40,6 +44,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -84,6 +92,61 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj",
+        "projectName": "Cinemate.Models",
+        "projectPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj",
+        "packagesPath": "C:\\Users\\Jeroen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jeroen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

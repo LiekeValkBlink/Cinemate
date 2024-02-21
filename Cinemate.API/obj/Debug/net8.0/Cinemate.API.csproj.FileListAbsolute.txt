@@ -104,3 +104,6 @@ C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.api\obj\Debug\net8.0\refint\Cine
 C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.api\obj\Debug\net8.0\Cinemate.API.pdb
 C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.api\obj\Debug\net8.0\Cinemate.API.genruntimeconfig.cache
 C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.api\obj\Debug\net8.0\ref\Cinemate.API.dll
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.API\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.API\bin\Debug\net8.0\Cinemate.Models.dll
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.API\bin\Debug\net8.0\Cinemate.Models.pdb
