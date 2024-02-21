@@ -10,7 +10,22 @@
         <PackageReference Include="Blazor.Bootstrap" Version="1.11.1" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all"/>
-        <PackageReference Include="TabBlazor" Version="0.8.15-alpha" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Components\SampleComponents.razor" />
+      <_ContentIncludedByDefault Remove="Shared\MainLayout.razor" />
+      <_ContentIncludedByDefault Remove="Shared\MainNavigation.razor" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\001f.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\001m.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\TabBlazorLogoWhite.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cinemate.Models\Cinemate.Models.csproj" />
     </ItemGroup>
 
 </Project>
