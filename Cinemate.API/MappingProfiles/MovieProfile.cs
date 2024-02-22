@@ -11,5 +11,7 @@ public class MovieProfile: Profile
         CreateMap<Movie, MovieDto>();
         CreateMap<MovieDto, Movie>();
         CreateMap<AddOrUpdateMovieDto, Movie>();
+        CreateMap<MovieCategoryDto, MovieCategory>();
+        CreateMap<MovieCategory, MovieCategoryDto>();
     }
 }

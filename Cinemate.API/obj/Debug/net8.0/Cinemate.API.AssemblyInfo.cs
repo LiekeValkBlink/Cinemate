@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cinemate.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd5f95ca0cb04fe2c86dc5c5596757fbf27f2b48")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef177cedeaf0cfdf2300f703aa1f0fced3ba709c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cinemate.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cinemate.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

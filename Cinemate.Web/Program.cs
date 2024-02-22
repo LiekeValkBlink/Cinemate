@@ -13,5 +13,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<ITheaterService, TheaterService>();
 builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
+builder.Services.AddScoped<IMovieCategoryService, MovieCategoryService>();
 
 await builder.Build().RunAsync();

@@ -1,0 +1,45 @@
+@page "/movie-categories"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+<PageTitle>MovieCategory</PageTitle>
+
+<Card>
+    <CardBody>
+        <h1>Categories</h1>
+        @if (AllMovieCategories is not null)
+        {
+            <Grid @ref="MovieCategoryGrid"
+                  TItem="MovieCategoryDto"
+                  Class="table table-hover table-bordered table-striped"
+                  DataProvider="GridDataProvider"
+                  AllowFiltering="true"
+                  AllowSorting="true"
+                  AllowPaging="true"
+                  Responsive="true">
+                <GridColumn TItem="MovieCategoryDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="MovieCategoryDto" HeaderText="Name" PropertyName="Name" SortKeySelector="@(item => item.Name)">@context.Name</GridColumn>
+            </Grid>
+        }
+    </CardBody>
+</Card>
+
+@code {
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+    [Inject] public IMovieCategoryService MovieCategoryService { get; set; }
+    
+    private IEnumerable<MovieCategoryDto> AllMovieCategories = default!;
+    BlazorBootstrap.Grid<MovieCategoryDto> MovieCategoryGrid = default!;
+    
+    private async Task<GridDataProviderResult<MovieCategoryDto>> GridDataProvider(GridDataProviderRequest<MovieCategoryDto> request)
+    {
+        return await Task.FromResult(request.ApplyTo(AllMovieCategories));
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        PreloadService.Show();
+        AllMovieCategories = await MovieCategoryService.GetAllMovieCategories();
+        PreloadService.Hide();
+    }
+
+}
