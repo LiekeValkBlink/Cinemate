@@ -40,8 +40,8 @@
 
 
 @code {
-    [Inject]
-    public IMovieService MovieService { get; set; }
+    [Inject] public IMovieService MovieService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
 
     public IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
 
@@ -51,12 +51,15 @@
     private async Task<GridDataProviderResult<MovieWithCategoryDto>> MovieDataProvider(GridDataProviderRequest<MovieWithCategoryDto> request)
     {
         
-        return request.ApplyTo(AllMovies);
+        return await Task.FromResult(request.ApplyTo(AllMovies));
     }
 
     protected override async Task OnInitializedAsync()
     {
+        PreloadService.Show();
         AllMovies = await MovieService.GetMovies();
+        PreloadService.Hide();
+
     }
 
 }

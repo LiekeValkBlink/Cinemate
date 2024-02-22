@@ -11,5 +11,7 @@ builder.Services.AddBlazorBootstrap();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7201/") });
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ITheaterService, TheaterService>();
+builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
 
 await builder.Build().RunAsync();

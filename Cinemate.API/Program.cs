@@ -1,6 +1,7 @@
 using Cinemate.API.Data;
 using Cinemate.API.MappingProfiles;
 using Cinemate.API.Services.MovieService;
+using Cinemate.API.Services.TheatherService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
 
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CinemateDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("cinemate")));
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ITheaterService, TheaterService>();
+builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
 builder.Services.AddAutoMapper(typeof(MovieProfile));
 
 var app = builder.Build();

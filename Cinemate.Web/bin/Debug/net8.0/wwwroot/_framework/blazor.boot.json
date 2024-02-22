@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Cinemate.Web",
   "resources": {
-    "hash": "sha256-DPUIhFzBU+rMyzRuHfnKYKbS/7dB5PFMlhrluA2r52M=",
+    "hash": "sha256-1dMp+65qa/sv1w6ofSUFHFde/RgvTZA1sl/h/QjY+l4=",
     "jsModuleNative": {
       "dotnet.native.8.0.1.h6a8e0v8o0.js": "sha256-SGOlISx+3G4kkvpC9Uq3qoPGsnjxGmW61QBev0lyI5U="
     },
@@ -209,12 +209,12 @@
       "mscorlib.wasm": "sha256-EpWTfh4m/hEcXRFYMCR9YeYHwdUJgcm1laBaxWfq2S4=",
       "netstandard.wasm": "sha256-2kH24/YfHmU3B4eYRyRmiwebYROM4+B9eDWKvMnUdP8=",
       "System.Private.CoreLib.wasm": "sha256-CsySKiP7HYY1pS8LTDE60EkqiX5oHb3WoEZHDNd1yK0=",
-      "Cinemate.Models.wasm": "sha256-oH9c5Zeejd0Qn+VbXPHBJNiTmjODpXX5/n95IDrVHqQ=",
-      "Cinemate.Web.wasm": "sha256-64SNgZQtWmtqA7VqssRg4WytioRGR3zXT3UfCVPi9NA="
+      "Cinemate.Models.wasm": "sha256-gpzTf+4yKlh03F0VHyK+yVs+6iv1HPKxEYahsecj8a0=",
+      "Cinemate.Web.wasm": "sha256-Bjabkk2xafrowSI9lz/wwQ5cGsQ1ZstDxXGyAcevyvE="
     },
     "pdb": {
-      "Cinemate.Models.pdb": "sha256-cAkpT377VJ+Y7giiRgHf49v1YCRlbAlgc49WQkU04p4=",
-      "Cinemate.Web.pdb": "sha256-TG2w2mccIrP2jp58MWCVqi9iItGi1o2iEKqwdnaSn28="
+      "Cinemate.Models.pdb": "sha256-58hjIqxppdjE/A/pL3t/RxvESd1vBXr60s638MOeBPA=",
+      "Cinemate.Web.pdb": "sha256-4xIZs5mHa0qYt8wxwajIi8TonlkfgtFdvxzfERfgHhQ="
     }
   },
   "cacheBootResources": true,

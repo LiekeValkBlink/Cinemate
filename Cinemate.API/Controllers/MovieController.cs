@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Cinemate.API.Services.MovieService;
 using Cinemate.Models.Dto;
 using Microsoft.AspNetCore.Mvc;

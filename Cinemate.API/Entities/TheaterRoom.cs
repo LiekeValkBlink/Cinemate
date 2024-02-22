@@ -2,8 +2,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinemate.API.Entities;
 
-[Table("theather_rooms")]
-public class TheatherRoom
+[Table("theater_rooms")]
+public class TheaterRoom
 {
     [Column("id")]
     public int Id { get; set; }
@@ -17,5 +17,5 @@ public class TheatherRoom
     [Column("theater_id")]
     public int TheaterId { get; set; }
 
-    public Theather Theather { get; set; }
+    public Theater Theater { get; set; }
 }

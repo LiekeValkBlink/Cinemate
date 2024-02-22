@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinemate.API.Entities;
 
-[Table("theathers")]
-public class Theather
+[Table("theaters")]
+public class Theater
 {
     [Column("id")]
     public int Id { get; set; }
