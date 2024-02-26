@@ -22,10 +22,29 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
       <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />
       <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+      <_ContentIncludedByDefault Remove="Components\Movie\MovieInfo.razor" />
+      <_ContentIncludedByDefault Remove="Components\Movie\MovieThumb.razor" />
+      <_ContentIncludedByDefault Remove="Components\Movie\MovieThumbContainer.razor" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Cinemate.Models\Cinemate.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Components\User" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Components\User\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Components\User\Movie\MovieInfo.razor" />
+      <AdditionalFiles Include="Components\User\Movie\MovieThumb.razor" />
+      <AdditionalFiles Include="Components\User\Movie\MovieThumbContainer.razor" />
+      <AdditionalFiles Include="Components\User\TimeSlot\TimeSlot.razor" />
+      <AdditionalFiles Include="Components\User\TimeSlot\TimeSlotSelector.razor" />
     </ItemGroup>
 
 </Project>

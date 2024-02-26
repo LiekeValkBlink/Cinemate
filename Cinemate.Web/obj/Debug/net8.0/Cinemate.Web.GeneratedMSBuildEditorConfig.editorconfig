@@ -1,4 +1,8 @@
 is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -6,12 +10,12 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = false
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
-build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Cinemate.Web
 build_property.RootNamespace = Cinemate.Web
 build_property.ProjectDir = /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/
 build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
@@ -82,6 +86,10 @@ build_metadata.AdditionalFiles.CssScope = b-ufp4zgu5sh
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9UaW1lU2xvdC9UaW1lU2xvdFNlbGVjdG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-7hwoovr2mv
 
-[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L01haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-s5c067iucc
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Layout/AdminMainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L0FkbWluTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-o6e8a7rtu5
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Layout/ReservationMainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L1Jlc2VydmF0aW9uTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-581e586y43

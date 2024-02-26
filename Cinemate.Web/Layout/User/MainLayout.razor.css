@@ -12,7 +12,7 @@
         padding:  var(--page-padding);
     }
 
-    & main {
+    & main {    
         display: flex;
         gap: 5rem;
         padding: var(--page-padding);
