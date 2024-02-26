@@ -7,43 +7,25 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazor.Bootstrap" Version="1.11.1" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="wwwroot\sample-data\**" />
-      <Compile Remove="wwwroot\css\bootstrap\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="wwwroot\sample-data\**" />
-      <EmbeddedResource Remove="wwwroot\css\bootstrap\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="wwwroot\sample-data\**" />
-      <Content Remove="wwwroot\favicon.png" />
-      <Content Remove="wwwroot\icon-192.png" />
-      <Content Remove="wwwroot\css\bootstrap\**" />
-      <Content Remove="Layout\NavMenu.razor" />
-      <Content Remove="Pages\Counter.razor" />
-      <Content Remove="Pages\Home.razor" />
-      <Content Remove="Pages\Weather.razor" />
-      <Content Update="Components\NavMenu.razor.css">
-        <DependentUpon>NavMenu.razor</DependentUpon>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="wwwroot\sample-data\**" />
-      <None Remove="wwwroot\css\bootstrap\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+      <_ContentIncludedByDefault Remove="Components\SampleComponents.razor" />
+      <_ContentIncludedByDefault Remove="Shared\MainLayout.razor" />
+      <_ContentIncludedByDefault Remove="Shared\MainNavigation.razor" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\001f.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\001m.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\TabBlazorLogoWhite.png" />
       <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
       <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cinemate.Models\Cinemate.Models.csproj" />
     </ItemGroup>
 
 </Project>

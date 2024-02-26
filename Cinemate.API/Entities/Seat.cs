@@ -17,5 +17,5 @@ public class Seat
     [Column("theater_room_id")]
     public int TheaterRoomId { get; set; }
 
-    public TheatherRoom TheatherRoom { get; set; }
+    public TheaterRoom TheaterRoom { get; set; }
 }

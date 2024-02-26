@@ -1,0 +1,53 @@
+@page "/Theater-Rooms"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+<PageTitle>TheaterRoom</PageTitle>
+
+<Card>
+    <CardBody>
+        
+        <h1>Theater Rooms</h1>
+
+        @if (AllTheaterRooms is not null)
+        {
+            <Grid @ref="theaterRoomsGrid"
+                  TItem="TheaterRoomsDto"
+                  Class="table table-hover table-bordered table-striped"
+                  DataProvider="TheaterRoomsDataProvider"
+                  AllowFiltering="true"
+                  AllowSorting="true"
+                  AllowPaging="true"
+                  Responsive="true">
+                <GridColumn TItem="TheaterRoomsDto" PropertyName="Id" SortKeySelector="@((item) => item.Id)" HeaderText="ID" Sortable="true" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="TheaterRoomsDto" PropertyName="Name" SortKeySelector="@((item) => item.Name)" HeaderText="Name" Sortable="true">@context.Name</GridColumn>
+                <GridColumn TItem="TheaterRoomsDto" PropertyName="SeatsNo" SortKeySelector="@((item) => item.SeatsNo)" HeaderText="No. Seats" Sortable="true">@context.SeatsNo</GridColumn>
+                <GridColumn TItem="TheaterRoomsDto" PropertyName="TheaterName" SortKeySelector="@((item) => item.TheaterName)" HeaderText="Theater Name" Sortable="true">@context.TheaterName</GridColumn>
+            </Grid>
+        }
+    </CardBody>
+</Card>
+
+@code {
+    [Inject]
+    protected PreloadService PreloadService { get; set; } = default!;
+    [Inject]
+    public ITheaterRoomService TheaterRoomService { get; set; }
+
+    private IEnumerable<TheaterRoomsDto> AllTheaterRooms;
+
+    BlazorBootstrap.Grid<TheaterRoomsDto> theaterRoomsGrid = default!;
+
+
+    private async Task<GridDataProviderResult<TheaterRoomsDto>> TheaterRoomsDataProvider(GridDataProviderRequest<TheaterRoomsDto> request)
+    {
+        return await Task.FromResult(request.ApplyTo(AllTheaterRooms));
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        PreloadService.Show();
+        AllTheaterRooms = await TheaterRoomService.GetAllTheaterRooms();
+        PreloadService.Hide();
+    }
+    
+}

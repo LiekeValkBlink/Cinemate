@@ -1,0 +1,65 @@
+@page "/Movies"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+<PageTitle>Movies</PageTitle>
+
+
+<Card>
+    <CardBody>
+        <h1>Movies</h1>
+        @if (AllMovies == null)
+        {
+            <h3>Loading products</h3>
+        }
+        else
+        {
+            <Grid @ref="moviesGrid"
+                  TItem="MovieWithCategoryDto"
+                  Class="table table-hover table-bordered table-striped"
+                  DataProvider="MovieDataProvider"
+                  AllowFiltering="true"
+                  AllowSorting="true"
+                  AllowPaging="true"
+
+                  Responsive="true">
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Title" PropertyName="Title" SortKeySelector="@(item => item.Title)">@context.Title</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Description" PropertyName="Description">@context.Description</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Duration" PropertyName="Duration" SortKeySelector="@(item => item.Duration)">@context.Duration</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Release Year" PropertyName="ReleaseYear" SortKeySelector="@(item => item.ReleaseYear)">@context.ReleaseYear</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Movie Category" PropertyName="MovieCategory">@context.MovieCategoryDescription</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Director" PropertyName="Director">@context.Director</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Cast" PropertyName="Cast">@context.Cast</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Review" PropertyName="Review" SortKeySelector="@(item => item.Review)">@context.Review</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Kijkwijzer" PropertyName="Kijkwijzer">@context.Kijkwijzers</GridColumn>
+            </Grid>
+
+        }
+    </CardBody>
+</Card>
+
+
+@code {
+    [Inject] public IMovieService MovieService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+
+    public IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
+
+    BlazorBootstrap.Grid<MovieWithCategoryDto> moviesGrid = default!;
+
+
+    private async Task<GridDataProviderResult<MovieWithCategoryDto>> MovieDataProvider(GridDataProviderRequest<MovieWithCategoryDto> request)
+    {
+        
+        return await Task.FromResult(request.ApplyTo(AllMovies));
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        PreloadService.Show();
+        AllMovies = await MovieService.GetMovies();
+        PreloadService.Hide();
+
+    }
+
+}

@@ -96,14 +96,29 @@ namespace Cinemate.API.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Cast")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("cast");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("description");
 
+                    b.Property<string>("Director")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("director");
+
                     b.Property<int>("Duration")
                         .HasColumnType("integer")
                         .HasColumnName("duration");
+
+                    b.Property<string>("Kijkwijzers")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kijkwijzers");
 
                     b.Property<int>("MovieCategoryId")
                         .HasColumnType("integer")
@@ -112,6 +127,10 @@ namespace Cinemate.API.Migrations
                     b.Property<int>("ReleaseYear")
                         .HasColumnType("integer")
                         .HasColumnName("release_year");
+
+                    b.Property<decimal>("Review")
+                        .HasColumnType("numeric")
+                        .HasColumnName("review");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -254,14 +273,11 @@ namespace Cinemate.API.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("theater_room_id");
 
-                    b.Property<int>("TheatherRoomId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MovieId");
 
-                    b.HasIndex("TheatherRoomId");
+                    b.HasIndex("TheaterRoomId");
 
                     b.ToTable("screenings");
                 });
@@ -287,12 +303,9 @@ namespace Cinemate.API.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("theater_room_id");
 
-                    b.Property<int>("TheatherRoomId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TheatherRoomId");
+                    b.HasIndex("TheaterRoomId");
 
                     b.ToTable("seats");
                 });
@@ -329,7 +342,7 @@ namespace Cinemate.API.Migrations
                     b.ToTable("seats_reserved");
                 });
 
-            modelBuilder.Entity("Cinemate.API.Entities.Theather", b =>
+            modelBuilder.Entity("Cinemate.API.Entities.Theater", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -368,10 +381,10 @@ namespace Cinemate.API.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("theathers");
+                    b.ToTable("theaters");
                 });
 
-            modelBuilder.Entity("Cinemate.API.Entities.TheatherRoom", b =>
+            modelBuilder.Entity("Cinemate.API.Entities.TheaterRoom", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -393,14 +406,11 @@ namespace Cinemate.API.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("theater_id");
 
-                    b.Property<int>("TheatherId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TheatherId");
+                    b.HasIndex("TheaterId");
 
-                    b.ToTable("theather_rooms");
+                    b.ToTable("theater_rooms");
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.Ticket", b =>
@@ -570,26 +580,26 @@ namespace Cinemate.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cinemate.API.Entities.TheatherRoom", "TheatherRoom")
+                    b.HasOne("Cinemate.API.Entities.TheaterRoom", "TheaterRoom")
                         .WithMany()
-                        .HasForeignKey("TheatherRoomId")
+                        .HasForeignKey("TheaterRoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Movie");
 
-                    b.Navigation("TheatherRoom");
+                    b.Navigation("TheaterRoom");
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.Seat", b =>
                 {
-                    b.HasOne("Cinemate.API.Entities.TheatherRoom", "TheatherRoom")
+                    b.HasOne("Cinemate.API.Entities.TheaterRoom", "TheaterRoom")
                         .WithMany()
-                        .HasForeignKey("TheatherRoomId")
+                        .HasForeignKey("TheaterRoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TheatherRoom");
+                    b.Navigation("TheaterRoom");
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.SeatReserved", b =>
@@ -619,15 +629,15 @@ namespace Cinemate.API.Migrations
                     b.Navigation("Seat");
                 });
 
-            modelBuilder.Entity("Cinemate.API.Entities.TheatherRoom", b =>
+            modelBuilder.Entity("Cinemate.API.Entities.TheaterRoom", b =>
                 {
-                    b.HasOne("Cinemate.API.Entities.Theather", "Theather")
+                    b.HasOne("Cinemate.API.Entities.Theater", "Theater")
                         .WithMany()
-                        .HasForeignKey("TheatherId")
+                        .HasForeignKey("TheaterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Theather");
+                    b.Navigation("Theater");
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.Ticket", b =>
