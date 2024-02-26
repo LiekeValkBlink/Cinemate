@@ -1,0 +1,15 @@
+.time-slot-selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 1.5rem;
+    
+    & h2 {
+        padding-bottom: 0.625rem;
+    }
+    
+    .time-slot-selector-inner {
+        display: flex;
+        gap: 0.625rem;
+    }
+}
