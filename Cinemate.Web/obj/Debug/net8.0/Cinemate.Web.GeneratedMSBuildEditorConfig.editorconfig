@@ -1,8 +1,4 @@
 is_global = true
-build_property.EnableAotAnalyzer = 
-build_property.EnableSingleFileAnalyzer = 
-build_property.EnableTrimAnalyzer = false
-build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -10,50 +6,82 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = false
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
-build_property._SupportedPlatformList = browser
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Cinemate.Web
 build_property.RootNamespace = Cinemate.Web
-build_property.ProjectDir = C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\
+build_property.ProjectDir = /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/
 build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web
+build_property.MSBuildProjectDirectory = /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/App.razor]
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/MovieCategory.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVDYXRlZ29yeS5yYXpvcg==
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/MovieCategory.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTW92aWVDYXRlZ29yeS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/Movies.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzLnJhem9y
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/Movies.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTW92aWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/Screening.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2NyZWVuaW5nLnJhem9y
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/Screening.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2NyZWVuaW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/TheaterRooms.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGhlYXRlclJvb21zLnJhem9y
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/SeatReservation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VhdFJlc2VydmF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/Theaters.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGhlYXRlcnMucmF6b3I=
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/ShowReservation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hvd1Jlc2VydmF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/_Imports.razor]
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/TheaterRooms.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGhlYXRlclJvb21zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/Theaters.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGhlYXRlcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-6rb988gbpv
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/Movie/MovieInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Nb3ZpZS9Nb3ZpZUluZm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-oqw5um9a7d
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/Movie/MovieThumb.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Nb3ZpZS9Nb3ZpZVRodW1iLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-s8x5dcexya
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/Movie/MovieThumbContainer.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Nb3ZpZS9Nb3ZpZVRodW1iQ29udGFpbmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-yxzgph79kn
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9OYXZNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-rb2af75dlo
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/TimeSlot/TimeSlot.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9UaW1lU2xvdC9UaW1lU2xvdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ufp4zgu5sh
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/TimeSlot/TimeSlotSelector.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9UaW1lU2xvdC9UaW1lU2xvdFNlbGVjdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-7hwoovr2mv
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-s5c067iucc
