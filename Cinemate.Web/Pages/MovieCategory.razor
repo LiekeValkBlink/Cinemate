@@ -30,6 +30,7 @@
     private IEnumerable<MovieCategoryDto> AllMovieCategories = default!;
     BlazorBootstrap.Grid<MovieCategoryDto> MovieCategoryGrid = default!;
     
+    
     private async Task<GridDataProviderResult<MovieCategoryDto>> GridDataProvider(GridDataProviderRequest<MovieCategoryDto> request)
     {
         return await Task.FromResult(request.ApplyTo(AllMovieCategories));

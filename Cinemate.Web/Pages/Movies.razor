@@ -1,12 +1,22 @@
 @page "/Movies"
 @using Cinemate.Web.Services.Contracts
 @using Cinemate.Models.Dto
+@using Cinemate.Models.Enum
 <PageTitle>Movies</PageTitle>
 
 
 <Card>
     <CardBody>
+        @if (IsMovieAddedSuccessfully)
+        {
+            <Alert Color="AlertColor.Success"  Dismissable="true">
+                <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon>
+                Movie added successfully!
+            </Alert>
+        }
         <h1>Movies</h1>
+        <Button Color="ButtonColor.Primary" class="my-4" @onclick="ShowAddMovieModal">Add Movie</Button>
+
         @if (AllMovies == null)
         {
             <h3>Loading products</h3>
@@ -35,17 +45,127 @@
             </Grid>
 
         }
+
+        <Modal @ref="addMovieModal" Title="Add Movie">
+            <BodyTemplate>
+                <EditForm Model="@movieDto" OnValidSubmit="@HandleValidSubmit">
+                    <ValidationSummary/>
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <InputText id="title" class="form-control" @bind-Value="@movieDto.Title" required/>
+                        <ValidationMessage For="@(() => movieDto.Title)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <InputText id="description" class="form-control" @bind-Value="@movieDto.Description" required/>
+                        <ValidationMessage For="@(() => movieDto.Description)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="duration" class="form-label">Duration</label>
+                        <InputNumber id="duration" class="form-control" @bind-Value="@movieDto.Duration" required/>
+                        <ValidationMessage For="@(() => movieDto.Duration)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="releaseYear" class="form-label">Release Year</label>
+                        <InputNumber id="releaseYear" class="form-control" @bind-Value="@movieDto.ReleaseYear" required/>
+                        <ValidationMessage For="@(() => movieDto.ReleaseYear)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="movieCategoryId" class="form-label">Movie Category</label>
+                        <InputSelect id="movieCategoryId" class="form-select" @bind-Value="@movieDto.MovieCategoryId" required>
+                            <option value="">Select a category</option>
+                            @foreach (var categoryDto in AllCategoryDtos)
+                            {
+                                <option value="@categoryDto.Id">@categoryDto.Name</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => movieDto.MovieCategoryId)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="director" class="form-label">Director</label>
+                        <InputText id="director" class="form-control" @bind-Value="@movieDto.Director" required/>
+                        <ValidationMessage For="@(() => movieDto.Director)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cast" class="form-label">Cast (separate with commas, Actor1, Actor2)</label>
+                        <InputText id="cast" class="form-control" @bind-Value="@movieDto.Cast" required/>
+                        <ValidationMessage For="@(() => movieDto.Cast)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="review" class="form-label">Review</label>
+                        <InputNumber id="review" class="form-control" @bind-Value="@movieDto.Review" required/>
+                        <ValidationMessage For="@(() => movieDto.Review)"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <RadzenLabel Text="Select Kijkwijzers" Component="KijkwijzerSelection"></RadzenLabel>
+                        <RadzenDropDown @bind-Value="@selectedKijkwijzers" Data="@descriptions" Name="KijkwijzerSelection" Multiple="true" Chips="true"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </EditForm>
+            </BodyTemplate>
+        </Modal>
+
     </CardBody>
 </Card>
 
 
 @code {
     [Inject] public IMovieService MovieService { get; set; }
+    [Inject] public IMovieCategoryService MovieCategoryService { get; set; }
+
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
 
     public IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
+    public IEnumerable<MovieCategoryDto> AllCategoryDtos { get; set; }
 
-    BlazorBootstrap.Grid<MovieWithCategoryDto> moviesGrid = default!;
+
+    Grid<MovieWithCategoryDto> moviesGrid = default!;
+    private Modal addMovieModal = default!;
+    private MovieDto movieDto = new MovieDto();
+    IList<string> descriptions = KijkwijzerHelper.GetAllDescriptions();
+    IList<string> selectedKijkwijzers = new List<string>();
+    private bool IsMovieAddedSuccessfully = false;
+    
+
+  
+    
+
+    private async Task HandleValidSubmit()
+    {
+        string concatenatedKijkwijzers = string.Join(", ", selectedKijkwijzers);
+        movieDto.Kijkwijzers = concatenatedKijkwijzers;
+        try
+        {
+            PreloadService.Show();
+            var result = await MovieService.AddMovie(movieDto);
+            IsMovieAddedSuccessfully = true;
+
+            // Close the modal
+            await addMovieModal.HideAsync();
+
+            // Reload the movie data
+            AllMovies.Append(result);
+            AllMovies = await MovieService.GetMovies();
+            await moviesGrid.RefreshDataAsync();
+            PreloadService.Hide();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
 
     private async Task<GridDataProviderResult<MovieWithCategoryDto>> MovieDataProvider(GridDataProviderRequest<MovieWithCategoryDto> request)
@@ -57,9 +177,16 @@
     protected override async Task OnInitializedAsync()
     {
         PreloadService.Show();
+        descriptions = KijkwijzerHelper.GetAllDescriptions();
         AllMovies = await MovieService.GetMovies();
+        AllCategoryDtos = await MovieCategoryService.GetAllMovieCategories();
         PreloadService.Hide();
 
+    }
+
+    private async Task ShowAddMovieModal()
+    {
+        await addMovieModal.ShowAsync();
     }
 
 }

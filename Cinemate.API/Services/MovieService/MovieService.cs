@@ -107,7 +107,7 @@ public class MovieService : IMovieService
 
     }
 
-    public async Task<MovieDto?> UpdateMovie(AddOrUpdateMovieDto request, int id)
+    public async Task<MovieDto?> UpdateMovie(MovieDto request, int id)
     {
         var movieToUpdate = await _dbContext.Movies.FindAsync(id);
         if (movieToUpdate == null)

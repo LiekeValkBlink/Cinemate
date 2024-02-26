@@ -1043,3 +1043,13 @@ C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\bin\Debug\net8.0\Cinemate.Mo
 C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\obj\Debug\net8.0\webcil\Cinemate.Models.wasm
 C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\obj\Debug\net8.0\compressed\0c942hx31j.gz
 C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\obj\Debug\net8.0\compressed\e0u9u9rcw0.gz
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\bin\Debug\net8.0\wwwroot\_framework\Radzen.Blazor.wasm
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\bin\Debug\net8.0\wwwroot\_framework\System.Linq.Dynamic.Core.wasm
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\bin\Debug\net8.0\wwwroot\_framework\Radzen.Blazor.wasm.gz
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\bin\Debug\net8.0\wwwroot\_framework\System.Linq.Dynamic.Core.wasm.gz
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\bin\Debug\net8.0\Radzen.Blazor.dll
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\obj\Debug\net8.0\webcil\Radzen.Blazor.wasm
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\obj\Debug\net8.0\webcil\System.Linq.Dynamic.Core.wasm
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\obj\Debug\net8.0\compressed\oy7y2ew4zh.gz
+C:\Users\Jeroen\RiderProjects\Cinemate\Cinemate.Web\obj\Debug\net8.0\compressed\parjeytcdp.gz

@@ -101,7 +101,7 @@
           "dependencies": {
             "Blazor.Bootstrap": {
               "target": "Package",
-              "version": "[1.11.1, )"
+              "version": "[2.0.0, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
@@ -123,6 +123,10 @@
               "target": "Package",
               "version": "[8.0.1, )",
               "autoReferenced": true
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.25.7, )"
             }
           },
           "imports": [
