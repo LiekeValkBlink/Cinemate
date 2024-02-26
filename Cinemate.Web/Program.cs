@@ -14,5 +14,6 @@ builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<ITheaterService, TheaterService>();
 builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
 builder.Services.AddScoped<IMovieCategoryService, MovieCategoryService>();
+builder.Services.AddScoped<IScreeningService, ScreeningService>();
 
 await builder.Build().RunAsync();

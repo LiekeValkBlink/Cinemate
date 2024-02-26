@@ -2,6 +2,7 @@ using Cinemate.API.Data;
 using Cinemate.API.MappingProfiles;
 using Cinemate.API.Services.CategoryService;
 using Cinemate.API.Services.MovieService;
+using Cinemate.API.Services.ScreeningService;
 using Cinemate.API.Services.TheatherService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
@@ -19,6 +20,7 @@ builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<ITheaterService, TheaterService>();
 builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
 builder.Services.AddScoped<IMovieCategoryService, MovieCategoryService>();
+builder.Services.AddScoped<IScreeningService, ScreeningService>();
 builder.Services.AddAutoMapper(typeof(MovieProfile));
 
 var app = builder.Build();

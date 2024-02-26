@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/Screening.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2NyZWVuaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Pages/TheaterRooms.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGhlYXRlclJvb21zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,7 +57,3 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-6rb988gbpv
-
-[C:/Users/Jeroen/RiderProjects/Cinemate/Cinemate.Web/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-c4fewzw6hj
