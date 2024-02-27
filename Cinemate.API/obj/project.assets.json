@@ -2793,33 +2793,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/liekevalk/.nuget/packages/": {}
+    "/Users/jeroenpost/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj",
+      "projectUniqueName": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj",
       "projectName": "Cinemate.API",
-      "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj",
-      "packagesPath": "/Users/liekevalk/.nuget/packages/",
-      "outputPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/obj/",
+      "projectPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj",
+      "packagesPath": "/Users/jeroenpost/.nuget/packages/",
+      "outputPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/liekevalk/.nuget/NuGet/NuGet.Config"
+        "/Users/jeroenpost/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
-              "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj"
+            "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
+              "projectPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj"
             }
           }
         }

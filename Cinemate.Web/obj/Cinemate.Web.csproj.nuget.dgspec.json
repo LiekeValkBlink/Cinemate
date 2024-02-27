@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj": {}
+    "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj": {}
   },
   "projects": {
-    "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
+    "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj",
+        "projectUniqueName": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj",
         "projectName": "Cinemate.Models",
-        "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj",
-        "packagesPath": "/Users/liekevalk/.nuget/packages/",
-        "outputPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/obj/",
+        "projectPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj",
+        "packagesPath": "/Users/jeroenpost/.nuget/packages/",
+        "outputPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/liekevalk/.nuget/NuGet/NuGet.Config"
+          "/Users/jeroenpost/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,31 +57,30 @@
         }
       }
     },
-    "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj": {
+    "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
+        "projectUniqueName": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
         "projectName": "Cinemate.Web",
-        "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
-        "packagesPath": "/Users/liekevalk/.nuget/packages/",
-        "outputPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/",
+        "projectPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
+        "packagesPath": "/Users/jeroenpost/.nuget/packages/",
+        "outputPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/liekevalk/.nuget/NuGet/NuGet.Config"
+          "/Users/jeroenpost/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
-                "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj"
+              "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
+                "projectPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj"
               }
             }
           }
@@ -99,7 +97,7 @@
           "dependencies": {
             "Blazor.Bootstrap": {
               "target": "Package",
-              "version": "[1.11.1, )"
+              "version": "[2.0.0, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
@@ -121,6 +119,10 @@
               "target": "Package",
               "version": "[8.0.2, )",
               "autoReferenced": true
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.25.7, )"
             }
           },
           "imports": [

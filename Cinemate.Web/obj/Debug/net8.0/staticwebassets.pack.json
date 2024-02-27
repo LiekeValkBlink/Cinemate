@@ -1,51 +1,51 @@
 {
   "Files": [
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/bin/Debug/net8.0/wwwroot/_framework/blazor.webassembly.js",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/bin/Debug/net8.0/wwwroot/_framework/blazor.webassembly.js",
       "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/compressed/28bipew34x.gz",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/compressed/gm80tuczag.gz",
       "PackagePath": "staticwebassets/_framework/blazor.webassembly.js.gz"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/bundle/Cinemate.Web.styles.css",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/bundle/Cinemate.Web.styles.css",
       "PackagePath": "staticwebassets/Cinemate.Web.styles.css"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/css/app.css",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/css/app.css",
       "PackagePath": "staticwebassets/css/app.css"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/cinemate-favicon.svg",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/cinemate-favicon.svg",
       "PackagePath": "staticwebassets/images/cinemate-favicon.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/cinemate-logo.svg",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/cinemate-logo.svg",
       "PackagePath": "staticwebassets/images/cinemate-logo.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/image-placeholder.webp",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/image-placeholder.webp",
       "PackagePath": "staticwebassets/images/image-placeholder.webp"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-6.svg",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-6.svg",
       "PackagePath": "staticwebassets/images/kijkwijzer-6.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-eng.svg",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-eng.svg",
       "PackagePath": "staticwebassets/images/kijkwijzer-eng.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-geweld.svg",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-geweld.svg",
       "PackagePath": "staticwebassets/images/kijkwijzer-geweld.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/thumbnail-placeholder.jpeg",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/thumbnail-placeholder.jpeg",
       "PackagePath": "staticwebassets/images/thumbnail-placeholder.jpeg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/index.html",
+      "Id": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },
     {

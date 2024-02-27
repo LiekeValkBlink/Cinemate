@@ -7,9 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Blazor.Bootstrap" Version="1.11.1" />
+        <PackageReference Include="Blazor.Bootstrap" Version="2.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all"/>
+        <PackageReference Include="Radzen.Blazor" Version="4.25.7" />
     </ItemGroup>
 
     <ItemGroup>
@@ -45,17 +46,6 @@
       <AdditionalFiles Include="Components\User\Movie\MovieThumbContainer.razor" />
       <AdditionalFiles Include="Components\User\TimeSlot\TimeSlot.razor" />
       <AdditionalFiles Include="Components\User\TimeSlot\TimeSlotSelector.razor" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="Layout\Admin\AdminLayout.razor">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      </Content>
-      <Content Include="Layout\Admin\AdminLayout.razor.css" />
-      <Content Include="Layout\User\UserLayout.razor">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      </Content>
-      <Content Include="Layout\User\UserLayout.razor.css" />
     </ItemGroup>
 
 </Project>
