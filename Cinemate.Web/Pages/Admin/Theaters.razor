@@ -1,0 +1,51 @@
+@layout AdminLayout
+@page "/admin/theaters"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+<PageTitle>Theaters</PageTitle>
+
+<Card>
+    <CardBody>
+        <h1>Theaters</h1>
+        @if (AllTheathers is not null)
+        {
+            <Grid @ref="theaterGrid"
+                  TItem="TheaterDto"
+                  Class="table table-hover table-bordered table-striped"
+                  DataProvider="TheaterDataProvider"
+                  AllowFiltering="true"
+                  AllowSorting="true"
+                  AllowPaging="true"
+                  Responsive="true">
+                <GridColumn TItem="TheaterDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="TheaterDto" HeaderText="Name" PropertyName="Name" SortKeySelector="@(item => item.Name)">@context.Name</GridColumn>
+                <GridColumn TItem="TheaterDto" HeaderText="Street" PropertyName="Street" SortKeySelector="@(item => item.Street)">@context.Street</GridColumn>
+                <GridColumn TItem="TheaterDto" HeaderText="City" PropertyName="City" SortKeySelector="@(item => item.City)">@context.City</GridColumn>
+                <GridColumn TItem="TheaterDto" HeaderText="Country" PropertyName="Country" SortKeySelector="@(item => item.Country)">@context.Country</GridColumn>
+            </Grid>
+        }
+    </CardBody>
+</Card>
+
+@code {
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+    [Inject] public ITheaterService TheaterService { get; set; }
+
+    private IEnumerable<TheaterDto> AllTheathers = default!;
+    
+    BlazorBootstrap.Grid<TheaterDto> theaterGrid = default!;
+
+    
+    private async Task<GridDataProviderResult<TheaterDto>> TheaterDataProvider(GridDataProviderRequest<TheaterDto> request)
+    {
+        return await Task.FromResult(request.ApplyTo(AllTheathers));
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+            PreloadService.Show();
+            AllTheathers = await TheaterService.GetAllTheaters();
+            PreloadService.Hide();
+    }
+
+}

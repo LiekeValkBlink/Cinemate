@@ -17,6 +17,6 @@ public class Screening
     public DateTime MovieStart { get; set; }
 
     public Movie Movie { get; set; }
-    public TheatherRoom TheatherRoom { get; set; }
+    public TheaterRoom TheaterRoom { get; set; }
     
 }

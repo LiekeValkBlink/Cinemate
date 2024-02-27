@@ -17,8 +17,8 @@ public class CinemateDbContext: DbContext
     public DbSet<Screening> Screenings { get; set; }
     public DbSet<Seat> Seats { get; set; }
     public DbSet<SeatReserved> SeatReserveds { get; set; }
-    public DbSet<Theather> Theathers { get; set; }
-    public DbSet<TheatherRoom> TheatherRooms { get; set; }
+    public DbSet<Theater> Theathers { get; set; }
+    public DbSet<TheaterRoom> TheatherRooms { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<TicketPromoCodes> TicketPromoCodes { get; set; }
     public DbSet<User> Users { get; set; }
@@ -34,6 +34,7 @@ public class CinemateDbContext: DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql(_configuration.GetConnectionString("cinemate"));
+        optionsBuilder.LogTo(Console.WriteLine);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -47,7 +48,7 @@ public class CinemateDbContext: DbContext
             .HasIndex(u => u.Email)
             .IsUnique();
 
-        modelBuilder.Entity<Theather>()
+        modelBuilder.Entity<Theater>()
             .HasIndex(u => u.Name)
             .IsUnique();
         

@@ -1,0 +1,44 @@
+& img.movie-img-container {
+    width: 100%;
+    border-radius: 20px 8px 20px 8px;
+    margin-bottom: 1.25rem;
+}
+
+.movie-details-primary {
+    display: flex;
+    align-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+
+    & .mpa-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+
+        & img.mpa-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+    }
+
+    & p.movie-duration {
+        color: var(--light-purple);
+    }
+}
+
+
+
+table.movie-details-secondary {
+    width: 100%;
+    margin: 1rem 0;
+
+    & tbody {
+        & tr {
+            & td:first-child {
+                & p {
+                    color: var(--light-purple);
+                }
+            }
+        }
+    }
+}

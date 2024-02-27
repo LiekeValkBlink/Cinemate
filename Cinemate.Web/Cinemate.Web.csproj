@@ -7,8 +7,55 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazor.Bootstrap" Version="1.11.1" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Components\SampleComponents.razor" />
+      <_ContentIncludedByDefault Remove="Shared\MainLayout.razor" />
+      <_ContentIncludedByDefault Remove="Shared\MainNavigation.razor" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\001f.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\001m.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\TabBlazorLogoWhite.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+      <_ContentIncludedByDefault Remove="Components\Movie\MovieInfo.razor" />
+      <_ContentIncludedByDefault Remove="Components\Movie\MovieThumb.razor" />
+      <_ContentIncludedByDefault Remove="Components\Movie\MovieThumbContainer.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cinemate.Models\Cinemate.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Components\User" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Components\User\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Components\User\Movie\MovieInfo.razor" />
+      <AdditionalFiles Include="Components\User\Movie\MovieThumb.razor" />
+      <AdditionalFiles Include="Components\User\Movie\MovieThumbContainer.razor" />
+      <AdditionalFiles Include="Components\User\TimeSlot\TimeSlot.razor" />
+      <AdditionalFiles Include="Components\User\TimeSlot\TimeSlotSelector.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Layout\Admin\AdminLayout.razor">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </Content>
+      <Content Include="Layout\Admin\AdminLayout.razor.css" />
+      <Content Include="Layout\User\UserLayout.razor">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </Content>
+      <Content Include="Layout\User\UserLayout.razor.css" />
     </ItemGroup>
 
 </Project>

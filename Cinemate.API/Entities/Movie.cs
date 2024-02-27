@@ -23,5 +23,18 @@ public class Movie
     [Column("movie_category_id")]
     public int MovieCategoryId { get; set; }
 
+    [Column("director")]
+    public string Director { get; set; }
+    
+    [Column("cast")]
+    public string Cast { get; set; }
+    
+    [Column("review")]
+    public decimal Review { get; set; }
+    
+    [Column("kijkwijzers")]
+    public string Kijkwijzers { get; set; }
+    
+
     public MovieCategory MovieCategory { get; set; }
 }

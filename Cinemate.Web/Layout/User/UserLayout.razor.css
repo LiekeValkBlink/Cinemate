@@ -1,0 +1,52 @@
+.user-layout {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: proxima-nova, sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    background-color: var(--dark-purple);
+
+    p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+
+    h2 {
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+
+    & header {
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--dark-purple);
+        margin-bottom: 1.5rem;
+        padding:  var(--page-padding);
+    }
+
+    & main {
+        display: flex;
+        gap: 5rem;
+        padding: var(--page-padding);
+
+        & aside {
+            width: 31.25rem;
+        }
+    }
+
+    & footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3.75rem;
+        margin-top: 6.25rem;
+    }
+}

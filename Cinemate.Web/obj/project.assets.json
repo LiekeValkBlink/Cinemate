@@ -2,6 +2,24 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "Blazor.Bootstrap/1.11.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "6.0.26"
+        },
+        "compile": {
+          "lib/net6.0/BlazorBootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/BlazorBootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazor.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazor.Bootstrap.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/8.0.1": {
         "type": "package",
         "dependencies": {
@@ -422,13 +440,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.1": {
+      "Microsoft.NET.ILLink.Tasks/8.0.2": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.1": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.2": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -491,9 +509,37 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "Cinemate.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Cinemate.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cinemate.Models.dll": {}
+        }
       }
     },
     "net8.0/browser-wasm": {
+      "Blazor.Bootstrap/1.11.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "6.0.26"
+        },
+        "compile": {
+          "lib/net6.0/BlazorBootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/BlazorBootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazor.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazor.Bootstrap.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/8.0.1": {
         "type": "package",
         "dependencies": {
@@ -914,13 +960,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.1": {
+      "Microsoft.NET.ILLink.Tasks/8.0.2": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.1": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.2": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -977,10 +1023,45 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "Cinemate.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Cinemate.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cinemate.Models.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Blazor.Bootstrap/1.11.1": {
+      "sha512": "7KzYsDvN+fpJvlcVdbbx6Ywc2LFW20BwKGsWMGYoqFnJtLH0eXH8Y24wpk9dq/oiU3hSTvZ7QkXfGzvXMUh3Bg==",
+      "type": "package",
+      "path": "blazor.bootstrap/1.11.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "128X128.png",
+        "README.md",
+        "blazor.bootstrap.1.11.1.nupkg.sha512",
+        "blazor.bootstrap.nuspec",
+        "build/Blazor.Bootstrap.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazor.Bootstrap.props",
+        "buildTransitive/Blazor.Bootstrap.props",
+        "lib/net6.0/BlazorBootstrap.dll",
+        "staticwebassets/Blazor.Bootstrap.bundle.scp.css",
+        "staticwebassets/blazor.bootstrap.css",
+        "staticwebassets/blazor.bootstrap.js",
+        "staticwebassets/blazor.bootstrap.pdf.js",
+        "staticwebassets/icon/128X128.png",
+        "staticwebassets/pdfjs-4.0.379.min.mjs",
+        "staticwebassets/pdfjs-4.0.379.worker.min.mjs"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/8.0.1": {
       "sha512": "RYBk9d+Zb6V2u2hpgSSlCTvV6HvNf8T8OA7coLn+J4sdWLbdVkb8/b2tpRRENTGXK31ayCvtUPhP4wv2ZMn4cQ==",
       "type": "package",
@@ -1791,10 +1872,10 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/8.0.1": {
-      "sha512": "ADdJXuKNjwZDfBmybMnpvwd5CK3gp92WkWqqeQhW4W+q4MO3Qaa9QyW2DcFLAvCDMcCWxT5hRXqGdv13oon7nA==",
+    "Microsoft.NET.ILLink.Tasks/8.0.2": {
+      "sha512": "hKTrehpfVzOhAz0mreaTAZgbz0DrMEbWq4n3hAo8Ks6WdxdqQhNPvzOqn9VygKuWf1bmxPdraqzTaXriO/sn0A==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/8.0.1",
+      "path": "microsoft.net.illink.tasks/8.0.2",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -1808,7 +1889,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.8.0.1.nupkg.sha512",
+        "microsoft.net.illink.tasks.8.0.2.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -1842,10 +1923,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.1": {
-      "sha512": "WE5sCiA6FbpmHBA7SeIApjBhBFfHQlWTqn5N5jCTncpSHFchjsc6hyXhPjS0PqIV8eiWayNmJpN+VmV1nHFVAw==",
+    "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.2": {
+      "sha512": "sq7Zs4E699WDIbFloiK/qmp9JtL8vpzMGILjnzYjkY4O1qj6z1Iu36dl4xWXrkVsKDnxw8CZ7NDqsntq5FFPgg==",
       "type": "package",
-      "path": "microsoft.net.sdk.webassembly.pack/8.0.1",
+      "path": "microsoft.net.sdk.webassembly.pack/8.0.2",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -1873,7 +1954,7 @@
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.props",
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
         "build/Wasm.web.config",
-        "microsoft.net.sdk.webassembly.pack.8.0.1.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.8.0.2.nupkg.sha512",
         "microsoft.net.sdk.webassembly.pack.nuspec",
         "tools/net472/Microsoft.Bcl.AsyncInterfaces.dll",
         "tools/net472/Microsoft.Build.dll",
@@ -2046,43 +2127,53 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Cinemate.Models/1.0.0": {
+      "type": "project",
+      "path": "../Cinemate.Models/Cinemate.Models.csproj",
+      "msbuildProject": "../Cinemate.Models/Cinemate.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Blazor.Bootstrap >= 1.11.1",
+      "Cinemate.Models >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 8.0.1",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 8.0.1",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.1",
-      "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.1"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.2",
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jeroen\\.nuget\\packages\\": {}
+    "/Users/liekevalk/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Web\\Cinemate.Web.csproj",
+      "projectUniqueName": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
       "projectName": "Cinemate.Web",
-      "projectPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Web\\Cinemate.Web.csproj",
-      "packagesPath": "C:\\Users\\Jeroen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.Web\\obj\\",
+      "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
+      "packagesPath": "/Users/liekevalk/.nuget/packages/",
+      "outputPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jeroen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/liekevalk/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
+              "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -2095,6 +2186,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Blazor.Bootstrap": {
+            "target": "Package",
+            "version": "[1.11.1, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[8.0.1, )"
@@ -2107,13 +2202,13 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.1, )",
+            "version": "[8.0.2, )",
             "autoReferenced": true
           },
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.1, )",
+            "version": "[8.0.2, )",
             "autoReferenced": true
           }
         },
@@ -2131,7 +2226,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[8.0.1, 8.0.1]"
+            "version": "[8.0.2, 8.0.2]"
           }
         ],
         "frameworkReferences": {
@@ -2139,7 +2234,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

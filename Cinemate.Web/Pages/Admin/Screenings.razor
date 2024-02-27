@@ -1,0 +1,53 @@
+@layout AdminLayout
+@page "/admin/screenings"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+<PageTitle>Screening</PageTitle>
+
+<Card>
+    <CardBody>
+        @if (AllScreenings is not null)
+        {
+            <Grid @ref="screeningGrid"
+                  TItem="ScreeningWithInfoDto"
+                  Class="table table-hover table-bordered table-striped"
+                  DataProvider="GridDataProvider"
+                  AllowFiltering="true"
+                  AllowSorting="true"
+                  AllowPaging="true"
+                  Responsive="true">
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Id" PropertyName="MovieId">@context.MovieId</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Name" PropertyName="MovieName">@context.MovieName</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Theater Room Id" PropertyName="TheaterRoomId">@context.TheaterRoomId</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Theater Name" PropertyName="TheaterName">@context.TheaterName</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Start" PropertyName="MovieStart">@context.MovieStart</GridColumn>
+
+            </Grid>
+        }
+    </CardBody>
+</Card>
+
+@code {
+    [Inject] public IScreeningService ScreeningService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+
+    public IEnumerable<ScreeningWithInfoDto> AllScreenings { get; set; }
+    
+    BlazorBootstrap.Grid<ScreeningWithInfoDto> screeningGrid = default!;
+
+    private async Task<GridDataProviderResult<ScreeningWithInfoDto>> GridDataProvider(GridDataProviderRequest<ScreeningWithInfoDto> request)
+    {
+        
+        return await Task.FromResult(request.ApplyTo(AllScreenings));
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        PreloadService.Show();
+        AllScreenings = await ScreeningService.GetAllScreenings();
+        PreloadService.Hide();
+
+    }
+
+}

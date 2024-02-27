@@ -1,4 +1,9 @@
 using Cinemate.API.Data;
+using Cinemate.API.MappingProfiles;
+using Cinemate.API.Services.CategoryService;
+using Cinemate.API.Services.MovieService;
+using Cinemate.API.Services.ScreeningService;
+using Cinemate.API.Services.TheatherService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
 
@@ -11,7 +16,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CinemateDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("cinemate")));
-
+builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ITheaterService, TheaterService>();
+builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
+builder.Services.AddScoped<IMovieCategoryService, MovieCategoryService>();
+builder.Services.AddScoped<IScreeningService, ScreeningService>();
+builder.Services.AddAutoMapper(typeof(MovieProfile));
 
 var app = builder.Build();
 
@@ -23,8 +33,9 @@ if (app.Environment.IsDevelopment())
 }
 
 
+
 app.UseCors(policy =>
-    policy.WithOrigins("https://localhost:7271", "http://localhost:7271")
+    policy.WithOrigins("https://localhost:7156", "http://localhost:7156")
         .AllowAnyMethod()
         .WithHeaders(HeaderNames.ContentType)
 );
