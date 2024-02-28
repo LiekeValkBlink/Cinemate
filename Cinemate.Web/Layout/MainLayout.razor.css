@@ -1,28 +1,35 @@
 .page {
     display: flex;
     flex-direction: column;
+    & header
 
-    & header {
-        position: sticky;
-        top: 0;
-        display: flex;
-        flex-direction: column;
-        background-color: var(--dark-purple);
-        margin-bottom: 1.5rem;
-        padding:  var(--page-padding);
-    }
+{
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark-purple);
+    padding-left: 40px;
+    padding-right: 20px
+    /*margin-bottom: 1.5rem;
+    padding: var(--page-padding);*/
+}
 
-    & main {    
-        display: flex;
-        gap: 5rem;
-        padding: var(--page-padding);
-    }
+& main {
+    display: flex1;
+    /*
+    gap: 5rem;
+    padding: var(--page-padding);
+    */
+}
 
-    & footer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 3.75rem;
-        margin-top: 6.25rem;
-    }
+& footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.75rem;
+    background-color: #2B1B3C;
+    color: white;
+    /*margin-top: 6.25rem;*/
+}
 }

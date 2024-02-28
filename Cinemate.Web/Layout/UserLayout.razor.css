@@ -40,13 +40,16 @@
         & aside {
             width: 31.25rem;
         }
-    }
+   }
+   
+   
 
-    & footer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 3.75rem;
-        margin-top: 6.25rem;
-    }
+& footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.75rem;
+    margin-top: 6.25rem;
+
+}
 }

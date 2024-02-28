@@ -1,0 +1,21 @@
+﻿
+<div class="popup @(showPopup ? "show" : "")">
+    <div class="popup-content">
+        <span>Bedankt voor het abonneren op onze nieuwsbrief!</span>
+        <button @onclick="ClosePopup">Sluiten</button>
+    </div>
+</div>
+
+@code {
+    private bool showPopup = false;
+
+    public void ShowPopup()
+    {
+        showPopup = true;
+    }
+
+    public void ClosePopup()
+    {
+        showPopup = false;
+    }
+}
