@@ -1,4 +1,6 @@
 @inherits LayoutComponentBase
+@inject ISelectedMovieService SelectedMovieService
+
 
 <div class="user-layout">
     <header>
@@ -7,7 +9,7 @@
     </header>
     <main>
         <aside>
-            <MovieInfo></MovieInfo>
+            <MovieInfo Movie="@SelectedMovieService.SelectedMovie"></MovieInfo>
         </aside>
         <article>
             @Body
@@ -17,3 +19,4 @@
         <p>ⓒ Cinemate 2024</p>
     </footer>
 </div>
+

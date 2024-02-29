@@ -1,6 +1,8 @@
-<img class="movie-img-container" src="/images/image-placeholder.webp" alt="Movie image" />
+@using Cinemate.Models.Dto
 
-<h1>Wish (NL)</h1>
+<img class="movie-img-container" src="@(Movie.Imageurl)" alt="Movie image" />
+
+<h1>@(Movie.Title)</h1>
 
 <div class="movie-details-primary">
     <div class="mpa-rating">
@@ -8,10 +10,10 @@
         <img class="mpa-icon" src="/images/kijkwijzer-eng.svg" alt="Kijkwijzer - eng"/>
         <img class="mpa-icon" src="/images/kijkwijzer-geweld.svg" alt="Kijkwijzer - geweld"/>
     </div>
-    <p class="movie-duration">95 minuten</p>
+    <p class="movie-duration">@(Movie.Duration) minuten</p>
 </div>
 
-<p>Wish speelt zich af in het magische koninkrijk Rosas en vertelt het verhaal van Asha, een optimist met scherpe humor die veel geeft om haar gemeenschap. Wanneer Asha zich op een moment van nood naar de hemel wendt en een wens doet, wordt haar smeekbede beantwoord door een kosmische kracht – een kleine bal gevuld met grenzeloze energie die Star wordt genoemd.</p>
+<p>@(Movie.Description)</p>
 
 <table class="movie-details-secondary">
     <tbody>
@@ -28,7 +30,7 @@
             <p>Genre</p>
         </td>
         <td>
-            <p>Kinderfilm</p>
+              <p>@Movie.MovieCategoryDescription</p>
         </td>
     </tr>
     <tr>
@@ -41,10 +43,10 @@
     </tr>
     <tr>
         <td>
-            <p>Audiodiscriptie</p>
+            <p>Jaar van uitgave</p>
         </td>
         <td>
-            <p>Nee</p>
+            <p>@(Movie.ReleaseYear)</p>
         </td>
     </tr>
     <tr>
@@ -52,8 +54,15 @@
             <p>Regisseur</p>
         </td>
         <td>
-            <p>Chris Buck</p>
+            <p>@(Movie.Director)</p>
         </td>
     </tr>
     </tbody>
 </table>
+
+@code {
+    [Parameter]
+    public MovieDtoImage Movie { get; set; }
+
+
+}

@@ -3,6 +3,7 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts
 @inherits LayoutComponentBase
+@inject ISelectedMovieService SelectedMovieService
 
 <PageTitle>Cinemate Movies</PageTitle>
 
@@ -45,7 +46,7 @@
                     @foreach (var movie in AllMoviesWithImage)
             {
                     <div class="col-md-3 mb-2">
-                            <a href="/show-reservation?movieId=@movie.Id">
+                            <a @onclick="() => SaveAndNavigate(movie)" style="cursor: pointer;">
                         <div class="card" style="height: calc(100vh * 0.50); background: #19072C; ">
                                 <div class="card-img-top" style="background-image: url('@(movie.Imageurl)'); background-size: cover; background-position: center; height: 100%; border-radius: 20px 8px 20px 8px;"></div>
                         </div>
@@ -110,7 +111,30 @@
                 Imageurl = $"/images/movies/{movie.Id}.jpg"
             }).ToList();
 
+
+
     }
+    @code {
+        [Inject] public NavigationManager NavigationManager { get; set; }
+
+        private MovieDto movie;
+
+      
+        private async Task SaveAndNavigate(MovieDtoImage movie)
+        {
+            if (movie != null)
+            {
+                // Opslaan van de geselecteerde film met behulp van IMovieService
+                SelectedMovieService.SelectedMovie = movie;
+
+                // Navigeren naar /show-reservation met de bijgewerkte film-ID
+                NavigationManager.NavigateTo($"/show-reservation?movieId={movie.Id}");
+            }
+        }
+    }
+
+
+ 
 }
 
 
