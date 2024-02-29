@@ -5,6 +5,7 @@ using Cinemate.API.Services.MovieService;
 using Cinemate.API.Services.ScreeningService;
 using Cinemate.API.Services.TheatherService;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +42,6 @@ app.UseCors(policy =>
 );
 app.UseHttpsRedirection();
 app.MapControllers();
-
+app.UseStaticFiles();
 
 app.Run();

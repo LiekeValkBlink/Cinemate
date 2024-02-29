@@ -2,6 +2,7 @@ using AutoMapper;
 using Cinemate.API.Data;
 using Cinemate.API.Entities;
 using Cinemate.Models.Dto;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cinemate.API.Services.MovieService;
@@ -10,12 +11,14 @@ public class MovieService : IMovieService
 {
     private readonly CinemateDbContext _dbContext;
     private readonly IMapper _mapper;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
-    public MovieService(CinemateDbContext dbContext, IMapper mapper)
+    public MovieService(CinemateDbContext dbContext, IMapper mapper, IWebHostEnvironment webHostEnvironment)
     {
         //Set the Database and AutoMapper context through DI
         _dbContext = dbContext;
         _mapper = mapper;
+        _webHostEnvironment = webHostEnvironment;
     }
     
     public async Task<IEnumerable<MovieWithCategoryDto>> GetAllMovies()
@@ -107,7 +110,9 @@ public class MovieService : IMovieService
 
     }
 
-    public async Task<MovieDto?> UpdateMovie(AddOrUpdateMovieDto request, int id)
+
+
+    public async Task<MovieDto?> UpdateMovie(MovieDto request, int id)
     {
         var movieToUpdate = await _dbContext.Movies.FindAsync(id);
         if (movieToUpdate == null)
@@ -151,7 +156,14 @@ public class MovieService : IMovieService
             throw new ArgumentException("Movie not found");
         }
         
+        var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", $"movie_{id}_image.jpg");
+        if (File.Exists(imagePath))
+        {
+            File.Delete(imagePath);
+        }
+        
         _dbContext.Movies.Remove(movieToDelete);
         await _dbContext.SaveChangesAsync();
     }
+    
 }
