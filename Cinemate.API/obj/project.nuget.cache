@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2/aYfejITGuInFvZMlcC+/SFi9LeSnxL8UPUjjoS0Wrekf/sx4EuCxw5W7LOf8J4jGzGCkb5DQ7Qk9wckkAUsw==",
+  "dgSpecHash": "c4sWWJnPY3jTqRkYvsfeJM36LLrVpwoveZD/0KR3+SG+oJAMdU92EVuzY7ZRRcCilaXCXHne1kfH3GDQNnivIg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
+  "projectFilePath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\cinemate.api\\Cinemate.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jeroen\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Jeroen\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

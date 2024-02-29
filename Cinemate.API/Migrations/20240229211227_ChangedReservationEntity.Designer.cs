@@ -3,6 +3,7 @@ using System;
 using Cinemate.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cinemate.API.Migrations
 {
     [DbContext(typeof(CinemateDbContext))]
-    partial class CinemateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229211227_ChangedReservationEntity")]
+    partial class ChangedReservationEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +102,7 @@ namespace Cinemate.API.Migrations
                     b.Property<string>("Cast")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("actor_cast");
+                        .HasColumnName("cast");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -228,6 +231,10 @@ namespace Cinemate.API.Migrations
                     b.Property<int>("ScreeningId")
                         .HasColumnType("integer")
                         .HasColumnName("screening_id");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("integer")
+                        .HasColumnName("ticket_id");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer")
@@ -635,7 +642,7 @@ namespace Cinemate.API.Migrations
             modelBuilder.Entity("Cinemate.API.Entities.Ticket", b =>
                 {
                     b.HasOne("Cinemate.API.Entities.Reservation", "Reservation")
-                        .WithMany()
+                        .WithMany("Ticket")
                         .HasForeignKey("ReservationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -684,6 +691,11 @@ namespace Cinemate.API.Migrations
             modelBuilder.Entity("Cinemate.API.Entities.PromoCode", b =>
                 {
                     b.Navigation("TicketPromoCodes");
+                });
+
+            modelBuilder.Entity("Cinemate.API.Entities.Reservation", b =>
+                {
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.Ticket", b =>

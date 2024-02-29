@@ -26,7 +26,7 @@ public class Movie
     [Column("director")]
     public string Director { get; set; }
     
-    [Column("cast")]
+    [Column("actor_cast")]
     public string Cast { get; set; }
     
     [Column("review")]

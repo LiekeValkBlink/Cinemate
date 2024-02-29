@@ -18,11 +18,7 @@
         <h1>Movies</h1>
         <Button Color="ButtonColor.Primary" class="my-4" @onclick="ShowAddMovieModal">Add Movie</Button>
 
-        @if (AllMovies == null)
-        {
-            <h3>Loading products</h3>
-        }
-        else
+        @if (AllMovies is not  null)
         {
             <Grid @ref="moviesGrid"
                   TItem="MovieWithCategoryDto"
@@ -33,6 +29,12 @@
                   AllowPaging="true"
 
                   Responsive="true">
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Image" Width="200px">
+                  @{
+                      var imageUrl = $"https://localhost:7201/images/movie_{@context.Id}_image.jpg";
+                  }
+                  <img src="@imageUrl" alt="Movie Image" style="max-width: 100%; max-height: 100%;" />
+                </GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Title" PropertyName="Title" SortKeySelector="@(item => item.Title)">@context.Title</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Description" PropertyName="Description">@context.Description</GridColumn>
@@ -43,6 +45,7 @@
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Cast" PropertyName="Cast">@context.Cast</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Review" PropertyName="Review" SortKeySelector="@(item => item.Review)">@context.Review</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Kijkwijzer" PropertyName="Kijkwijzer">@context.Kijkwijzers</GridColumn>
+                
             </Grid>
 
         }

@@ -3,6 +3,7 @@ using System;
 using Cinemate.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cinemate.API.Migrations
 {
     [DbContext(typeof(CinemateDbContext))]
-    partial class CinemateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229211423_ChangedReservationEntityAgain")]
+    partial class ChangedReservationEntityAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +102,7 @@ namespace Cinemate.API.Migrations
                     b.Property<string>("Cast")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("actor_cast");
+                        .HasColumnName("cast");
 
                     b.Property<string>("Description")
                         .IsRequired()

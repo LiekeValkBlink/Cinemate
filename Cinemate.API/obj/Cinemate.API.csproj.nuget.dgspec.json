@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj": {}
+    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\cinemate.api\\Cinemate.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj": {
+    "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\cinemate.api\\Cinemate.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
+        "projectUniqueName": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\cinemate.api\\Cinemate.API.csproj",
         "projectName": "Cinemate.API",
-        "projectPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
+        "projectPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\cinemate.api\\Cinemate.API.csproj",
         "packagesPath": "C:\\Users\\Jeroen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\Cinemate.API\\obj\\",
+        "outputPath": "C:\\Users\\Jeroen\\RiderProjects\\Cinemate\\cinemate.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jeroen\\AppData\\Roaming\\NuGet\\NuGet.Config",
