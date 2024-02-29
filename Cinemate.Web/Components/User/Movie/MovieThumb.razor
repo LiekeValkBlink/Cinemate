@@ -1,1 +1,6 @@
-<img class="thumb-img-container" src="/images/thumbnail-placeholder.jpeg" alt="movie thumbnail" />
+@code {
+    [Parameter] public string ImageUrl { get; set; }
+}
+<a href="/Homepage">
+<img class="thumb-img-container" src="@ImageUrl" alt="movie thumbnail" />
+</a>

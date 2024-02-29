@@ -7,187 +7,7 @@
 <PageTitle>Cinemate Movies</PageTitle>
 
 
-@{
 
-    var movies = new List<MovieDtoImage>
-    {
-        new MovieDtoImage
-        {
-            Id = 1,
-            Title = "The Shawshank Redemption",
-            Description = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-            Duration = 142,
-            ReleaseYear = 1994,
-            MovieCategoryId = 1,
-            Director = "Frank Darabont",
-            Cast = "Tim Robbins, Morgan Freeman",
-            Review = 9.3m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/AnyoneButYou.jpg"
-        },
-        new MovieDtoImage
-        {
-            Id = 2,
-            Title = "The Godfather",
-            Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-            Duration = 175,
-            ReleaseYear = 1972,
-            MovieCategoryId = 1,
-            Director = "Francis Ford Coppola",
-            Cast = "Marlon Brando, Al Pacino, James Caan",
-            Review = 9.2m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/pawpetrol.jpg"
-        },
-        new MovieDtoImage
-        {
-            Id = 3,
-            Title = "The Shawshank Redemption",
-            Description = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-            Duration = 142,
-            ReleaseYear = 1994,
-            MovieCategoryId = 1,
-            Director = "Frank Darabont",
-            Cast = "Tim Robbins, Morgan Freeman",
-            Review = 9.3m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/test.jpg"
-        },
-        new MovieDtoImage
-        {
-            Id = 4,
-            Title = "The Godfather",
-            Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-            Duration = 175,
-            ReleaseYear = 1972,
-            MovieCategoryId = 1,
-            Director = "Francis Ford Coppola",
-            Cast = "Marlon Brando, Al Pacino, James Caan",
-            Review = 9.2m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/ferrari.jpeg"
-        },
-        new MovieDtoImage
-        {
-            Id = 5,
-            Title = "The Shawshank Redemption",
-            Description = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-            Duration = 142,
-            ReleaseYear = 1994,
-            MovieCategoryId = 1,
-            Director = "Frank Darabont",
-            Cast = "Tim Robbins, Morgan Freeman",
-            Review = 9.3m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/Bricklayer.jpg"
-        },
-        new MovieDtoImage
-        {
-            Id = 6,
-            Title = "The Godfather",
-            Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-            Duration = 175,
-            ReleaseYear = 1972,
-            MovieCategoryId = 1,
-            Director = "Francis Ford Coppola",
-            Cast = "Marlon Brando, Al Pacino, James Caan",
-            Review = 9.2m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/test.jpg"
-        },
-                new MovieDtoImage
-        {
-            Id = 7,
-            Title = "The Shawshank Redemption",
-            Description = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-            Duration = 142,
-            ReleaseYear = 1994,
-            MovieCategoryId = 1,
-            Director = "Frank Darabont",
-            Cast = "Tim Robbins, Morgan Freeman",
-            Review = 9.3m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/pawpetrol.jpg"
-        },
-        new MovieDtoImage
-        {
-            Id = 8,
-            Title = "The Godfather",
-            Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-            Duration = 175,
-            ReleaseYear = 1972,
-            MovieCategoryId = 1,
-            Director = "Francis Ford Coppola",
-            Cast = "Marlon Brando, Al Pacino, James Caan",
-            Review = 9.2m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/The-Beekeeper.png"
-        },
-        new MovieDtoImage
-        {
-            Id = 9,
-            Title = "The Shawshank Redemption",
-            Description = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-            Duration = 142,
-            ReleaseYear = 1994,
-            MovieCategoryId = 1,
-            Director = "Frank Darabont",
-            Cast = "Tim Robbins, Morgan Freeman",
-            Review = 9.3m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/Bricklayer.jpg"
-        },
-        new MovieDtoImage
-        {
-            Id = 10,
-            Title = "The Godfather",
-            Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-            Duration = 175,
-            ReleaseYear = 1972,
-            MovieCategoryId = 1,
-            Director = "Francis Ford Coppola",
-            Cast = "Marlon Brando, Al Pacino, James Caan",
-            Review = 9.2m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/The-Beekeeper.png"
-        },
-        new MovieDtoImage
-        {
-            Id = 11,
-            Title = "The Shawshank Redemption",
-            Description = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-            Duration = 142,
-            ReleaseYear = 1994,
-            MovieCategoryId = 1,
-            Director = "Frank Darabont",
-            Cast = "Tim Robbins, Morgan Freeman",
-            Review = 9.3m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/ferrari.jpeg"
-        },
-        new MovieDtoImage
-        {
-            Id = 12,
-            Title = "The Godfather",
-            Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-            Duration = 175,
-            ReleaseYear = 1972,
-            MovieCategoryId = 1,
-            Director = "Francis Ford Coppola",
-            Cast = "Marlon Brando, Al Pacino, James Caan",
-            Review = 9.2m,
-            Kijkwijzers = "16+",
-            Imageurl = "/images/AnyoneButYou.jpg"
-        },
-        // Voeg hier meer films toe indien nodig.
-    };
-}
-
-
-@code {
-    //alleen voor testen
-    private string ImageBaseUrl = "/images/"; // Hier wordt de map "images" verwijzing gespecificeerd
-}
 @code{
     private void SubscribeToNewsletter()
     {
@@ -218,16 +38,18 @@
 
                 @if (AllMoviesWithImage == null)
                 {
-                    <h3 style="color: white;">No movies available</h3>
+                    <h3 style="color: white;">Loading movies</h3>
                 }
                 else
                 {
                     @foreach (var movie in AllMoviesWithImage)
             {
                     <div class="col-md-3 mb-2">
+                            <a href="/show-reservation?movieId=@movie.Id">
                         <div class="card" style="height: calc(100vh * 0.50); background: #19072C; ">
                                 <div class="card-img-top" style="background-image: url('@(movie.Imageurl)'); background-size: cover; background-position: center; height: 100%; border-radius: 20px 8px 20px 8px;"></div>
                         </div>
+                            </a>
                     </div>
             }
                 }

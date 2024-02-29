@@ -1,6 +1,26 @@
 @layout UserLayout
 @page "/show-reservation"
+@using System.Web
+@inject NavigationManager NavigationManager
+
+
+@code {
+    string movieId;
+
+    protected override void OnInitialized()
+    {
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        var queryString = uri.Query;
+        var queryParameters = System.Web.HttpUtility.ParseQueryString(queryString);
+
+        if (!string.IsNullOrEmpty(queryParameters["movieId"]))
+        {
+            movieId = queryParameters["movieId"];
+        }
+    }
+}
+
 
 <h1>Kies een voorstelling</h1>
 <TimeSlotSelector></TimeSlotSelector>
-<TimeSlotSelector></TimeSlotSelector>
+<TimeSlotSelector MovieId="movieId"></TimeSlotSelector>
