@@ -2409,32 +2409,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/jeroenpost/.nuget/packages/": {}
+    "C:\\Users\\j.vanderwaal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
+      "projectUniqueName": "C:\\Users\\j.vanderwaal\\source\\repos\\Cinemate2\\Cinemate.Web\\Cinemate.Web.csproj",
       "projectName": "Cinemate.Web",
-      "projectPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/Cinemate.Web.csproj",
-      "packagesPath": "/Users/jeroenpost/.nuget/packages/",
-      "outputPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Web/obj/",
+      "projectPath": "C:\\Users\\j.vanderwaal\\source\\repos\\Cinemate2\\Cinemate.Web\\Cinemate.Web.csproj",
+      "packagesPath": "C:\\Users\\j.vanderwaal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\j.vanderwaal\\source\\repos\\Cinemate2\\Cinemate.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/jeroenpost/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\j.vanderwaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
-              "projectPath": "/Users/jeroenpost/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj"
+            "C:\\Users\\j.vanderwaal\\source\\repos\\Cinemate2\\Cinemate.Models\\Cinemate.Models.csproj": {
+              "projectPath": "C:\\Users\\j.vanderwaal\\source\\repos\\Cinemate2\\Cinemate.Models\\Cinemate.Models.csproj"
             }
           }
         }
@@ -2443,6 +2445,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2501,7 +2508,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

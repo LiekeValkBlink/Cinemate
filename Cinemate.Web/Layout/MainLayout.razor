@@ -1,13 +1,20 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
 
+@code {
+    protected override void OnInitialized()
+    {
+        Navigation.NavigateTo("/Homepage");
+    }
+}
 <div class="page">
     <header>
         <NavMenu></NavMenu>
     </header>
     <main>
-        <article>
+
             @Body
-        </article>
+
     </main>
     <footer>
         <p>ⓒ Cinemate 2024</p>
