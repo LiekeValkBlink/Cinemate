@@ -1,7 +1,7 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts 
+@inject ISelectedMovieService SelectedMovieService
 
-@*
 @code{
      [Inject] public IMovieService? MovieService { get; set; }
      [Inject] protected PreloadService PreloadService { get; set; } = default!;
@@ -30,8 +30,8 @@
          }).ToList();
      }
  }
- *@
  
+ @*
  @{
      var movies = new List<MovieDtoImage>
      {
@@ -76,13 +76,36 @@
          }
      };
  }
-
+ *@
  <div class="movie-container">
-     @if (movies == null || movies.Count < 1) {
+    @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
+    {
         <h2>Movies not available</h2>
     } else {
-         @foreach (var movie in movies) {
+        @foreach (var movie in AllMoviesWithImage)
+        {
+            <a @onclick="() => SaveAndNavigate(movie)" style="cursor: pointer;">
              <div class="movie" style="background-image: url('@(movie.Imageurl)');"></div>
+            </a>
          }
     }
  </div>
+
+@code {
+    [Inject] public NavigationManager NavigationManager { get; set; }
+
+    private MovieDto movie;
+
+
+    private async Task SaveAndNavigate(MovieDtoImage movie)
+    {
+        if (movie != null)
+        {
+            // Opslaan van de geselecteerde film met behulp van IMovieService
+            SelectedMovieService.SelectedMovie = movie;
+
+            // Navigeren naar /show-reservation met de bijgewerkte film-ID
+            NavigationManager.NavigateTo($"/show-reservation?movieId={movie.Id}");
+        }
+    }
+    }
