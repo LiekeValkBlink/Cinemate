@@ -1,0 +1,88 @@
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services.Contracts 
+
+@*
+@code{
+     [Inject] public IMovieService? MovieService { get; set; }
+     [Inject] protected PreloadService PreloadService { get; set; } = default!;
+     
+     private string? ImageBaseUrl = "/images/";
+ 
+     private IEnumerable<MovieWithCategoryDto>? AllMovies { get; set; }
+     private IEnumerable<MovieDtoImage>? AllMoviesWithImage { get; set; }
+ 
+     protected override async Task OnInitializedAsync() {
+         AllMovies = await MovieService?.GetMovies();
+         
+         AllMoviesWithImage = AllMovies.Select(movie => new MovieDtoImage {
+             Id = movie.Id,
+             Title = movie.Title,
+             Description = movie.Description,
+             Duration = movie.Duration,
+             ReleaseYear = movie.ReleaseYear,
+             MovieCategoryId = movie.MovieCategoryId,
+             MovieCategoryDescription = movie.MovieCategoryDescription,
+             Director = movie.Director,
+             Cast = movie.Cast,
+             Review = movie.Review,
+             Kijkwijzers = movie.Kijkwijzers,
+             Imageurl = $"/images/movies/{movie.Id}.jpg"
+         }).ToList();
+     }
+ }
+ *@
+ 
+ @{
+     var movies = new List<MovieDtoImage>
+     {
+         new MovieDtoImage
+         {
+             Imageurl = "/images/movies/1.jpg"
+         },
+         
+         new MovieDtoImage
+         {
+             Imageurl = "/images/movies/2.jpg"
+         },
+         
+         new MovieDtoImage
+         {
+            Imageurl = "/images/movies/3.jpg"
+         },
+     
+         new MovieDtoImage
+         {
+             Imageurl = "/images/movies/4.jpg"
+         },
+         
+         new MovieDtoImage
+         {
+             Imageurl = "/images/movies/5.jpg"
+         },
+         
+         new MovieDtoImage
+         {
+             Imageurl = "/images/movies/6.jpg"
+         },
+         
+         new MovieDtoImage
+         {
+             Imageurl = "/images/movies/7.jpg"
+         },
+         
+         new MovieDtoImage
+         {
+             Imageurl = "/images/movies/8.jpg"
+         }
+     };
+ }
+
+ <div class="movie-container">
+     @if (movies == null || movies.Count < 1) {
+        <h2>Movies not available</h2>
+    } else {
+         @foreach (var movie in movies) {
+             <div class="movie" style="background-image: url('@(movie.Imageurl)');"></div>
+         }
+    }
+ </div>

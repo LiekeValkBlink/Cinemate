@@ -5,17 +5,20 @@ nav {
     height: 5rem;
     width: 100%;
 
-    & .profile-btn
-{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.75rem;
-    width: 2.75rem;
-    background-color: var(--medium-purple);
-    border: 2px solid var(--white);
-    border-radius: 100%;
-    color: white;
+    & button.profile-btn {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.75rem;
+        width: 2.75rem;
+        background-color: var(--medium-purple);
+        border: 2px solid var(--white);
+        border-radius: 100%;
+        color: white;
+    }
 }
+
+#login-modal {
+   background-color: var(--white);
 }

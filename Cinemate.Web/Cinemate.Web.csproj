@@ -4,6 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -34,10 +35,9 @@
 
     <ItemGroup>
       <None Remove="Components\User" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Components\User\" />
+      <None Update="Components\User\Newsletter.razor.css">
+        <DependentUpon>Newsletter.razor</DependentUpon>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
