@@ -2,7 +2,24 @@
     <a href="/">
         <img src="images/cinemate-logo.svg" alt="Cinemate logo"/>
     </a>
-    <div class="profile-btn">
+    <button class="profile-btn" @onclick="OnShowModalClick">
         <i class="fa-regular fa-user"></i>
-    </div>
+    </button>
 </nav>
+
+<Modal @ref="_modal" ElementId="login-modal" title="Inloggen" UseStaticBackdrop="true" CloseOnEscape="true">
+    <BodyTemplate>
+        <input type="text"/>
+        <input type="password"/>
+        <button class="primary-btn">Inloggen</button>
+    </BodyTemplate>
+</Modal>
+
+@code {
+    private Modal _modal = default!;
+
+    private async Task OnShowModalClick()
+    {
+        await _modal.ShowAsync();
+    }
+}
