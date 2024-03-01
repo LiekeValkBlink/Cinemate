@@ -1,0 +1,26 @@
+.social-media-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    background-color: var(--medium-purple);
+    padding: 3rem 0 3.25rem 0;
+    
+    & h2 {
+        margin-bottom: 0.25rem;
+    }
+    
+    & .social-media-inner {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        
+        & a {
+            & i {
+                font-size: 2rem;
+                color: var(--white);
+            }
+        }
+    }
+}
