@@ -4013,6 +4013,8 @@ C:/Users/j.vanderwaal/source/repos/Cinemate2/Cinemate.Web/obj/Debug/net8.0/compr
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/Movie/MovieThumb.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/Movie/MovieThumbContainer.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/Newsletter.razor.rz.scp.css
+/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/Seat/Seat.razor.rz.scp.css
+/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/Seat/SeatSelector.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/SocialMedia.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/TimeSlot/TimeSlot.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/User/TimeSlot/TimeSlotSelector.razor.rz.scp.css
@@ -4020,6 +4022,7 @@ C:/Users/j.vanderwaal/source/repos/Cinemate2/Cinemate.Web/obj/Debug/net8.0/compr
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Layout/MainLayout.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Layout/UserLayout.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Pages/User/Home.razor.rz.scp.css
+/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Pages/User/SeatReservation.razor.rz.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/bundle/Cinemate.Web.styles.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/projectbundle/Cinemate.Web.bundle.scp.css
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/compressed/28bipew34x.gz
@@ -4236,3 +4239,4 @@ C:/Users/j.vanderwaal/source/repos/Cinemate2/Cinemate.Web/obj/Debug/net8.0/compr
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/refint/Cinemate.Web.dll
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/Cinemate.Web.pdb
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/ref/Cinemate.Web.dll
+/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/Components/ProgressIndicator.razor.rz.scp.css

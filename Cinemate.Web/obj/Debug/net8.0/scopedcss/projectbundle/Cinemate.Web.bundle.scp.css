@@ -5,23 +5,49 @@ nav[b-rb2af75dlo] {
     justify-content: space-between;
     height: 5rem;
     width: 100%;
-
-    & button.profile-btn {
-        cursor: pointer;
+    
+    .interaction-container {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 2.75rem;
-        width: 2.75rem;
-        background-color: var(--medium-purple);
-        border: 2px solid var(--white);
-        border-radius: 100%;
-        color: white;
+        gap: 1.5rem;
+        
+        & button.profile-btn {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.75rem;
+            width: 2.75rem;
+            color: white;
+            background-color: var(--medium-purple);
+            border: 2px solid var(--white);
+            border-radius: 100%;
+            margin-left: 1rem;
+        }   
     }
 }
 
-#login-modal[b-rb2af75dlo] {
+.modal[b-rb2af75dlo] {
    background-color: var(--white);
+}
+/* /Components/ProgressIndicator.razor.rz.scp.css */
+.progress-state[b-1q3owggsys] {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    .progress-sphere {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        border-radius: 100%;
+        background-color: var(--bright-purple);
+        
+        & p {
+            font-weight: 700;
+        }
+    }
 }
 /* /Components/User/Movie/Movie.razor.rz.scp.css */
 .movie-container[b-0wavbo5soo] {
@@ -115,6 +141,35 @@ img.thumb-img-container[b-yjv3pohhgm] {
             margin: 2rem 0.25rem 0 0;
         }
     }
+}
+/* /Components/User/Seat/Seat.razor.rz.scp.css */
+.seat[b-v76o2rtkp3] {
+    height: 3rem;
+    width: 3rem;
+    background-color: var(--medium-purple);
+    border-right: 2px solid var(--light-purple);
+    border-bottom: 2px solid var(--light-purple);
+    border-left: 2px solid var(--light-purple);
+    border-radius: 4px;
+}
+
+.selected[b-v76o2rtkp3] {
+    border-right: 2px solid var(--medium-purple);
+    border-bottom: 2px solid var(--medium-purple);
+    border-left: 2px solid var(--medium-purple); 
+}
+
+.occupied[b-v76o2rtkp3] {
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    border-left: 2px solid var(--white);
+}
+/* /Components/User/Seat/SeatSelector.razor.rz.scp.css */
+.seat-selector[b-4wcj2wlet3] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 /* /Components/User/SocialMedia.razor.rz.scp.css */
 .social-media-container[b-iy6txqfrqx] {
@@ -331,4 +386,34 @@ main[b-x4zgb8pyc5] {
 /* /Pages/User/Home.razor.rz.scp.css */
 .home-layout-inner[b-b3edjzhfms] {
     padding: var(--page-padding);
+}
+/* /Pages/User/SeatReservation.razor.rz.scp.css */
+.cinema-overview[b-yfhth8udfo] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .movie-screen {
+        width: 90%;
+        border: 1px solid var(--white);
+        margin-bottom: 1rem;
+    }
+    
+    & p[b-yfhth8udfo] {
+        margin-bottom: 1rem;
+    }
+}
+
+.legenda-container[b-yfhth8udfo] {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.page-navigation[b-yfhth8udfo] {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
 }

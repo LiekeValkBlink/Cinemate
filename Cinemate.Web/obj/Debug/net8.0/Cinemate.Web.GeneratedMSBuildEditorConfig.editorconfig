@@ -84,10 +84,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4vVGhlYXRlcnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/User/SeatReservation.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9TZWF0UmVzZXJ2YXRpb24ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/User/ShowReservation.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9TaG93UmVzZXJ2YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -100,6 +96,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9OYXZNZW51LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-rb2af75dlo
 
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/ProgressIndicator.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Qcm9ncmVzc0luZGljYXRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-1q3owggsys
+
 [/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/User/Movie/Movie.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Vc2VyL01vdmllL01vdmllLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-0wavbo5soo
@@ -107,6 +107,14 @@ build_metadata.AdditionalFiles.CssScope = b-0wavbo5soo
 [/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/User/Newsletter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Vc2VyL05ld3NsZXR0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-3vab6lwve1
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/User/Seat/Seat.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Vc2VyL1NlYXQvU2VhdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-v76o2rtkp3
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/User/Seat/SeatSelector.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Vc2VyL1NlYXQvU2VhdFNlbGVjdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-4wcj2wlet3
 
 [/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Components/User/SocialMedia.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Vc2VyL1NvY2lhbE1lZGlhLnJhem9y
@@ -127,3 +135,7 @@ build_metadata.AdditionalFiles.CssScope = b-3km57bg88y
 [/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/User/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9Ib21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-b3edjzhfms
+
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/User/SeatReservation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9TZWF0UmVzZXJ2YXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-yfhth8udfo
