@@ -129,31 +129,46 @@
 
 
 @code {
+    // Injecting movie and movie category services
     [Inject] public IMovieService MovieService { get; set; }
     [Inject] public IMovieCategoryService MovieCategoryService { get; set; }
 
+    // Injecting preload service for handling loading state
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
 
+    // Properties to hold movies and movie categories
     public IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
     public IEnumerable<MovieCategoryDto> AllCategoryDtos { get; set; }
 
-
+    // Grid component for displaying movies
     Grid<MovieWithCategoryDto> moviesGrid = default!;
+    
+    // Modal for adding a new movie
     private Modal addMovieModal = default!;
+    
+    // DTO for holding movie data
     private MovieDto movieDto = new MovieDto();
+    
+    // List of kijkwijzer descriptions and selected kijkwijzers
     IList<string> descriptions = KijkwijzerHelper.GetAllDescriptions();
     IList<string> selectedKijkwijzers = new List<string>();
+    
+    // Flag indicating whether a movie was added successfully
     private bool IsMovieAddedSuccessfully = false;
 
-
+    // Max file size for uploaded images
     private long maxFileSize = 1024 * 1024 * 3;
+    
+    // ID of the uploaded image
     private int uploadedImageId;
+    
+    // Method called when the input file changes
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
         string newFileName = $"movie_{uploadedImageId}_image";
     }
     
-
+    // Method for handling valid form submission
     private async Task HandleValidSubmit()
     {
         string concatenatedKijkwijzers = string.Join(", ", selectedKijkwijzers);
@@ -179,7 +194,6 @@
             AllMovies = await MovieService.GetMovies();
             await moviesGrid.RefreshDataAsync();
             PreloadService.Hide();
-
         }
         catch (Exception e)
         {
@@ -188,20 +202,22 @@
         }
     }
 
+    // Selected file for uploading
     private IBrowserFile selectedFile;
     
+    // Method called when the file changes
     private async Task OnFileChange(InputFileChangeEventArgs e)
     {
         selectedFile = e.File;
     }
-    
 
+    // Data provider method for retrieving movies
     private async Task<GridDataProviderResult<MovieWithCategoryDto>> MovieDataProvider(GridDataProviderRequest<MovieWithCategoryDto> request)
     {
-        
         return await Task.FromResult(request.ApplyTo(AllMovies));
     }
 
+    // Initialization method
     protected override async Task OnInitializedAsync()
     {
         PreloadService.Show();
@@ -209,12 +225,11 @@
         AllMovies = await MovieService.GetMovies();
         AllCategoryDtos = await MovieCategoryService.GetAllMovieCategories();
         PreloadService.Hide();
-
     }
 
+    // Method to show the add movie modal
     private async Task ShowAddMovieModal()
     {
         await addMovieModal.ShowAsync();
     }
-
 }

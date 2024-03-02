@@ -15,7 +15,7 @@ public class ScreeningService : IScreeningService
         _dbContext = dbContext;
     }
 
-    public async Task<ScreeningWithInfoDto> AddScreening(ScreeningDto screeningDto)
+    public async Task<ScreeningWithInfoDto> AddScreening(AddScreeningDto screeningDto)
     {
         var movieExists = await _dbContext.Movies.AnyAsync(m => m.Id == screeningDto.MovieId);
         if (!movieExists)

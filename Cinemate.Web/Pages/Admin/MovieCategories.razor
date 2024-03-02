@@ -6,7 +6,16 @@
 
 <Card>
     <CardBody>
+        @if (isMovieCategoryAddedSucces)
+        {
+            <Alert Color="AlertColor.Success"  Dismissable="true">
+                <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon>
+                Category added successfully!
+            </Alert>
+        }
         <h1>Categories</h1>
+        <Button Color="ButtonColor.Primary" class="my-4" @onclick="ShowAddMovieCategoryModal">Add Category</Button>
+
         @if (AllMovieCategories is not null)
         {
             <Grid @ref="MovieCategoryGrid"
@@ -24,17 +33,60 @@
     </CardBody>
 </Card>
 
+<Modal @ref="addMovieCategoryModal" Title="Add Category">
+    <BodyTemplate>
+        <EditForm Model="AddMovieCategoryDto" OnValidSubmit="@HandleValidSubmit">
+            <ValidationSummary/>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <InputText id="name" class="form-control" @bind-Value="@AddMovieCategoryDto.Name" required/>
+                <ValidationMessage For="@(() => AddMovieCategoryDto.Name)"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </BodyTemplate>
+</Modal>
+
 @code {
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
     [Inject] public IMovieCategoryService MovieCategoryService { get; set; }
     
     private IEnumerable<MovieCategoryDto> AllMovieCategories = default!;
     BlazorBootstrap.Grid<MovieCategoryDto> MovieCategoryGrid = default!;
-    
+
+    public AddMovieCategoryDto AddMovieCategoryDto = new AddMovieCategoryDto();
+    private Modal addMovieCategoryModal = default!;
+    public bool isMovieCategoryAddedSucces = false;
+
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            PreloadService.Show();
+            var result = await MovieCategoryService.AddMovieCategory(AddMovieCategoryDto);
+            isMovieCategoryAddedSucces = true;
+            AllMovieCategories.Append(result);
+            await addMovieCategoryModal.HideAsync();
+            await MovieCategoryGrid.RefreshDataAsync();
+            PreloadService.Hide();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
     
     private async Task<GridDataProviderResult<MovieCategoryDto>> GridDataProvider(GridDataProviderRequest<MovieCategoryDto> request)
     {
         return await Task.FromResult(request.ApplyTo(AllMovieCategories));
+    }
+
+    private async Task ShowAddMovieCategoryModal()
+    {
+        await addMovieCategoryModal.ShowAsync();
     }
     
     protected override async Task OnInitializedAsync()

@@ -27,7 +27,7 @@ public class ScreeningService: IScreeningService
         return await response.Content.ReadFromJsonAsync<ScreeningWithInfoDto>();
     }
 
-    public async Task<ScreeningWithInfoDto> AddScreening(ScreeningDto screeningDto)
+    public async Task<ScreeningWithInfoDto> AddScreening(AddScreeningDto screeningDto)
     {
         var response = await _httpClient.PostAsJsonAsync("api/screening", screeningDto);
         response.EnsureSuccessStatusCode();

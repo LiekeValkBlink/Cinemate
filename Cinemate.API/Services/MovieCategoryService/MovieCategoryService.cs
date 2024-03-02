@@ -20,7 +20,7 @@ public class MovieCategoryService(CinemateDbContext dbContext, IMapper mapper) :
         return mapper.Map<MovieCategoryDto>(movieCategory);
     }
 
-    public async Task<MovieCategoryDto> AddMovieCategory(MovieCategoryDto movieCategoryDto)
+    public async Task<MovieCategoryDto> AddMovieCategory(AddMovieCategoryDto movieCategoryDto)
     {
         var movieCategory = mapper.Map<MovieCategory>(movieCategoryDto);
         dbContext.MovieCategories.Add(movieCategory);
