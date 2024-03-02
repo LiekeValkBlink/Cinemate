@@ -1,0 +1,56 @@
+﻿@page "/barcode"
+@using Cinemate.Models.Dto
+@using Syncfusion.Blazor.BarcodeGenerator
+@using Microsoft.AspNetCore.Components.Forms
+<h3>Print Barcode</h3>
+
+
+<EditForm Model="barcode" OnSubmit="HandleBarcodeCreate">
+    <div>
+        <label for="moviename">MovieName</label>
+        <InputText id="moviename" @bind-Value="barcode.MovieName"></InputText>
+    </div>
+    <div>
+        <label for="date">Date</label>
+        <InputDate id="date" @bind-Value="barcode.Date"></InputDate>
+    </div>
+    <div>
+        <label for="time">Time</label>
+        <InputDate id="time" @bind-Value="barcode.Time"></InputDate>
+    </div>
+    <div>
+        <label for="room">Theater room</label>
+        <InputNumber id="room" @bind-Value="barcode.Room"></InputNumber>
+    </div>
+    
+    <button type="submit">Make reservation</button>
+
+</EditForm>
+
+@code {
+    private BarcodeDto barcode = new BarcodeDto();
+
+
+    private void HandleBarcodeCreate()
+    {
+        var reservationString = $"{barcode.MovieName} {barcode.Date.ToString()} {barcode.Time.ToString()} {barcode.Room.ToString()}";
+
+        barcode.QrCode = reservationString;
+
+       
+
+    }
+
+}
+<hr />
+<input type="button" value="Export" @onclick="@OnExport" />
+<SfQRCodeGenerator Width="400px" Height="150px" Value="@barcode.QrCode" @ref="@QRcode">
+    <QRCodeGeneratorDisplayText Text="@barcode.QrCode"></QRCodeGeneratorDisplayText>
+</SfQRCodeGenerator>
+@code {
+    SfQRCodeGenerator QRcode;
+    private void OnExport()
+    {
+        QRcode.Export("fileName", BarcodeExportType.JPG);
+    }
+}

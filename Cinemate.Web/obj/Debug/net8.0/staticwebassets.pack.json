@@ -1,179 +1,179 @@
 {
   "Files": [
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/bin/Debug/net8.0/wwwroot/_framework/blazor.webassembly.js",
-      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/compressed/28bipew34x.gz",
-      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js.gz"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\obj\\Debug\\net8.0\\compressed\\z08anlngdo.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/obj/Debug/net8.0/scopedcss/bundle/Cinemate.Web.styles.css",
-      "PackagePath": "staticwebassets/Cinemate.Web.styles.css"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Cinemate.Web.styles.css",
+      "PackagePath": "staticwebassets\\Cinemate.Web.styles.css"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/css/app.css",
-      "PackagePath": "staticwebassets/css/app.css"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/brand-instagram.png",
-      "PackagePath": "staticwebassets/images/brand-instagram.png"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\brand-instagram.png",
+      "PackagePath": "staticwebassets\\images\\brand-instagram.png"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/brand-x.png",
-      "PackagePath": "staticwebassets/images/brand-x.png"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\brand-x.png",
+      "PackagePath": "staticwebassets\\images\\brand-x.png"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/brand-youtube-filled.png",
-      "PackagePath": "staticwebassets/images/brand-youtube-filled.png"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\brand-youtube-filled.png",
+      "PackagePath": "staticwebassets\\images\\brand-youtube-filled.png"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/cinemate-favicon.svg",
-      "PackagePath": "staticwebassets/images/cinemate-favicon.svg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\cinemate-favicon.svg",
+      "PackagePath": "staticwebassets\\images\\cinemate-favicon.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/cinemate-logo.svg",
-      "PackagePath": "staticwebassets/images/cinemate-logo.svg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\cinemate-logo.svg",
+      "PackagePath": "staticwebassets\\images\\cinemate-logo.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/image-placeholder.webp",
-      "PackagePath": "staticwebassets/images/image-placeholder.webp"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\image-placeholder.webp",
+      "PackagePath": "staticwebassets\\images\\image-placeholder.webp"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-6.svg",
-      "PackagePath": "staticwebassets/images/kijkwijzer-6.svg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\kijkwijzer-6.svg",
+      "PackagePath": "staticwebassets\\images\\kijkwijzer-6.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-eng.svg",
-      "PackagePath": "staticwebassets/images/kijkwijzer-eng.svg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\kijkwijzer-eng.svg",
+      "PackagePath": "staticwebassets\\images\\kijkwijzer-eng.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/kijkwijzer-geweld.svg",
-      "PackagePath": "staticwebassets/images/kijkwijzer-geweld.svg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\kijkwijzer-geweld.svg",
+      "PackagePath": "staticwebassets\\images\\kijkwijzer-geweld.svg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/1.jpg",
-      "PackagePath": "staticwebassets/images/movies/1.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\1.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\1.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/10.jpg",
-      "PackagePath": "staticwebassets/images/movies/10.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\10.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\10.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/11.jpg",
-      "PackagePath": "staticwebassets/images/movies/11.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\11.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\11.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/12.jpg",
-      "PackagePath": "staticwebassets/images/movies/12.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\12.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\12.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/13.jpg",
-      "PackagePath": "staticwebassets/images/movies/13.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\13.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\13.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/14.jpg",
-      "PackagePath": "staticwebassets/images/movies/14.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\14.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\14.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/15.jpg",
-      "PackagePath": "staticwebassets/images/movies/15.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\15.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\15.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/16.jpg",
-      "PackagePath": "staticwebassets/images/movies/16.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\16.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\16.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/17.jpg",
-      "PackagePath": "staticwebassets/images/movies/17.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\17.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\17.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/18.jpg",
-      "PackagePath": "staticwebassets/images/movies/18.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\18.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\18.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/19.jpg",
-      "PackagePath": "staticwebassets/images/movies/19.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\19.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\19.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/2.jpg",
-      "PackagePath": "staticwebassets/images/movies/2.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\2.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\2.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/20.jpg",
-      "PackagePath": "staticwebassets/images/movies/20.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\20.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\20.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/21.jpg",
-      "PackagePath": "staticwebassets/images/movies/21.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\21.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\21.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/22.jpg",
-      "PackagePath": "staticwebassets/images/movies/22.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\22.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\22.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/23.jpg",
-      "PackagePath": "staticwebassets/images/movies/23.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\23.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\23.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/24.jpg",
-      "PackagePath": "staticwebassets/images/movies/24.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\24.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\24.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/25.jpg",
-      "PackagePath": "staticwebassets/images/movies/25.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\25.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\25.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/3.jpg",
-      "PackagePath": "staticwebassets/images/movies/3.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\3.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\3.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/4.jpg",
-      "PackagePath": "staticwebassets/images/movies/4.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\4.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\4.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/5.jpg",
-      "PackagePath": "staticwebassets/images/movies/5.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\5.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\5.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/6.jpg",
-      "PackagePath": "staticwebassets/images/movies/6.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\6.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\6.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/7.jpg",
-      "PackagePath": "staticwebassets/images/movies/7.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\7.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\7.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/8.jpg",
-      "PackagePath": "staticwebassets/images/movies/8.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\8.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\8.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/movies/9.jpg",
-      "PackagePath": "staticwebassets/images/movies/9.jpg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\movies\\9.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\9.jpg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/thumbnail-placeholder.jpeg",
-      "PackagePath": "staticwebassets/images/thumbnail-placeholder.jpeg"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\images\\thumbnail-placeholder.jpeg",
+      "PackagePath": "staticwebassets\\images\\thumbnail-placeholder.jpeg"
     },
     {
-      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/index.html",
-      "PackagePath": "staticwebassets/index.html"
+      "Id": "C:\\Blazer projects\\Corina-main\\Cinemate.Web\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Cinemate.Web.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Cinemate.Web.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.Cinemate.Web.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Cinemate.Web.props",
       "PackagePath": "build\\Cinemate.Web.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Cinemate.Web.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Cinemate.Web.props",
       "PackagePath": "buildMultiTargeting\\Cinemate.Web.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Cinemate.Web.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Cinemate.Web.props",
       "PackagePath": "buildTransitive\\Cinemate.Web.props"
     }
   ],

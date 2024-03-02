@@ -1,34 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj": {}
+    "C:\\Blazer projects\\Corina-main\\Cinemate.API\\Cinemate.API.csproj": {}
   },
   "projects": {
-    "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj": {
+    "C:\\Blazer projects\\Corina-main\\Cinemate.API\\Cinemate.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj",
+        "projectUniqueName": "C:\\Blazer projects\\Corina-main\\Cinemate.API\\Cinemate.API.csproj",
         "projectName": "Cinemate.API",
-        "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/Cinemate.API.csproj",
-        "packagesPath": "/Users/liekevalk/.nuget/packages/",
-        "outputPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.API/obj/",
+        "projectPath": "C:\\Blazer projects\\Corina-main\\Cinemate.API\\Cinemate.API.csproj",
+        "packagesPath": "C:\\Users\\cahmaert\\.nuget\\packages\\",
+        "outputPath": "C:\\Blazer projects\\Corina-main\\Cinemate.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/liekevalk/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\cahmaert\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
-                "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj"
+              "C:\\Blazer projects\\Corina-main\\Cinemate.Models\\Cinemate.Models.csproj": {
+                "projectPath": "C:\\Blazer projects\\Corina-main\\Cinemate.Models\\Cinemate.Models.csproj"
               }
             }
           }
@@ -37,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -74,6 +80,14 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "Syncfusion.Blazor.BarcodeGenerator": {
+              "target": "Package",
+              "version": "[24.2.3, )"
+            },
+            "Syncfusion.Blazor.Themes": {
+              "target": "Package",
+              "version": "[24.2.3, )"
             }
           },
           "imports": [
@@ -95,27 +109,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj": {
+    "C:\\Blazer projects\\Corina-main\\Cinemate.Models\\Cinemate.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj",
+        "projectUniqueName": "C:\\Blazer projects\\Corina-main\\Cinemate.Models\\Cinemate.Models.csproj",
         "projectName": "Cinemate.Models",
-        "projectPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/Cinemate.Models.csproj",
-        "packagesPath": "/Users/liekevalk/.nuget/packages/",
-        "outputPath": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/obj/",
+        "projectPath": "C:\\Blazer projects\\Corina-main\\Cinemate.Models\\Cinemate.Models.csproj",
+        "packagesPath": "C:\\Users\\cahmaert\\.nuget\\packages\\",
+        "outputPath": "C:\\Blazer projects\\Corina-main\\Cinemate.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/liekevalk/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\cahmaert\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -128,6 +143,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -149,7 +169,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

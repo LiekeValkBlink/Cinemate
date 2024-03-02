@@ -46,3 +46,15 @@ C:/Users/j.vanderwaal/Source/Repos/Cinemate2/Cinemate.Models/obj/Debug/net8.0/re
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/obj/Debug/net8.0/refint/Cinemate.Models.dll
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/obj/Debug/net8.0/Cinemate.Models.pdb
 /Users/liekevalk/RiderProjects/Cinemate/Cinemate.Models/obj/Debug/net8.0/ref/Cinemate.Models.dll
+C:\Blazer projects\Corina-main\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.deps.json
+C:\Blazer projects\Corina-main\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.dll
+C:\Blazer projects\Corina-main\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.pdb
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.AssemblyInfoInputs.cache
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.AssemblyInfo.cs
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.csproj.CoreCompileInputs.cache
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.sourcelink.json
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.dll
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\refint\Cinemate.Models.dll
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.pdb
+C:\Blazer projects\Corina-main\Cinemate.Models\obj\Debug\net8.0\ref\Cinemate.Models.dll
