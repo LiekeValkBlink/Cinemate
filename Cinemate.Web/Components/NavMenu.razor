@@ -2,9 +2,12 @@
     <a href="/">
         <img src="images/cinemate-logo.svg" alt="Cinemate logo"/>
     </a>
-    <button class="profile-btn" @onclick="OnShowModalClick">
-        <i class="fa-regular fa-user"></i>
-    </button>
+    <div class="interaction-container">
+        <ProgressIndicator></ProgressIndicator>
+        <button class="profile-btn" @onclick="OnShowModalClick">
+            <i class="fa-regular fa-user"></i>
+        </button>    
+    </div>
 </nav>
 
 <Modal @ref="_modal" ElementId="login-modal" title="Inloggen" UseStaticBackdrop="true" CloseOnEscape="true">
