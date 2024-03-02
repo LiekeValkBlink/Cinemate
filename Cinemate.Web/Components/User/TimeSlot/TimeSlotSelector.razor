@@ -26,18 +26,25 @@
 }
 
 @{
-    // Haal alle unieke datums op
-    var uniqueDates = AllScreeningsForMovie?.Select(s => s.MovieStart.Date).Distinct() ?? Enumerable.Empty<DateTime>();
+
+    var currentDate = DateTime.Today;
+    var currentTime = DateTime.Now.TimeOfDay;
+    var uniqueDates = AllScreeningsForMovie?
+        .Select(s => s.MovieStart.Date)
+        .Distinct() ?? Enumerable.Empty<DateTime>();
 }
 
-@foreach (var date in uniqueDates)
+
+
+
+@foreach (var date in uniqueDates.Where (date => date >= currentDate))
 {
     <div class="time-slot-selector-container">
         <h3>@date.ToString("dddd d MMMM")</h3>
         <div class="time-slot-selector-inner">
-            @foreach (var screening in AllScreeningsForMovie.Where(s => s.MovieStart.Date == date))
+            @foreach (var screening in AllScreeningsForMovie.Where(s => s.MovieStart.Date == date && (date > currentDate || (date == currentDate && s.MovieStart.TimeOfDay >= currentTime))))
             {
-                <TimeSlot ScreeningInfo="@screening"></TimeSlot>
+                    <TimeSlot ScreeningInfo="@screening"></TimeSlot>
             }
         </div>
     </div>
