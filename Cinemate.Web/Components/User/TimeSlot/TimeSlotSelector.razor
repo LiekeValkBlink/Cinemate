@@ -1,8 +1,38 @@
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services.Contracts
+@inject ISelectedMovieService SelectedMovieService
+
+
+
 <div class="time-slot-selector-container">
     <h3>Woensdag 7 februari</h3>
     <div class="time-slot-selector-inner">
-        <TimeSlot></TimeSlot>
-        <TimeSlot></TimeSlot>
-        <TimeSlot></TimeSlot>
+        @foreach (var screening in AllScreeningsForMovie ?? Enumerable.Empty<ScreeningWithInfoDto>())
+        {
+            <TimeSlot ScreeningInfo="@screening"></TimeSlot>
+        }
     </div>
 </div>
+
+@code {
+    [Inject] public IScreeningService? ScreeningService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+
+
+    private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
+    private IEnumerable<ScreeningWithInfoDto>? AllScreeningsForMovie { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllScreenings = await ScreeningService?.GetAllScreenings();
+        if (AllScreenings != null)
+        {
+            // Filter AllScreenings based on MovieId
+            var selectedMovieId = SelectedMovieService.SelectedMovie?.Id;
+            if (selectedMovieId != null)
+            {
+                AllScreeningsForMovie = AllScreenings.Where(s => s.MovieId == selectedMovieId);
+            }
+        }
+    }
+}
