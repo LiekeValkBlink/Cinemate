@@ -1,10 +1,11 @@
 using Cinemate.API.Services.MovieService;
 using Cinemate.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cinemate.API.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]"), Authorize]
 [ApiController]
 public class MovieController: ControllerBase
 {
@@ -22,7 +23,7 @@ public class MovieController: ControllerBase
         return Ok(movies);
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{id:int}"), Authorize]
     public async Task<ActionResult<MovieWithCategoryDto>> GetSingleMovie(int id)
     {
         var movie = await _movieService.GetSingleMovie(id);

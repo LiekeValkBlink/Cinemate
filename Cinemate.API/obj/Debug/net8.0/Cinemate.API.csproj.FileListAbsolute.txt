@@ -544,3 +544,9 @@ C:\Cinemate\Cinemate\Cinemate.API\obj\Debug\net8.0\ref\Cinemate.API.dll
 C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\Scrutor.dll
 C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Cinemate\Cinemate\Cinemate.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

@@ -41,6 +41,7 @@ builder.Services.AddAutoMapper(typeof(MovieProfile));
 
 builder.Services.AddDbContext<LoginDataContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("cinemate")));
+
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<LoginDataContext>();
