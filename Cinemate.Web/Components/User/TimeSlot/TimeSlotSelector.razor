@@ -2,18 +2,6 @@
 @using Cinemate.Web.Services.Contracts
 @inject ISelectedMovieService SelectedMovieService
 
-
-
-<div class="time-slot-selector-container">
-    <h3>Woensdag 7 februari</h3>
-    <div class="time-slot-selector-inner">
-        @foreach (var screening in AllScreeningsForMovie ?? Enumerable.Empty<ScreeningWithInfoDto>())
-        {
-            <TimeSlot ScreeningInfo="@screening"></TimeSlot>
-        }
-    </div>
-</div>
-
 @code {
     [Inject] public IScreeningService? ScreeningService { get; set; }
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
@@ -36,3 +24,23 @@
         }
     }
 }
+
+@{
+    // Haal alle unieke datums op
+    var uniqueDates = AllScreeningsForMovie?.Select(s => s.MovieStart.Date).Distinct() ?? Enumerable.Empty<DateTime>();
+}
+
+@foreach (var date in uniqueDates)
+{
+    <div class="time-slot-selector-container">
+        <h3>@date.ToString("dddd d MMMM")</h3>
+        <div class="time-slot-selector-inner">
+            @foreach (var screening in AllScreeningsForMovie.Where(s => s.MovieStart.Date == date))
+            {
+                <TimeSlot ScreeningInfo="@screening"></TimeSlot>
+            }
+        </div>
+    </div>
+}
+
+

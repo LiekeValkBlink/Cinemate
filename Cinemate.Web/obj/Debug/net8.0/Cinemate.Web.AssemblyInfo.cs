@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cinemate.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a570f020354d2013c0a305dbe8fa02042e85d72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4374b9401448b9c3261e682081efe707514c6bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cinemate.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cinemate.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -535,3 +535,4 @@ C:\Users\j.vanderwaal\source\repos\Cinemate2\Cinemate.API\obj\Debug\net8.0\refin
 C:\Users\j.vanderwaal\source\repos\Cinemate2\Cinemate.API\obj\Debug\net8.0\Cinemate.API.pdb
 C:\Users\j.vanderwaal\source\repos\Cinemate2\Cinemate.API\obj\Debug\net8.0\Cinemate.API.genruntimeconfig.cache
 C:\Users\j.vanderwaal\source\repos\Cinemate2\Cinemate.API\obj\Debug\net8.0\ref\Cinemate.API.dll
+C:\Users\j.vanderwaal\source\repos\Cinemate2\Cinemate.API\bin\Debug\net8.0\Cinemate.API.staticwebassets.runtime.json
