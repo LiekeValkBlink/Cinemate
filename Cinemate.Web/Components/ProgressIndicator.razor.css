@@ -1,0 +1,19 @@
+.progress-state {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    .progress-sphere {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        border-radius: 100%;
+        background-color: var(--bright-purple);
+        
+        & p {
+            font-weight: 700;
+        }
+    }
+}
