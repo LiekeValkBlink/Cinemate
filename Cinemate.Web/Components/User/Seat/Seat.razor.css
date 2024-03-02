@@ -1,0 +1,21 @@
+.seat {
+    height: 3rem;
+    width: 3rem;
+    background-color: var(--medium-purple);
+    border-right: 2px solid var(--light-purple);
+    border-bottom: 2px solid var(--light-purple);
+    border-left: 2px solid var(--light-purple);
+    border-radius: 4px;
+}
+
+.selected {
+    border-right: 2px solid var(--medium-purple);
+    border-bottom: 2px solid var(--medium-purple);
+    border-left: 2px solid var(--medium-purple); 
+}
+
+.occupied {
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    border-left: 2px solid var(--white);
+}
