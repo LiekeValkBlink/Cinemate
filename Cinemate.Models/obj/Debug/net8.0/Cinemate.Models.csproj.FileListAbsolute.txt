@@ -61,3 +61,18 @@ C:\Cinemate\Cinemate\Cinemate.Models\obj\Debug\net8.0\ref\Cinemate.Models.dll
 C:\Cinemate\Cinemate\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.runtimeconfig.json
 C:\Cinemate\Cinemate\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.genruntimeconfig.cache
 C:\Cinemate\Cinemate\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.csproj.AssemblyReference.cache
+C:\Blazer projects\cinemate-main\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.deps.json
+C:\Blazer projects\cinemate-main\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.runtimeconfig.json
+C:\Blazer projects\cinemate-main\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.dll
+C:\Blazer projects\cinemate-main\Cinemate.Models\bin\Debug\net8.0\Cinemate.Models.pdb
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.csproj.AssemblyReference.cache
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.AssemblyInfoInputs.cache
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.AssemblyInfo.cs
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.csproj.CoreCompileInputs.cache
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.sourcelink.json
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.dll
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\refint\Cinemate.Models.dll
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.pdb
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\Cinemate.Models.genruntimeconfig.cache
+C:\Blazer projects\cinemate-main\Cinemate.Models\obj\Debug\net8.0\ref\Cinemate.Models.dll

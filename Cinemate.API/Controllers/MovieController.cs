@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cinemate.API.Controllers;
 
-[Route("api/[controller]"), Authorize]
+[Route("api/[controller]"), ]
 [ApiController]
 public class MovieController: ControllerBase
 {
@@ -23,7 +23,7 @@ public class MovieController: ControllerBase
         return Ok(movies);
     }
 
-    [HttpGet("{id:int}"), Authorize]
+    [HttpGet("{id:int}"), ]
     public async Task<ActionResult<MovieWithCategoryDto>> GetSingleMovie(int id)
     {
         var movie = await _movieService.GetSingleMovie(id);

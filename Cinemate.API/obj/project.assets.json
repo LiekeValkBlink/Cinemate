@@ -3308,11 +3308,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Cinemate\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
+      "projectUniqueName": "C:\\Blazer projects\\cinemate-main\\Cinemate.API\\Cinemate.API.csproj",
       "projectName": "Cinemate.API",
-      "projectPath": "C:\\Cinemate\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
+      "projectPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.API\\Cinemate.API.csproj",
       "packagesPath": "C:\\Users\\cahmaert\\.nuget\\packages\\",
-      "outputPath": "C:\\Cinemate\\Cinemate\\Cinemate.API\\obj\\",
+      "outputPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cahmaert\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3329,8 +3329,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Cinemate\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj": {
-              "projectPath": "C:\\Cinemate\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj"
+            "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\Cinemate.Models.csproj": {
+              "projectPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\Cinemate.Models.csproj"
             }
           }
         }

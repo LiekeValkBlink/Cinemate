@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jRwiMxgMYruWPUNOuILqy7E6KUHZgrznVfPwmREUe5rckjgDMX7V+61YrvoBotVlQHZb2q2TGg/2B9LgKJJX5Q==",
+  "dgSpecHash": "lsFrIq1lcwKHbh+5mv+bH6F79oW9yMjTKJavwGKsDU7W+a2CA8NfH1fez+AdYbHn7pzyHYOeomWvLcgCb4j0YA==",
   "success": true,
-  "projectFilePath": "C:\\Cinemate\\Cinemate\\Cinemate.API\\Cinemate.API.csproj",
+  "projectFilePath": "C:\\Blazer projects\\cinemate-main\\Cinemate.API\\Cinemate.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cahmaert\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\cahmaert\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",

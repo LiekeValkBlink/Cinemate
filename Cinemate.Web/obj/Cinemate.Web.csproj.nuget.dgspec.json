@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Cinemate\\Cinemate\\Cinemate.Web\\Cinemate.Web.csproj": {}
+    "C:\\Blazer projects\\cinemate-main\\Cinemate.Web\\Cinemate.Web.csproj": {}
   },
   "projects": {
-    "C:\\Cinemate\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj": {
+    "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\Cinemate.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Cinemate\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj",
+        "projectUniqueName": "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\Cinemate.Models.csproj",
         "projectName": "Cinemate.Models",
-        "projectPath": "C:\\Cinemate\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj",
+        "projectPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\Cinemate.Models.csproj",
         "packagesPath": "C:\\Users\\cahmaert\\.nuget\\packages\\",
-        "outputPath": "C:\\Cinemate\\Cinemate\\Cinemate.Models\\obj\\",
+        "outputPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cahmaert\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -76,14 +76,14 @@
         }
       }
     },
-    "C:\\Cinemate\\Cinemate\\Cinemate.Web\\Cinemate.Web.csproj": {
+    "C:\\Blazer projects\\cinemate-main\\Cinemate.Web\\Cinemate.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Cinemate\\Cinemate\\Cinemate.Web\\Cinemate.Web.csproj",
+        "projectUniqueName": "C:\\Blazer projects\\cinemate-main\\Cinemate.Web\\Cinemate.Web.csproj",
         "projectName": "Cinemate.Web",
-        "projectPath": "C:\\Cinemate\\Cinemate\\Cinemate.Web\\Cinemate.Web.csproj",
+        "projectPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.Web\\Cinemate.Web.csproj",
         "packagesPath": "C:\\Users\\cahmaert\\.nuget\\packages\\",
-        "outputPath": "C:\\Cinemate\\Cinemate\\Cinemate.Web\\obj\\",
+        "outputPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cahmaert\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -100,8 +100,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Cinemate\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj": {
-                "projectPath": "C:\\Cinemate\\Cinemate\\Cinemate.Models\\Cinemate.Models.csproj"
+              "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\Cinemate.Models.csproj": {
+                "projectPath": "C:\\Blazer projects\\cinemate-main\\Cinemate.Models\\Cinemate.Models.csproj"
               }
             }
           }
@@ -120,6 +120,37 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Blazor.Bootstrap": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.Sdk.WebAssembly.Pack": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )",
+              "autoReferenced": true
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.25.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -131,6 +162,17 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[8.0.2, 8.0.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       },
