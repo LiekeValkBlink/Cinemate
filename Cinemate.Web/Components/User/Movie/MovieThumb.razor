@@ -1,6 +1,79 @@
+@using Cinemate.Models
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services.Contracts
+@inherits LayoutComponentBase
+@inject ISelectedMovieService SelectedMovieService
+
 @code {
     [Parameter] public string ImageUrl { get; set; }
+    [Parameter] public int MovieId { get; set; }
 }
-<a href="/">
+
+<a @onclick="() => SaveAndNavigate(SelectedMovieWithImage)" style="cursor: pointer;">
 <img class="thumb-img-container" src="@ImageUrl" alt="movie thumbnail" />
 </a>
+
+
+@code {
+    [Inject] public IMovieService MovieService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+
+    public IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
+    public MovieDtoImage SelectedMovieWithImage { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllMovies = await MovieService.GetMovies();
+
+      
+
+        SelectedMovieWithImage = AllMovies
+         .Where(movie => movie.Id == MovieId)
+         .Select(movie => new MovieDtoImage
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Description = movie.Description,
+                Duration = movie.Duration,
+                ReleaseYear = movie.ReleaseYear,
+                MovieCategoryId = movie.MovieCategoryId,
+                MovieCategoryDescription = movie.MovieCategoryDescription,
+                Director = movie.Director,
+                Cast = movie.Cast,
+                Review = movie.Review,
+                Kijkwijzers = movie.Kijkwijzers,
+                Imageurl = $"/images/movies/{movie.Id}.jpg"
+             })
+             .FirstOrDefault();
+
+
+
+    }
+    @code {
+        [Inject] public NavigationManager NavigationManager { get; set; }
+
+        private MovieDto movie;
+
+
+        private async Task SaveAndNavigate(MovieDtoImage movie)
+        {
+            if (movie != null)
+            {
+                // Opslaan van de geselecteerde film met behulp van IMovieService
+                SelectedMovieService.SelectedMovie = movie;
+
+                // Navigeren naar /show-reservation met de bijgewerkte film-ID
+                NavigationManager.NavigateTo($"/show-reservation?movieId={movie.Id}");
+            }
+            else
+            {
+                NavigationManager.NavigateTo($"/");
+            }
+        }
+    }
+
+
+
+}
+

@@ -6,7 +6,7 @@
 <div class="movie-thumb-container">
       @foreach (var movie in AllMoviesWithImage.Take(9))
     {
-        <MovieThumb ImageUrl="@movie.Imageurl"></MovieThumb>
+        <MovieThumb ImageUrl="@movie.Imageurl" MovieId="@movie.Id"></MovieThumb>
     }
 
 </div>
