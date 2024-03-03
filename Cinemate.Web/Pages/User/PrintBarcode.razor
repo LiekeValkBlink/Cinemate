@@ -28,7 +28,7 @@
                     <label for="time">Time</label>
             </td>
             <td>
-                    <InputDate id="time" @bind-Value="barcode.Time"></InputDate>
+                    <InputDate Type="InputDateType.Time" id="time" @bind-Value="barcode.Time"></InputDate>
             </td>
         </tr>
         <tr>
@@ -65,12 +65,14 @@
 }
 <div>
 
-    <input  type="button" value="Export" @onclick="@OnExport" />
+    
     <SfQRCodeGenerator ForeColor="#ffffff" BackgroundColor="#2b1b3d" Width="400px" Height="150px" Value="@barcode.QrCode" @ref="@QRcode">
         <QRCodeGeneratorDisplayText Text="@barcode.QrCode"></QRCodeGeneratorDisplayText>
     </SfQRCodeGenerator>
 </div>
 </div>
+
+<input type="button" value="Save your barcode" @onclick="@OnExport" />
 @code {
     SfQRCodeGenerator QRcode;
     private void OnExport()
