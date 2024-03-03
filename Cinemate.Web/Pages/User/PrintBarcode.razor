@@ -2,8 +2,9 @@
 @using Cinemate.Models.Dto
 @using Syncfusion.Blazor.BarcodeGenerator
 @using Microsoft.AspNetCore.Components.Forms
-<div style="margin:30px"><center><h2>Print uw barcode</h2></center></div>
-<div>
+
+<div style="margin:30px"></div><center><h2>Print uw barcode</h2></center>
+<div style="align-content:center">
 <EditForm Model="barcode" OnSubmit="HandleBarcodeCreate">
     <table align="center">
         <tr>
@@ -46,7 +47,7 @@
    
 
 </EditForm>
-</div>
+
 @code {
     private BarcodeDto barcode = new BarcodeDto();
 
@@ -65,11 +66,11 @@
 <div>
 
     <input  type="button" value="Export" @onclick="@OnExport" />
-    <SfQRCodeGenerator Width="400px" Height="150px" Value="@barcode.QrCode" @ref="@QRcode">
+    <SfQRCodeGenerator ForeColor="#ffffff" BackgroundColor="#2b1b3d" Width="400px" Height="150px" Value="@barcode.QrCode" @ref="@QRcode">
         <QRCodeGeneratorDisplayText Text="@barcode.QrCode"></QRCodeGeneratorDisplayText>
     </SfQRCodeGenerator>
 </div>
-
+</div>
 @code {
     SfQRCodeGenerator QRcode;
     private void OnExport()
