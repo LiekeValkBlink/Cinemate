@@ -1,3 +1,5 @@
+@import "modal.css";
+
 :root {
     --dark-purple: #19072c;
     --medium-purple: #2b1b3d;
@@ -37,6 +39,11 @@ h2 {
 h3 {
     font-size: 1.125rem;
     font-weight: 600;
+}
+
+label {
+    font-size: 0.875rem;
+    margin: 0.75rem 0 0.25rem 0;
 }
 
 input {
