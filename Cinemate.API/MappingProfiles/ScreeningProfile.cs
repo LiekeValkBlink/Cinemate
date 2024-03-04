@@ -10,5 +10,7 @@ public class ScreeningProfile: Profile
     {
         CreateMap<ScreeningDto, Screening>();
         CreateMap<Screening, ScreeningDto>();
+        CreateMap<AddScreeningDto, Screening>();
+
     }
 }

@@ -48,7 +48,7 @@ public class MovieCategoryController: ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<MovieCategoryDto>> AddMovieCategory([FromBody] MovieCategoryDto movieCategoryDto)
+    public async Task<ActionResult<MovieCategoryDto>> AddMovieCategory([FromBody] AddMovieCategoryDto movieCategoryDto)
     {
         try
         {

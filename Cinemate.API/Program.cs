@@ -5,6 +5,7 @@ using Cinemate.API.Services.MovieService;
 using Cinemate.API.Services.ScreeningService;
 using Cinemate.API.Services.TheatherService;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddScoped<ITheaterService, TheaterService>();
 builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
 builder.Services.AddScoped<IMovieCategoryService, MovieCategoryService>();
 builder.Services.AddScoped<IScreeningService, ScreeningService>();
+builder.Services.AddScoped<ISeatsService, SeatsService>();
 builder.Services.AddAutoMapper(typeof(MovieProfile));
 
 var app = builder.Build();
@@ -41,6 +43,6 @@ app.UseCors(policy =>
 );
 app.UseHttpsRedirection();
 app.MapControllers();
-
+app.UseStaticFiles();
 
 app.Run();

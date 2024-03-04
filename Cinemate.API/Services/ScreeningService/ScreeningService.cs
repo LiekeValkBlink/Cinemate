@@ -15,13 +15,13 @@ public class ScreeningService : IScreeningService
         _dbContext = dbContext;
     }
 
-    public async Task<ScreeningWithInfoDto> AddScreening(ScreeningDto screeningDto)
+    public async Task<ScreeningWithInfoDto> AddScreening(AddScreeningDto screeningDto)
     {
         var movieExists = await _dbContext.Movies.AnyAsync(m => m.Id == screeningDto.MovieId);
         if (!movieExists)
             throw new ArgumentException("Movie does not exist");
 
-        var theaterRoomExists = await _dbContext.TheatherRooms.AnyAsync(tr => tr.Id == screeningDto.TheaterRoomId);
+        var theaterRoomExists = await _dbContext.TheaterRooms.AnyAsync(tr => tr.Id == screeningDto.TheaterRoomId);
         if (!theaterRoomExists)
             throw new ArgumentException("Theater room does not exist");
 
@@ -48,7 +48,7 @@ public class ScreeningService : IScreeningService
         if (!movieExists)
             throw new ArgumentException("Movie does not exist");
 
-        var theaterRoomExists = await _dbContext.TheatherRooms.AnyAsync(tr => tr.Id == screeningDto.TheaterRoomId);
+        var theaterRoomExists = await _dbContext.TheaterRooms.AnyAsync(tr => tr.Id == screeningDto.TheaterRoomId);
         if (!theaterRoomExists)
             throw new ArgumentException("Theater room does not exist");
 
@@ -91,7 +91,7 @@ public class ScreeningService : IScreeningService
             MovieId = screening.MovieId,
             MovieName = _dbContext.Movies.FirstOrDefault(m => m.Id == screening.MovieId)?.Title,
             TheaterRoomId = screening.TheaterRoomId,
-            TheaterName = _dbContext.TheatherRooms.FirstOrDefault(tr => tr.Id == screening.TheaterRoomId)?.Name,
+            TheaterName = _dbContext.TheaterRooms.FirstOrDefault(tr => tr.Id == screening.TheaterRoomId)?.Name,
             MovieStart = screening.MovieStart
         };
     }

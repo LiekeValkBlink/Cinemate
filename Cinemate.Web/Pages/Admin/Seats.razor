@@ -1,0 +1,120 @@
+@page "/admin/Seats"
+@layout AdminLayout
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+<PageTitle>Seats</PageTitle>
+
+<Card>
+    <CardBody>
+        @if (isSeatAddedSuccess)
+        {
+            <Alert Color="AlertColor.Success"  Dismissable="true">
+                <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon>
+                Seat added successfully!
+            </Alert>
+        }
+        <h1>Seats</h1>
+        <Button Color="ButtonColor.Primary" class="my-4" @onclick="ShowModal">Add Movie</Button>
+        @if (allSeats is not null)
+        {
+            <Grid @ref="seatsGrid" 
+                  TItem="SeatsWInfoDto" 
+                  Class="table table-hover table-bordered table-striped"
+                  DataProvider="DataProvider"
+                  AllowFiltering="true"
+                  AllowSorting="true"
+                  AllowPaging="true"
+                  Responsive="true">
+                <GridColumn TItem="SeatsWInfoDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="SeatsWInfoDto" HeaderText="Row" PropertyName="Row" SortKeySelector="@(item => item.Row)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Row</GridColumn>
+                <GridColumn TItem="SeatsWInfoDto" HeaderText="Number" PropertyName="Number" SortKeySelector="@(item => item.Number)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Number</GridColumn>
+                <GridColumn TItem="SeatsWInfoDto" HeaderText="Theater Room Id" PropertyName="Theater Room Id" SortKeySelector="@(item => item.TheaterRoomId)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.TheaterRoomId</GridColumn>
+                <GridColumn TItem="SeatsWInfoDto" HeaderText="Theater Room" PropertyName="Theater Room" SortKeySelector="@(item => item.TheaterName)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.TheaterName</GridColumn>
+            </Grid>
+        }
+    </CardBody>
+</Card>
+
+<Modal @ref="addSeatModal" Title="Add Seat">
+    <BodyTemplate>
+        <EditForm Model="addSeatsDto" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+                <div class="form-group">
+                    <label for="theaterRoomId">Theater Room:</label>
+                    <select @bind="addSeatsDto.TheaterRoomId" class="form-control">
+                        @foreach (var theaterRoom in allTheaterRooms)
+                        {
+                            <option value="@theaterRoom.Id">@theaterRoom.Name</option>
+                        }
+                    </select>
+                    <ValidationMessage For="@(() => addSeatsDto.TheaterRoomId)" />
+                </div>
+    
+                <div class="form-group">
+                    <label for="row">Row:</label>
+                    <InputNumber @bind-Value="@addSeatsDto.Row" id="row" class="form-control" />
+                    <ValidationMessage For="@(() => addSeatsDto.Row)" />
+                </div>
+    
+                <div class="form-group">
+                    <label for="number">Number:</label>
+                    <InputNumber @bind-Value="@addSeatsDto.Number" id="number" class="form-control" />
+                    <ValidationMessage For="@(() => addSeatsDto.Number)" />
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Add Seat</button>
+        </EditForm>
+    </BodyTemplate>
+</Modal>
+
+@code {
+    [Inject] private PreloadService PreloadService { get; set; } = default!;
+    [Inject] private ISeatsService SeatsService { get; set; }
+    [Inject] private ITheaterRoomService TheaterRoomService { get; set; }
+
+    private IEnumerable<TheaterRoomsWInfoDto> allTheaterRooms;
+    private IEnumerable<SeatsWInfoDto> allSeats;
+    private AddSeatsDto addSeatsDto = new AddSeatsDto();
+    private bool isSeatAddedSuccess { get; set; }
+
+    private Modal addSeatModal = default!;
+    private Grid<SeatsWInfoDto> seatsGrid = default!;
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            PreloadService.Show();
+            var result = await SeatsService.AddSeat(addSeatsDto);
+            await addSeatModal.HideAsync();
+            allSeats.Append(result);
+            allSeats = await SeatsService.GetAllSeats();
+            await seatsGrid.RefreshDataAsync();
+            PreloadService.Hide();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    private async Task<GridDataProviderResult<SeatsWInfoDto>> DataProvider(GridDataProviderRequest<SeatsWInfoDto> request)
+    {
+        return await Task.FromResult(request.ApplyTo(allSeats));
+    }
+
+    private async Task ShowModal()
+    {
+        await addSeatModal.ShowAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        PreloadService.Show();
+        allSeats = await SeatsService.GetAllSeats();
+        allTheaterRooms = await TheaterRoomService.GetAllTheaterRooms();
+        PreloadService.Hide();
+    }
+
+}

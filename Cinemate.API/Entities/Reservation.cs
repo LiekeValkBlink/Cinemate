@@ -9,10 +9,7 @@ public class Reservation
     public int Id { get; set; }
     [Column("screening_id")]
     public int ScreeningId { get; set; }
-
-    [Column("seat_reserved_id")]
-    public int SeatReservedId { get; set; }
-
+    
     [Column("paid")]
     public bool Paid { get; set; }
 
@@ -21,17 +18,14 @@ public class Reservation
 
     [Column("employee_id")]
     public int? EmployeeId { get; set; }
-
-    [Column("ticket_id")]
-    public int TicketId { get; set; }
+    
 
     [Column("payment_type")]
     public string PaymentType { get; set; }
 
     public Screening Screening { get; set; }
-    public List<SeatReserved> SeatReserved { get; set; }
     public User User { get; set; }
     public Employee Employee { get; set; }
-    public List<Ticket> Ticket { get; set; }
+
     
 }

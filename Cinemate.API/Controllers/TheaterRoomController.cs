@@ -19,14 +19,14 @@ public class TheaterRoomController: ControllerBase
     }
     
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<TheaterRoomsDto>>> GetAllTheaterRooms()
+    public async Task<ActionResult<IEnumerable<TheaterRoomsWInfoDto>>> GetAllTheaterRooms()
     {
         var theaterRooms = await _theaterRoomService.GetAllTheaterRooms();
         return Ok(theaterRooms);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<TheaterRoomsDto>> GetSingleTheaterRoom(int id)
+    public async Task<ActionResult<TheaterRoomsWInfoDto>> GetSingleTheaterRoom(int id)
     {
         var theaterRoom = await _theaterRoomService.GetSingleTheaterRoom(id);
         if (theaterRoom == null)
@@ -37,7 +37,7 @@ public class TheaterRoomController: ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<TheaterRoomsDto>> AddTheaterRoom(AddOrUpdateTheaterRoomDto theaterRoomDto)
+    public async Task<ActionResult<TheaterRoomsWInfoDto>> AddTheaterRoom(AddTheaterRoomDto theaterRoomDto)
     {
         
         // Check if the theater ID exists
@@ -52,7 +52,7 @@ public class TheaterRoomController: ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<TheaterRoomsDto>> UpdateTheaterRoom(int id, AddOrUpdateTheaterRoomDto theaterRoomDto)
+    public async Task<ActionResult<TheaterRoomsWInfoDto>> UpdateTheaterRoom(int id, TheaterRoomDto theaterRoomDto)
     {
         if (id != theaterRoomDto.Id)
         {

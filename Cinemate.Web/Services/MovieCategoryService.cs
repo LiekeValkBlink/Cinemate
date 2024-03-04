@@ -27,7 +27,7 @@ public class MovieCategoryService: IMovieCategoryService
         return await response.Content.ReadFromJsonAsync<MovieCategoryDto>();
     }
 
-    public async Task<MovieCategoryDto> AddMovieCategory(MovieCategoryDto movieCategoryDto)
+    public async Task<MovieCategoryDto> AddMovieCategory(AddMovieCategoryDto movieCategoryDto)
     {
         var response = await _httpClient.PostAsJsonAsync("api/MovieCategory", movieCategoryDto);
         response.EnsureSuccessStatusCode();

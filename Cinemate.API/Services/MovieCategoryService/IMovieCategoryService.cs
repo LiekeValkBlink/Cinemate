@@ -6,7 +6,7 @@ public interface IMovieCategoryService
 {
     Task<IEnumerable<MovieCategoryDto>> GetAllMovieCategories();
     Task<MovieCategoryDto> GetMovieCategory(int id);
-    Task<MovieCategoryDto> AddMovieCategory(MovieCategoryDto movieCategoryDto);
+    Task<MovieCategoryDto> AddMovieCategory(AddMovieCategoryDto movieCategoryDto);
     Task<MovieCategoryDto> UpdateMovieCategory(MovieCategoryDto movieCategoryDto);
     Task DeleteMovieCategory(int id);
 }

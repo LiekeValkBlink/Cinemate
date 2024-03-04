@@ -99,7 +99,7 @@ namespace Cinemate.API.Migrations
                     b.Property<string>("Cast")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("cast");
+                        .HasColumnName("actor_cast");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -228,14 +228,6 @@ namespace Cinemate.API.Migrations
                     b.Property<int>("ScreeningId")
                         .HasColumnType("integer")
                         .HasColumnName("screening_id");
-
-                    b.Property<int>("SeatReservedId")
-                        .HasColumnType("integer")
-                        .HasColumnName("seat_reserved_id");
-
-                    b.Property<int>("TicketId")
-                        .HasColumnType("integer")
-                        .HasColumnName("ticket_id");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer")
@@ -605,7 +597,7 @@ namespace Cinemate.API.Migrations
             modelBuilder.Entity("Cinemate.API.Entities.SeatReserved", b =>
                 {
                     b.HasOne("Cinemate.API.Entities.Reservation", "Reservation")
-                        .WithMany("SeatReserved")
+                        .WithMany()
                         .HasForeignKey("ReservationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -643,7 +635,7 @@ namespace Cinemate.API.Migrations
             modelBuilder.Entity("Cinemate.API.Entities.Ticket", b =>
                 {
                     b.HasOne("Cinemate.API.Entities.Reservation", "Reservation")
-                        .WithMany("Ticket")
+                        .WithMany()
                         .HasForeignKey("ReservationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -692,13 +684,6 @@ namespace Cinemate.API.Migrations
             modelBuilder.Entity("Cinemate.API.Entities.PromoCode", b =>
                 {
                     b.Navigation("TicketPromoCodes");
-                });
-
-            modelBuilder.Entity("Cinemate.API.Entities.Reservation", b =>
-                {
-                    b.Navigation("SeatReserved");
-
-                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.Ticket", b =>

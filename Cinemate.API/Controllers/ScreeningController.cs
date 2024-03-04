@@ -47,7 +47,7 @@ public class ScreeningController: ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<ScreeningWithInfoDto>> AddScreening([FromBody] ScreeningDto screeningDto)
+    public async Task<ActionResult<ScreeningWithInfoDto>> AddScreening([FromBody] AddScreeningDto screeningDto)
     {
         try
         {
