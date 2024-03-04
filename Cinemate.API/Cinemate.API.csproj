@@ -31,4 +31,8 @@
       <ProjectReference Include="..\Cinemate.Models\Cinemate.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="appsettings.json" />
+    </ItemGroup>
+
 </Project>
