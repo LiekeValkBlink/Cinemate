@@ -3,6 +3,7 @@
 @using Cinemate.Web.Services.Contracts
 @inherits LayoutComponentBase
 @inject ISelectedMovieService SelectedMovieService
+@inject IJSRuntime JSRuntime
 
 @code {
     [Parameter] public string ImageUrl { get; set; }
@@ -61,10 +62,13 @@
             if (movie != null)
             {
                 // Opslaan van de geselecteerde film met behulp van IMovieService
-                SelectedMovieService.SelectedMovie = movie;
+                var selectedMovieService = new SelectedMovieService(JSRuntime);
+                await selectedMovieService.SetSelectedMovieAsync(movie);
 
-                // Navigeren naar /show-reservation met de bijgewerkte film-ID
-                NavigationManager.NavigateTo($"/show-reservation?movieId={movie.Id}");
+
+
+                // Herladen van de pagina
+                NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
             }
             else
             {

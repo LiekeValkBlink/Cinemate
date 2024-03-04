@@ -84,10 +84,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVGhlYXRlcnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/j.vanderwaal/source/repos/Cinemate2/Cinemate.Web/Pages/User/Homepage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxIb21lcGFnZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/j.vanderwaal/source/repos/Cinemate2/Cinemate.Web/Pages/User/SeatReservation.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxTZWF0UmVzZXJ2YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

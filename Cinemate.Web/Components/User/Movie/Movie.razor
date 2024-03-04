@@ -1,6 +1,7 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts 
 @inject ISelectedMovieService SelectedMovieService
+@inject IJSRuntime JSRuntime
 
 @code{
      [Inject] public IMovieService? MovieService { get; set; }
@@ -32,50 +33,7 @@
  }
  
  @*
- @{
-     var movies = new List<MovieDtoImage>
-     {
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/1.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/2.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-            Imageurl = "/images/movies/3.jpg"
-         },
-     
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/4.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/5.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/6.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/7.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/8.jpg"
-         }
-     };
- }
+
  *@
  <div class="movie-container">
     @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
@@ -102,10 +60,10 @@
         if (movie != null)
         {
             // Opslaan van de geselecteerde film met behulp van IMovieService
-            SelectedMovieService.SelectedMovie = movie;
+            var selectedMovieService = new SelectedMovieService(JSRuntime);
+            await selectedMovieService.SetSelectedMovieAsync(movie);
 
-            // Navigeren naar /show-reservation met de bijgewerkte film-ID
-            NavigationManager.NavigateTo($"/show-reservation?movieId={movie.Id}");
+            NavigationManager.NavigateTo($"/show-reservation");
         }
     }
     }

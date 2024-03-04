@@ -1,8 +1,9 @@
 @using Cinemate.Models.Dto
+@inject ISelectedMovieService SelectedMovieService
 
-<img class="movie-img-container" src="@(Movie.Imageurl)" alt="Movie image" />
+<img class="movie-img-container" src="@(selectedMovie?.Imageurl)" alt="Movie image" />
 
-<h1>@(Movie.Title)</h1>
+<h1>@(selectedMovie?.Title)</h1>
 
 <div class="movie-details-primary">
     <div class="mpa-rating">
@@ -10,10 +11,10 @@
         <img class="mpa-icon" src="/images/kijkwijzer-eng.svg" alt="Kijkwijzer - eng"/>
         <img class="mpa-icon" src="/images/kijkwijzer-geweld.svg" alt="Kijkwijzer - geweld"/>
     </div>
-    <p class="movie-duration">@(Movie.Duration) minuten</p>
+    <p class="movie-duration">@(selectedMovie?.Duration) minuten</p>
 </div>
 
-<p>@(Movie.Description)</p>
+<p>@(selectedMovie?.Description)</p>
 
 <table class="movie-details-secondary">
     <tbody>
@@ -30,7 +31,7 @@
             <p>Genre</p>
         </td>
         <td>
-              <p>@Movie.MovieCategoryDescription</p>
+              <p>@(selectedMovie?.MovieCategoryDescription)</p>
         </td>
     </tr>
     <tr>
@@ -46,7 +47,7 @@
             <p>Jaar van uitgave</p>
         </td>
         <td>
-            <p>@(Movie.ReleaseYear)</p>
+                <p>@(selectedMovie?.ReleaseYear)</p>
         </td>
     </tr>
     <tr>
@@ -54,15 +55,18 @@
             <p>Regisseur</p>
         </td>
         <td>
-            <p>@(Movie.Director)</p>
+                <p>@(selectedMovie?.Director)</p>
         </td>
     </tr>
     </tbody>
 </table>
 
 @code {
-    [Parameter]
-    public MovieDtoImage Movie { get; set; }
 
+    private MovieDtoImage selectedMovie;
 
+    protected override async Task OnInitializedAsync()
+    {
+        selectedMovie = await SelectedMovieService.GetSelectedMovieAsync();
+    }
 }

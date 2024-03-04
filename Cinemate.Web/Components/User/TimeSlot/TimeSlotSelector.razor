@@ -10,13 +10,16 @@
     private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
     private IEnumerable<ScreeningWithInfoDto>? AllScreeningsForMovie { get; set; }
 
+
     protected override async Task OnInitializedAsync()
     {
         AllScreenings = await ScreeningService?.GetAllScreenings();
         if (AllScreenings != null)
         {
             // Filter AllScreenings based on MovieId
-            var selectedMovieId = SelectedMovieService.SelectedMovie?.Id;
+            var movie = await SelectedMovieService.GetSelectedMovieAsync();
+            var selectedMovieId = movie.Id;
+
             if (selectedMovieId != null)
             {
                 AllScreeningsForMovie = AllScreenings.Where(s => s.MovieId == selectedMovieId);
