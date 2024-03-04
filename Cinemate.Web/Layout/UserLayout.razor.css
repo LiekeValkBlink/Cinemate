@@ -23,9 +23,14 @@
         padding: var(--page-padding);
 
         & aside {
-            width: 31.25rem;
+            width: 50rem;
         }
-   }
+
+        & article {
+            width: 100%;
+        }
+
+    }
 
     & footer {
         display: flex;
