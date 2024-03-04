@@ -12,8 +12,13 @@
 
 <Modal @ref="_modal" ElementId="login-modal" title="Inloggen" UseStaticBackdrop="true" CloseOnEscape="true">
     <BodyTemplate>
-        <input type="text"/>
-        <input type="password"/>
+        <p>Log in voor toegang tot het admin systeem</p>
+        <form>
+            <label>E-mailadres</label>
+            <input type="text"/>
+            <label>Wachtwoord</label>
+            <input type="password"/>
+        </form>
         <button class="primary-btn">Inloggen</button>
     </BodyTemplate>
 </Modal>
