@@ -76,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4vU2NyZWVuaW5ncy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/Admin/Seats.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4vU2VhdHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/Pages/Admin/TheaterRooms.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4vVGhlYXRlclJvb21zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
