@@ -372,9 +372,14 @@ main[b-x4zgb8pyc5] {
         padding: var(--page-padding);
 
         & aside {
-            width: 31.25rem;
+            width: 50rem;
         }
-   }
+
+        & article[b-3km57bg88y] {
+            width: 100%;
+        }
+
+    }
 
     & footer[b-3km57bg88y] {
         display: flex;

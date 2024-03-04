@@ -125,6 +125,10 @@
             "Radzen.Blazor": {
               "target": "Package",
               "version": "[4.25.7, )"
+            },
+            "Syncfusion.Blazor.Inputs": {
+              "target": "Package",
+              "version": "[24.2.8, )"
             }
           },
           "imports": [

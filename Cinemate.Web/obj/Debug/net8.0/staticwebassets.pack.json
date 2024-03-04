@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets/css/app.css"
     },
     {
+      "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/css/modal.css",
+      "PackagePath": "staticwebassets/css/modal.css"
+    },
+    {
       "Id": "/Users/liekevalk/RiderProjects/Cinemate/Cinemate.Web/wwwroot/images/brand-instagram.png",
       "PackagePath": "staticwebassets/images/brand-instagram.png"
     },

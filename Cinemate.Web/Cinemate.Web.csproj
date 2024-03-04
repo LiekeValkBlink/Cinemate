@@ -12,6 +12,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
         <PackageReference Include="Radzen.Blazor" Version="4.25.7" />
+        <PackageReference Include="Syncfusion.Blazor.Inputs" Version="24.2.8" />
     </ItemGroup>
 
     <ItemGroup>
@@ -46,6 +47,15 @@
       <AdditionalFiles Include="Components\User\Movie\MovieThumbContainer.razor" />
       <AdditionalFiles Include="Components\User\TimeSlot\TimeSlot.razor" />
       <AdditionalFiles Include="Components\User\TimeSlot\TimeSlotSelector.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Components\User\Alerts\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Components\User\Alerts\Warning.razor" />
+      <Content Remove="Pages\User\TicketsAndPayment.razor" />
     </ItemGroup>
 
 </Project>
