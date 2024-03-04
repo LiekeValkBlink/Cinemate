@@ -1,8 +1,13 @@
+@using Cinemate.Models.Dto
+
+@code {
+    [Parameter] public ScreeningWithInfoDto ScreeningInfo { get; set; }
+}
+
 <div class="time-slot-container">
     <div>
-        <p class="time">15:00</p>
-        <p class="location">Zaal 1</p>
+        <p class="time">@ScreeningInfo.MovieStart.ToString("HH:mm")</p>
+        <p class="location">Zaal @ScreeningInfo.TheaterRoomId</p>
     </div>
     <i class="fa-solid fa-arrow-right"></i>
 </div>
-                        

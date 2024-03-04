@@ -1,6 +1,9 @@
-<img class="movie-img-container" src="/images/image-placeholder.webp" alt="Movie image" />
+@using Cinemate.Models.Dto
+@inject ISelectedMovieService SelectedMovieService
 
-<h2>Wish (NL)</h2>
+<img class="movie-img-container" src="@(selectedMovie?.Imageurl)" alt="Movie image" />
+
+<h1>@(selectedMovie?.Title)</h1>
 
 <div class="movie-details-primary">
     <div class="mpa-rating">
@@ -8,10 +11,10 @@
         <img class="mpa-icon" src="/images/kijkwijzer-eng.svg" alt="Kijkwijzer - eng"/>
         <img class="mpa-icon" src="/images/kijkwijzer-geweld.svg" alt="Kijkwijzer - geweld"/>
     </div>
-    <p class="movie-duration">95 minuten</p>
+    <p class="movie-duration">@(selectedMovie?.Duration) minuten</p>
 </div>
 
-<p>Wish speelt zich af in het magische koninkrijk Rosas en vertelt het verhaal van Asha, een optimist met scherpe humor die veel geeft om haar gemeenschap. Wanneer Asha zich op een moment van nood naar de hemel wendt en een wens doet, wordt haar smeekbede beantwoord door een kosmische kracht – een kleine bal gevuld met grenzeloze energie die Star wordt genoemd.</p>
+<p>@(selectedMovie?.Description)</p>
 
 <table class="movie-details-secondary">
     <tbody>
@@ -28,7 +31,7 @@
             <p>Genre</p>
         </td>
         <td>
-            <p>Kinderfilm</p>
+              <p>@(selectedMovie?.MovieCategoryDescription)</p>
         </td>
     </tr>
     <tr>
@@ -41,10 +44,10 @@
     </tr>
     <tr>
         <td>
-            <p>Audiodiscriptie</p>
+            <p>Jaar van uitgave</p>
         </td>
         <td>
-            <p>Nee</p>
+                <p>@(selectedMovie?.ReleaseYear)</p>
         </td>
     </tr>
     <tr>
@@ -52,8 +55,18 @@
             <p>Regisseur</p>
         </td>
         <td>
-            <p>Chris Buck</p>
+                <p>@(selectedMovie?.Director)</p>
         </td>
     </tr>
     </tbody>
 </table>
+
+@code {
+
+    private MovieDtoImage selectedMovie;
+
+    protected override async Task OnInitializedAsync()
+    {
+        selectedMovie = await SelectedMovieService.GetSelectedMovieAsync();
+    }
+}

@@ -1,7 +1,8 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts 
+@inject ISelectedMovieService SelectedMovieService
+@inject IJSRuntime JSRuntime
 
-@*
 @code{
      [Inject] public IMovieService? MovieService { get; set; }
      [Inject] protected PreloadService PreloadService { get; set; } = default!;
@@ -26,63 +27,44 @@
              Cast = movie.Cast,
              Review = movie.Review,
              Kijkwijzers = movie.Kijkwijzers,
-             Imageurl = $"/images/movies/{movie.Id}.jpg"
+             //Imageurl = $"/images/movies/{movie.Id}.jpg"
+                Imageurl = $"https://localhost:7201/images/movie_{movie.Id}_image.jpg"
          }).ToList();
      }
  }
- *@
  
- @{
-     var movies = new List<MovieDtoImage>
-     {
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/1.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/2.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-            Imageurl = "/images/movies/3.jpg"
-         },
-     
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/4.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/5.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/6.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/7.jpg"
-         },
-         
-         new MovieDtoImage
-         {
-             Imageurl = "/images/movies/8.jpg"
-         }
-     };
- }
+ @*
 
+ *@
  <div class="movie-container">
-     @if (movies == null || movies.Count < 1) {
+    @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
+    {
         <h2>Movies not available</h2>
     } else {
-         @foreach (var movie in movies) {
+        @foreach (var movie in AllMoviesWithImage)
+        {
+            <a @onclick="() => SaveAndNavigate(movie)" style="cursor: pointer;">
              <div class="movie" style="background-image: url('@(movie.Imageurl)');"></div>
+            </a>
          }
     }
  </div>
+
+@code {
+    [Inject] public NavigationManager NavigationManager { get; set; }
+
+    private MovieDto movie;
+
+
+    private async Task SaveAndNavigate(MovieDtoImage movie)
+    {
+        if (movie != null)
+        {
+            // Opslaan van de geselecteerde film met behulp van IMovieService
+            var selectedMovieService = new SelectedMovieService(JSRuntime);
+            await selectedMovieService.SetSelectedMovieAsync(movie);
+
+            NavigationManager.NavigateTo($"/show-reservation");
+        }
+    }
+    }
