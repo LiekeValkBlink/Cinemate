@@ -18,38 +18,38 @@ public class TheaterRoomService: ITheaterRoomService
         _mapper = mapper;
         _theaterService = theaterService;
     }
-    public async Task<IEnumerable<TheaterRoomsDto>> GetAllTheaterRooms()
+    public async Task<IEnumerable<TheaterRoomsWInfoDto>> GetAllTheaterRooms()
     {
-        var theaterRooms = await _dbContext.TheatherRooms
+        var theaterRooms = await _dbContext.TheaterRooms
             .Include(tr => tr.Theater)
             .ToListAsync();
         
-        return _mapper.Map<IEnumerable<TheaterRoomsDto>>(theaterRooms);
+        return _mapper.Map<IEnumerable<TheaterRoomsWInfoDto>>(theaterRooms);
     }
     
-    public async Task<TheaterRoomsDto> GetSingleTheaterRoom(int id)
+    public async Task<TheaterRoomsWInfoDto> GetSingleTheaterRoom(int id)
     {
-        var theaterRoom = await _dbContext.TheatherRooms
+        var theaterRoom = await _dbContext.TheaterRooms
             .Include(tr => tr.Theater)
             .FirstOrDefaultAsync(tr => tr.Id == id);
 
-        return _mapper.Map<TheaterRoomsDto>(theaterRoom);
+        return _mapper.Map<TheaterRoomsWInfoDto>(theaterRoom);
     }
 
-    public async Task<TheaterRoomsDto> AddTheaterRoom(AddOrUpdateTheaterRoomDto theaterRoomDto)
+    public async Task<TheaterRoomsWInfoDto> AddTheaterRoom(AddTheaterRoomDto theaterRoomDto)
     {
         
         
         var theaterRoom = _mapper.Map<TheaterRoom>(theaterRoomDto);
-        _dbContext.TheatherRooms.Add(theaterRoom);
+        _dbContext.TheaterRooms.Add(theaterRoom);
         await _dbContext.SaveChangesAsync();
         
-        return _mapper.Map<TheaterRoomsDto>(theaterRoom);
+        return _mapper.Map<TheaterRoomsWInfoDto>(theaterRoom);
     }
 
-    public async Task<TheaterRoomsDto> UpdateTheaterRoom(AddOrUpdateTheaterRoomDto theaterRoomDto)
+    public async Task<TheaterRoomsWInfoDto> UpdateTheaterRoom(TheaterRoomDto theaterRoomDto)
     {
-        var theaterRoom = await _dbContext.TheatherRooms
+        var theaterRoom = await _dbContext.TheaterRooms
             .Include(tr => tr.Theater) // Include the related theater
             .FirstOrDefaultAsync(tr => tr.Id == theaterRoomDto.Id);
         if (theaterRoom == null)
@@ -60,18 +60,18 @@ public class TheaterRoomService: ITheaterRoomService
         _mapper.Map(theaterRoomDto, theaterRoom);
         await _dbContext.SaveChangesAsync();
         
-        return _mapper.Map<TheaterRoomsDto>(theaterRoom);
+        return _mapper.Map<TheaterRoomsWInfoDto>(theaterRoom);
     }
 
     public async Task DeleteTheaterRoom(int id)
     {
-        var theaterRoom = await _dbContext.TheatherRooms.FindAsync(id);
+        var theaterRoom = await _dbContext.TheaterRooms.FindAsync(id);
         if (theaterRoom == null)
         {
             throw new ArgumentException("Theater room not found");
         }
 
-        _dbContext.TheatherRooms.Remove(theaterRoom);
+        _dbContext.TheaterRooms.Remove(theaterRoom);
         await _dbContext.SaveChangesAsync();
     }
 

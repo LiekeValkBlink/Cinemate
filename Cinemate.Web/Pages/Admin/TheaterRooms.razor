@@ -6,40 +6,99 @@
 
 <Card>
     <CardBody>
-        
+         @if (IsTheaterRoomAddedSucces)
+                {
+                    <Alert Color="AlertColor.Success"  Dismissable="true">
+                        <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon>
+                        Room added successfully!
+                    </Alert>
+                }
         <h1>Theater Rooms</h1>
+        <Button Color="ButtonColor.Primary" class="my-4" @onclick="ShowModal">Add Room</Button>
 
         @if (AllTheaterRooms is not null)
         {
             <Grid @ref="theaterRoomsGrid"
-                  TItem="TheaterRoomsDto"
+                  TItem="TheaterRoomsWInfoDto"
                   Class="table table-hover table-bordered table-striped"
                   DataProvider="TheaterRoomsDataProvider"
                   AllowFiltering="true"
                   AllowSorting="true"
                   AllowPaging="true"
                   Responsive="true">
-                <GridColumn TItem="TheaterRoomsDto" PropertyName="Id" SortKeySelector="@((item) => item.Id)" HeaderText="ID" Sortable="true" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
-                <GridColumn TItem="TheaterRoomsDto" PropertyName="Name" SortKeySelector="@((item) => item.Name)" HeaderText="Name" Sortable="true">@context.Name</GridColumn>
-                <GridColumn TItem="TheaterRoomsDto" PropertyName="SeatsNo" SortKeySelector="@((item) => item.SeatsNo)" HeaderText="No. Seats" Sortable="true">@context.SeatsNo</GridColumn>
-                <GridColumn TItem="TheaterRoomsDto" PropertyName="TheaterName" SortKeySelector="@((item) => item.TheaterName)" HeaderText="Theater Name" Sortable="true">@context.TheaterName</GridColumn>
+                <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="Id" SortKeySelector="@((item) => item.Id)" HeaderText="ID" Sortable="true" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="Name" SortKeySelector="@((item) => item.Name)" HeaderText="Name" Sortable="true">@context.Name</GridColumn>
+                <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="SeatsNo" SortKeySelector="@((item) => item.SeatsNo)" HeaderText="No. Seats" Sortable="true">@context.SeatsNo</GridColumn>
+                <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="TheaterName" SortKeySelector="@((item) => item.TheaterName)" HeaderText="Theater Name" Sortable="true">@context.TheaterName</GridColumn>
             </Grid>
         }
     </CardBody>
 </Card>
 
+<Modal @ref="addTheaterModal" Title="Add theater">
+    <BodyTemplate>
+        <EditForm Model="addTheaterRoomDto" OnValidSubmit="@HandleValidSubmit">
+            <ValidationSummary />
+            <div class="mb-3">
+                <label for="theaterRoomName" class="form-label">Theater</label>
+                <select id="theaterRoomName" class="form-select" @bind="@addTheaterRoomDto.TheaterId" required>
+                    <option value="">Select a theater</option>
+                    @foreach (var theater in AllTheaters)
+                    {
+                        <option value="@theater.Id">@theater.Name</option>
+                    }
+                </select>
+                <ValidationMessage For="@(() => addTheaterRoomDto.TheaterId)" />
+            </div>
+            <div class="mb-3">
+                <label for="theaterRoomName" class="form-label">Room name</label>
+                <InputText id="theaterRoomName" class="form-control" @bind-Value="addTheaterRoomDto.Name" required></InputText>
+                <ValidationMessage For="@(() => addTheaterRoomDto.Name)"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </BodyTemplate>
+</Modal>
+
 @code {
-    [Inject]
-    protected PreloadService PreloadService { get; set; } = default!;
-    [Inject]
-    public ITheaterRoomService TheaterRoomService { get; set; }
+    [Inject] private PreloadService PreloadService { get; set; } = default!;
+    [Inject] private ITheaterRoomService TheaterRoomService { get; set; }
+    [Inject] private ISeatsService SeatsService { get; set; }
+    [Inject] private ITheaterService TheaterService { get; set; }
 
-    private IEnumerable<TheaterRoomsDto> AllTheaterRooms;
+    private IEnumerable<TheaterRoomsWInfoDto> AllTheaterRooms;
+    private IEnumerable<TheaterDto> AllTheaters { get; set; }
+    private AddTheaterRoomDto addTheaterRoomDto = new();
+    private bool IsTheaterRoomAddedSucces { get; set; }
 
-    BlazorBootstrap.Grid<TheaterRoomsDto> theaterRoomsGrid = default!;
 
+    private Modal addTheaterModal = default!;
+    BlazorBootstrap.Grid<TheaterRoomsWInfoDto> theaterRoomsGrid = default!;
 
-    private async Task<GridDataProviderResult<TheaterRoomsDto>> TheaterRoomsDataProvider(GridDataProviderRequest<TheaterRoomsDto> request)
+    
+    private async Task ShowModal()
+    {
+        await addTheaterModal.ShowAsync();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            PreloadService.Show();
+            var result = await TheaterRoomService.AddTheaterRoom(addTheaterRoomDto);
+            IsTheaterRoomAddedSucces = true;
+            await addTheaterModal.HideAsync();
+            PreloadService.Hide();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    private async Task<GridDataProviderResult<TheaterRoomsWInfoDto>> TheaterRoomsDataProvider(GridDataProviderRequest<TheaterRoomsWInfoDto> request)
     {
         return await Task.FromResult(request.ApplyTo(AllTheaterRooms));
     }
@@ -48,6 +107,7 @@
     {
         PreloadService.Show();
         AllTheaterRooms = await TheaterRoomService.GetAllTheaterRooms();
+        AllTheaters = await TheaterService.GetAllTheaters();
         PreloadService.Hide();
     }
     

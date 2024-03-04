@@ -10,9 +10,11 @@ public class TheatherProfile: Profile
     {
         CreateMap<TheaterDto, Theater>();
         CreateMap<Theater, TheaterDto>();
-        CreateMap<TheaterRoom, TheaterRoomsDto>();
-        CreateMap<TheaterRoomsDto, TheaterRoom>();
-        CreateMap<AddOrUpdateTheaterRoomDto, TheaterRoom>();
-
+        CreateMap<TheaterRoom, TheaterRoomsWInfoDto>();
+        CreateMap<AddTheaterRoomDto, TheaterRoom>();
+        CreateMap<TheaterRoomsWInfoDto, TheaterRoom>();
+        CreateMap<TheaterRoomDto, TheaterRoom>();
+        CreateMap<AddSeatsDto, Seat>();
+        CreateMap<SeatsDto, Seat>();
     }
 }

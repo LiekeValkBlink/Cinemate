@@ -22,6 +22,7 @@ builder.Services.AddScoped<ITheaterService, TheaterService>();
 builder.Services.AddScoped<ITheaterRoomService, TheaterRoomService>();
 builder.Services.AddScoped<IMovieCategoryService, MovieCategoryService>();
 builder.Services.AddScoped<IScreeningService, ScreeningService>();
+builder.Services.AddScoped<ISeatsService, SeatsService>();
 builder.Services.AddAutoMapper(typeof(MovieProfile));
 
 var app = builder.Build();
