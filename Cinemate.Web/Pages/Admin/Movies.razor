@@ -31,7 +31,7 @@
                   Responsive="true">
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Image" Width="200px">
                   @{
-                      var imageUrl = $"https://localhost:7201/images/movie_{@context.Id}_image.jpg";
+                      var imageUrl = $"https://localhost:7201/images/posters/movie_{@context.Id}_image.jpg";
                   }
                   <img src="@imageUrl" alt="Movie Image" style="max-width: 100%; max-height: 100%;" />
                 </GridColumn>

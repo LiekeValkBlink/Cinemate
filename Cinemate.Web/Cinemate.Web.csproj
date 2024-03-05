@@ -47,6 +47,10 @@
       <AdditionalFiles Include="Components\User\Movie\MovieThumbContainer.razor" />
       <AdditionalFiles Include="Components\User\TimeSlot\TimeSlot.razor" />
       <AdditionalFiles Include="Components\User\TimeSlot\TimeSlotSelector.razor" />
+      <AdditionalFiles Include="Pages\Web\Home.razor" />
+      <AdditionalFiles Include="Pages\Web\PrintBarcode.razor" />
+      <AdditionalFiles Include="Pages\Web\SeatReservation.razor" />
+      <AdditionalFiles Include="Pages\Web\ShowReservation.razor" />
     </ItemGroup>
 
 </Project>

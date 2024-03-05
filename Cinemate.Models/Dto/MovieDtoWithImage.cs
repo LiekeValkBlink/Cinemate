@@ -15,7 +15,8 @@ public class MovieDtoImage
     public string Cast { get; set; }
     public decimal Review { get; set; }
     public string Kijkwijzers { get; set; }
-    public string? Imageurl { get; set; }
+    public string? MoviePosterUrl { get; set; }
+    public string? MovieScreenshotUrl { get; set; }
 
 
 }

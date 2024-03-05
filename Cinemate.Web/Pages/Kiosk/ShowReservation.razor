@@ -1,0 +1,12 @@
+@layout UserLayout
+@page "/kiosk/show-reservation"
+@using Cinemate.Models
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services.Contracts
+@inject NavigationManager NavigationManager
+@inject ISelectedMovieService SelectedMovieService
+
+
+
+<h2>Kies een voorstelling</h2>
+<TimeSlotSelector></TimeSlotSelector>

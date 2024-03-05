@@ -1,0 +1,82 @@
+﻿@page "/kiosk/barcode"
+@using Cinemate.Models.Dto
+@using Syncfusion.Blazor.BarcodeGenerator
+@using Microsoft.AspNetCore.Components.Forms
+
+<div style="margin:30px"></div><center><h2>Print uw barcode</h2></center>
+<div style="align-content:center">
+<EditForm Model="barcode" OnSubmit="HandleBarcodeCreate">
+    <table align="center">
+        <tr>
+            <td width="50%">
+                <label for="moviename">Movie Name</label>
+            </td>
+            <td>
+                <InputText id="moviename" @bind-Value="barcode.MovieName"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%">
+                    <label for="date">Date</label>
+            </td>
+            <td>
+                    <InputDate id="date" @bind-Value="barcode.Date"></InputDate>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%">
+                    <label for="time">Time</label>
+            </td>
+            <td>
+                    <InputDate Type="InputDateType.Time" id="time" @bind-Value="barcode.Time"></InputDate>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%">
+                    <label for="room">Theater room</label>
+            </td>
+            <td>
+                    <InputNumber id="room" @bind-Value="barcode.Room"></InputNumber>
+            </td>
+        </tr>
+    </table>
+ <div>
+            <button style="padding:5px; margin: 25px" type="submit">Make reservation</button>
+ </div>
+    
+   
+
+</EditForm>
+
+@code {
+    private BarcodeDto barcode = new BarcodeDto();
+
+
+    private void HandleBarcodeCreate()
+    {
+        var reservationString = $"{barcode.MovieName} {barcode.Date.ToString()} {barcode.Time.ToString()} {barcode.Room.ToString()}";
+
+        barcode.QrCode = reservationString;
+
+       
+
+    }
+
+}
+<div>
+
+    
+    <SfQRCodeGenerator ForeColor="#ffffff" BackgroundColor="#2b1b3d" Width="400px" Height="150px" Value="@barcode.QrCode" @ref="@QRcode">
+        <QRCodeGeneratorDisplayText Text="@barcode.QrCode"></QRCodeGeneratorDisplayText>
+    </SfQRCodeGenerator>
+</div>
+</div>
+
+<input type="button" value="Save your barcode" @onclick="@OnExport" />
+@code {
+    SfQRCodeGenerator QRcode;
+    private void OnExport()
+    {
+        QRcode.Export("fileName", BarcodeExportType.JPG);
+    }
+}

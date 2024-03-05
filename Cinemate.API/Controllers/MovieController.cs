@@ -26,7 +26,7 @@ public class MovieController: ControllerBase
         // Get the extension
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images", fileName);
         
-        using var fileStream = new FileStream(filePath, FileMode.Create);
+        await using var fileStream = new FileStream(filePath, FileMode.Create);
         
         // Copy the content to the new stream
         await file.CopyToAsync(fileStream);

@@ -1,7 +1,7 @@
 @using Cinemate.Models.Dto
 @inject ISelectedMovieService SelectedMovieService
 
-<img class="movie-img-container" src="@(selectedMovie?.Imageurl)" alt="Movie image" />
+<img class="movie-img-container" src="@(selectedMovie?.MovieScreenshotUrl)" alt="Movie screenshot" />
 
 <h1>@(selectedMovie?.Title)</h1>
 

@@ -1,0 +1,120 @@
+@layout UserLayout
+@page "/kiosk/seat-reservation"
+
+<div class="cinema-overview">
+    <div class="movie-screen"></div>
+    <p>Filmscherm</p>
+
+    @foreach (var row in Enumerable.Range(0, seats.GetLength(0)))
+    {
+        <div class="seat-row">
+            @foreach (var col in Enumerable.Range(0, seats.GetLength(1)))
+            {
+                <div class="seat" style="background-color: @GetSeatColor(seats[row, col].Status)">
+                    @seats[row, col].Number
+                </div>
+            }
+        </div>
+    }
+
+   
+</div>
+
+<div class="legenda-container">
+    <div class="seat" style="background-color: green;"></div><p>Vrij</p>
+    <div class="seat" style="background-color: yellow;"></div><p>Gekozen</p>
+    <div class="seat" style="background-color: red;"></div><p>Bezet</p>
+</div>
+
+<div class="seat-selection">
+    <label for="numberOfSeats">Aantal Kaartjes:</label>
+    <input type="number" id="numberOfSeats" @bind="numberOfSeats" />
+    <button class="primary-btn" @onclick="AssignSeats">Stoelen Toewijzen</button>
+</div>
+
+<div class="page-navigation">
+    <button class="secondary-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+        Terug
+    </button>
+
+    <button class="primary-btn">
+        Bevestig je keuze
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+</div>
+
+    @code {
+    private Seat[,] seats = new Seat[5, 10]; // zaal genomen van 5 rijden en 10 stoelen per rij.
+    private int numberOfSeats = 1; 
+
+    protected override void OnInitialized()
+    {
+        InitializeSeats();
+    }
+
+    private void InitializeSeats()
+    {
+        for (int row = 0; row < seats.GetLength(0); row++)
+        {
+            for (int col = 0; col < seats.GetLength(1); col++)
+            {
+                seats[row, col] = new Seat { Row = row + 1, Number = col + 1, Status = SeatStatus.Free };
+            }
+        }
+    }
+
+    private void AssignSeats()
+    {
+        int seatsAssigned = 0;
+        bool moveRight = true; 
+
+        for (int row = 0; row < seats.GetLength(0) && seatsAssigned < numberOfSeats; row++)
+        {
+            if (moveRight)
+            {
+                
+                for (int col = 0; col < seats.GetLength(1) && seatsAssigned < numberOfSeats; col++)
+                {
+                    AssignSeat(ref seatsAssigned, row, col);
+                }
+            }
+            else
+            {
+                
+                for (int col = seats.GetLength(1) - 1; col >= 0 && seatsAssigned < numberOfSeats; col--)
+                {
+                    AssignSeat(ref seatsAssigned, row, col);
+                }
+            }
+
+            moveRight = !moveRight; 
+        }
+
+        StateHasChanged();
+    }
+
+    private void AssignSeat(ref int seatsAssigned, int row, int col)
+    {
+        if (seats[row, col].Status == SeatStatus.Free)
+        {
+            seats[row, col].Status = SeatStatus.Selected; 
+            seatsAssigned++;
+        }
+    }
+
+    private string GetSeatColor(SeatStatus status)
+    {
+        switch (status)
+        {
+            case SeatStatus.Free:
+                return "green";
+            case SeatStatus.Selected:
+                return "yellow";
+            case SeatStatus.Occupied:
+                return "red";
+            default:
+                return "grey";
+        }
+    }
+    }
