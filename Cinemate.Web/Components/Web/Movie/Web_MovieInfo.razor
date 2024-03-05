@@ -1,0 +1,72 @@
+@using Cinemate.Models.Dto
+@inject ISelectedMovieService SelectedMovieService
+
+<img class="movie-img-container" src="@(selectedMovie?.MovieScreenshotUrl)" alt="Movie screenshot" />
+
+<h1>@(selectedMovie?.Title)</h1>
+
+<div class="movie-details-primary">
+    <div class="mpa-rating">
+        <img class="mpa-icon" src="/images/kijkwijzer-6.svg" alt="Kijkwijzer - leeftijd 6"/>
+        <img class="mpa-icon" src="/images/kijkwijzer-eng.svg" alt="Kijkwijzer - eng"/>
+        <img class="mpa-icon" src="/images/kijkwijzer-geweld.svg" alt="Kijkwijzer - geweld"/>
+    </div>
+    <p class="movie-duration">@(selectedMovie?.Duration) minuten</p>
+</div>
+
+<p>@(selectedMovie?.Description)</p>
+
+<table class="movie-details-secondary">
+    <tbody>
+    <tr>
+        <td>
+            <p>Bij Cinemate vanaf</p>
+        </td>
+        <td>
+            <p>Woensdag 22 november 2023</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>Genre</p>
+        </td>
+        <td>
+              <p>@(selectedMovie?.MovieCategoryDescription)</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>Gesproken taal</p>
+        </td>
+        <td>
+            <p>Nederlands</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>Jaar van uitgave</p>
+        </td>
+        <td>
+                <p>@(selectedMovie?.ReleaseYear)</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>Regisseur</p>
+        </td>
+        <td>
+                <p>@(selectedMovie?.Director)</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+@code {
+
+    private MovieDtoImage selectedMovie;
+
+    protected override async Task OnInitializedAsync()
+    {
+        selectedMovie = await SelectedMovieService.GetSelectedMovieAsync();
+    }
+}

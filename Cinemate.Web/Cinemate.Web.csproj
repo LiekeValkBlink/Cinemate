@@ -36,17 +36,15 @@
 
     <ItemGroup>
       <None Remove="Components\User" />
-      <None Update="Components\User\Newsletter.razor.css">
-        <DependentUpon>Newsletter.razor</DependentUpon>
-      </None>
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Components\User\Movie\MovieInfo.razor" />
-      <AdditionalFiles Include="Components\User\Movie\MovieThumb.razor" />
-      <AdditionalFiles Include="Components\User\Movie\MovieThumbContainer.razor" />
-      <AdditionalFiles Include="Components\User\TimeSlot\TimeSlot.razor" />
-      <AdditionalFiles Include="Components\User\TimeSlot\TimeSlotSelector.razor" />
+      <AdditionalFiles Include="Components\Web\Movie\MovieKiosk.razor" />
+      <AdditionalFiles Include="Components\Web\Newsletter.razor" />
+      <AdditionalFiles Include="Components\Web\PopupNewsletter.razor" />
+      <AdditionalFiles Include="Components\Web\Seat\Seat.razor" />
+      <AdditionalFiles Include="Components\Web\Seat\SeatSelector.razor" />
+      <AdditionalFiles Include="Components\Web\SocialMedia.razor" />
       <AdditionalFiles Include="Pages\Web\Home.razor" />
       <AdditionalFiles Include="Pages\Web\PrintBarcode.razor" />
       <AdditionalFiles Include="Pages\Web\SeatReservation.razor" />

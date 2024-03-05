@@ -1,0 +1,46 @@
+@using Cinemate.Models
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services.Contracts
+
+
+<div class="movie-thumb-container">
+      @foreach (var movie in AllMoviesWithImage.Take(9))
+    {
+        <Kiosk_MovieThumb ImageUrl="@movie.MoviePosterUrl" MovieId="@movie.Id"></Kiosk_MovieThumb>
+    }
+
+</div>
+
+
+
+@code {
+    [Inject] public IMovieService MovieService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+
+    public IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
+    public IEnumerable<MovieDtoImage> AllMoviesWithImage { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllMovies = await MovieService.GetMovies();
+
+        AllMoviesWithImage = AllMovies.Select(movie => new MovieDtoImage
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Description = movie.Description,
+                Duration = movie.Duration,
+                ReleaseYear = movie.ReleaseYear,
+                MovieCategoryId = movie.MovieCategoryId,
+                MovieCategoryDescription = movie.MovieCategoryDescription,
+                Director = movie.Director,
+                Cast = movie.Cast,
+                Review = movie.Review,
+                Kijkwijzers = movie.Kijkwijzers,
+                MoviePosterUrl = $"https://localhost:7201/images/posters/movie_{movie.Id}_image.jpg",
+                MovieScreenshotUrl = $"https://localhost:7201/images/screenshots/movie-screenshot_{movie.Id}_image.jpg"
+            }).ToList();
+
+    }
+}

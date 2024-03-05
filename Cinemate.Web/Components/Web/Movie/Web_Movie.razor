@@ -1,0 +1,73 @@
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services.Contracts 
+@inject ISelectedMovieService SelectedMovieService
+@inject IJSRuntime JSRuntime
+
+@code{
+     [Inject] public IMovieService? MovieService { get; set; }
+     [Inject] protected PreloadService PreloadService { get; set; } = default!;
+     
+     private string? ImageBaseUrl = "/images/";
+ 
+     private IEnumerable<MovieWithCategoryDto>? AllMovies { get; set; }
+     private IEnumerable<MovieDtoImage>? AllMoviesWithImage { get; set; }
+ 
+     protected override async Task OnInitializedAsync() {
+         AllMovies = await MovieService?.GetMovies();
+         
+         AllMoviesWithImage = AllMovies.Select(movie => new MovieDtoImage {
+             Id = movie.Id,
+             Title = movie.Title,
+             Description = movie.Description,
+             Duration = movie.Duration,
+             ReleaseYear = movie.ReleaseYear,
+             MovieCategoryId = movie.MovieCategoryId,
+             MovieCategoryDescription = movie.MovieCategoryDescription,
+             Director = movie.Director,
+             Cast = movie.Cast,
+             Review = movie.Review,
+             Kijkwijzers = movie.Kijkwijzers,
+             MoviePosterUrl = $"https://localhost:7201/images/posters/movie_{movie.Id}_image.jpg",
+             MovieScreenshotUrl = $"https://localhost:7201/images/screenshots/movie-screenshot_{movie.Id}_image.jpg"
+         }).ToList();
+     }
+ }
+ 
+ @*
+
+ *@
+ <div class="movie-container">
+    @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
+    {
+        <h2>Movies not available</h2>
+    } else {
+        @foreach (var movie in AllMoviesWithImage)
+        {
+            <div class="movie-container-inner">
+                <a @onclick="() => SaveAndNavigate(movie)" style="cursor: pointer;">
+                    <div class="movie" style="background-image: url('@(movie.MoviePosterUrl)');"></div>
+                </a>
+                <Kiosk_TimeSlotSelector></Kiosk_TimeSlotSelector>  
+            </div>
+        }
+    }
+ </div>
+
+@code {
+    [Inject] public NavigationManager NavigationManager { get; set; }
+
+    private MovieDto movie;
+
+
+    private async Task SaveAndNavigate(MovieDtoImage movie)
+    {
+        if (movie != null)
+        {
+            // Opslaan van de geselecteerde film met behulp van IMovieService
+            var selectedMovieService = new SelectedMovieService(JSRuntime);
+            await selectedMovieService.SetSelectedMovieAsync(movie);
+
+            NavigationManager.NavigateTo($"/show-reservation");
+        }
+    }
+}

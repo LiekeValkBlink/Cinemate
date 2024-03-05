@@ -45,7 +45,7 @@
 </div>
 
     @code {
-    private Seat[,] seats = new Seat[5, 10]; // zaal genomen van 5 rijden en 10 stoelen per rij.
+    private Web_Seat[,] seats = new Web_Seat[5, 10]; // zaal genomen van 5 rijden en 10 stoelen per rij.
     private int numberOfSeats = 1; 
 
     protected override void OnInitialized()
@@ -59,7 +59,7 @@
         {
             for (int col = 0; col < seats.GetLength(1); col++)
             {
-                seats[row, col] = new Seat { Row = row + 1, Number = col + 1, Status = SeatStatus.Free };
+                seats[row, col] = new Web_Seat { Row = row + 1, Number = col + 1, Status = SeatStatus.Free };
             }
         }
     }
