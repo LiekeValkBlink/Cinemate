@@ -2,16 +2,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    .movie-screen {
-        width: 90%;
-        border: 1px solid var(--white);
-        margin-bottom: 1rem;
-    }
-    
-    & p {
-        margin-bottom: 1rem;
-    }
+}
+
+.movie-screen {
+    width: 90%;
+    height: 20px;
+    border: 1px solid var(--white);
+    margin-bottom: 1rem;
+    background-color: #ccc;
+}
+
+.seat-row {
+    display: flex;
+}
+
+.seat {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
 }
 
 .legenda-container {
@@ -23,7 +33,7 @@
 
 .page-navigation {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 1rem;
     margin-top: 2rem;
 }
