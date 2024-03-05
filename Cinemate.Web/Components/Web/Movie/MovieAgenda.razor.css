@@ -6,13 +6,24 @@
     
     & .movie-container-inner {
         display: flex;
+        align-items: center;
 
         & .movie {
             background-size: cover;
-            height: 20rem;
-            width: 13.75rem;
+            aspect-ratio: 2 / 3;
+            height: 12.5rem;
             border-radius: var(--border-radius);
             margin-right: 1.5rem;
+        }
+        
+        & .movie-details {
+            display: flex;
+            flex-direction: column;
+            
+            & h3 {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
         }
     }
 }

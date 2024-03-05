@@ -29,7 +29,6 @@
 }
 
 @{
-
     var currentDate = DateTime.Today;
     var currentTime = DateTime.Now.TimeOfDay;
     var uniqueDates = AllScreeningsForMovie?
@@ -37,17 +36,13 @@
         .Distinct() ?? Enumerable.Empty<DateTime>();
 }
 
-
-
-
 @foreach (var date in uniqueDates.Where (date => date >= currentDate))
 {
     <div class="time-slot-selector-container">
-        <h3>@date.ToString("dddd d MMMM")</h3>
         <div class="time-slot-selector-inner">
             @foreach (var screening in AllScreeningsForMovie.Where(s => s.MovieStart.Date == date && (date > currentDate || (date == currentDate && s.MovieStart.TimeOfDay >= currentTime))))
-            {
-                    <Kiosk_TimeSlot ScreeningInfo="@screening"></Kiosk_TimeSlot>
+            { 
+                <Web_TimeSlot ScreeningInfo="@screening"></Web_TimeSlot>
             }
         </div>
     </div>

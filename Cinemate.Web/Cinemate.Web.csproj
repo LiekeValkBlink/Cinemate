@@ -39,16 +39,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Components\Web\Movie\MovieKiosk.razor" />
-      <AdditionalFiles Include="Components\Web\Newsletter.razor" />
-      <AdditionalFiles Include="Components\Web\PopupNewsletter.razor" />
-      <AdditionalFiles Include="Components\Web\Seat\Seat.razor" />
-      <AdditionalFiles Include="Components\Web\Seat\SeatSelector.razor" />
-      <AdditionalFiles Include="Components\Web\SocialMedia.razor" />
       <AdditionalFiles Include="Pages\Web\Home.razor" />
-      <AdditionalFiles Include="Pages\Web\PrintBarcode.razor" />
       <AdditionalFiles Include="Pages\Web\SeatReservation.razor" />
-      <AdditionalFiles Include="Pages\Web\ShowReservation.razor" />
     </ItemGroup>
 
 </Project>

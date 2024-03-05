@@ -43,12 +43,13 @@
     } else {
         @foreach (var movie in AllMoviesWithImage)
         {
-            <div class="movie-container-inner">
-                <a @onclick="() => SaveAndNavigate(movie)" style="cursor: pointer;">
-                    <div class="movie" style="background-image: url('@(movie.MoviePosterUrl)');"></div>
-                </a>
-                <Kiosk_TimeSlotSelector></Kiosk_TimeSlotSelector>  
-            </div>
+            <a class="movie-container-inner">
+                <div class="movie" style="background-image: url('@(movie.MoviePosterUrl)');"></div>
+                <div class="movie-details">
+                    <h3>Movie title</h3>
+                    <TimeSlotSelector></TimeSlotSelector>
+                </div>
+            </a>
         }
     }
  </div>
