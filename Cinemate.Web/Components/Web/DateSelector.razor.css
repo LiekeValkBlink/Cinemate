@@ -1,0 +1,19 @@
+.date-selector-container {
+    display: flex;
+    border: 1px solid var(--white);
+    border-radius: 4px;
+    margin-top: 2rem;
+    
+    & button.date-container {
+        cursor: pointer;
+        padding: 1rem;
+        color: var(--white);
+        background-color: unset;
+        border: none;
+        
+        &:hover, :active {
+            background-color: var(--bright-purple);
+            border-radius: 4px;
+        }
+    }
+}
