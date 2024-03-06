@@ -1,22 +1,26 @@
 @using System.Globalization
 
 <div class="date-selector-container">
-    <button class="date-container">
+    <button class="date-container" @onclick="() => SelectDate(DateTime.Now)">
         VANDAAG
     </button>
     @foreach (var date in GetFutureDates())
     {
-        <button class="date-container">
+        <button class="date-container" @onclick="() => SelectDate(date)">
             @date.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"))
         </button>
     }
 </div>
 
 @code {
+    [Parameter]
+    public EventCallback<DateTime> OnDateSelected { get; set; }
+
+
     // Functie om toekomstige datums op te halen
     private IEnumerable<DateTime> GetFutureDates()
     {
-        var today = DateTime.Today;
+        var today = DateTime.Now;
         var futureDates = new List<DateTime>();
 
         for (int i = 1; i < 7; i++)
@@ -25,5 +29,16 @@
         }
 
         return futureDates;
+    }
+
+
+    private async Task SelectDate(DateTime selectedDate)
+    {
+        await OnDateSelected.InvokeAsync(selectedDate);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SelectDate(DateTime.Now);
     }
 }

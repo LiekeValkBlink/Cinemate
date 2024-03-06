@@ -3,6 +3,15 @@
 @inject ISelectedMovieService SelectedMovieService
 
 @code {
+    // Parameters
+    [Parameter]
+    public int MovieId { get; set; }
+
+    [Parameter]
+    public DateTime SelectedDate { get; set; }
+}
+
+@code {
     [Inject] public IScreeningService? ScreeningService { get; set; }
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
 
@@ -17,8 +26,7 @@
         if (AllScreenings != null)
         {
             // Filter AllScreenings based on MovieId
-            var movie = await SelectedMovieService.GetSelectedMovieAsync();
-            var selectedMovieId = movie.Id;
+            var selectedMovieId = MovieId;
 
             if (selectedMovieId != null)
             {
@@ -29,23 +37,26 @@
 }
 
 @{
-    var currentDate = DateTime.Today;
+    var currentDate = SelectedDate;
+    Console.WriteLine("currentdate:");
+    Console.WriteLine(currentDate);
     var currentTime = DateTime.Now.TimeOfDay;
-    var uniqueDates = AllScreeningsForMovie?
-        .Select(s => s.MovieStart.Date)
-        .Distinct() ?? Enumerable.Empty<DateTime>();
+
+
+
 }
 
-@foreach (var date in uniqueDates.Where (date => date >= currentDate))
-{
+
+
     <div class="time-slot-selector-container">
         <div class="time-slot-selector-inner">
-            @foreach (var screening in AllScreeningsForMovie.Where(s => s.MovieStart.Date == date && (date > currentDate || (date == currentDate && s.MovieStart.TimeOfDay >= currentTime))))
-            { 
+        @foreach (var screening in AllScreeningsForMovie.Where(screening => screening.MovieStart.Date == currentDate.Date))
+        {
+            Console.WriteLine(screening.MovieStart);
                 <Web_TimeSlot ScreeningInfo="@screening"></Web_TimeSlot>
-            }
+        }
         </div>
     </div>
-}
+
 
 
