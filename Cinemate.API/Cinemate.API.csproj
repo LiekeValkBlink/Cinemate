@@ -32,6 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Services\ReservationService\" />
       <Folder Include="wwwroot\Images\screenshots\" />
     </ItemGroup>
 
