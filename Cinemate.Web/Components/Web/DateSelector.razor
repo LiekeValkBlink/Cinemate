@@ -1,23 +1,29 @@
+@using System.Globalization
+
 <div class="date-selector-container">
     <button class="date-container">
         VANDAAG
-    </button>   
-    <button class="date-container">
-        WO 13 MRT
-    </button>  
-    <button class="date-container">
-        DO 14 MRT
-    </button>  
-    <button class="date-container">
-        VR 15 MRT
-    </button>  
-    <button class="date-container">
-        ZA 16 MRT
-    </button>  
-    <button class="date-container">
-        ZO 17 MRT
-    </button>  
-    <button class="date-container">
-        MA 18 MRT
-    </button> 
+    </button>
+    @foreach (var date in GetFutureDates())
+    {
+        <button class="date-container">
+            @date.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"))
+        </button>
+    }
 </div>
+
+@code {
+    // Functie om toekomstige datums op te halen
+    private IEnumerable<DateTime> GetFutureDates()
+    {
+        var today = DateTime.Today;
+        var futureDates = new List<DateTime>();
+
+        for (int i = 1; i < 7; i++)
+        {
+            futureDates.Add(today.AddDays(i));
+        }
+
+        return futureDates;
+    }
+}
