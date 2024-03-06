@@ -3,6 +3,7 @@ using System;
 using Cinemate.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cinemate.API.Migrations
 {
     [DbContext(typeof(CinemateDbContext))]
-    partial class CinemateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240306190355_DeletedTicketTable")]
+    partial class DeletedTicketTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,10 +228,6 @@ namespace Cinemate.API.Migrations
                         .HasColumnType("text")
                         .HasColumnName("payment_type");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("numeric")
-                        .HasColumnName("price");
-
                     b.Property<int>("ScreeningId")
                         .HasColumnType("integer")
                         .HasColumnName("screening_id");
@@ -334,6 +333,10 @@ namespace Cinemate.API.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("reservation_id");
 
+                    b.Property<int>("ScreeningId")
+                        .HasColumnType("integer")
+                        .HasColumnName("screening_id");
+
                     b.Property<int>("SeatId")
                         .HasColumnType("integer")
                         .HasColumnName("seat_id");
@@ -341,6 +344,8 @@ namespace Cinemate.API.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ReservationId");
+
+                    b.HasIndex("ScreeningId");
 
                     b.HasIndex("SeatId");
 
@@ -402,6 +407,10 @@ namespace Cinemate.API.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
+
+                    b.Property<int>("SeatsNo")
+                        .HasColumnType("integer")
+                        .HasColumnName("seats_no");
 
                     b.Property<int>("TheaterId")
                         .HasColumnType("integer")
@@ -533,7 +542,7 @@ namespace Cinemate.API.Migrations
             modelBuilder.Entity("Cinemate.API.Entities.ReservationPromoCodes", b =>
                 {
                     b.HasOne("Cinemate.API.Entities.PromoCode", "PromoCode")
-                        .WithMany("ReservationPromoCodes")
+                        .WithMany("TicketPromoCodes")
                         .HasForeignKey("PromoCodeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -587,6 +596,12 @@ namespace Cinemate.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Cinemate.API.Entities.Screening", "Screening")
+                        .WithMany()
+                        .HasForeignKey("ScreeningId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Cinemate.API.Entities.Seat", "Seat")
                         .WithMany()
                         .HasForeignKey("SeatId")
@@ -594,6 +609,8 @@ namespace Cinemate.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Reservation");
+
+                    b.Navigation("Screening");
 
                     b.Navigation("Seat");
                 });
@@ -630,7 +647,7 @@ namespace Cinemate.API.Migrations
 
             modelBuilder.Entity("Cinemate.API.Entities.PromoCode", b =>
                 {
-                    b.Navigation("ReservationPromoCodes");
+                    b.Navigation("TicketPromoCodes");
                 });
 #pragma warning restore 612, 618
         }
