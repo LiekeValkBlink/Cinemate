@@ -1,6 +1,6 @@
+using Cinemate.API.Data.Seed;
 using Cinemate.API.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Cinemate.API.Data;
 
@@ -64,5 +64,24 @@ public class CinemateDbContext: DbContext
         modelBuilder.Entity<User>()
             .Property(p => p.SubscribedToNewsletter)
             .HasDefaultValue(false);
+
+        modelBuilder.ApplyConfiguration(new MovieCategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new AuthorizationConfiguration());
+        modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+        modelBuilder.ApplyConfiguration(new MovieConfiguration());
+        modelBuilder.ApplyConfiguration(new PromoCodeConfiguration());
+        modelBuilder.ApplyConfiguration(new ScreeningConfiguration());
+        modelBuilder.ApplyConfiguration(new TheaterConfiguration());
+        modelBuilder.ApplyConfiguration(new TheaterRoomConfiguration());
+        modelBuilder.ApplyConfiguration(new SeatsConfiguration());
+        modelBuilder.ApplyConfiguration(new UsersConfiguration());
+        modelBuilder.ApplyConfiguration(new ReservationConfiguration());
+        modelBuilder.ApplyConfiguration(new SeatsReservedConfiguration());
+        modelBuilder.ApplyConfiguration(new ReservationPromoCodeConfiguration());
+
+
+
+
+
     }
 }

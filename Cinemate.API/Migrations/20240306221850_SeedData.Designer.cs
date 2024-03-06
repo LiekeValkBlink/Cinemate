@@ -3,6 +3,7 @@ using System;
 using Cinemate.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cinemate.API.Migrations
 {
     [DbContext(typeof(CinemateDbContext))]
-    partial class CinemateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240306221850_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -509,508 +512,6 @@ namespace Cinemate.API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("reservations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "iDeal",
-                            Price = 10m,
-                            ScreeningId = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 92.9243956915036m,
-                            ScreeningId = 14,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 22.209742458647m,
-                            ScreeningId = 11,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 56.9033506249601m,
-                            ScreeningId = 8,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 5,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 28.7153090834645m,
-                            ScreeningId = 24,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 3.47234855002593m,
-                            ScreeningId = 21,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 7,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 94.8617228976941m,
-                            ScreeningId = 4,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 8,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 29.019939757489m,
-                            ScreeningId = 32,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 9,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 94.3665308953352m,
-                            ScreeningId = 2,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 10,
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 76.0759210872872m,
-                            ScreeningId = 27,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 11,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 73.4184052870058m,
-                            ScreeningId = 30,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 12,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 70.8660115270676m,
-                            ScreeningId = 14,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 13,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 50.8220198156757m,
-                            ScreeningId = 9,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 14,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 19.1147885555924m,
-                            ScreeningId = 15,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 15,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 50.7811916151662m,
-                            ScreeningId = 30,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 16,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 21.4750910960714m,
-                            ScreeningId = 32,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 17,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 91.5237688405036m,
-                            ScreeningId = 9,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 18,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 44.1146422844412m,
-                            ScreeningId = 34,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 19,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 89.526613178119m,
-                            ScreeningId = 11,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 20,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 83.2940852772819m,
-                            ScreeningId = 30,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 21,
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 59.109770189334m,
-                            ScreeningId = 33,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 22,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 78.0850378029457m,
-                            ScreeningId = 19,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 23,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 95.1734600009426m,
-                            ScreeningId = 18,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 24,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 57.8759516612839m,
-                            ScreeningId = 21,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 25,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 92.1115705693316m,
-                            ScreeningId = 27,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 26,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 59.140718249231m,
-                            ScreeningId = 6,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 27,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 11.3973274095828m,
-                            ScreeningId = 27,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 28,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 21.1572047834238m,
-                            ScreeningId = 29,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 29,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 71.9344254514301m,
-                            ScreeningId = 24,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 30,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 77.7306028614711m,
-                            ScreeningId = 27,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 31,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 19.3316250696493m,
-                            ScreeningId = 32,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 32,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 10.2094038690101m,
-                            ScreeningId = 19,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 33,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 50.6355129903814m,
-                            ScreeningId = 4,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 34,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 17.5811038939904m,
-                            ScreeningId = 6,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 35,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 67.4165865608978m,
-                            ScreeningId = 1,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 36,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 41.0968204302832m,
-                            ScreeningId = 15,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 37,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 14.2072746537204m,
-                            ScreeningId = 14,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 38,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 50.7952556583658m,
-                            ScreeningId = 17,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 39,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 64.4184680105356m,
-                            ScreeningId = 25,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 40,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 50.3698142445315m,
-                            ScreeningId = 18,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 41,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 47.0258170489112m,
-                            ScreeningId = 5,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 42,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 11.6913222353613m,
-                            ScreeningId = 3,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 43,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 11.7351602413209m,
-                            ScreeningId = 8,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 44,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 85.4186276217238m,
-                            ScreeningId = 9,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 45,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 66.1939340938219m,
-                            ScreeningId = 1,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 46,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 49.3111458510439m,
-                            ScreeningId = 22,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 47,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 84.8819625496889m,
-                            ScreeningId = 27,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 48,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 46.6502849993777m,
-                            ScreeningId = 36,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 49,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 62.8070302128393m,
-                            ScreeningId = 19,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 50,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 45.9464799233236m,
-                            ScreeningId = 17,
-                            UserId = 4
-                        });
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.ReservationPromoCodes", b =>
@@ -1026,13 +527,6 @@ namespace Cinemate.API.Migrations
                     b.HasIndex("PromoCodeId");
 
                     b.ToTable("reservation_promo_codes");
-
-                    b.HasData(
-                        new
-                        {
-                            ReservationId = 1,
-                            PromoCodeId = 2
-                        });
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.Screening", b =>
@@ -1069,252 +563,252 @@ namespace Cinemate.API.Migrations
                         {
                             Id = 1,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 2, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 2, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 2,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 2, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 2, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 3,
                             MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 7, 2, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 2, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 4,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 7, 2, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 2, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 5,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 2, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 2, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 6,
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 7, 2, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 2, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 6
                         },
                         new
                         {
                             Id = 7,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 5, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 5, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 8,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 5, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 5, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 9,
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 7, 5, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 5, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 10,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 5, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 5, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 11,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 5, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 5, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 12,
                             MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 7, 5, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 5, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 6
                         },
                         new
                         {
                             Id = 13,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 4, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 4, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 14,
                             MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 7, 4, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 4, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 15,
                             MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 7, 4, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 4, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 16,
                             MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 7, 4, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 4, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 17,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 4, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 4, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 18,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 7, 2, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 2, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 6
                         },
                         new
                         {
                             Id = 19,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 20,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 21,
                             MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 22,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 23,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 24,
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 6
                         },
                         new
                         {
                             Id = 25,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 26,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 27,
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 28,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 29,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 30,
                             MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 6
                         },
                         new
                         {
                             Id = 31,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 32,
                             MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 33,
                             MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 34,
                             MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 35,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 36,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 7, 23, 36, 52, 703, DateTimeKind.Utc).AddTicks(8975),
+                            MovieStart = new DateTime(2024, 3, 7, 23, 18, 50, 440, DateTimeKind.Utc).AddTicks(4031),
                             TheaterRoomId = 6
                         });
                 });
@@ -5013,26 +4507,6 @@ namespace Cinemate.API.Migrations
                     b.HasIndex("SeatId");
 
                     b.ToTable("seats_reserved");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ReservationId = 1,
-                            SeatId = 13
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ReservationId = 1,
-                            SeatId = 14
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ReservationId = 1,
-                            SeatId = 15
-                        });
                 });
 
             modelBuilder.Entity("Cinemate.API.Entities.Theater", b =>

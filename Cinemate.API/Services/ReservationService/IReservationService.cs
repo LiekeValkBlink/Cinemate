@@ -8,4 +8,6 @@ public interface IReservationService
     Task<ReservationDto> AddReservation(AddReservationDto reservation);
 
     Task<ReservationDto> GetSingleReservation(int id);
+
+    Task<ReservationDto> AddSecretMovieReservation(SecretMovieDto secretMovie);
 }

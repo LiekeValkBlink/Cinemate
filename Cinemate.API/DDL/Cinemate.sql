@@ -68,9 +68,9 @@ VALUES (10, 'Amelia', 'King', 'amelia@example.com', 3, 'password321');
 INSERT INTO theaters (id, name, street, house_nr, city, country)
 VALUES (1, 'Cinemate', 'Lovensdijkstraat', '61', 'Breda', 'NL');
 
-INSERT INTO theater_rooms (id, name, seats_no, theater_id) VALUES (1, 'Zaal 1', 100, 1);
-INSERT INTO theater_rooms (id, name, seats_no, theater_id) VALUES (2, 'Zaal 2', 80, 1);
-INSERT INTO theater_rooms (id, name, seats_no, theater_id) VALUES (3, 'Zaal 3', 120, 1);
+INSERT INTO theater_rooms (id, name, theater_id) VALUES (1, 'Zaal 1', 1);
+INSERT INTO theater_rooms (id, name, theater_id) VALUES (2, 'Zaal 2', 1);
+INSERT INTO theater_rooms (id, name, theater_id) VALUES (3, 'Zaal 3', 1);
 
 INSERT INTO screenings (id, movie_id, theater_room_id, movie_start) VALUES (1, 1, 1, '2024-03-01 10:00:00');
 INSERT INTO screenings (id, movie_id, theater_room_id, movie_start) VALUES (2, 1, 2, '2024-03-01 13:00:00');
