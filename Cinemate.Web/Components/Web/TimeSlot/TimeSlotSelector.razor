@@ -1,6 +1,7 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts
 @inject ISelectedMovieService SelectedMovieService
+@inject IJSRuntime JSRuntime
 
 @code {
     // Parameters
@@ -9,54 +10,59 @@
 
     [Parameter]
     public DateTime SelectedDate { get; set; }
-}
 
-@code {
     [Inject] public IScreeningService? ScreeningService { get; set; }
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
 
-
     private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
-    private IEnumerable<ScreeningWithInfoDto>? AllScreeningsForMovie { get; set; }
-
+    private IEnumerable<ScreeningWithInfoDto>? FilteredScreenings { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         AllScreenings = await ScreeningService?.GetAllScreenings();
+        FilterScreenings();
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        FilterScreenings();
+    }
+
+    private void FilterScreenings()
+    {
         if (AllScreenings != null)
         {
-            // Filter AllScreenings based on MovieId
-            var selectedMovieId = MovieId;
-
-            if (selectedMovieId != null)
+            if (SelectedDate.Date == DateTime.Now.Date)
             {
-                AllScreeningsForMovie = AllScreenings.Where(s => s.MovieId == selectedMovieId);
+                // Als de geselecteerde datum vandaag is, filter op toekomstige tijd
+                var currentTime = DateTime.Now.TimeOfDay;
+                FilteredScreenings = AllScreenings.Where(s =>
+                    s.MovieId == MovieId &&
+                    s.MovieStart.Date == SelectedDate.Date &&
+                    s.MovieStart.TimeOfDay >= currentTime
+                );
+            }
+            else
+            {
+                // Als de geselecteerde datum niet vandaag is, toon alle screenings voor die dag
+                FilteredScreenings = AllScreenings.Where(s =>
+                    s.MovieId == MovieId &&
+                    s.MovieStart.Date == SelectedDate.Date
+                );
             }
         }
     }
 }
 
-@{
-    var currentDate = SelectedDate;
-    Console.WriteLine("currentdate:");
-    Console.WriteLine(currentDate);
-    var currentTime = DateTime.Now.TimeOfDay;
-
-
-
-}
-
-
-
-    <div class="time-slot-selector-container">
-        <div class="time-slot-selector-inner">
-        @foreach (var screening in AllScreeningsForMovie.Where(screening => screening.MovieStart.Date == currentDate.Date))
+<div class="time-slot-selector-container">
+    <div class="time-slot-selector-inner">
+        @if (FilteredScreenings != null)
         {
-            Console.WriteLine(screening.MovieStart);
+            @foreach (var screening in FilteredScreenings)
+            {
                 <Web_TimeSlot ScreeningInfo="@screening"></Web_TimeSlot>
+            }
         }
-        </div>
     </div>
-
-
-
+</div>
