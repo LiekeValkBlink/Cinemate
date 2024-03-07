@@ -1,13 +1,24 @@
 @using Cinemate.Models.Dto
+@inject NavigationManager NavigationManager
 
 @code {
     [Parameter] public ScreeningWithInfoDto ScreeningInfo { get; set; }
 }
 
-<div class="time-slot-container">
+<div @onclick="HandleTimeslotClick" class="time-slot-container">
     <div>
         <p class="time">@ScreeningInfo.MovieStart.ToString("HH:mm")</p>
         <p class="location">Zaal @ScreeningInfo.TheaterRoomId</p>
     </div>
     <i class="fa-solid fa-arrow-right"></i>
 </div>
+
+@code {
+
+    private async Task HandleTimeslotClick()
+    {
+        // Navigeren naar /kiosk/seat-reservation met de screening als parameters
+        var uri = $"/kiosk/seat-reservation?screeningId={ScreeningInfo.Id}&movieId={ScreeningInfo.MovieId}";
+        NavigationManager.NavigateTo(uri);
+    }
+}
