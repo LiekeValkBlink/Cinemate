@@ -65,6 +65,33 @@ public class SeatsService: ISeatsService
         return seatsWithInfo;
     }
 
+    public async Task<IEnumerable<ReservedSeatDto>> GetReservedSeatsByScreeningId(int screeningId)
+    {
+        try
+        {
+            var reservedSeats = await _dbContext.SeatReserved
+                .Include(sr => sr.Seat)
+                .ThenInclude(seat => seat.TheaterRoom)
+                .Where(sr => sr.Reservation.ScreeningId == screeningId)
+                .ToListAsync();
+
+            var reservedSeatsDto = reservedSeats.Select(sr => new ReservedSeatDto
+            {
+                Id = sr.SeatId,
+                Row = sr.Seat.Row,
+                Number = sr.Seat.Number,
+                TheaterRoomId = sr.Seat.TheaterRoomId,
+            }).ToList();
+
+            return reservedSeatsDto;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error retrieving reserved seats: " + ex.Message);
+        }
+    }
+
+
     public async Task<SeatsWInfoDto> GetSeatById(int id)
     {
         var seat = await _dbContext.Seats.FindAsync(id);
