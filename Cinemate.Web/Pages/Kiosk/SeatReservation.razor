@@ -1,23 +1,27 @@
 @layout UserLayout
 @page "/kiosk/seat-reservation"
+@page "/kiosk/seat-reservation/{screeningId:int}"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services
 
 <div class="cinema-overview">
     <div class="movie-screen"></div>
     <p>Filmscherm</p>
 
-    @foreach (var row in Enumerable.Range(0, seats.GetLength(0)))
+    @foreach (var row in _allSeats.GroupBy(s => s.Row))
     {
         <div class="seat-row">
-            @foreach (var col in Enumerable.Range(0, seats.GetLength(1)))
+            @foreach (var seat in row)
             {
-                <div class="seat" style="background-color: @GetSeatColor(seats[row, col].Status)">
-                    @seats[row, col].Number
+                <div class="seat" style="background-color: @GetSeatBackgroundColor(seat.Id)"
+                    @onclick="() => SelectSeat(seat.Id)">
+                    @seat.Number
                 </div>
             }
         </div>
     }
-
-   
+    
 </div>
 
 <div class="legenda-container">
@@ -26,95 +30,84 @@
     <div class="seat" style="background-color: red;"></div><p>Bezet</p>
 </div>
 
-<div class="seat-selection">
-    <label for="numberOfSeats">Aantal Kaartjes:</label>
-    <input type="number" id="numberOfSeats" @bind="numberOfSeats" />
-    <button class="primary-btn" @onclick="AssignSeats">Stoelen Toewijzen</button>
-</div>
-
 <div class="page-navigation">
-    <button class="secondary-btn">
+    <button class="secondary-btn" @onclick="NavigateBack">
         <i class="fa-solid fa-chevron-left"></i>
         Terug
     </button>
 
-    <button class="primary-btn">
+    <button class="primary-btn" @onclick="OnProceed">
         Bevestig je keuze
         <i class="fa-solid fa-chevron-right"></i>
     </button>
 </div>
 
-    @code {
-    private Web_Seat[,] seats = new Web_Seat[5, 10]; // zaal genomen van 5 rijden en 10 stoelen per rij.
-    private int numberOfSeats = 1; 
-
-    protected override void OnInitialized()
+@code {
+    
+    [Parameter] public int screeningId { get; set; }
+    [Inject] NavigationManager NavigationManager { get; set; }
+    [Inject] ISeatsService _seatsService { get; set; }
+    [Inject] ITheaterRoomService _theaterRoomService { get; set; }
+    [Inject] IScreeningService _screeningService { get; set; }
+    private ScreeningWithInfoDto _screening;
+    private IEnumerable<SeatsWInfoDto> _allSeats;
+    private IEnumerable<ReservedSeatDto> _reservedSeat;
+    private List<int> selectedSeats = new List<int>();
+    
+    protected override async Task OnInitializedAsync()
     {
-        InitializeSeats();
+        _screening = await _screeningService.GetScreening(screeningId);
+        _allSeats = await _seatsService.GetSeatsByTheaterRoomId(_screening.TheaterRoomId);
+        _reservedSeat = await _seatsService.GetReservedSeatsByScreeningId(_screening.Id);
     }
 
-    private void InitializeSeats()
+    private void NavigateBack()
     {
-        for (int row = 0; row < seats.GetLength(0); row++)
+        NavigationManager.NavigateTo($"/kiosk/show-reservation");
+    }
+
+    private void OnProceed()
+    {
+        foreach (var seat in selectedSeats)
         {
-            for (int col = 0; col < seats.GetLength(1); col++)
-            {
-                seats[row, col] = new Web_Seat { Row = row + 1, Number = col + 1, Status = SeatStatus.Free };
-            }
+            Console.WriteLine($"Selected seat: {seat}");
         }
     }
-
-    private void AssignSeats()
+    
+    private string GetSeatBackgroundColor(int seatId)
     {
-        int seatsAssigned = 0;
-        bool moveRight = true; 
-
-        for (int row = 0; row < seats.GetLength(0) && seatsAssigned < numberOfSeats; row++)
+        var seat = _allSeats.FirstOrDefault(s => s.Id == seatId);
+        if (seat != null)
         {
-            if (moveRight)
+            // Check if the seat is reserved or selected
+            if (_reservedSeat.Any(r => r.Id == seatId))
             {
-                
-                for (int col = 0; col < seats.GetLength(1) && seatsAssigned < numberOfSeats; col++)
-                {
-                    AssignSeat(ref seatsAssigned, row, col);
-                }
+                return "red"; // Occupied
+            }
+            else if (selectedSeats.Contains(seatId))
+            {
+                return "yellow"; // Selected
+            }
+        }
+        return "green"; // Free
+    }
+    
+    private void SelectSeat(int seatId)
+    {
+        var isSeatReserved = _reservedSeat.Any(r => r.Id == seatId);
+        
+        if (!isSeatReserved)
+        {
+            if (selectedSeats.Contains(seatId))
+            {
+                selectedSeats.Remove(seatId); // Deselect the seat
             }
             else
             {
-                
-                for (int col = seats.GetLength(1) - 1; col >= 0 && seatsAssigned < numberOfSeats; col--)
-                {
-                    AssignSeat(ref seatsAssigned, row, col);
-                }
+                selectedSeats.Add(seatId); // Select the seat
             }
-
-            moveRight = !moveRight; 
-        }
-
-        StateHasChanged();
-    }
-
-    private void AssignSeat(ref int seatsAssigned, int row, int col)
-    {
-        if (seats[row, col].Status == SeatStatus.Free)
-        {
-            seats[row, col].Status = SeatStatus.Selected; 
-            seatsAssigned++;
         }
     }
 
-    private string GetSeatColor(SeatStatus status)
-    {
-        switch (status)
-        {
-            case SeatStatus.Free:
-                return "green";
-            case SeatStatus.Selected:
-                return "yellow";
-            case SeatStatus.Occupied:
-                return "red";
-            default:
-                return "grey";
-        }
-    }
-    }
+    
+}
