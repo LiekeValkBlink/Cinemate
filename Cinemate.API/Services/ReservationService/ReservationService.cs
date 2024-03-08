@@ -175,7 +175,9 @@ public class ReservationService: IReservationService
 
 
 
-    public async Task<ReservationDto> AddSecretMovieReservation(SecretMovieDto secretMovie)
+    public async Task<SecretMoviePreReservation> AddSecretMovieReservation(SecretMovieDto secretMovie)
+    {
+    try
     {
         // Find all movie screenings starting at the given MovieStart datetime
         var screenings = await _dbContext.Screenings
@@ -183,33 +185,31 @@ public class ReservationService: IReservationService
             .Include(s => s.TheaterRoom)
             .Where(s => s.MovieStart == secretMovie.MovieStart)
             .ToListAsync();
-    
+
         if (screenings == null || screenings.Count == 0)
         {
             throw new Exception("No movie screenings found for the given date and time.");
         }
-    
-        var minPercentage = double.MaxValue;
+
         Screening selectedScreening = null;
         Seat selectedSeat = null;
-    
+        double minPercentage = double.MaxValue;
+
         foreach (var screening in screenings)
         {
-            var theaterRoomId = screening.TheaterRoomId;
-    
-            // Count the total number of seats in the theater room
+            // Find the total number of seats in the theater room
             var totalSeats = await _dbContext.Seats
-                .Where(seat => seat.TheaterRoomId == theaterRoomId)
+                .Where(seat => seat.TheaterRoomId == screening.TheaterRoomId)
                 .CountAsync();
-    
-            // Count the number of reserved seats for the screening
+
+            // Find the number of reserved seats for the screening
             var reservedSeats = await _dbContext.SeatReserved
                 .Where(sr => sr.Reservation.ScreeningId == screening.Id)
                 .CountAsync();
-    
+
             // Calculate the percentage of reserved seats
             var percentageReserved = (double)reservedSeats / totalSeats * 100;
-    
+
             // Update the selected screening if the current one has a lower percentage reserved
             if (percentageReserved < minPercentage)
             {
@@ -217,21 +217,41 @@ public class ReservationService: IReservationService
                 selectedScreening = screening;
             }
         }
-    
-        // Check if a screening with the lowest percentage reserved was found
+
+        // Check if a screening with available seats was found
         if (selectedScreening == null)
         {
-            throw new Exception("No screening with the lowest percentage reserved was found.");
+            throw new Exception("No screening with available seats was found.");
         }
 
         // Find the next available free seat in the selected screening
         selectedSeat = await _dbContext.Seats
             .Where(seat => seat.TheaterRoomId == selectedScreening.TheaterRoomId)
-            .Where(seat => !_dbContext.SeatReserved.Any(sr =>
-                sr.SeatId == seat.Id && sr.Reservation.ScreeningId == selectedScreening.Id))
+            .Where(seat => !_dbContext.SeatReserved
+                .Any(sr => sr.SeatId == seat.Id && sr.Reservation.ScreeningId == selectedScreening.Id))
             .FirstOrDefaultAsync();
-    
-            throw new NotImplementedException();
-            
+
+        // Check if a free seat was found
+        if (selectedSeat == null)
+        {
+            throw new Exception("No available seats found in the selected screening.");
+        }
+
+        var promoCode = await _dbContext.PromoCodes.FirstOrDefaultAsync();
+
+        var preReservation = new SecretMoviePreReservation
+        {
+            ScreeningId = selectedScreening.Id,
+            SeatId = selectedSeat.Id,
+            PromoCode = new List<int> { promoCode.Id }
+        };
+
+        return preReservation;
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e);
+        throw;
+    }
     }
 }

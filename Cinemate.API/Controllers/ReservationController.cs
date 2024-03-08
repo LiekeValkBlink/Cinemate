@@ -63,4 +63,18 @@ public class ReservationController: ControllerBase
             throw;
         }
     }
+    
+    [HttpPost("secretmovie")]
+    public async Task<ActionResult<SecretMoviePreReservation>> AddSecretMovieReservation(SecretMovieDto secretMovie)
+    {
+        try
+        {
+            var preReservation = await _reservationService.AddSecretMovieReservation(secretMovie);
+            return Ok(preReservation);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
 }
