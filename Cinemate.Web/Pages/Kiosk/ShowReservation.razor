@@ -1,5 +1,7 @@
 @layout UserLayout
 @page "/kiosk/show-reservation"
+@page "/kiosk/show-reservation/{movieId:int}"
+
 @using Cinemate.Models
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts
@@ -9,4 +11,9 @@
 
 
 <h2>Kies een voorstelling</h2>
-<Kiosk_TimeSlotSelector></Kiosk_TimeSlotSelector>
+<Kiosk_TimeSlotSelector MovieId="movieId"></Kiosk_TimeSlotSelector>
+
+@code
+{
+    [Parameter] public int movieId { get; set; }
+}

@@ -24,7 +24,7 @@ public class MovieController: ControllerBase
         // Get the file name
         var fileName = file.FileName;
         // Get the extension
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images", fileName);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images\posters", fileName);
         
         await using var fileStream = new FileStream(filePath, FileMode.Create);
         

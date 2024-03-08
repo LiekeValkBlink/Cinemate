@@ -33,12 +33,26 @@ public class SeatsService: ISeatsService
     {
         try
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<SeatsWInfoDto>>($"api/Seats/ByTheaterRoomId/{theaterRoomId}");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<SeatsWInfoDto>>($"api/Seats/TheaterRoom/{theaterRoomId}");
         }
         catch (HttpRequestException ex)
         {
             // Log the exception or handle it as needed
             Console.WriteLine($"Error retrieving seats by theater room ID: {ex.Message}");
+            throw;
+        }
+    }
+
+    public async Task<IEnumerable<ReservedSeatDto>> GetReservedSeatsByScreeningId(int screeningId)
+    {
+        try
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ReservedSeatDto>>(
+                $"api/Seats/reserved-seats/{screeningId}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
             throw;
         }
     }
