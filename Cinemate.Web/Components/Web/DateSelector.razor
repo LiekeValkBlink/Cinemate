@@ -1,20 +1,10 @@
 @using System.Globalization
 
-<div class="date-selector-container">
-    <button class="date-container" @onclick="() => SelectDate(DateTime.Now)">
-        VANDAAG
-    </button>
-    @foreach (var date in GetFutureDates())
-    {
-        <button class="date-container" @onclick="() => SelectDate(date)">
-            @date.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"))
-        </button>
-    }
-</div>
-
 @code {
     [Parameter]
     public EventCallback<DateTime> OnDateSelected { get; set; }
+
+    private DateTime selectedDate;
 
 
     // Functie om toekomstige datums op te halen
@@ -31,14 +21,42 @@
         return futureDates;
     }
 
-
     private async Task SelectDate(DateTime selectedDate)
     {
+        Console.WriteLine($"Selected date in SelectDate method: {selectedDate}");
         await OnDateSelected.InvokeAsync(selectedDate);
+        this.selectedDate = selectedDate; // Update selectedDate after invoking OnDateSelected
+        StateHasChanged(); // Force a re-render to apply the selected class
     }
 
+ 
     protected override async Task OnInitializedAsync()
     {
         await SelectDate(DateTime.Now);
+
+
+
+        Console.WriteLine($"Selected date after initialization: {selectedDate}");
+        if (selectedDate == DateTime.Now)
+        {
+            StateHasChanged(); // Force a re-render to apply the selected class
+        }
+
     }
+
+
 }
+
+
+
+<div class="date-selector-container">
+    <button class="date-container @(selectedDate == DateTime.Now ? "selected" : "")" @onclick="() => SelectDate(DateTime.Now)">
+        VANDAAG
+    </button>
+    @foreach (var date in GetFutureDates())
+    {
+        <button class="date-container" @onclick="() => SelectDate(date)">
+            @date.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"))
+        </button>
+    }
+</div>
