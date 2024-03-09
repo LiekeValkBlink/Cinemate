@@ -23,10 +23,9 @@
 
     private async Task SelectDate(DateTime selectedDate)
     {
-        Console.WriteLine($"Selected date in SelectDate method: {selectedDate}");
         await OnDateSelected.InvokeAsync(selectedDate);
-        this.selectedDate = selectedDate; // Update selectedDate after invoking OnDateSelected
-        StateHasChanged(); // Force a re-render to apply the selected class
+        this.selectedDate = selectedDate; 
+        StateHasChanged(); 
     }
 
  
@@ -36,10 +35,9 @@
 
 
 
-        Console.WriteLine($"Selected date after initialization: {selectedDate}");
         if (selectedDate == DateTime.Now)
         {
-            StateHasChanged(); // Force a re-render to apply the selected class
+            StateHasChanged(); 
         }
 
     }

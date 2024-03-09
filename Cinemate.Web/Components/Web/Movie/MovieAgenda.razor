@@ -47,15 +47,39 @@
         AllScreenings = await ScreeningService?.GetAllScreenings();
      }
 
- }
+
+    MovieDtoImage Secretmovie = new MovieDtoImage
+        {
+            Id = 0,
+            Title = "Secret Movie",
+            Description = "Secret Movie Description",
+            Duration = 0,
+            ReleaseYear = 0,
+            MovieCategoryId = 0,
+            MovieCategoryDescription = "Secret Category Description",
+            Director = "Secret Director",
+            Cast = "Secret Cast",
+            Review = 0,
+            Kijkwijzers = "Secret Kijkwijzers",
+            MoviePosterUrl = $"https://localhost:7201/images/posters/SecretMovie.jpg",
+            MovieScreenshotUrl = $"https://localhost:7201/images/posters/SecretMovie.jpg"
+        };
+}
  
 <div class="movie-container">
     @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
     {
         <h2>Movies not available</h2>
+        
     }
     else
     {
+        <a class="movie-container-inner">
+            <div class="movie" style="background-image: url('@(Secretmovie.MoviePosterUrl)');"></div>
+            <div class="movie-details">
+                <h3>@Secretmovie.Title</h3>
+            </div>
+        </a>
         @foreach (var movie in AllMoviesWithImage)
         {
             // Filter van alle screenings op basis van de geselecteerde datum

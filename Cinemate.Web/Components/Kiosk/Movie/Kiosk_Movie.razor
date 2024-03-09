@@ -31,15 +31,19 @@
              MovieScreenshotUrl = $"https://localhost:7201/images/screenshots/movie-screenshot_{movie.Id}_image.jpg"
          }).ToList();
      }
- }
- 
- @*
 
- *@
+
+
+
+
+}
+ 
+
  <div class="movie-container">
     @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
     {
         <h2>Movies not available</h2>
+ 
     } else {
         @foreach (var movie in AllMoviesWithImage)
         {
@@ -64,7 +68,7 @@
             var selectedMovieService = new SelectedMovieService(JSRuntime);
             await selectedMovieService.SetSelectedMovieAsync(movie);
 
-            NavigationManager.NavigateTo($"/show-reservation");
+            NavigationManager.NavigateTo($"/kiosk/show-reservation");
         }
     }
     }
