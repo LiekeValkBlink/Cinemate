@@ -48,36 +48,26 @@
      }
 
 
-    MovieDtoImage Secretmovie = new MovieDtoImage
-        {
-            Id = 0,
-            Title = "Secret Movie",
-            Description = "Secret Movie Description",
-            Duration = 0,
-            ReleaseYear = 0,
-            MovieCategoryId = 0,
-            MovieCategoryDescription = "Secret Category Description",
-            Director = "Secret Director",
-            Cast = "Secret Cast",
-            Review = 0,
-            Kijkwijzers = "Secret Kijkwijzers",
-            MoviePosterUrl = $"https://localhost:7201/images/posters/SecretMovie.jpg",
-            MovieScreenshotUrl = $"https://localhost:7201/images/posters/SecretMovie.jpg"
-        };
+}
+
+@code{
+    // secret movie details ophalen
+    // Injecteren van de services
+    [Inject] public IReservationService? ReservationService { get; set; }
 }
  
 <div class="movie-container">
     @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
     {
         <h2>Movies not available</h2>
-        
     }
     else
     {
         <a class="movie-container-inner">
-            <div class="movie" style="background-image: url('@(Secretmovie.MoviePosterUrl)');"></div>
+            <div class="movie" style="background-image: url('https://localhost:7201/images/posters/SecretMovie.jpg');"></div>
             <div class="movie-details">
-                <h3>@Secretmovie.Title</h3>
+                <h3> Secret movie</h3>
+                <Web_TimeSlot ScreeningInfo="@screening"></Web_TimeSlot>
             </div>
         </a>
         @foreach (var movie in AllMoviesWithImage)
