@@ -2,9 +2,15 @@
 
 @code {
     [Parameter] public ScreeningWithInfoDto ScreeningInfo { get; set; }
+    [Inject] NavigationManager NavigationManager { get; set; }
+    private void NavigateToSeatReservation()
+    {
+        // Navigate to the seat reservation page with the screening ID appended to the URL
+        NavigationManager.NavigateTo($"/kiosk/seat-reservation/{ScreeningInfo.Id}");
+    }
 }
 
-<div class="time-slot-container">
+<div class="time-slot-container" @onclick="NavigateToSeatReservation">
     <div>
         <p class="time">@ScreeningInfo.MovieStart.ToString("HH:mm")</p>
         <p class="location">Zaal @ScreeningInfo.TheaterRoomId</p>

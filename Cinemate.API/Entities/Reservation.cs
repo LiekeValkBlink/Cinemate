@@ -19,13 +19,13 @@ public class Reservation
     [Column("employee_id")]
     public int? EmployeeId { get; set; }
     
-
+    [Column("price")]
+    public decimal Price { get; set; }
+    
     [Column("payment_type")]
     public string PaymentType { get; set; }
 
     public Screening Screening { get; set; }
     public User User { get; set; }
     public Employee Employee { get; set; }
-
-    
 }

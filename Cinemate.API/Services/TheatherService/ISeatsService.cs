@@ -6,6 +6,7 @@ public interface ISeatsService
 {
     Task<IEnumerable<SeatsWInfoDto>> GetAllSeats();
     Task<IEnumerable<SeatsWInfoDto>> GetSeatsByTheaterRoomId(int theaterRoomId);
+    Task<IEnumerable<ReservedSeatDto>> GetReservedSeatsByScreeningId(int screeningId);
     Task<SeatsWInfoDto> GetSeatById(int id);
     Task<SeatsWInfoDto> AddSeat(AddSeatsDto seat);
     Task<SeatsWInfoDto> UpdateSeat(int id,  SeatsDto seat);
