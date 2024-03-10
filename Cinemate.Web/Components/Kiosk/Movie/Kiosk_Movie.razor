@@ -41,6 +41,10 @@
     {
         <h2>Movies not available</h2>
     } else {
+        <a @onclick="GoToRedeemTicket" style="cursor: pointer;">
+            <div class="movie" style="background-image: url('images/Ticket inwisselen.jpg');"></div>
+        </a>
+        
         @foreach (var movie in AllMoviesWithImage)
         {
             <a @onclick="() => SaveAndNavigate(movie)" style="cursor: pointer;">
@@ -67,4 +71,9 @@
             NavigationManager.NavigateTo($"kiosk/show-reservation/{movie.Id}");
         }
     }
+    
+    
+    private async Task GoToRedeemTicket() {
+        NavigationManager.NavigateTo($"kiosk/redeemticket");
     }
+}

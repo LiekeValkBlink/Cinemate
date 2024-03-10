@@ -1,0 +1,85 @@
+@page "/kiosk/RedeemTicket"
+@page "/kiosk/RedeemTicket/{UrlTicket:int}"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+@layout MainLayout
+
+<div style="text-align: center;">
+    @if (UrlTicket == null || UrlTicket == 0)
+    {
+        <h2>Vul uw code in</h2>
+        <div class="ticket_form">
+            <EditForm Model="RedeemedTicket" OnValidSubmit="@RedeemUserTicket">
+                <label for="ticket">Ticket</label>
+                <InputNumber id="ticket" @bind-Value="RedeemedTicket"/>
+                <button type="submit" class="primary-btn">lever in</button>
+            </EditForm>
+        </div>
+    }
+    @if (Reservation is not null)
+    {
+        <h2>Uw tickets:</h2>
+        @foreach (var seat in Reservation.ReservedSeats)
+        {
+            <div class="ticket">
+                <h3>@Reservation.MovieName</h3>
+                <h4>@Reservation.MovieStart</h4>
+                <h4>Rij @seat.Row</h4>
+                <h4>Stoel @seat.Number</h4>
+                <h4>Promo's / Arrangementen:</h4>
+                @foreach (var promoCode in Reservation.PromoCodes)
+                {
+                    <ul>
+                        <li>@promoCode.Name</li>
+                    </ul>
+
+                }
+                <SfQRCodeGenerator ForeColor="#ffffff" BackgroundColor="#19072c" Width="200px" Height="150px" Value=@QrCodeValue>
+                    <QRCodeGeneratorDisplayText Text=" "></QRCodeGeneratorDisplayText>
+                </SfQRCodeGenerator>
+            </div>
+        }
+    }
+
+</div>
+
+
+@code {
+    
+    [Parameter] public int UrlTicket { get; set; }
+    [Inject] private IReservationService ReservationService { get; set; } = default!;
+    
+    //The redeemed ticket number should correspond with the Reservation id
+    private int RedeemedTicket { get; set; }
+    private string QrCodeValue { get; set; } = default!;
+    private string ErrorMessage { get; set; } = default!;
+    private ReservationDto Reservation { get; set; } = default!;
+
+    private async Task RedeemUserTicket()
+    {
+        try
+        {
+            Reservation = await ReservationService.GetSingleReservation(RedeemedTicket);
+            QrCodeValue = $"http://localhost:5221/kiosk/redeemticket/{RedeemedTicket}"; 
+            Console.WriteLine(RedeemedTicket);
+            Console.WriteLine(Reservation.MovieName);
+        }
+        catch (Exception e)
+        {
+            ErrorMessage = "No ticket found";
+            Console.WriteLine(e);
+            throw;
+        }
+        
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UrlTicket != null && UrlTicket != 0)
+        {
+            RedeemedTicket = UrlTicket;
+            await RedeemUserTicket();
+        }
+    }
+
+}

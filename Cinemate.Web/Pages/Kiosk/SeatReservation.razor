@@ -63,7 +63,7 @@
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo($"/kiosk/show-reservation");
+        NavigationManager.NavigateTo($"/kiosk/show-reservation/{_screening.MovieId}");
     }
 
     private void OnProceed()
