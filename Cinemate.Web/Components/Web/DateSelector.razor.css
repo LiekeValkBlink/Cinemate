@@ -16,4 +16,9 @@
             border-radius: 4px;
         }
     }
+
+}
+.date-selector-container button.date-container.selected {
+    background-color: var(--bright-purple);
+    border-radius: 4px;
 }
