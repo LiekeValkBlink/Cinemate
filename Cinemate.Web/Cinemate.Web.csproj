@@ -36,6 +36,9 @@
 
     <ItemGroup>
       <None Remove="Components\User" />
+      <None Update="Pages\Kiosk\RedeemTicket.css">
+        <DependentUpon>RedeemTicket.razor</DependentUpon>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

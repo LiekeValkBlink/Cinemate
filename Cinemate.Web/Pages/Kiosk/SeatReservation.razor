@@ -9,6 +9,7 @@
     <div class="movie-screen"></div>
     <p>Filmscherm</p>
 
+    @* for each row in the theater, show each seat per row *@
     @foreach (var row in _allSeats.GroupBy(s => s.Row))
     {
         <div class="seat-row">
@@ -43,7 +44,7 @@
 </div>
 
 @code {
-    
+
     [Parameter] public int screeningId { get; set; }
     [Inject] NavigationManager NavigationManager { get; set; }
     [Inject] ISeatsService _seatsService { get; set; }
@@ -52,8 +53,9 @@
     private ScreeningWithInfoDto _screening;
     private IEnumerable<SeatsWInfoDto> _allSeats;
     private IEnumerable<ReservedSeatDto> _reservedSeat;
+    // Store the seat id's selected by the user to reserve
     private List<int> selectedSeats = new List<int>();
-    
+
     protected override async Task OnInitializedAsync()
     {
         _screening = await _screeningService.GetScreening(screeningId);
@@ -63,19 +65,37 @@
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo($"/kiosk/show-reservation");
+        NavigationManager.NavigateTo($"/kiosk/show-reservation/{_screening.MovieId}");
     }
 
     private void OnProceed()
     {
+        var reservation = new AddReservationDto();
+
+        reservation.ScreeningId = screeningId;
+        reservation.UserId = 1;
+        reservation.EmployeeId = 1;
+        reservation.Price = 25;
+        reservation.SeatId = selectedSeats;
+
+        string selectedSeatsString = string.Join(",", selectedSeats);
+
+      
+
+
+         NavigationManager.NavigateTo($"/kiosk/payment/{screeningId}"); 
+
         foreach (var seat in selectedSeats)
         {
             Console.WriteLine($"Selected seat: {seat}");
         }
+
+
     }
     
     private string GetSeatBackgroundColor(int seatId)
     {
+        // determine the status of the seat from DB info and return a color value as a string
         var seat = _allSeats.FirstOrDefault(s => s.Id == seatId);
         if (seat != null)
         {
@@ -94,6 +114,7 @@
     
     private void SelectSeat(int seatId)
     {
+        //add the seat selected by the user to a list or remove it if already selected
         var isSeatReserved = _reservedSeat.Any(r => r.Id == seatId);
         
         if (!isSeatReserved)
@@ -111,3 +132,4 @@
 
     
 }
+
