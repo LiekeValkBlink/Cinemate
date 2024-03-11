@@ -1,14 +1,39 @@
 ﻿@layout UserLayout;
 @using System.Web;
-@page "/kiosk/payment"
-@page "/kiosk/payment/{seeding: int}"
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+@using Cinemate.Web.Services
+@using System.Text.Json
 
-<h3>Payment</h3>
+@page "/kiosk/payment"
+@page "/kiosk/payment/{screeningId:int}"
+<h3>Uw reservering: <br /></h3>
 
 <div>
-    <h1>Hoe wel je betalen?</h1>
+    
+   @_screening.MovieName <br />
+    @_screening.MovieStart <br />
+    @_screening.TheaterName <br />
+    @reservation<br />
+
 </div>
 @code {
+    [Parameter] public int screeningId { get; set; }
+    [Parameter]
+    public List<string> SelectedSeats { get; set; }
+    [Inject] IScreeningService _screeningService { get; set; }
+    private ScreeningWithInfoDto _screening;
+    private AddReservationDto reservation;
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        _screening = await _screeningService.GetScreening(screeningId);
+       
+    } 
   
+    
+
 }
 

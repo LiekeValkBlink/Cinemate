@@ -76,7 +76,12 @@
         reservation.Price = 25;
         reservation.SeatId = selectedSeats;
 
-        NavigationManager.NavigateTo($"/kiosk/payment/{reservation.ScreeningId}");
+        string selectedSeatsString = string.Join(",", selectedSeats);
+
+      
+
+
+         NavigationManager.NavigateTo($"/kiosk/payment/{screeningId}"); 
 
         foreach (var seat in selectedSeats)
         {
