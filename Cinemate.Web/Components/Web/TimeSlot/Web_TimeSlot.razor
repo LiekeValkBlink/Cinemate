@@ -1,5 +1,8 @@
 @using Cinemate.Models.Dto
+@using Cinemate.Web.Services.Contracts
+@inject ISelectedMovieService SelectedMovieService
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 
 @code {
     [Parameter] public ScreeningWithInfoDto ScreeningInfo { get; set; }
@@ -12,14 +15,41 @@
     </div>
     <i class="fa-solid fa-arrow-right"></i>
 </div>
-
+@code {
+    [Inject] public IMovieService? MovieService { get; set; }
+    private MovieWithCategoryDto? Movie { get; set; }
+    private MovieDtoImage? MovieWithImage { get; set; }
+    
+}
 @code {
 
     private async Task HandleTimeslotClick()
+
     {
-        
+        Movie = await MovieService?.GetMovie(ScreeningInfo.MovieId);
+
+        var MovieWithImage = new MovieDtoImage
+            {
+                Id = Movie.Id,
+                Title = Movie.Title,
+                Description = Movie.Description,
+                Duration = Movie.Duration,
+                ReleaseYear = Movie.ReleaseYear,
+                MovieCategoryId = Movie.MovieCategoryId,
+                MovieCategoryDescription = Movie.MovieCategoryDescription,
+                Director = Movie.Director,
+                Cast = Movie.Cast,
+                Review = Movie.Review,
+                Kijkwijzers = Movie.Kijkwijzers,
+                MoviePosterUrl = $"https://localhost:7201/images/posters/movie_{Movie.Id}_image.jpg",
+                MovieScreenshotUrl = $"https://localhost:7201/images/posters/movie_{Movie.Id}_image.jpg"
+            };
+        // opslaan van movie gegevens
+        var selectedMovieService = new SelectedMovieService(JSRuntime);
+        await selectedMovieService.SetSelectedMovieAsync(MovieWithImage);
+
         // Navigeren naar /kiosk/seat-reservation met de screening als parameters
-        var uri = $"/kiosk/seat-reservation/{ScreeningInfo.Id}";
+        var uri = $"/seat-reservation?screeningId={ScreeningInfo.Id}&movieId={ScreeningInfo.MovieId}";
         NavigationManager.NavigateTo(uri);
     }
 }
