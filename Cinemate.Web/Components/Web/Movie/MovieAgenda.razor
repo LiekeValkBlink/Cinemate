@@ -43,7 +43,7 @@
     } else {
         @foreach (var movie in AllMoviesWithImage)
         {
-            <a class="movie-container-inner">
+            <a @onclick="() => SaveAndNavigate(movie)" class="movie-container-inner">
                 <div class="movie" style="background-image: url('@(movie.MoviePosterUrl)');"></div>
                 <div class="movie-details">
                     <h3>@(movie.Title)</h3>
@@ -68,7 +68,7 @@
             var selectedMovieService = new SelectedMovieService(JSRuntime);
             await selectedMovieService.SetSelectedMovieAsync(movie);
 
-            NavigationManager.NavigateTo($"/show-reservation");
+            NavigationManager.NavigateTo($"/seat-reservation");
         }
     }
 }

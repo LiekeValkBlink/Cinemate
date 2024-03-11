@@ -1,0 +1,72 @@
+@layout UserLayout
+@page "/tickets-and-payment"
+
+<div class="tickets-and-payment-container">
+    <div class="col">
+        <h2>Jouw gegevens</h2>
+        <p>Velden met een * zijn verplicht!</p>
+        <form>
+            <label>Voornaam *</label>
+            <input type="text"/>
+            <label>Achternaam *</label>
+            <input type="text"/>
+            <label>E-mailadres *</label>
+            <input type="text"/>
+            <label>Herhaal e-mailadres</label>
+            <input type="text"/>
+        </form>
+    </div>
+    <div class="col">
+        <h2>Maak jouw bestelling compleet</h2>
+         <form>
+            <label>Selecteer een tickettype</label>
+            <select>
+                <option value="normal">Normaal</option>
+                <option value="child-discount">Kinderkorting</option>
+                <option value="student-discount">Studentenkorting</option>
+                <option value="65-discount">65+ reductie</option>
+            </select>
+        </form>
+        <div class="popcorn-arrangement">
+            <div class="col">
+                <img src="images/popcorn.png"/>
+            </div>
+            <div class="col">
+                <h3>Popcorn arrangement</h3>
+                <br/>
+                <p>Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar 00,00!</p>
+                <br/>
+                <form>
+                    <div class="checkbox-container">
+                        <input type="checkbox"/>
+                        <p>Ik wil het popcornarrangement</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <h2>Totaal</h2>
+        <table>
+            <tr>
+                <td>
+                    <h3>[aantal] [soort ticket] voor [naam film]</h3>
+                </td>
+                <td>
+                    <h3>00.00</h3>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="page-navigation">
+   <button class="secondary-btn">
+       <i class="fa-solid fa-chevron-left"></i>
+       Terug
+   </button>
+
+   <button class="primary-btn">
+       Bevestig je keuze
+       <i class="fa-solid fa-chevron-right"></i>
+   </button>
+</div>
