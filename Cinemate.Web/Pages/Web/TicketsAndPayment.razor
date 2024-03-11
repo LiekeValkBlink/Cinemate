@@ -1,5 +1,8 @@
 @layout UserLayout
 @page "/tickets-and-payment"
+@using Cinemate.Web.Services.Contracts
+@using Microsoft.AspNetCore.WebUtilities
+@using Cinemate.Models.Dto
 
 <div class="tickets-and-payment-container">
     <div class="col">
@@ -70,3 +73,39 @@
        <i class="fa-solid fa-chevron-right"></i>
    </button>
 </div>
+
+
+@code
+{
+    [Inject] private IReservationService ReservationService { get; set; }
+    [Inject] private IScreeningService ScreeningService { get; set; }
+    [Inject] NavigationManager NavigationManager { get; set; }
+
+    private PreReservationDto PreReservationDto { get; set; }
+    private SecretMoviePreReservation SecretMoviePreReservation { get; set; }
+
+    private bool SecretMovie = false;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("SecretMovie", out var _value))
+        {
+            SecretMovie = Convert.ToBoolean(_value);
+        }
+
+        if (SecretMovie != null || SecretMovie == false)
+        {
+            PreReservationDto = await ReservationService.GetLocalPreReservation();
+        }
+
+        if (SecretMovie = true)
+        {
+            SecretMoviePreReservation = await ReservationService.GetLocalSecretMoviePreReservation();
+        }
+    }
+
+    
+    
+}

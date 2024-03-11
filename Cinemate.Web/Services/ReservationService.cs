@@ -1,16 +1,48 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using Cinemate.Models.Dto;
 using Cinemate.Web.Services.Contracts;
+using Microsoft.JSInterop;
 
 namespace Cinemate.Web.Services;
 
 public class ReservationService : IReservationService
 {
     private readonly HttpClient _httpClient;
+    private readonly IJSRuntime _jsRuntime;
+    private const string ReservationKey = "ReservationService";
+    private const string SecretReservationKey = "SecretReservationService";
 
-    public ReservationService(HttpClient httpClient)
+
+    public ReservationService(HttpClient httpClient,IJSRuntime jsRuntime)
     {
         _httpClient = httpClient;
+        _jsRuntime = jsRuntime;
+    }
+
+    public async Task<PreReservationDto> GetLocalPreReservation()
+    {
+        var json = await _jsRuntime.InvokeAsync<string>("sessionStorage.getItem", ReservationKey);
+        return json != null ? JsonSerializer.Deserialize<PreReservationDto>(json) : null;
+
+    }
+
+    public async Task<SecretMoviePreReservation> GetLocalSecretMoviePreReservation()
+    {
+        var json = await _jsRuntime.InvokeAsync<string>("sessionStorage.getItem", SecretReservationKey);
+        return json != null ? JsonSerializer.Deserialize<SecretMoviePreReservation>(json) : null;
+    }
+
+    public async Task SetLocalPreReservation(PreReservationDto preReservation)
+    {
+        var json = JsonSerializer.Serialize(preReservation);
+        await _jsRuntime.InvokeVoidAsync("sessionStorage.setItem", ReservationKey, json);
+    }
+
+    public async Task SetLocalSecretMoviePreReservation(SecretMoviePreReservation preReservation)
+    {
+        var json = JsonSerializer.Serialize(preReservation);
+        await _jsRuntime.InvokeVoidAsync("sessionStorage.setItem", SecretReservationKey, json);
     }
 
     public async Task<IEnumerable<ReservationDto>> GetAllReservations()

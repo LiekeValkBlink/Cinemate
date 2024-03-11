@@ -50,11 +50,14 @@
     [Inject] ISeatsService _seatsService { get; set; }
     [Inject] ITheaterRoomService _theaterRoomService { get; set; }
     [Inject] IScreeningService _screeningService { get; set; }
+    [Inject] IReservationService _reservationService { get; set; }
     private ScreeningWithInfoDto _screening;
     private IEnumerable<SeatsWInfoDto> _allSeats;
     private IEnumerable<ReservedSeatDto> _reservedSeat;
     // Store the seat id's selected by the user to reserve
     private List<int> selectedSeats = new List<int>();
+    public string ErrorMessage { get; set; }
+    
 
     protected override async Task OnInitializedAsync()
     {
@@ -68,27 +71,31 @@
         NavigationManager.NavigateTo($"/kiosk/show-reservation/{_screening.MovieId}");
     }
 
-    private void OnProceed()
+    private async void OnProceed()
     {
-        var reservation = new AddReservationDto();
 
-        reservation.ScreeningId = screeningId;
-        reservation.UserId = 1;
-        reservation.EmployeeId = 1;
-        reservation.Price = 25;
-        reservation.SeatId = selectedSeats;
-
-        string selectedSeatsString = string.Join(",", selectedSeats);
-
-      
-
-
-         NavigationManager.NavigateTo($"/kiosk/payment/{screeningId}"); 
-
-        foreach (var seat in selectedSeats)
+        if (!selectedSeats.Any())
         {
-            Console.WriteLine($"Selected seat: {seat}");
+            ErrorMessage = "No Seats selected";
+            
         }
+        else
+        {
+            var preReservationDto = new PreReservationDto
+            {
+                ScreeningId = screeningId,
+                SeatId = selectedSeats
+            };
+            await _reservationService.SetLocalPreReservation(preReservationDto);
+            foreach (var seat in selectedSeats)
+            {
+                Console.WriteLine($"Selected seat: {seat}");
+            }
+            
+            NavigationManager.NavigateTo($"/tickets-and-payment"); 
+        }
+
+        
 
 
     }
