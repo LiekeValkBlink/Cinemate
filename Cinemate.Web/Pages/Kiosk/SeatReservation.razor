@@ -9,6 +9,7 @@
     <div class="movie-screen"></div>
     <p>Filmscherm</p>
 
+    @* for each row in the theater, show each seat per row *@
     @foreach (var row in _allSeats.GroupBy(s => s.Row))
     {
         <div class="seat-row">
@@ -52,6 +53,7 @@
     private ScreeningWithInfoDto _screening;
     private IEnumerable<SeatsWInfoDto> _allSeats;
     private IEnumerable<ReservedSeatDto> _reservedSeat;
+    // Store the seat id's selected by the user to reserve
     private List<int> selectedSeats = new List<int>();
 
     protected override async Task OnInitializedAsync()
@@ -93,6 +95,7 @@
     
     private string GetSeatBackgroundColor(int seatId)
     {
+        // determine the status of the seat from DB info and return a color value as a string
         var seat = _allSeats.FirstOrDefault(s => s.Id == seatId);
         if (seat != null)
         {
@@ -111,6 +114,7 @@
     
     private void SelectSeat(int seatId)
     {
+        //add the seat selected by the user to a list or remove it if already selected
         var isSeatReserved = _reservedSeat.Any(r => r.Id == seatId);
         
         if (!isSeatReserved)
