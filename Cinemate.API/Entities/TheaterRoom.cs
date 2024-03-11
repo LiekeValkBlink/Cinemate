@@ -10,9 +10,7 @@ public class TheaterRoom
     
     [Column("name")]
     public string Name { get; set; }
-
-    [Column("seats_no")]
-    public int SeatsNo { get; set; }
+    
 
     [Column("theater_id")]
     public int TheaterId { get; set; }

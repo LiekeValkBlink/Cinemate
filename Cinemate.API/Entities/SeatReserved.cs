@@ -13,11 +13,7 @@ public class SeatReserved
 
     [Column("reservation_id")]
     public int ReservationId { get; set; }
-
-    [Column("screening_id")]
-    public int ScreeningId { get; set; }
-
+    
     public Seat Seat { get; set; }
     public Reservation Reservation { get; set; }
-    public Screening Screening { get; set; }
 }

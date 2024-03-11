@@ -23,6 +23,6 @@ public class PromoCode
     [Column("discount_type")]
     public string DiscountType { get; set; }
     
-    public List<TicketPromoCodes> TicketPromoCodes { get; set; }
+    public List<ReservationPromoCodes> ReservationPromoCodes { get; set; }
     
 }

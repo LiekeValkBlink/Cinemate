@@ -11,5 +11,5 @@ public class AddReservationDto
     public string PaymentType { get; set; }
     public List<int> SeatId { get; set; }
     public List<int> PromoCode { get; set; }
-    public decimal BasePrice { get; set; }
+    public decimal Price { get; set; }
 }

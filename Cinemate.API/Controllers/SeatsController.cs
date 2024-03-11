@@ -72,4 +72,19 @@ public class SeatsController : ControllerBase
         await _seatsService.DeleteSeat(id);
         return Ok();
     }
+    
+    [HttpGet("reserved-seats/{screeningId}")]
+    public async Task<ActionResult<IEnumerable<SeatsWInfoDto>>> GetReservedSeatsByScreeningId(int screeningId)
+    {
+        try
+        {
+            var reservedSeats = await _seatsService.GetReservedSeatsByScreeningId(screeningId);
+            return Ok(reservedSeats);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
 }

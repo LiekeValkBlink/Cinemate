@@ -3,8 +3,9 @@
 @inject ISelectedMovieService SelectedMovieService
 
 @code {
-    [Inject] public IScreeningService? ScreeningService { get; set; }
+    [Inject] public IScreeningService ScreeningService { get; set; } = default!;
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
+    [Parameter] public int MovieId { get; set; }
 
 
     private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
@@ -13,17 +14,11 @@
 
     protected override async Task OnInitializedAsync()
     {
-        AllScreenings = await ScreeningService?.GetAllScreenings();
+        AllScreenings = await ScreeningService.GetAllScreenings();
         if (AllScreenings != null)
         {
             // Filter AllScreenings based on MovieId
-            var movie = await SelectedMovieService.GetSelectedMovieAsync();
-            var selectedMovieId = movie.Id;
-
-            if (selectedMovieId != null)
-            {
-                AllScreeningsForMovie = AllScreenings.Where(s => s.MovieId == selectedMovieId);
-            }
+            AllScreeningsForMovie = AllScreenings.Where(s => s.MovieId == MovieId);
         }
     }
 }
