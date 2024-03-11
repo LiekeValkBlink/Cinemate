@@ -4,31 +4,28 @@
 @using Microsoft.AspNetCore.WebUtilities
 @using Cinemate.Models.Dto
 
+<EditForm Model="AddReservationDto" OnValidSubmit="@HandleValidSubmit">
 <div class="tickets-and-payment-container">
+    
     <div class="col">
         <h2>Jouw gegevens</h2>
         <p>Velden met een * zijn verplicht!</p>
-        <form>
-            <label>Voornaam *</label>
-            <input type="text"/>
-            <label>Achternaam *</label>
-            <input type="text"/>
-            <label>E-mailadres *</label>
-            <input type="text"/>
-            <label>Herhaal e-mailadres</label>
-            <input type="text"/>
-        </form>
+        
+            <label for="first_name">Voornaam *</label>
+            <InputText id="first_name" @bind-Value="FirstName" required/>
+            <label for="last_name">Achternaam *</label>
+            <InputText id="last_name" @bind-Value="LastName" required/>
+            <label for="email_address">E-mailadres *</label>
+            <InputText id="email_address" @bind-Value="Email" required/>
+            <label for="email_address_redo">Herhaal e-mailadres</label>
+            <InputText id="email_address_redo" @bind-Value="Email2" required/>
+        
     </div>
     <div class="col">
         <h2>Maak jouw bestelling compleet</h2>
-         <form>
+        <form>
             <label>Selecteer een tickettype</label>
-            <select>
-                <option value="normal">Normaal</option>
-                <option value="child-discount">Kinderkorting</option>
-                <option value="student-discount">Studentenkorting</option>
-                <option value="65-discount">65+ reductie</option>
-            </select>
+            <RadzenDropDown @bind-Value="TicketType" Data=@TicketTypes required/>
         </form>
         <div class="popcorn-arrangement">
             <div class="col">
@@ -37,12 +34,12 @@
             <div class="col">
                 <h3>Popcorn arrangement</h3>
                 <br/>
-                <p>Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar 00,00!</p>
+                <p>Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar €2.50!</p>
                 <br/>
                 <form>
                     <div class="checkbox-container">
-                        <input type="checkbox"/>
-                        <p>Ik wil het popcornarrangement</p>
+                        <RadzenCheckBox @bind-Value=@PopcornSelected class="checkbox"/>
+                        <p> Ik wil het popcorn arrangement</p>
                     </div>
                 </form>
             </div>
@@ -53,14 +50,23 @@
         <table>
             <tr>
                 <td>
-                    <h3>[aantal] [soort ticket] voor [naam film]</h3>
+                    @if (SecretMovie)
+                    {
+                        <h3>1x Secret movie ticket</h3>
+                    }
+                    else
+                    {
+                        <h3>@NumOfSeats X @TicketType voor @ScreeningWithInfoDto.MovieName</h3>
+                    }
+                    
                 </td>
                 <td>
-                    <h3>00.00</h3>
+                    <h3>€@TotalPrice</h3>
                 </td>
             </tr>
         </table>
     </div>
+
 </div>
 <div class="page-navigation">
    <button class="secondary-btn">
@@ -68,12 +74,12 @@
        Terug
    </button>
 
-   <button class="primary-btn">
+   <button class="primary-btn" type="submit">
        Bevestig je keuze
        <i class="fa-solid fa-chevron-right"></i>
    </button>
 </div>
-
+</EditForm>
 
 @code
 {
@@ -83,8 +89,22 @@
 
     private PreReservationDto PreReservationDto { get; set; }
     private SecretMoviePreReservation SecretMoviePreReservation { get; set; }
+    private ScreeningWithInfoDto ScreeningWithInfoDto { get; set; }
+    
 
-    private bool SecretMovie = false;
+    private bool SecretMovie;
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    private string Email { get; set; }
+    private string Email2 { get; set; }
+
+    private string TicketType = "Normaal";
+    private List<string> TicketTypes = ["Normaal", "Kinder korting", "65 Plus", "Studentenkorting"];
+    private bool PopcornSelected { get; set; }
+    private decimal BasePrice = (decimal)8.5;
+    private decimal TotalPrice { get; set; }
+    private int NumOfSeats { get; set; }
+    private AddReservationDto AddReservationDto = new AddReservationDto();
 
 
     protected override async Task OnInitializedAsync()
@@ -93,19 +113,34 @@
         if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("SecretMovie", out var _value))
         {
             SecretMovie = Convert.ToBoolean(_value);
+            SecretMovie = true;
+        }
+        else
+        {
+            SecretMovie = false;
         }
 
+        Console.WriteLine(SecretMovie);
         if (SecretMovie != null || SecretMovie == false)
         {
             PreReservationDto = await ReservationService.GetLocalPreReservation();
+            NumOfSeats = PreReservationDto.SeatId.Count;
+            ScreeningWithInfoDto = await ScreeningService.GetScreening(PreReservationDto.ScreeningId);
+            TotalPrice = BasePrice * PreReservationDto.SeatId.Count;
         }
 
-        if (SecretMovie = true)
+        if (SecretMovie == true)
         {
             SecretMoviePreReservation = await ReservationService.GetLocalSecretMoviePreReservation();
+            TotalPrice = (decimal)6.50;
         }
     }
 
-    
+    private async Task HandleValidSubmit()
+    {
+        Console.WriteLine(FirstName);
+        Console.WriteLine(LastName);
+        Console.WriteLine(TicketType);   
+    }
     
 }

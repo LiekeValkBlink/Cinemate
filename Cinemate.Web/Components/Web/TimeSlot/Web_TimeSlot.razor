@@ -17,6 +17,7 @@
 
     private async Task HandleTimeslotClick()
     {
+        
         // Navigeren naar /kiosk/seat-reservation met de screening als parameters
         var uri = $"/kiosk/seat-reservation/{ScreeningInfo.Id}";
         NavigationManager.NavigateTo(uri);
