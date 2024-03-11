@@ -31,8 +31,4 @@
       <ProjectReference Include="..\Cinemate.Models\Cinemate.Models.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="wwwroot\Images\screenshots\" />
-    </ItemGroup>
-
 </Project>

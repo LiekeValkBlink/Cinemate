@@ -26,9 +26,6 @@
     protected override async Task OnInitializedAsync()
     {
         AllMovies = await MovieService.GetMovies();
-
-      
-
         SelectedMovieWithImage = AllMovies
          .Where(movie => movie.Id == MovieId)
          .Select(movie => new MovieDtoImage
@@ -45,7 +42,7 @@
                 Review = movie.Review,
                 Kijkwijzers = movie.Kijkwijzers,
                 MoviePosterUrl = $"https://localhost:7201/images/posters/movie_{movie.Id}_image.jpg",
-                MovieScreenshotUrl = $"https://localhost:7201/images/screenshots/movie_{movie.Id}_image.jpg"
+                MovieScreenshotUrl = $"https://localhost:7201/images/screenshots/movie-screenshot_{movie.Id}_image.jpg"
              })
              .FirstOrDefault();
 

@@ -1,3 +1,4 @@
+using BlazorSpinner;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Cinemate.Web;
@@ -25,5 +26,7 @@ builder.Services.AddScoped<IScreeningService, ScreeningService>();
 builder.Services.AddScoped<ISeatsService, SeatsService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<ISelectedMovieService, SelectedMovieService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<SpinnerService>();
 
 await builder.Build().RunAsync();

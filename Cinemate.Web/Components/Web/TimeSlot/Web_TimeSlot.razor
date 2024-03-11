@@ -42,14 +42,14 @@
                 Review = Movie.Review,
                 Kijkwijzers = Movie.Kijkwijzers,
                 MoviePosterUrl = $"https://localhost:7201/images/posters/movie_{Movie.Id}_image.jpg",
-                MovieScreenshotUrl = $"https://localhost:7201/images/posters/movie_{Movie.Id}_image.jpg"
+                MovieScreenshotUrl = $"https://localhost:7201/images/screenshots/movie-screenshot_{Movie.Id}_image.jpg"
             };
         // opslaan van movie gegevens
         var selectedMovieService = new SelectedMovieService(JSRuntime);
         await selectedMovieService.SetSelectedMovieAsync(MovieWithImage);
 
         // Navigeren naar /kiosk/seat-reservation met de screening als parameters
-        var uri = $"/seat-reservation?screeningId={ScreeningInfo.Id}&movieId={ScreeningInfo.MovieId}";
+        var uri = $"/kiosk/seat-reservation/{ScreeningInfo.Id}";
         NavigationManager.NavigateTo(uri);
     }
 }
