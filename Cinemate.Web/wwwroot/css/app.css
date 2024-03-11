@@ -47,7 +47,7 @@ label {
     margin: 0.75rem 0 0.25rem 0;
 }
 
-input {
+input, select {
     cursor: text;
     color: var(--white) !important;
     background-color: var(--medium-purple);

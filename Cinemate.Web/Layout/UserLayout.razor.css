@@ -23,7 +23,7 @@
         padding: var(--page-padding);
 
         & aside {
-            width: 50rem;
+            width: 37.5rem;
         }
 
         & article {
