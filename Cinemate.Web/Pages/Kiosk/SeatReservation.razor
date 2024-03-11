@@ -43,7 +43,7 @@
 </div>
 
 @code {
-    
+
     [Parameter] public int screeningId { get; set; }
     [Inject] NavigationManager NavigationManager { get; set; }
     [Inject] ISeatsService _seatsService { get; set; }
@@ -53,7 +53,7 @@
     private IEnumerable<SeatsWInfoDto> _allSeats;
     private IEnumerable<ReservedSeatDto> _reservedSeat;
     private List<int> selectedSeats = new List<int>();
-    
+
     protected override async Task OnInitializedAsync()
     {
         _screening = await _screeningService.GetScreening(screeningId);
@@ -68,10 +68,22 @@
 
     private void OnProceed()
     {
+        var reservation = new AddReservationDto();
+
+        reservation.ScreeningId = screeningId;
+        reservation.UserId = 1;
+        reservation.EmployeeId = 1;
+        reservation.Price = 25;
+        reservation.SeatId = selectedSeats;
+
+        NavigationManager.NavigateTo($"/kiosk/payment/{reservation.ScreeningId}&{string.Join(",", selectedSeats)}");
+
         foreach (var seat in selectedSeats)
         {
             Console.WriteLine($"Selected seat: {seat}");
         }
+
+
     }
     
     private string GetSeatBackgroundColor(int seatId)
@@ -111,3 +123,4 @@
 
     
 }
+
