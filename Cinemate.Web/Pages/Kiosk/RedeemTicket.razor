@@ -5,6 +5,7 @@
 @layout MainLayout
 
 <div style="text-align: center;">
+    @* If the user was not sent via qr code, ask them to redeem their code *@
     @if (UrlTicket == null || UrlTicket == 0)
     {
         <h2>Vul uw code in</h2>
@@ -16,6 +17,7 @@
             </EditForm>
         </div>
     }
+    @* After the reservation has been retreived, show a ticket for each seat *@
     @if (Reservation is not null)
     {
         <h2>Uw tickets:</h2>
@@ -46,12 +48,15 @@
 
 @code {
     
+    // parameter for when the user was sent to this page directly via qr code or 
     [Parameter] public int UrlTicket { get; set; }
     [Inject] private IReservationService ReservationService { get; set; } = default!;
     
     //The redeemed ticket number should correspond with the Reservation id
     private int RedeemedTicket { get; set; }
+    //url as a string to store in the qr code
     private string QrCodeValue { get; set; } = default!;
+    // if there was an error retrieving the reservation, store the error message here
     private string ErrorMessage { get; set; } = default!;
     private ReservationDto Reservation { get; set; } = default!;
 
@@ -61,8 +66,6 @@
         {
             Reservation = await ReservationService.GetSingleReservation(RedeemedTicket);
             QrCodeValue = $"http://localhost:5221/kiosk/redeemticket/{RedeemedTicket}"; 
-            Console.WriteLine(RedeemedTicket);
-            Console.WriteLine(Reservation.MovieName);
         }
         catch (Exception e)
         {
