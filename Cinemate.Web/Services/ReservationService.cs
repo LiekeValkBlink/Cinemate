@@ -8,8 +8,17 @@ public class ReservationService: IReservationService
 {
     private readonly HttpClient _httpClient;
 
+    public ReservationService(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
+
     public async Task<SecretMoviePreReservation> AddSecretMovieReservation(SecretMovieDto SecretMovieDto)
     {
+        Console.WriteLine("IReservationService");
+        Console.WriteLine(SecretMovieDto.MovieStart);
+
+
         var response = await _httpClient.PostAsJsonAsync("api/Reservation/secretmovie", SecretMovieDto);
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<SecretMoviePreReservation>();
