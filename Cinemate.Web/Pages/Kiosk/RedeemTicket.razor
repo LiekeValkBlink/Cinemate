@@ -4,16 +4,16 @@
 @using Cinemate.Models.Dto
 @layout MainLayout
 
-<div style="text-align: center;">
+<div class="container">
     @* If the user was not sent via qr code, ask them to redeem their code *@
     @if (UrlTicket == null || UrlTicket == 0)
     {
-        <h2>Vul uw code in</h2>
+        <h2>Tickets ophalen</h2>
         <div class="ticket_form">
             <EditForm Model="RedeemedTicket" OnValidSubmit="@RedeemUserTicket">
-                <label for="ticket">Ticket</label>
+                <label for="ticket">Vul hier je ticketcode in:</label>
                 <InputNumber id="ticket" @bind-Value="RedeemedTicket"/>
-                <button type="submit" class="primary-btn">lever in</button>
+                <button type="submit" class="primary-btn">Code verzilveren</button>
             </EditForm>
         </div>
     }
