@@ -1,32 +1,36 @@
 @layout UserLayout
 @page "/tickets-and-payment"
+@using Cinemate.Web.Services.Contracts
+@using Microsoft.AspNetCore.WebUtilities
+@using Cinemate.Models.Dto
+@inject SpinnerService _spinnerService
 
+<EditForm Model="AddReservationDto" OnValidSubmit="@HandleValidSubmit">
 <div class="tickets-and-payment-container">
+    
     <div class="col">
         <h2>Jouw gegevens</h2>
         <p>Velden met een * zijn verplicht!</p>
-        <form>
-            <label>Voornaam *</label>
-            <input type="text"/>
-            <label>Achternaam *</label>
-            <input type="text"/>
-            <label>E-mailadres *</label>
-            <input type="text"/>
-            <label>Herhaal e-mailadres</label>
-            <input type="text"/>
-        </form>
+        
+            <label for="first_name">Voornaam *</label>
+            <InputText id="first_name" @bind-Value="FirstName" required/>
+            <label for="last_name">Achternaam *</label>
+            <InputText id="last_name" @bind-Value="LastName" required/>
+            <label for="email_address">E-mailadres *</label>
+            <InputText id="email_address" @bind-Value="Email" required/>
+            <label for="email_address_redo">Herhaal e-mailadres</label>
+            <InputText id="email_address_redo" @bind-Value="Email2" required/>
+        
     </div>
     <div class="col">
         <h2>Maak jouw bestelling compleet</h2>
-         <form>
-            <label>Selecteer een tickettype</label>
-            <select>
-                <option value="normal">Normaal</option>
-                <option value="child-discount">Kinderkorting</option>
-                <option value="student-discount">Studentenkorting</option>
-                <option value="65-discount">65+ reductie</option>
-            </select>
-        </form>
+        @if (!SecretMovie)
+        {
+            <form>
+                <label>Selecteer een tickettype</label>
+                <RadzenDropDown @bind-Value="TicketType" Data=@TicketTypes Change="@OnTicketTypeChange" required/>
+            </form> 
+        }
         <div class="popcorn-arrangement">
             <div class="col">
                 <img src="images/popcorn.png"/>
@@ -34,12 +38,12 @@
             <div class="col">
                 <h3>Popcorn arrangement</h3>
                 <br/>
-                <p>Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar 00,00!</p>
+                <p>Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar €2.50!</p>
                 <br/>
                 <form>
                     <div class="checkbox-container">
-                        <input type="checkbox"/>
-                        <p>Ik wil het popcornarrangement</p>
+                        <RadzenCheckBox TValue="bool" @bind-Value=@PopcornSelected Change="@OnTicketTypeChange" class="checkbox"/>
+                        <p> Ik wil het popcorn arrangement</p>
                     </div>
                 </form>
             </div>
@@ -50,23 +54,211 @@
         <table>
             <tr>
                 <td>
-                    <h3>[aantal] [soort ticket] voor [naam film]</h3>
+                    @if (SecretMovie)
+                    {
+                        <h3>1x Secret movie ticket</h3>
+                    }
+                    else
+                    {
+                        <h3>@NumOfSeats x @TicketType ticket voor @ScreeningWithInfoDto.MovieName</h3>
+                    }
                 </td>
                 <td>
-                    <h3>00.00</h3>
+                    <h3>€@TotalPrice</h3>
                 </td>
             </tr>
         </table>
     </div>
+
 </div>
 <div class="page-navigation">
-   <button class="secondary-btn">
+   <button class="secondary-btn" type="button" @onclick="GoBack">
        <i class="fa-solid fa-chevron-left"></i>
        Terug
    </button>
 
-   <button class="primary-btn">
+   <button class="primary-btn" type="submit">
        Bevestig je keuze
        <i class="fa-solid fa-chevron-right"></i>
    </button>
 </div>
+</EditForm>
+
+@code
+{
+    [Inject] private IReservationService ReservationService { get; set; }
+    [Inject] private IScreeningService ScreeningService { get; set; }
+    [Inject] NavigationManager NavigationManager { get; set; }
+    [Inject] private IUserService UserService { get; set; }
+
+    private PreReservationDto PreReservationDto { get; set; }
+    private SecretMoviePreReservation SecretMoviePreReservation { get; set; }
+    private ScreeningWithInfoDto ScreeningWithInfoDto { get; set; }
+    private AddReservationDto AddReservationDto = new AddReservationDto();
+    
+
+    private bool SecretMovie;
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    private string Email { get; set; }
+    private string Email2 { get; set; }
+
+    private string TicketType = "Normaal";
+    private List<string> TicketTypes = ["Normaal", "Kinder korting", "65 Plus", "Studentenkorting"];
+    private bool PopcornSelected { get; set; }
+    private decimal BasePrice = (decimal)8.5;
+    private decimal TotalPrice { get; set; }
+    private int NumOfSeats { get; set; }
+    private List<int> PromoCodes = [];
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("SecretMovie", out var value))
+        {
+            SecretMovie = Convert.ToBoolean(value);
+            SecretMovie = true;
+        }
+        else
+        {
+            SecretMovie = false;
+        }
+        
+        Console.WriteLine(SecretMovie);
+        switch (SecretMovie)
+        {
+            case false:
+                PreReservationDto = await ReservationService.GetLocalPreReservation();
+                NumOfSeats = PreReservationDto.SeatId.Count;
+                ScreeningWithInfoDto = await ScreeningService.GetScreening(PreReservationDto.ScreeningId);
+                TotalPrice = BasePrice * PreReservationDto.SeatId.Count;
+                break;
+            case true:
+                SecretMoviePreReservation = await ReservationService.GetLocalSecretMoviePreReservation();
+                BasePrice = (decimal)6.50;
+                TotalPrice = BasePrice;
+                PromoCodes.Add(1);
+                break;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        _spinnerService.Show();
+
+        var addUserDto = new AddUserDto
+        {
+            Email = Email,
+            Name = $"{FirstName} {LastName}",
+            Password = "none",
+            SubscribedToNewsletter = false
+        };
+
+        if (PopcornSelected)
+        {
+            PromoCodes.Add(2);
+        }
+
+        try
+        {
+            var result = await UserService.CreateUser(addUserDto);
+            if (result != null)
+            {
+                if (SecretMovie == false)
+                {
+                    var reservation = new AddReservationDto
+                    {
+                        Paid = true,
+                        PaymentType = "iDeal",
+                        Price = TotalPrice,
+                        PromoCode = PromoCodes,
+                        ScreeningId = PreReservationDto.ScreeningId,
+                        SeatId = PreReservationDto.SeatId,
+                        UserId = result.Id,
+                        EmployeeId = null
+                    };
+
+                    var addReservationResult = await ReservationService.AddReservation(reservation);
+                    if (addReservationResult != null)
+                    {
+                        NavigationManager.NavigateTo($"/kiosk/RedeemTicket/{addReservationResult.Id}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"seat to add: {SecretMoviePreReservation.SeatId}");
+                    var seats = new List<int>{SecretMoviePreReservation.SeatId};
+                    var secretReservation = new AddReservationDto
+                    {
+                        Paid = true,
+                        PaymentType = "iDeal",
+                        Price = TotalPrice,
+                        PromoCode = PromoCodes,
+                        ScreeningId = SecretMoviePreReservation.ScreeningId,
+                        SeatId = seats,
+                        UserId = result.Id,
+                        EmployeeId = null
+                    };
+                    var addReservationResult = await ReservationService.AddReservation(secretReservation);
+                    if (addReservationResult != null)
+                    {
+                        NavigationManager.NavigateTo($"/kiosk/RedeemTicket/{addReservationResult.Id}");
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        _spinnerService.Hide();
+    }
+
+    private void OnTicketTypeChange()
+    {
+        Console.WriteLine(TicketType);
+        if (!SecretMovie)
+        {
+            switch (TicketType)
+            {
+                case "Normaal":
+                    TotalPrice = BasePrice;
+                    break;
+                case "Kinder korting":
+                    TotalPrice = (BasePrice - (decimal)1.5) * PreReservationDto.SeatId.Count;
+                    break;
+                case "65 Plus":
+                    TotalPrice = (BasePrice - (decimal)1.5) * PreReservationDto.SeatId.Count;
+                    break;
+                case "Studentenkorting":
+                    TotalPrice = (BasePrice - (decimal)1.5) * PreReservationDto.SeatId.Count;
+                    break;
+            }
+
+            if (PopcornSelected)
+            {
+                TotalPrice += ((decimal)2.5 * PreReservationDto.SeatId.Count);
+            }
+        }
+        else
+        {
+            if (PopcornSelected)
+            {
+                TotalPrice += (decimal)2.5;
+            }
+            else
+            {
+                TotalPrice = BasePrice;
+            }
+        }
+
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo($"kiosk/seat-reservation/{PreReservationDto.ScreeningId}");
+    }
+    
+}

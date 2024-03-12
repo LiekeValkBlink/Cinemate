@@ -2,20 +2,74 @@
 @using Cinemate.Web.Services.Contracts 
 @inject ISelectedMovieService SelectedMovieService
 @inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+
+
+@code {
+    [Parameter]
+    public DateTime SelectedDate { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        await LoadSecretMovieReservations();
+    }
+
+    private async Task LoadSecretMovieReservations()
+    {
+        secretMovieReservations.Clear();
+
+        //code voor secret movie
+        //screenings filteren op unieke tijden
+        var uniqueScreenings = AllScreenings
+    .Where(s => s.MovieStart.Date == SelectedDate.Date && s.MovieStart > DateTime.Now)
+    .GroupBy(s => s.MovieStart.TimeOfDay) // Groepeer screenings op tijd van de dag
+    .Select(group => group.First());
+
+
+
+        foreach (var screening in uniqueScreenings)
+        {
+            // Maak een nieuwe SecretMovieDto aan met de starttijd van de screening
+            var secretMovieDto = new SecretMovieDto
+                {
+                    MovieStart = screening.MovieStart
+                };
+
+            // Roep de AddSecretMovieReservation-methode aan en wacht op het resultaat
+            var secretMovieReservationResult = await ReservationService?.AddSecretMovieReservation(secretMovieDto);
+
+            // Voeg het resultaat toe aan de lijst van secretMovieReservations
+            secretMovieReservations.Add(secretMovieReservationResult);
+        }
+
+    }
+}
+
 
 @code{
-     [Inject] public IMovieService? MovieService { get; set; }
-     [Inject] protected PreloadService PreloadService { get; set; } = default!;
-     
-     private string? ImageBaseUrl = "/images/";
- 
-     private IEnumerable<MovieWithCategoryDto>? AllMovies { get; set; }
-     private IEnumerable<MovieDtoImage>? AllMoviesWithImage { get; set; }
- 
-     protected override async Task OnInitializedAsync() {
-         AllMovies = await MovieService?.GetMovies();
-         
-         AllMoviesWithImage = AllMovies.Select(movie => new MovieDtoImage {
+    // alle movies ophalen en omvormen naar movies met imageurl
+    // Injecteren van de services
+    [Inject] public IMovieService? MovieService { get; set; }
+    [Inject] public IScreeningService? ScreeningService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+    [Inject] public IReservationService? ReservationService { get; set; }
+
+    // Variabelen voor het opslaan van films en screenings
+    private IEnumerable<MovieWithCategoryDto>? AllMovies { get; set; }
+    private IEnumerable<MovieDtoImage>? AllMoviesWithImage { get; set; }
+    private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
+    private SecretMoviePreReservation? SecretMovieScreening { get; set; }
+    // Globale variabele voor secretMovieReservations
+    private List<SecretMoviePreReservation> secretMovieReservations = new List<SecretMoviePreReservation>();
+
+    protected override async Task OnInitializedAsync() {
+        // Films ophalen
+        AllMovies = await MovieService?.GetMovies();
+
+        AllMoviesWithImage = AllMovies.Select(movie => new MovieDtoImage {
              Id = movie.Id,
              Title = movie.Title,
              Description = movie.Description,
@@ -30,45 +84,71 @@
              MoviePosterUrl = $"https://localhost:7201/images/posters/movie_{movie.Id}_image.jpg",
              MovieScreenshotUrl = $"https://localhost:7201/images/screenshots/movie-screenshot_{movie.Id}_image.jpg"
          }).ToList();
-     }
- }
- 
- @*
 
- *@
- <div class="movie-container">
+        // alle screenings ophalen
+        AllScreenings = await ScreeningService?.GetAllScreenings();
+
+
+       
+
+
+     }
+
+
+}
+
+ 
+<div class="movie-container">
+
     @if (AllMoviesWithImage == null || !AllMoviesWithImage.Any())
     {
         <h2>Movies not available</h2>
-    } else {
+    }
+    else
+    {
+        Console.WriteLine(SelectedDate.Date);
+        Console.WriteLine(secretMovieReservations.Count);
+        <a class="movie-container-inner">
+            <div class="movie" style="background-image: url('https://localhost:7201/images/posters/SecretMovie.jpg');"></div>
+            <div class="movie-details">
+                <h3>Secret movie</h3>
+                <div class="movie-details">
+                    <div class="time-slot-selector-container">
+                        <div class="time-slot-selector-inner">
+                    @foreach (var secretmovie in secretMovieReservations)
+                    {
+                        var screening = AllScreenings.FirstOrDefault(s => s.Id == secretmovie.ScreeningId);
+                        if (screening != null){
+                            <Web_TimeSlot_Secret ScreeningInfo="@screening"></Web_TimeSlot_Secret>
+                        }
+                    }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+
         @foreach (var movie in AllMoviesWithImage)
         {
-            <a @onclick="() => SaveAndNavigate(movie)" class="movie-container-inner">
-                <div class="movie" style="background-image: url('@(movie.MoviePosterUrl)');"></div>
-                <div class="movie-details">
-                    <h3>@(movie.Title)</h3>
-                    <TimeSlotSelector></TimeSlotSelector>
-                </div>
-            </a>
+            // Filter van alle screenings op basis van de geselecteerde datum
+            var screeningsForDate = AllScreenings?.Where(s => s.MovieStart.Date == SelectedDate.Date && s.MovieStart > DateTime.Now);
+
+            // zijn er films beschikbaar voor de gekozen datum
+            if (screeningsForDate != null && screeningsForDate.Any())
+            {
+                // kijk of de movie van de foreach screenings heeft voor de geselcteerde datum
+                if (screeningsForDate.Any(s => s.MovieId == movie.Id))
+                {
+                    <a class="movie-container-inner">
+                        <div class="movie" style="background-image: url('@(movie.MoviePosterUrl)');"></div>
+                        <div class="movie-details">
+                            <h3>@movie.Title</h3>
+                            <TimeSlotSelector MovieId="@movie.Id" SelectedDate="@SelectedDate"></TimeSlotSelector>
+                        </div>
+                    </a>
+                }
+            }
         }
     }
- </div>
-
-@code {
-    [Inject] public NavigationManager NavigationManager { get; set; }
-
-    private MovieDto movie;
-
-
-    private async Task SaveAndNavigate(MovieDtoImage movie)
-    {
-        if (movie != null)
-        {
-            // Opslaan van de geselecteerde film met behulp van IMovieService
-            var selectedMovieService = new SelectedMovieService(JSRuntime);
-            await selectedMovieService.SetSelectedMovieAsync(movie);
-
-            NavigationManager.NavigateTo($"/seat-reservation");
-        }
-    }
-}
+</div>

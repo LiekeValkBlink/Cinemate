@@ -40,9 +40,6 @@ public class CinemateDbContext: DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //Add unique constraints to unique columns in multiple tables
-        modelBuilder.Entity<User>()
-            .HasIndex(u => u.Email)
-            .IsUnique();
         
         modelBuilder.Entity<Employee>()
             .HasIndex(u => u.Email)

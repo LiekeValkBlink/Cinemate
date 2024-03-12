@@ -179,14 +179,18 @@ public class ReservationService: IReservationService
     {
     try
     {
-        // Find all movie screenings starting at the given MovieStart datetime
-        var screenings = await _dbContext.Screenings
+            Console.WriteLine("test");
+            Console.WriteLine("secretMovie");
+
+            // Find all movie screenings starting at the given MovieStart datetime
+            var screenings = await _dbContext.Screenings
             .Include(s => s.Movie)
             .Include(s => s.TheaterRoom)
             .Where(s => s.MovieStart == secretMovie.MovieStart)
             .ToListAsync();
+            Console.WriteLine(screenings.Count);
 
-        if (screenings == null || screenings.Count == 0)
+            if (screenings == null || screenings.Count == 0)
         {
             throw new Exception("No movie screenings found for the given date and time.");
         }

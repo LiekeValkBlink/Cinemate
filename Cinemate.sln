@@ -8,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinemate.Web", "Cinemate.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinemate.Models", "Cinemate.Models\Cinemate.Models.csproj", "{691CE16A-0286-4674-83ED-37E6C0B3C02C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinemate.EmailSender", "Cinemate.EmailSender\Cinemate.EmailSender.csproj", "{1E03F684-B234-4EED-BC74-DFC235A4C9E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinemate.EmailSender", "Cinemate.EmailSender\Cinemate.EmailSender.csproj", "{1E03F684-B234-4EED-BC74-DFC235A4C9E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

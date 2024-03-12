@@ -26,9 +26,6 @@
     protected override async Task OnInitializedAsync()
     {
         AllMovies = await MovieService.GetMovies();
-
-      
-
         SelectedMovieWithImage = AllMovies
          .Where(movie => movie.Id == MovieId)
          .Select(movie => new MovieDtoImage
@@ -69,7 +66,7 @@
 
 
                 // Herladen van de pagina
-                NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+                NavigationManager.NavigateTo($"/kiosk/show-reservation/{MovieId}", forceLoad: true);
             }
             else
             {

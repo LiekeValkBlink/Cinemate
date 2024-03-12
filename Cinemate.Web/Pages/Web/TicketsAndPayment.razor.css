@@ -38,7 +38,7 @@
                         display: flex;
                         align-items: center;
 
-                        & input[type='checkbox'] {
+                        & .checkbox {
                             accent-color: var(--bright-purple);
                             margin-right: 0.5rem;
                         }
