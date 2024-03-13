@@ -12,4 +12,6 @@ public class MovieDto
     public string Cast { get; set; }
     public decimal Review { get; set; }
     public string Kijkwijzers { get; set; }
+    public string ReleaseCountry { get; set; }
+    public bool ThreeDimensional { get; set; }
 }

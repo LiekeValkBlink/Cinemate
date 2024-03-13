@@ -15,7 +15,7 @@ public class MovieController: ControllerBase
         _movieService = movieService;
     }
 
-    [HttpPost("image")]
+    [HttpPost("image/poster")]
     public async Task<ActionResult> UploadFile(IFormFile file)
     {
         if (file == null)
@@ -25,6 +25,29 @@ public class MovieController: ControllerBase
         var fileName = file.FileName;
         // Get the extension
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images\posters", fileName);
+        
+        await using var fileStream = new FileStream(filePath, FileMode.Create);
+        
+        // Copy the content to the new stream
+        await file.CopyToAsync(fileStream);
+        
+
+        // Construct the URL to access the uploaded image
+        var imageUrl = $"{Request.Scheme}://{Request.Host}/Images/poster/{fileName}";
+
+        return Ok(imageUrl);
+    }
+    
+    [HttpPost("image/screenshot")]
+    public async Task<ActionResult> UploadPosterFile(IFormFile file)
+    {
+        if (file == null)
+            return BadRequest("File is required");
+        
+        // Get the file name
+        var fileName = file.FileName;
+        // Get the extension
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images\screenshots", fileName);
         
         await using var fileStream = new FileStream(filePath, FileMode.Create);
         

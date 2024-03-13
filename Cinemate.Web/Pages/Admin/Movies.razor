@@ -40,12 +40,13 @@
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Description" PropertyName="Description">@context.Description</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Duration" PropertyName="Duration" SortKeySelector="@(item => item.Duration)">@context.Duration</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Release Year" PropertyName="ReleaseYear" SortKeySelector="@(item => item.ReleaseYear)">@context.ReleaseYear</GridColumn>
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="Release Country" PropertyName="ReleaseCountry" SortKeySelector="@(item => item.ReleaseCountry)">@context.ReleaseCountry</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Movie Category" PropertyName="MovieCategory">@context.MovieCategoryDescription</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Director" PropertyName="Director">@context.Director</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Cast" PropertyName="Cast">@context.Cast</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Review" PropertyName="Review" SortKeySelector="@(item => item.Review)">@context.Review</GridColumn>
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Kijkwijzer" PropertyName="Kijkwijzer">@context.Kijkwijzers</GridColumn>
-                
+                <GridColumn TItem="MovieWithCategoryDto" HeaderText="3D" PropertyName="3D">@context.ThreeDimensional</GridColumn>
             </Grid>
 
         }
@@ -77,6 +78,11 @@
                         <label for="releaseYear" class="form-label">Release Year</label>
                         <InputNumber id="releaseYear" class="form-control" @bind-Value="@movieDto.ReleaseYear" required/>
                         <ValidationMessage For="@(() => movieDto.ReleaseYear)"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="releaseCountry" class="form-label">Release Country</label>
+                        <InputText id="releaseCountry" class="form-control" @bind-Value="@movieDto.ReleaseCountry" required/>
+                        <ValidationMessage For="@(() => movieDto.ReleaseCountry)"/>
                     </div>
 
                     <div class="mb-3">
@@ -110,20 +116,29 @@
                     </div>
 
                     <div class="mb-3">
-                        <RadzenLabel Text="Select Kijkwijzers" Component="KijkwijzerSelection"></RadzenLabel>
+                        <RadzenLabel Text="Select Kijkwijzers" Component="KijkwijzerSelection"/>
                         <RadzenDropDown @bind-Value="@selectedKijkwijzers" Data="@descriptions" Name="KijkwijzerSelection" Multiple="true" Chips="true"/>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="file" class="form-label">Upload Image</label>
-                        <InputFile id="file" class="form-control" OnChange="@OnFileChange" />
+                        <RadzenLabel Text="3D movie?" Component="ThreeDimensional"/>
+                        <RadzenSwitch @bind-Value="@movieDto.ThreeDimensional" Data="@descriptions" Name="ThreeDimensional"/>
                     </div>
-
+                    
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Upload poster image</label>
+                        <InputFile id="file" class="form-control" OnChange="@OnPosterFileChange" />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Upload screenshot image</label>
+                        <InputFile id="file" class="form-control" OnChange="@OnScreenshotFileChange" />
+                    </div>
+                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </EditForm>
             </BodyTemplate>
         </Modal>
-
     </CardBody>
 </Card>
 
@@ -156,18 +171,13 @@
     // Flag indicating whether a movie was added successfully
     private bool IsMovieAddedSuccessfully = false;
 
+    // Selected file for uploading
+    private IBrowserFile selectedPosterFile;
+    private IBrowserFile selectedScreenshotFile;
     // Max file size for uploaded images
     private long maxFileSize = 1024 * 1024 * 3;
     
-    // ID of the uploaded image
-    private int uploadedImageId;
-    
-    // Method called when the input file changes
-    private async Task OnInputFileChange(InputFileChangeEventArgs e)
-    {
-        string newFileName = $"movie_{uploadedImageId}_image";
-    }
-    
+
     // Method for handling valid form submission
     private async Task HandleValidSubmit()
     {
@@ -178,12 +188,16 @@
             PreloadService.Show();
             var result = await MovieService.AddMovie(movieDto);
             IsMovieAddedSuccessfully = true;
-            this.uploadedImageId = result.Id;
             
             // Upload the file after the movie has been added
-            if (selectedFile != null)
+            if (selectedPosterFile != null)
             {
-                await MovieService.UploadMovieImage(selectedFile, result.Id);
+                await MovieService.UploadMoviePosterImage(selectedPosterFile, result.Id);
+            }
+            
+            if (selectedScreenshotFile != null)
+            {
+                await MovieService.UploadMovieScreenShotImage(selectedScreenshotFile, result.Id);
             }
             
             // Close the modal
@@ -202,13 +216,19 @@
         }
     }
 
-    // Selected file for uploading
-    private IBrowserFile selectedFile;
+    
+
     
     // Method called when the file changes
-    private async Task OnFileChange(InputFileChangeEventArgs e)
+    private async Task OnPosterFileChange(InputFileChangeEventArgs e)
     {
-        selectedFile = e.File;
+        selectedPosterFile = e.File;
+    }
+    
+    // Method called when the file changes
+    private async Task OnScreenshotFileChange(InputFileChangeEventArgs e)
+    {
+        selectedPosterFile = e.File;
     }
 
     // Data provider method for retrieving movies
