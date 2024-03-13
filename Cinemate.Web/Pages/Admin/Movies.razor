@@ -95,6 +95,8 @@
                             }
                         </InputSelect>
                         <ValidationMessage For="@(() => movieDto.MovieCategoryId)"/>
+                        @* <RadzenLabel Text="Movie category" /> *@
+                        @* <RadzenDropDown @bind-Value="@movieDto.MovieCategoryId" Data="AllCategoryDtos" TextProperty="Name" ValueProperty="Id" /> *@
                     </div>
 
                     <div class="mb-3">
@@ -228,7 +230,7 @@
     // Method called when the file changes
     private async Task OnScreenshotFileChange(InputFileChangeEventArgs e)
     {
-        selectedPosterFile = e.File;
+        selectedScreenshotFile = e.File;
     }
 
     // Data provider method for retrieving movies

@@ -117,7 +117,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
             new Movie
             {
                 Id = 8,
-                Title = "Oppenheimer (3D)",
+                Title = "Oppenheimer",
                 Description = "Het verhaal van de ontwikkeling van de atoombom door het Manhattan Project tijdens de Tweede Wereldoorlog, en de complexe interpersoonlijke relaties van de briljante maar gebrekkige mannen die het ontwikkelden.",
                 Duration = 120,
                 ReleaseYear = 2023,
@@ -127,12 +127,12 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Cast = "Cillian Murphy, Robert Downey Jr., Emily Blunt",
                 Review = (decimal)8.5,
                 Kijkwijzers = "12 Jaar, Geweld",
-                ThreeDimensional = true
+                ThreeDimensional = false
             },
             new Movie
             {
                 Id = 10,
-                Title = "Oppenheimer",
+                Title = "Oppenheimer (3D)",
                 Description = "Het verhaal van de ontwikkeling van de atoombom door het Manhattan Project tijdens de Tweede Wereldoorlog, en de complexe interpersoonlijke relaties van de briljante maar gebrekkige mannen die het ontwikkelden.",
                 Duration = 120,
                 ReleaseYear = 2023,

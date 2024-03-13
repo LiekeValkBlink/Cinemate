@@ -56,7 +56,7 @@ public class MovieController: ControllerBase
         
 
         // Construct the URL to access the uploaded image
-        var imageUrl = $"{Request.Scheme}://{Request.Host}/Images/{fileName}";
+        var imageUrl = $"{Request.Scheme}://{Request.Host}/Images/screenshots/{fileName}";
 
         return Ok(imageUrl);
     }
