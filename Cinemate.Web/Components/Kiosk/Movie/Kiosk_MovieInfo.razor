@@ -1,5 +1,8 @@
 @using Cinemate.Models.Dto
+@using Cinemate.Models.Enum
+
 @inject ISelectedMovieService SelectedMovieService
+
 
 <img class="movie-img-container" src="@(selectedMovie?.MovieScreenshotUrl)" alt="Movie screenshot" />
 
@@ -7,12 +10,25 @@
 
 <div class="movie-details-primary">
     <div class="mpa-rating">
-        <img class="mpa-icon" src="/images/kijkwijzer-6.svg" alt="Kijkwijzer - leeftijd 6"/>
-        <img class="mpa-icon" src="/images/kijkwijzer-eng.svg" alt="Kijkwijzer - eng"/>
-        <img class="mpa-icon" src="/images/kijkwijzer-geweld.svg" alt="Kijkwijzer - geweld"/>
+        @if (selectedMovie?.Kijkwijzers != null)
+        {
+            foreach (var kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
+            {
+                if (selectedMovie.Kijkwijzers.Contains(kijkwijzer.ToString()))
+                {
+                    var safeFileName = GetSafeFileName(kijkwijzer.ToString());
+                    var imagePath = $"/images/kijkwijzer-{safeFileName}.svg";
+
+                    // Gebruik relatief pad naar de afbeelding
+                    <img class="mpa-icon" src="@imagePath" alt="Kijkwijzer - @kijkwijzer" />
+                }
+            }
+        }
     </div>
-    <p class="movie-duration">@(selectedMovie?.Duration) minuten</p>
+    <p class="movie-duration">@selectedMovie?.Duration Minuten</p>
 </div>
+
+
 
 <p>@(selectedMovie?.Description)</p>
 
@@ -76,5 +92,34 @@
     protected override async Task OnInitializedAsync()
     {
         selectedMovie = await SelectedMovieService.GetSelectedMovieAsync();
+    }
+
+
+
+
+
+}
+ @functions {
+    public string GetSafeFileName(string input)
+    {
+        return input.ToLower()
+                    .Replace(" ", "-")
+                    .Replace("/", "-")
+                    .Replace("&", "")
+                    .Replace("é", "e")
+                    .Replace("ë", "e")
+                    .Replace("(", "")
+                    .Replace(")", "")
+                    .Replace("ó", "o")
+                    .Replace("ö", "o")
+                    .Replace("ü", "u")
+                    .Replace(" ", "")
+                    .Replace("geweldseks", "geweld-seks")
+                    .Replace("grofgeweld", "grof-geweld")
+                    .Replace("zelfdoding", "zelf-doding")
+                    .Replace("drugsenalcoholgebruik", "drugs-en-alcoholgebruik")
+                    .Replace("groftaalgebruik", "grof-taalgebruik")
+                    .Replace(" ", "-")
+                    .Replace("en/of", "en-of");
     }
 }
