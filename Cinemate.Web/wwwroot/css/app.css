@@ -92,3 +92,8 @@ input.form-control {
 input#DatePickerWithTime {
     color: black !important;
 }
+
+.form-select option, .rz-calendar input, .rz-spinner input {
+    color: black !important;
+}
+
