@@ -1,7 +1,9 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Models.Enum
-
+@using Cinemate.Web.Services.Contracts
 @inject ISelectedMovieService SelectedMovieService
+
+
 
 
 <img class="movie-img-container" src="@(selectedMovie?.MovieScreenshotUrl)" alt="Movie screenshot" />
@@ -39,7 +41,8 @@
             <p>Bij Cinemate vanaf</p>
         </td>
         <td>
-            <p>Woensdag 22 november 2023</p>
+                <p>@(nextScreeningDateTime != null ? FormatDate(nextScreeningDateTime.Value) : "Nog geen voorstellingen beschikbaar")</p>
+
         </td>
     </tr>
     <tr>
@@ -66,6 +69,14 @@
                 <p>@(selectedMovie?.ReleaseYear)</p>
         </td>
     </tr>
+        <tr>
+            <td>
+                <p>Land van uitgave</p>
+            </td>
+            <td>
+                <p>@(selectedMovie?.ReleaseCountry)</p>
+            </td>
+        </tr>
     <tr>
         <td>
             <p>Regisseur</p>
@@ -92,10 +103,43 @@
     protected override async Task OnInitializedAsync()
     {
         selectedMovie = await SelectedMovieService.GetSelectedMovieAsync();
+        AllScreenings = await ScreeningService?.GetAllScreenings();
+
+        FindNextScreening();
     }
 
 
+    public string FormatDate(DateTime date)
+    {
+        return date.ToString("dddd d MMMM yyyy");
+    }
+}
 
+
+@code {
+    //code om eerste screening datetime op te halen
+    [Inject] public IScreeningService? ScreeningService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+
+    private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
+
+        DateTime? nextScreeningDateTime;
+
+        private void FindNextScreening()
+        {
+            var screeningsForMovie = AllScreenings.Where(screening => screening.MovieId == selectedMovie.Id);
+            var sortedScreenings = screeningsForMovie.OrderBy(screening => screening.MovieStart);
+            var nextScreening = sortedScreenings.FirstOrDefault();
+            if (nextScreening != null)
+            {
+                nextScreeningDateTime = nextScreening.MovieStart;
+            }
+            else
+            {
+                nextScreeningDateTime = null; 
+            }
+
+    }
 
 
 }
