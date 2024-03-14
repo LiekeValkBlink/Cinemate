@@ -10,6 +10,8 @@ public interface IMovieService
     Task<MovieWithCategoryDto> AddMovie(MovieDto movieDto);
     Task<MovieWithCategoryDto> UpdateMovie(MovieDto movieDto);
     Task DeleteMovie(int id);
-    Task UploadMovieImage(IBrowserFile file, int movieId);
+    Task UploadMoviePosterImage(IBrowserFile file, int movieId);
+    Task UploadMovieScreenShotImage(IBrowserFile file, int movieId);
+    
 
 }
