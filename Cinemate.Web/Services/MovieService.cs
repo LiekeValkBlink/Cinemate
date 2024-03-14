@@ -10,7 +10,6 @@ namespace Cinemate.Web.Services;
 public class MovieService: IMovieService
 {
     private readonly HttpClient _httpClient;
-    private IMovieService _movieServiceImplementation;
 
     public MovieService(HttpClient httpClient)
     {
@@ -25,18 +24,15 @@ public class MovieService: IMovieService
             
             if (response.IsSuccessStatusCode)
             {
-                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                if (response.StatusCode == HttpStatusCode.NoContent)
                 {
                     return Enumerable.Empty<MovieWithCategoryDto>();
                 }
 
                 return await response.Content.ReadFromJsonAsync<IEnumerable<MovieWithCategoryDto>>();
             }
-            else
-            {
-                var message = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Http status code: {response.StatusCode} message: {message}");
-            }
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Http status code: {response.StatusCode} message: {message}");
         }
         catch (Exception e)
         {
@@ -55,11 +51,8 @@ public class MovieService: IMovieService
             {
                 return await response.Content.ReadFromJsonAsync<MovieWithCategoryDto>();
             }
-            else
-            {
-                var message = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Http status code: {response.StatusCode} message: {message}");
-            }
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Http status code: {response.StatusCode} message: {message}");
         }
         catch (Exception e)
         {
@@ -78,11 +71,8 @@ public class MovieService: IMovieService
             {
                 return await response.Content.ReadFromJsonAsync<MovieWithCategoryDto>();
             }
-            else
-            {
-                var message = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Http status code: {response.StatusCode} message: {message}");
-            }
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Http status code: {response.StatusCode} message: {message}");
         }
         catch (Exception e)
         {
@@ -101,11 +91,8 @@ public class MovieService: IMovieService
             {
                 return await response.Content.ReadFromJsonAsync<MovieWithCategoryDto>();
             }
-            else
-            {
-                var message = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Http status code: {response.StatusCode} message: {message}");
-            }
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Http status code: {response.StatusCode} message: {message}");
         }
         catch (Exception e)
         {
@@ -133,7 +120,7 @@ public class MovieService: IMovieService
         }
     }
 
-    public async Task UploadMovieImage(IBrowserFile file, int movieId)
+    public async Task UploadMoviePosterImage(IBrowserFile file, int movieId)
     {
         if (file != null)
         {
@@ -154,7 +141,38 @@ public class MovieService: IMovieService
             multipartContent.Add(fileContent, "file", fileName);
         
             // Send the file to the server
-            var response = await _httpClient.PostAsync($"api/Movie/image", multipartContent);
+            var response = await _httpClient.PostAsync($"api/Movie/image/poster", multipartContent);
+        
+            if (!response.IsSuccessStatusCode)
+            {
+                var message = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Failed to upload image: {message}");
+            }
+        }
+    }
+    
+    public async Task UploadMovieScreenShotImage(IBrowserFile file, int movieId)
+    {
+        if (file != null)
+        {
+            // Convert the IBrowserFile to a byte array
+            using var memoryStream = new MemoryStream();
+            await file.OpenReadStream().CopyToAsync(memoryStream);
+            var fileBytes = memoryStream.ToArray();
+
+            // Create the new file name
+            var fileName = $"movie-screenshot_{movieId}_image.jpg";
+        
+            // Create a ByteArrayContent from the byte array
+            var fileContent = new ByteArrayContent(fileBytes);
+            fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.ContentType);
+        
+            // Create a multipart form content to send the file
+            var multipartContent = new MultipartFormDataContent();
+            multipartContent.Add(fileContent, "file", fileName);
+        
+            // Send the file to the server
+            var response = await _httpClient.PostAsync($"api/Movie/image/screenshot", multipartContent);
         
             if (!response.IsSuccessStatusCode)
             {

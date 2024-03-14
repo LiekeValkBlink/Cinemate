@@ -39,7 +39,9 @@ public class MovieService : IMovieService
                 Cast = movie.Cast,
                 Review = movie.Review,
                 Kijkwijzers = movie.Kijkwijzers,
-                MovieCategoryDescription = category.Name
+                MovieCategoryDescription = category.Name,
+                ReleaseCountry = movie.ReleaseCountry,
+                ThreeDimensional = movie.ThreeDimensional
             }
         ).ToListAsync();
         //Map the return value to a DTO
@@ -66,7 +68,9 @@ public class MovieService : IMovieService
                     Cast = movie.Cast,
                     Review = movie.Review,
                     Kijkwijzers = movie.Kijkwijzers,
-                    MovieCategoryDescription = category.Name
+                    MovieCategoryDescription = category.Name,
+                    ReleaseCountry = movie.ReleaseCountry,
+                    ThreeDimensional = movie.ThreeDimensional
                 })
             .FirstOrDefaultAsync();
 
@@ -101,7 +105,9 @@ public class MovieService : IMovieService
                     Cast = m.Cast,
                     Review = m.Review,
                     Kijkwijzers = m.Kijkwijzers,
-                    MovieCategoryDescription = c.Name
+                    MovieCategoryDescription = c.Name,
+                    ReleaseCountry = m.ReleaseCountry,
+                    ThreeDimensional = m.ThreeDimensional
                 })
             .FirstOrDefaultAsync();
 
@@ -129,6 +135,8 @@ public class MovieService : IMovieService
         movieToUpdate.Cast = request.Cast;
         movieToUpdate.Review = request.Review;
         movieToUpdate.Kijkwijzers = request.Kijkwijzers;
+        movieToUpdate.ReleaseCountry = request.ReleaseCountry;
+        movieToUpdate.ThreeDimensional = request.ThreeDimensional;
         
         await _dbContext.SaveChangesAsync();
         
@@ -143,7 +151,9 @@ public class MovieService : IMovieService
             Director = movieToUpdate.Director,
             Cast = movieToUpdate.Cast,
             Review = movieToUpdate.Review,
-            Kijkwijzers = movieToUpdate.Kijkwijzers
+            Kijkwijzers = movieToUpdate.Kijkwijzers,
+            ReleaseCountry = movieToUpdate.ReleaseCountry,
+            ThreeDimensional = movieToUpdate.ThreeDimensional
         };
 
     }

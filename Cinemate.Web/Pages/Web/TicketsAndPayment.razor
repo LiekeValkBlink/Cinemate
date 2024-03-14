@@ -64,7 +64,7 @@
                     }
                 </td>
                 <td>
-                    <h3>€@TotalPrice</h3>
+                    <h3>€@FinalPrice</h3>
                 </td>
             </tr>
         </table>
@@ -107,7 +107,7 @@
     private List<string> TicketTypes = ["Normaal", "Kinder korting", "65 Plus", "Studentenkorting"];
     private bool PopcornSelected { get; set; }
     private decimal BasePrice = (decimal)8.5;
-    private decimal TotalPrice { get; set; }
+    private decimal FinalPrice { get; set; }
     private int NumOfSeats { get; set; }
     private List<int> PromoCodes = [];
 
@@ -132,12 +132,12 @@
                 PreReservationDto = await ReservationService.GetLocalPreReservation();
                 NumOfSeats = PreReservationDto.SeatId.Count;
                 ScreeningWithInfoDto = await ScreeningService.GetScreening(PreReservationDto.ScreeningId);
-                TotalPrice = BasePrice * PreReservationDto.SeatId.Count;
+                FinalPrice = BasePrice * PreReservationDto.SeatId.Count;
                 break;
             case true:
                 SecretMoviePreReservation = await ReservationService.GetLocalSecretMoviePreReservation();
                 BasePrice = (decimal)6.50;
-                TotalPrice = BasePrice;
+                FinalPrice = BasePrice;
                 PromoCodes.Add(1);
                 break;
         }
@@ -171,7 +171,7 @@
                     {
                         Paid = true,
                         PaymentType = "iDeal",
-                        Price = TotalPrice,
+                        Price = FinalPrice,
                         PromoCode = PromoCodes,
                         ScreeningId = PreReservationDto.ScreeningId,
                         SeatId = PreReservationDto.SeatId,
@@ -193,7 +193,7 @@
                     {
                         Paid = true,
                         PaymentType = "iDeal",
-                        Price = TotalPrice,
+                        Price = FinalPrice,
                         PromoCode = PromoCodes,
                         ScreeningId = SecretMoviePreReservation.ScreeningId,
                         SeatId = seats,
@@ -219,41 +219,34 @@
     private void OnTicketTypeChange()
     {
         Console.WriteLine(TicketType);
+        FinalPrice = BasePrice; // Reset total price to base price
+
         if (!SecretMovie)
         {
             switch (TicketType)
             {
                 case "Normaal":
-                    TotalPrice = BasePrice;
+                    FinalPrice *= PreReservationDto.SeatId.Count; // Multiply by number of seats
                     break;
                 case "Kinder korting":
-                    TotalPrice = (BasePrice - (decimal)1.5) * PreReservationDto.SeatId.Count;
-                    break;
                 case "65 Plus":
-                    TotalPrice = (BasePrice - (decimal)1.5) * PreReservationDto.SeatId.Count;
-                    break;
                 case "Studentenkorting":
-                    TotalPrice = (BasePrice - (decimal)1.5) * PreReservationDto.SeatId.Count;
+                    FinalPrice = FinalPrice * PreReservationDto.SeatId.Count - (decimal)1.5 * PreReservationDto.SeatId.Count; // Apply discount
                     break;
             }
 
             if (PopcornSelected)
             {
-                TotalPrice += ((decimal)2.5 * PreReservationDto.SeatId.Count);
+                FinalPrice += (decimal)2.5 * PreReservationDto.SeatId.Count; // Add popcorn price per seat
             }
         }
         else
         {
             if (PopcornSelected)
             {
-                TotalPrice += (decimal)2.5;
-            }
-            else
-            {
-                TotalPrice = BasePrice;
+                FinalPrice += (decimal)2.5; // Add popcorn price once
             }
         }
-
     }
 
     private void GoBack()
