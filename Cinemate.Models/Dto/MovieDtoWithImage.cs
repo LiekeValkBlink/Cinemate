@@ -17,6 +17,8 @@ public class MovieDtoImage
     public string Kijkwijzers { get; set; }
     public string? MoviePosterUrl { get; set; }
     public string? MovieScreenshotUrl { get; set; }
+    public string ReleaseCountry { get; set; }
+    public bool ThreeDimensional { get; set; }
 
 
 }

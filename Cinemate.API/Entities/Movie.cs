@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinemate.API.Entities;
@@ -19,6 +20,9 @@ public class Movie
 
     [Column("release_year")]
     public int ReleaseYear { get; set; }
+    
+    [Column("release_country")]
+    public string ReleaseCountry { get; set; }
 
     [Column("movie_category_id")]
     public int MovieCategoryId { get; set; }
@@ -34,6 +38,9 @@ public class Movie
     
     [Column("kijkwijzers")]
     public string Kijkwijzers { get; set; }
+    
+    [Column("three_dimensional")]
+    public bool ThreeDimensional {get; set; }
     
 
     public MovieCategory MovieCategory { get; set; }
