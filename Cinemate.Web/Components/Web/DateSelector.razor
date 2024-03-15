@@ -10,9 +10,9 @@
     // Functie om toekomstige datums op te halen
     private IEnumerable<DateTime> GetFutureDates()
     {
-        var today = DateTime.Now;
+        var today = GetPreviousWeekday(DayOfWeek.Thursday);
         var futureDates = new List<DateTime>();
-
+        futureDates.Add(today);
         for (int i = 1; i < 7; i++)
         {
             futureDates.Add(today.AddDays(i));
@@ -20,6 +20,48 @@
 
         return futureDates;
     }
+
+    // Functie om de datums van de vorige week op te halen
+    private IEnumerable<DateTime> GetPreviousWeekDates()
+    {
+        var today = DateTime.Today;
+        var previousThursday = GetPreviousWeekday(DayOfWeek.Thursday, today);
+        var previousWeekDates = new List<DateTime>();
+        for (int i = -6; i <= 0; i++)
+        {
+            previousWeekDates.Add(previousThursday.AddDays(i));
+        }
+        return previousWeekDates;
+    }
+
+    // Functie om de datums van de volgende week op te halen
+    private IEnumerable<DateTime> GetNextWeekDates()
+    {
+        var today = DateTime.Today;
+        var nextThursday = GetNextWeekday(DayOfWeek.Thursday, today);
+        var nextWeekDates = new List<DateTime>();
+        for (int i = 0; i < 7; i++)
+        {
+            nextWeekDates.Add(nextThursday.AddDays(i));
+        }
+        return nextWeekDates;
+    }
+
+    // Hulpfunctie om de vorige weekdag op te halen
+    private DateTime GetPreviousWeekday(DayOfWeek day, DateTime from)
+    {
+        int daysToAdd = ((int)day - (int)from.DayOfWeek + 7) % 7;
+        return from.AddDays(-daysToAdd);
+    }
+
+    // Hulpfunctie om de volgende weekdag op te halen
+    private DateTime GetNextWeekday(DayOfWeek day, DateTime from)
+    {
+        int daysToAdd = ((int)day - (int)from.DayOfWeek + 7) % 7;
+        return from.AddDays(daysToAdd);
+    }
+
+
 
     private async Task SelectDate(DateTime selectedDate)
     {
@@ -41,20 +83,76 @@
         }
 
     }
+    // deze code haalt de datum van vorige donderdag op
+    public DateTime GetPreviousWeekday(DayOfWeek day)
+    {
+        DateTime today = DateTime.Today;
+        int daysUntilTarget = ((int)today.DayOfWeek - (int)day + 7) % 7;
+        return today.AddDays(-daysUntilTarget);
+    }
 
+    private void PreviousWeekButton_Click(object sender, EventArgs e)
+    {
+        var previousWeekDates = GetPreviousWeekDates();
+        // Gebruik previousWeekDates zoals nodig
+    }
 
+    private void NextWeekButton_Click(object sender, EventArgs e)
+    {
+        var nextWeekDates = GetNextWeekDates();
+        // Gebruik nextWeekDates zoals nodig
+    }
+
+    int selectedWeek = 0;
+
+    // Functie om de datums voor de geselecteerde week op te halen
+    private IEnumerable<DateTime> GetSelectedWeekDates()
+    {
+        switch (selectedWeek)
+        {
+            case -1:
+                return GetPreviousWeekDates(); // Vorige week
+            case 0:
+                return GetFutureDates(); // Huidige week
+            case 1:
+                return GetNextWeekDates(); // Volgende week
+            default:
+                return Enumerable.Empty<DateTime>(); // Geen geselecteerde week
+        }
+    }
+
+    private void PreviousWeekButton_Click()
+    {
+        selectedWeek -= 1; // Vorige week
+    }
+
+    private void NextWeekButton_Click()
+    {
+        selectedWeek += 1; // Volgende week
+    }
+    // Variabele om bij te houden of een datum vandaag is
+    private bool IsToday(DateTime date)
+    {
+        return date.Date == DateTime.Today;
+    }
+   
 }
 
-
-
 <div class="date-selector-container">
-    <button class="date-container @(selectedDate == DateTime.Now ? "selected" : "")" @onclick="() => SelectDate(DateTime.Now)">
-        VANDAAG
-    </button>
-    @foreach (var date in GetFutureDates())
+    <button class="move-container" @onclick="PreviousWeekButton_Click">Vorige</button>
+
+    @foreach (var date in GetSelectedWeekDates())
     {
-        <button class="date-container" @onclick="() => SelectDate(date)">
-            @date.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"))
+        string buttonText = date.Date == DateTime.Today ? "VANDAAG" : date.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"));
+        bool isToday = date.Date == DateTime.Today;
+        bool isSelected = selectedDate == date;
+
+        Console.WriteLine($"Datum: {date}, isSelected: {isSelected}"); // Controle
+
+        <button class="date-container @(isSelected ? "selected" : "") @(isToday ? "date-today" : "")" @onclick="() => SelectDate(date)">
+            @buttonText
         </button>
     }
+
+    <button class="move-container" @onclick="NextWeekButton_Click">Volgende</button>
 </div>
