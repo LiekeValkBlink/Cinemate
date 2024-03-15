@@ -15,7 +15,7 @@
 
     [Inject] public IScreeningService? ScreeningService { get; set; }
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
-    
+
 
     private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
     private IEnumerable<ScreeningWithInfoDto>? FilteredScreenings { get; set; }

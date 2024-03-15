@@ -14,12 +14,15 @@
     <div class="mpa-rating">
         @if (selectedMovie?.Kijkwijzers != null)
         {
+
             foreach (var kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
             {
+ 
                 if (selectedMovie.Kijkwijzers.Contains(kijkwijzer.ToString()))
                 {
                     var safeFileName = GetSafeFileName(kijkwijzer.ToString());
-                    var imagePath = $"/images/kijkwijzer-{safeFileName}.svg";
+
+                    var imagePath = $"/images/kijkwijzer/kijkwijzer-{safeFileName}.svg";
 
                     // Gebruik relatief pad naar de afbeelding
                     <img class="mpa-icon" src="@imagePath" alt="Kijkwijzer - @kijkwijzer" />
@@ -161,8 +164,8 @@
                     .Replace("geweldseks", "geweld-seks")
                     .Replace("grofgeweld", "grof-geweld")
                     .Replace("zelfdoding", "zelf-doding")
-                    .Replace("drugsenalcoholgebruik", "drugs-en-alcoholgebruik")
-                    .Replace("groftaalgebruik", "grof-taalgebruik")
+                    .Replace("drugsenalcoholgebruik", "drugsenalcoholgebruik")
+                    .Replace("groftaalgebruik", "GrofTaalgebruik")
                     .Replace(" ", "-")
                     .Replace("en/of", "en-of");
     }
