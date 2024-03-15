@@ -11,14 +11,38 @@
         background-color: unset;
         border: none;
         
-        &:hover, :active {
+        &:hover, :active, :focus {
             background-color: var(--bright-purple);
             border-radius: 4px;
         }
+
     }
+
+& button.move-container {
+    cursor: pointer;
+    padding: 1rem;
+    color: black;
+    background-color: #f8e6fc;
+    border: none;
+    &:hover, :active
+
+{
+    background-color: var(--bright-purple);
+    border-radius: 4px;
+}
+
+
+
+}
 
 }
 .date-selector-container button.date-container.selected {
     background-color: var(--bright-purple);
     border-radius: 4px;
+}
+
+.date-selector-container button.date-container.date-today {
+    background-color: none;
+    border-radius: 4px;
+    color: cyan
 }
