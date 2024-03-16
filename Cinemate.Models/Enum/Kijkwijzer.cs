@@ -77,7 +77,7 @@ public static class KijkwijzerHelper
         return descriptions;
     }
 
-    private static string GetDescription(Kijkwijzer value)
+    public static string GetDescription(Kijkwijzer value)
     {
         var fieldInfo = value.GetType().GetField(value.ToString());
         var attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);

@@ -147,7 +147,7 @@
         bool isToday = date.Date == DateTime.Today;
         bool isSelected = selectedDate == date;
 
-        Console.WriteLine($"Datum: {date}, isSelected: {isSelected}"); // Controle
+        //Console.WriteLine($"Datum: {date}, isSelected: {isSelected}"); // Controle
 
         <button class="date-container @(isSelected ? "selected" : "") @(isToday ? "date-today" : "")" @onclick="() => SelectDate(date)">
             @buttonText
