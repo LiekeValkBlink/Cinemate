@@ -15,17 +15,19 @@
         @if (selectedMovie?.Kijkwijzers != null)
         {
 
-            foreach (var kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
+            foreach (var description in descriptions)
             {
- 
-                if (selectedMovie.Kijkwijzers.Contains(kijkwijzer.ToString()))
-                {
-                    var safeFileName = GetSafeFileName(kijkwijzer.ToString());
 
+                if (selectedMovie.Kijkwijzers.Contains(description))
+                {
+                    Console.WriteLine(description);
+                    var safeFileName = GetSafeFileName(description);
+                    Console.WriteLine(safeFileName);
                     var imagePath = $"/images/kijkwijzer/kijkwijzer-{safeFileName}.svg";
+                    Console.WriteLine(imagePath);
 
                     // Gebruik relatief pad naar de afbeelding
-                    <img class="mpa-icon" src="@imagePath" alt="Kijkwijzer - @kijkwijzer" />
+                    <img class="mpa-icon" src="@imagePath" alt="Kijkwijzer - @description" />
                 }
             }
         }
@@ -123,6 +125,7 @@
     //code om eerste screening datetime op te halen
     [Inject] public IScreeningService? ScreeningService { get; set; }
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
+    IList<string> descriptions = KijkwijzerHelper.GetAllDescriptions();
 
     private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
 
@@ -150,23 +153,30 @@
     public string GetSafeFileName(string input)
     {
         return input.ToLower()
-                    .Replace(" ", "-")
-                    .Replace("/", "-")
-                    .Replace("&", "")
-                    .Replace("é", "e")
-                    .Replace("ë", "e")
-                    .Replace("(", "")
-                    .Replace(")", "")
-                    .Replace("ó", "o")
-                    .Replace("ö", "o")
-                    .Replace("ü", "u")
-                    .Replace(" ", "")
-                    .Replace("geweldseks", "geweld-seks")
-                    .Replace("grofgeweld", "grof-geweld")
-                    .Replace("zelfdoding", "zelf-doding")
-                    .Replace("drugsenalcoholgebruik", "drugsenalcoholgebruik")
-                    .Replace("groftaalgebruik", "GrofTaalgebruik")
-                    .Replace(" ", "-")
-                    .Replace("en/of", "en-of");
+            .Replace("Drugs- en/of alcoholgebruik", "drugsenalcoholgebruik")
+            .Replace("/", "-")
+            .Replace("&", "")
+            .Replace("é", "e")
+            .Replace("ë", "e")
+            .Replace("(", "")
+            .Replace(")", "")
+            .Replace("ó", "o")
+            .Replace("ö", "o")
+            .Replace("ü", "u")
+            .Replace("geweldseks", "geweld-seks")
+            .Replace("grofgeweld", "grof-geweld")
+            .Replace("zelfdoding", "zelf-doding")
+            .Replace("Alle leeftijden", "alleleeftijden")
+            .Replace("Angst", "angst")
+            .Replace("Discriminatie", "discriminatie")
+
+            .Replace("Geweld", "geweld")
+            .Replace("Grof taalgebruik", "groftaalgebruik")
+            .Replace("Seks", "seks")
+            .Replace("12 jaar", "twaalfjaar")
+            .Replace("16 jaar", "zestienjaar")
+            .Replace("6 jaar", "zesjaar")
+            .Replace(" ", "");
+
     }
 }

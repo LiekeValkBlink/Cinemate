@@ -21,7 +21,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Paul King",
                 Cast = "Timothée Chalamet, Keegan-Michael Key, Michael B. Jordan",
                 Review = (decimal)7.1,
-                Kijkwijzers = "ZesJaar, GrofTaalgebruik",
+                Kijkwijzers = "6 jaar, Grof taalgebruik",
                 ThreeDimensional = false
             },
             new Movie
@@ -36,7 +36,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "James Cameron",
                 Cast = "Sam Worthington, Zoe Saldana, Sigourney Weaver",
                 Review = (decimal)7.8,
-                Kijkwijzers = "AlleLeeftijden, ZesJaar,TwaalfJaar,ZestienJaar,Geweld,Angst,GrofTaalgebruik,Discriminatie,DrugsEnAlcoholgebruik,Seks",
+                Kijkwijzers = "Alle leeftijden, 6 jaar,12 jaar,16 jaar,Geweld,Angst,Grof taalgebruik,Discriminatie,Drugs- en/of alcoholgebruik,Seks",
                 ThreeDimensional = false
             },
             new Movie
@@ -51,7 +51,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Chris Buck, Jennifer Lee",
                 Cast = "Kristen Bell, Idina Menzel, Josh Gad",
                 Review = (decimal)7.0,
-                Kijkwijzers = "ZesJaar, GrofTaalgebruik",
+                Kijkwijzers = "6 jaar, Grof taalgebruik",
                 ThreeDimensional = false
             },
             new Movie
@@ -66,7 +66,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Gary Ross",
                 Cast = "Jennifer Lawrence, Josh Hutcherson, Liam Hemsworth",
                 Review = (decimal)7.2,
-                Kijkwijzers = "TwaalfJaar, Geweld, Angst",
+                Kijkwijzers = "12 jaar, Geweld, Angst",
                 ThreeDimensional = false
             },
             new Movie
@@ -81,7 +81,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Dexter Fletcher",
                 Cast = "Daniel Radcliffe, Jodie Foster, Chiwetel Ejiofor",
                 Review = (decimal)6.8,
-                Kijkwijzers = "ZesJaar, GrofTaalgebruik",
+                Kijkwijzers = "6 jaar, Grof taalgebruik",
                 ThreeDimensional = false
             },
             new Movie
@@ -96,7 +96,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Josie Day",
                 Cast = "Brittany Bristow, Jordan Dean, Taveeta Szymanowicz",
                 Review = (decimal)6.5,
-                Kijkwijzers = "AlleLeeftijden",
+                Kijkwijzers = "Alle leeftijden",
                 ThreeDimensional = false
             },
             new Movie
@@ -111,7 +111,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Joaquim Dos Santos, Kemp Powers",
                 Cast = "Shameik Moore, Hailee Steinfeld, Jake Johnson",
                 Review = (decimal)8.0,
-                Kijkwijzers = "TwaalfJaar, Geweld",
+                Kijkwijzers = "12 jaar, Geweld",
                 ThreeDimensional = false
             },
             new Movie
@@ -126,7 +126,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Christopher Nolan",
                 Cast = "Cillian Murphy, Robert Downey Jr., Emily Blunt",
                 Review = (decimal)8.5,
-                Kijkwijzers = "TwaalfJaar, Geweld",
+                Kijkwijzers = "12 jaar, Geweld",
                 ThreeDimensional = false
             },
             new Movie
@@ -141,7 +141,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Christopher Nolan",
                 Cast = "Cillian Murphy, Robert Downey Jr., Emily Blunt",
                 Review = (decimal)8.5,
-                Kijkwijzers = "TwaalfJaar, Geweld",
+                Kijkwijzers = "12 jaar, Geweld",
                 ThreeDimensional = false
             },
             new Movie
@@ -156,7 +156,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "Greta Gerwig",
                 Cast = "Margot Robbie",
                 Review = (decimal)7.5,
-                Kijkwijzers = "AlleLeeftijden",
+                Kijkwijzers = "Alle leeftijden",
                 ThreeDimensional = false
             }
         );
