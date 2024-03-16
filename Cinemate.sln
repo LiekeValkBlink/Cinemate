@@ -10,6 +10,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinemate.Models", "Cinemate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinemate.EmailSender", "Cinemate.EmailSender\Cinemate.EmailSender.csproj", "{1E03F684-B234-4EED-BC74-DFC235A4C9E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinemate.API.Tests", "Cinemate.API.Tests\Cinemate.API.Tests.csproj", "{3BB93344-1E08-4973-A92C-B4F28E228402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinemate.EmailSender.Tests", "Cinemate.EmailSender.Tests\Cinemate.EmailSender.Tests.csproj", "{72F72333-A7E3-4C2A-A31F-9705930D5AFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinemate.Web.Tests", "Cinemate.Web.Tests\Cinemate.Web.Tests.csproj", "{A4D26ADC-A287-4809-A1F3-D1F748CE5797}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +38,18 @@ Global
 		{1E03F684-B234-4EED-BC74-DFC235A4C9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E03F684-B234-4EED-BC74-DFC235A4C9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E03F684-B234-4EED-BC74-DFC235A4C9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BB93344-1E08-4973-A92C-B4F28E228402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BB93344-1E08-4973-A92C-B4F28E228402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BB93344-1E08-4973-A92C-B4F28E228402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BB93344-1E08-4973-A92C-B4F28E228402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F72333-A7E3-4C2A-A31F-9705930D5AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F72333-A7E3-4C2A-A31F-9705930D5AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F72333-A7E3-4C2A-A31F-9705930D5AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F72333-A7E3-4C2A-A31F-9705930D5AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4D26ADC-A287-4809-A1F3-D1F748CE5797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D26ADC-A287-4809-A1F3-D1F748CE5797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D26ADC-A287-4809-A1F3-D1F748CE5797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D26ADC-A287-4809-A1F3-D1F748CE5797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
