@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,6 +13,7 @@
         <PackageReference Include="BlazorSpinner" Version="1.5.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.3" />
         <PackageReference Include="Radzen.Blazor" Version="4.25.7" />
         <PackageReference Include="Syncfusion.Blazor.BarcodeGenerator" Version="24.2.8" />
     </ItemGroup>
@@ -42,6 +44,24 @@
     <ItemGroup>
       <AdditionalFiles Include="Pages\Web\Home.razor" />
       <AdditionalFiles Include="Pages\Web\SeatReservation.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Resources\en-US.Designer.cs" />
+      <Content Include="Resources\en-US.resx" />
+      <Content Include="Resources\NL.Designer.cs" />
+      <Content Include="Resources\NL.resx" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="resources\en-US.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>en-US.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="resources\NL.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>NL.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>

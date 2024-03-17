@@ -4,30 +4,32 @@
 @using Microsoft.AspNetCore.WebUtilities
 @using Cinemate.Models.Dto
 @inject SpinnerService _spinnerService
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<TicketsAndPayment> Localizer
 
 <EditForm Model="AddReservationDto" OnValidSubmit="@HandleValidSubmit">
 <div class="tickets-and-payment-container">
     
     <div class="col">
-        <h2>Jouw gegevens</h2>
-        <p>Velden met een * zijn verplicht!</p>
+        <h2>@Localizer["Jouw gegevens"]</h2>
+        <p>@Localizer["Velden met een * zijn verplicht!"]</p>
         
-            <label for="first_name">Voornaam *</label>
+            <label for="first_name">@Localizer["Voornaam *"]</label>
             <InputText id="first_name" @bind-Value="FirstName" required/>
-            <label for="last_name">Achternaam *</label>
+            <label for="last_name">@Localizer["Achternaam *"]</label>
             <InputText id="last_name" @bind-Value="LastName" required/>
-            <label for="email_address">E-mailadres *</label>
+            <label for="email_address">@Localizer["E-mailadres *"]</label>
             <InputText id="email_address" @bind-Value="Email" required/>
-            <label for="email_address_redo">Herhaal e-mailadres</label>
+            <label for="email_address_redo">@Localizer["Herhaal e-mailadres"]</label>
             <InputText id="email_address_redo" @bind-Value="Email2" required/>
         
     </div>
     <div class="col">
-        <h2>Maak jouw bestelling compleet</h2>
+        <h2>@Localizer["Maak jouw bestelling compleet"]</h2>
         @if (!SecretMovie)
         {
             <form>
-                <label>Selecteer een tickettype</label>
+                <label>@Localizer["Selecteer een tickettype"]</label>
                 <RadzenDropDown @bind-Value="TicketType" Data=@TicketTypes Change="@OnTicketTypeChange" required/>
             </form> 
         }
@@ -36,21 +38,21 @@
                 <img src="images/popcorn.png"/>
             </div>
             <div class="col">
-                <h3>Popcorn arrangement</h3>
+                <h3>@Localizer["Popcorn arrangement"]</h3>
                 <br/>
-                <p>Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar €2.50!</p>
+                <p>@Localizer["Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar €2.50!"]</p>
                 <br/>
                 <form>
                     <div class="checkbox-container">
                         <RadzenCheckBox TValue="bool" @bind-Value=@PopcornSelected Change="@OnTicketTypeChange" class="checkbox"/>
-                        <p> Ik wil het popcorn arrangement</p>
+                        <p> @Localizer["Ik wil het popcorn arrangement"]</p>
                     </div>
                 </form>
             </div>
         </div>
         <br/>
         <br/>
-        <h2>Totaal</h2>
+        <h2>@Localizer["Totaal"]</h2>
         <table>
             <tr>
                 <td>
@@ -60,7 +62,7 @@
                     }
                     else
                     {
-                        <h3>@NumOfSeats x @TicketType ticket voor @ScreeningWithInfoDto.MovieName</h3>
+                        <h3>@NumOfSeats x @TicketType @Localizer["ticket voor"] @ScreeningWithInfoDto.MovieName</h3>
                     }
                 </td>
                 <td>
@@ -74,11 +76,11 @@
 <div class="page-navigation">
    <button class="secondary-btn" type="button" @onclick="GoBack">
        <i class="fa-solid fa-chevron-left"></i>
-       Terug
+       @Localizer["Terug"]
    </button>
 
    <button class="primary-btn" type="submit">
-       Bevestig je keuze
+       @Localizer["Bevestig je keuze"]
        <i class="fa-solid fa-chevron-right"></i>
    </button>
 </div>

@@ -1,10 +1,16 @@
 ﻿@page "/"
-@layout MainLayout
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Home> Localizer
 
-<PageTitle>Cinemate</PageTitle>
+
+
+  <PageTitle>Cinemate</PageTitle>
 
 <div class="home-layout-inner">
-    <h1>Nu in de bioscoop</h1>
+    <h1>@Localizer["Nu in de bioscoop"]</h1>
+
+
+
 
     <DateSelector OnDateSelected="HandleDateSelected"></DateSelector>
 
@@ -12,10 +18,14 @@
 </div>
 
 @code {
+    
     private DateTime selectedDate;
 
     private async Task HandleDateSelected(DateTime date)
     {
         selectedDate = date;
     }
+    
+
 }
+

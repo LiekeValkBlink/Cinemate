@@ -1,9 +1,13 @@
 @layout UserLayout
 @page "/seat-reservation"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SeatReservation> Localizer
+
+
 
 <div class="cinema-overview">
     <div class="movie-screen"></div>
-    <p>Filmscherm</p>
+    <p>@Localizer["Filmscherm"]</p>
 
     @foreach (var row in Enumerable.Range(0, seats.GetLength(0)))
     {
@@ -21,25 +25,25 @@
 </div>
 
 <div class="legenda-container">
-    <div class="seat" style="background-color: green;"></div><p>Vrij</p>
-    <div class="seat" style="background-color: yellow;"></div><p>Gekozen</p>
-    <div class="seat" style="background-color: red;"></div><p>Bezet</p>
+    <div class="seat" style="background-color: green;"></div><p>@Localizer["Vrij"]</p>
+    <div class="seat" style="background-color: yellow;"></div><p>@Localizer["Gekozen"]</p>
+    <div class="seat" style="background-color: red;"></div><p>@Localizer["Bezet"]</p>
 </div>
 
 <div class="seat-selection">
-    <label for="numberOfSeats">Aantal Kaartjes:</label>
+    <label for="numberOfSeats">@Localizer["Aantal Kaartjes:"]</label>
     <input type="number" id="numberOfSeats" @bind="numberOfSeats" />
-    <button class="primary-btn" @onclick="AssignSeats">Stoelen Toewijzen</button>
+    <button class="primary-btn" @onclick="AssignSeats">@Localizer["Stoelen Toewijzen"]</button>
 </div>
 
 <div class="page-navigation">
     <button class="secondary-btn">
         <i class="fa-solid fa-chevron-left"></i>
-        Terug
+        @Localizer["Terug"]
     </button>
 
     <button class="primary-btn">
-        Bevestig je keuze
+        @Localizer["Bevestig je keuze"]
         <i class="fa-solid fa-chevron-right"></i>
     </button>
 </div>

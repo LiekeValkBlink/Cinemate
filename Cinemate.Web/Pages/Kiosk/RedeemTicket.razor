@@ -2,33 +2,35 @@
 @page "/kiosk/RedeemTicket/{UrlTicket:int}"
 @using Cinemate.Web.Services.Contracts
 @using Cinemate.Models.Dto
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<RedeemTicket> Localizer
 @layout MainLayout
 
 <div class="container">
     @* If the user was not sent via qr code, ask them to redeem their code *@
     @if (UrlTicket == null || UrlTicket == 0)
     {
-        <h2>Tickets ophalen</h2>
+        <h2>@Localizer["Tickets ophalen"]</h2>
         <div class="ticket_form">
             <EditForm Model="RedeemedTicket" OnValidSubmit="@RedeemUserTicket">
-                <label for="ticket">Vul hier je ticketcode in:</label>
+                <label for="ticket">@Localizer["Vul hier je ticketcode in:"]</label>
                 <InputNumber id="ticket" @bind-Value="RedeemedTicket"/>
-                <button type="submit" class="primary-btn">Code verzilveren</button>
+                <button type="submit" class="primary-btn">@Localizer["Code verzilveren"]</button>
             </EditForm>
         </div>
     }
     @* After the reservation has been retreived, show a ticket for each seat *@
     @if (Reservation is not null)
     {
-        <h2>Uw tickets:</h2>
+        <h2>@Localizer["Uw tickets:"]</h2>
         @foreach (var seat in Reservation.ReservedSeats)
         {
             <div class="ticket">
                 <h3>@Reservation.MovieName</h3>
                 <h4>@Reservation.MovieStart</h4>
-                <h4>Rij @seat.Row</h4>
-                <h4>Stoel @seat.Number</h4>
-                <h4>Promo's / Arrangementen:</h4>
+                <h4>@Localizer["Rij"] @seat.Row</h4>
+                <h4>@Localizer["Stoel"] @seat.Number</h4>
+                <h4>@Localizer["Promo's / Arrangementen:"] </h4>
                 @foreach (var promoCode in Reservation.PromoCodes)
                 {
                     <ul>

@@ -4,10 +4,12 @@
 @using Cinemate.Web.Services.Contracts
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SeatReservation> Localizer
 
 <div class="cinema-overview">
     <div class="movie-screen"></div>
-    <p>Filmscherm</p>
+    <p>@Localizer["Filmscherm"]</p>
 
     @* for each row in the theater, show each seat per row *@
     @foreach (var row in _allSeats.GroupBy(s => s.Row))
@@ -26,19 +28,19 @@
 </div>
 
 <div class="legenda-container">
-    <div class="seat" style="background-color: green;"></div><p>Vrij</p>
-    <div class="seat" style="background-color: yellow;"></div><p>Gekozen</p>
-    <div class="seat" style="background-color: red;"></div><p>Bezet</p>
+    <div class="seat" style="background-color: green;"></div><p>@Localizer["Vrij"]</p>
+    <div class="seat" style="background-color: yellow;"></div><p>@Localizer["Gekozen"]</p>
+    <div class="seat" style="background-color: red;"></div><p>@Localizer["Bezet"]</p>
 </div>
 
 <div class="page-navigation">
     <button class="secondary-btn" @onclick="NavigateBack">
         <i class="fa-solid fa-chevron-left"></i>
-        Terug
+        @Localizer["Terug"]
     </button>
 
     <button class="primary-btn" @onclick="OnProceed">
-        Bevestig je keuze
+        @Localizer["Bevestig je keuze"]
         <i class="fa-solid fa-chevron-right"></i>
     </button>
 </div>

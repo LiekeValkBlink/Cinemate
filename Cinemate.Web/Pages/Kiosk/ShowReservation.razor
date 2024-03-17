@@ -1,6 +1,8 @@
 @layout UserLayout
 @page "/kiosk/show-reservation"
 @page "/kiosk/show-reservation/{movieId:int}"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Home> Localizer
 
 @using Cinemate.Models
 @using Cinemate.Models.Dto
@@ -10,7 +12,7 @@
 
 
 
-<h2>Kies een voorstelling</h2>
+<h2>@Localizer["Kies een voorstelling"]</h2>
 <Kiosk_TimeSlotSelector MovieId="movieId"></Kiosk_TimeSlotSelector>
 
 @code

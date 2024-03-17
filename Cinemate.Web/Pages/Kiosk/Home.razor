@@ -1,11 +1,13 @@
 ﻿@page "/kiosk"
 @layout MainLayout
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Home> Localizer
 
 
 <PageTitle>Cinemate</PageTitle>
 
 <div class="home-layout-inner">
-    <h1>Nu in de bioscoop</h1>
+    <h1>@Localizer["Nu in de bioscoop"]</h1>
     
     @* <Kiosk_TimeSlotSelector></Kiosk_TimeSlotSelector> *@
     
