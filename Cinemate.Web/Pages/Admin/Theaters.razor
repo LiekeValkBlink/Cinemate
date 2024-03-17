@@ -27,25 +27,23 @@
     </CardBody>
 </Card>
 
-@code {
-    [Inject] protected PreloadService PreloadService { get; set; } = default!;
-    [Inject] public ITheaterService TheaterService { get; set; }
+@code { // C# code block
+    [Inject] protected PreloadService PreloadService { get; set; } = default!; // Injected preload service
+    [Inject] public ITheaterService TheaterService { get; set; } // Injected theater service
 
-    private IEnumerable<TheaterDto> AllTheathers = default!;
+    private IEnumerable<TheaterDto> AllTheathers = default!; // Collection of all theaters
     
-    BlazorBootstrap.Grid<TheaterDto> theaterGrid = default!;
+    BlazorBootstrap.Grid<TheaterDto> theaterGrid = default!; // Reference to the theater grid
 
-    
-    private async Task<GridDataProviderResult<TheaterDto>> TheaterDataProvider(GridDataProviderRequest<TheaterDto> request)
+    private async Task<GridDataProviderResult<TheaterDto>> TheaterDataProvider(GridDataProviderRequest<TheaterDto> request) // Method to provide data to the grid
     {
-        return await Task.FromResult(request.ApplyTo(AllTheathers));
+        return await Task.FromResult(request.ApplyTo(AllTheathers)); // Apply filtering, sorting, and paging to the data
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-            PreloadService.Show();
-            AllTheathers = await TheaterService.GetAllTheaters();
-            PreloadService.Hide();
+        PreloadService.Show(); // Show loading spinner
+        AllTheathers = await TheaterService.GetAllTheaters(); // Get all theaters
+        PreloadService.Hide(); // Hide loading spinner
     }
-
 }

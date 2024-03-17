@@ -22,7 +22,6 @@
             }
         </div>
     }
-    
 </div>
 
 <div class="legenda-container">
@@ -43,100 +42,88 @@
     </button>
 </div>
 
-@code {
+@code { // C# code block
+    [Parameter] public int screeningId { get; set; } // Parameter to receive the screening ID
+    [Inject] NavigationManager NavigationManager { get; set; } // Injected navigation manager
+    [Inject] ISeatsService _seatsService { get; set; } // Injected seats service
+    [Inject] ITheaterRoomService _theaterRoomService { get; set; } // Injected theater room service
+    [Inject] IScreeningService _screeningService { get; set; } // Injected screening service
+    [Inject] IReservationService _reservationService { get; set; } // Injected reservation service
 
-    [Parameter] public int screeningId { get; set; }
-    [Inject] NavigationManager NavigationManager { get; set; }
-    [Inject] ISeatsService _seatsService { get; set; }
-    [Inject] ITheaterRoomService _theaterRoomService { get; set; }
-    [Inject] IScreeningService _screeningService { get; set; }
-    [Inject] IReservationService _reservationService { get; set; }
-    private ScreeningWithInfoDto _screening;
-    private IEnumerable<SeatsWInfoDto> _allSeats;
-    private IEnumerable<ReservedSeatDto> _reservedSeat;
-    // Store the seat id's selected by the user to reserve
-    private List<int> selectedSeats = new List<int>();
-    public string ErrorMessage { get; set; }
+    private ScreeningWithInfoDto _screening; // Stores screening information
+    private IEnumerable<SeatsWInfoDto> _allSeats; // Stores all seats in the theater room
+    private IEnumerable<ReservedSeatDto> _reservedSeat; // Stores reserved seats for the screening
     
-
-    protected override async Task OnInitializedAsync()
+    private List<int> selectedSeats = new List<int>(); // List to store selected seat IDs
+    public string ErrorMessage { get; set; } // Error message to display
+    
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-        _screening = await _screeningService.GetScreening(screeningId);
-        _allSeats = await _seatsService.GetSeatsByTheaterRoomId(_screening.TheaterRoomId);
-        _reservedSeat = await _seatsService.GetReservedSeatsByScreeningId(_screening.Id);
+        _screening = await _screeningService.GetScreening(screeningId); // Get screening details
+        _allSeats = await _seatsService.GetSeatsByTheaterRoomId(_screening.TheaterRoomId); // Get all seats in the theater room
+        _reservedSeat = await _seatsService.GetReservedSeatsByScreeningId(_screening.Id); // Get reserved seats for the screening
     }
 
-    private void NavigateBack()
+    private void NavigateBack() // Method to navigate back
     {
-        NavigationManager.NavigateTo($"/kiosk/show-reservation/{_screening.MovieId}");
+        NavigationManager.NavigateTo($"/kiosk/show-reservation/{_screening.MovieId}"); // Navigate to previous page
     }
 
-    private async void OnProceed()
+    private async void OnProceed() // Method to proceed to the next step
     {
-
-        if (!selectedSeats.Any())
+        if (!selectedSeats.Any()) // If no seats are selected
         {
-            ErrorMessage = "No Seats selected";
-            
+            ErrorMessage = "No Seats selected"; // Set error message
         }
-        else
+        else // If seats are selected
         {
-            var preReservationDto = new PreReservationDto
+            var preReservationDto = new PreReservationDto // Create pre-reservation DTO
             {
-                ScreeningId = screeningId,
-                SeatId = selectedSeats
+                ScreeningId = screeningId, // Set screening ID
+                SeatId = selectedSeats // Set selected seat IDs
             };
-            await _reservationService.SetLocalPreReservation(preReservationDto);
-            foreach (var seat in selectedSeats)
+            await _reservationService.SetLocalPreReservation(preReservationDto); // Set local pre-reservation
+            foreach (var seat in selectedSeats) // Loop through selected seats
             {
-                Console.WriteLine($"Selected seat: {seat}");
+                Console.WriteLine($"Selected seat: {seat}"); // Log selected seats
             }
-            
-            NavigationManager.NavigateTo($"/tickets-and-payment"); 
+            NavigationManager.NavigateTo($"/tickets-and-payment"); // Navigate to tickets and payment page
         }
-
-        
-
-
     }
     
-    private string GetSeatBackgroundColor(int seatId)
+    private string GetSeatBackgroundColor(int seatId) // Method to determine seat background color
     {
-        // determine the status of the seat from DB info and return a color value as a string
-        var seat = _allSeats.FirstOrDefault(s => s.Id == seatId);
-        if (seat != null)
+        var seat = _allSeats.FirstOrDefault(s => s.Id == seatId); // Get seat information
+        if (seat != null) // If seat exists
         {
-            // Check if the seat is reserved or selected
-            if (_reservedSeat.Any(r => r.Id == seatId))
+            if (_reservedSeat.Any(r => r.Id == seatId)) // If seat is reserved
             {
-                return "red"; // Occupied
+                return "red"; // Occupied (red color)
             }
-            else if (selectedSeats.Contains(seatId))
+
+            if (selectedSeats.Contains(seatId)) // If seat is selected
             {
-                return "yellow"; // Selected
+                return "yellow"; // Selected (yellow color)
             }
         }
-        return "green"; // Free
+        return "green"; // Free (green color)
     }
     
-    private void SelectSeat(int seatId)
+    private void SelectSeat(int seatId) // Method to select/deselect a seat
     {
-        //add the seat selected by the user to a list or remove it if already selected
-        var isSeatReserved = _reservedSeat.Any(r => r.Id == seatId);
+        var isSeatReserved = _reservedSeat.Any(r => r.Id == seatId); // Check if seat is reserved
         
-        if (!isSeatReserved)
+        if (!isSeatReserved) // If seat is not reserved
         {
-            if (selectedSeats.Contains(seatId))
+            if (selectedSeats.Contains(seatId)) // If seat is already selected
             {
                 selectedSeats.Remove(seatId); // Deselect the seat
             }
-            else
+            else // If seat is not selected
             {
                 selectedSeats.Add(seatId); // Select the seat
             }
         }
     }
-
-    
 }
 

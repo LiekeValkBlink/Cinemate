@@ -12,7 +12,7 @@
 <Card>
     <CardBody>
         <h1 class="mb-3">Screenings</h1>
-        @if (IsScreeningAddedSucces)
+        @if (IsScreeningAddedSuccess)
         {
             <Alert Color="AlertColor.Success"  Dismissable="true">
                 <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon>
@@ -22,7 +22,7 @@
 
 
         <RadzenScheduler
-            @ref="@scheduler"
+            @ref="@_scheduler"
             SlotRender=@OnSlotRender
             TItem="Appointment"
             Data="Appointments"
@@ -40,7 +40,7 @@
         
         @if (AllScreenings is not null)
         {
-            <Grid @ref="screeningGrid"
+            <Grid @ref="_screeningGrid"
                   TItem="ScreeningWithInfoDto"
                   Class="table table-hover table-bordered table-striped mt-5"
                   DataProvider="GridDataProvider"
@@ -61,39 +61,37 @@
     </CardBody>
 </Card>
 
-@code {
-    [Inject] private IScreeningService ScreeningService { get; set; }
-    [Inject] protected PreloadService PreloadService { get; set; } = default!;
-    [Inject] private IMovieService MovieService { get; set; }
-    [Inject] private ITheaterRoomService TheaterRoomService { get; set; }
+@code { // C# code block
+    [Inject] private IScreeningService ScreeningService { get; set; } // Injected screening service
+    [Inject] protected PreloadService PreloadService { get; set; } = default!; // Injected preload service
+    [Inject] private IMovieService MovieService { get; set; } // Injected movie service
+    [Inject] private ITheaterRoomService TheaterRoomService { get; set; } // Injected theater room service
 
-    private IEnumerable<ScreeningWithInfoDto> AllScreenings { get; set; }
-    private IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
-    private IEnumerable<TheaterRoomsWInfoDto> AllTheatherRooms { get; set; }
-    private bool IsScreeningAddedSucces { get; set; }
-    
-    private Grid<ScreeningWithInfoDto> screeningGrid = default!;
-    RadzenScheduler<Appointment> scheduler;
-    public IList<Appointment> Appointments = new List<Appointment>();
+    private IEnumerable<ScreeningWithInfoDto> AllScreenings { get; set; } // Collection of all screenings
+    private IEnumerable<MovieWithCategoryDto> AllMovies { get; set; } // Collection of all movies
+    private IEnumerable<TheaterRoomsWInfoDto> AllTheatherRooms { get; set; } // Collection of all theater rooms
+    private bool IsScreeningAddedSuccess { get; set; } // Flag to indicate if a screening was added successfully
 
-    
+    private Grid<ScreeningWithInfoDto> _screeningGrid = default!; // Reference to the screening grid
+    RadzenScheduler<Appointment> _scheduler; // Scheduler component for managing appointments
+    public IList<Appointment> Appointments = new List<Appointment>(); // List of appointments
 
-    private async Task<GridDataProviderResult<ScreeningWithInfoDto>> GridDataProvider(GridDataProviderRequest<ScreeningWithInfoDto> request)
+    private async Task<GridDataProviderResult<ScreeningWithInfoDto>> GridDataProvider(GridDataProviderRequest<ScreeningWithInfoDto> request) // Method to provide data to the grid
     {
-        return await Task.FromResult(request.ApplyTo(AllScreenings));
+        return await Task.FromResult(request.ApplyTo(AllScreenings)); // Apply filtering, sorting, and paging to the data
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-        PreloadService.Show();
-        AllScreenings = await ScreeningService.GetAllScreenings();
-        AllMovies = await MovieService.GetMovies();
-        AllTheatherRooms = await TheaterRoomService.GetAllTheaterRooms();
-        foreach (var screening in AllScreenings)
+        PreloadService.Show(); // Show loading spinner
+        AllScreenings = await ScreeningService.GetAllScreenings(); // Get all screenings
+        AllMovies = await MovieService.GetMovies(); // Get all movies
+        AllTheatherRooms = await TheaterRoomService.GetAllTheaterRooms(); // Get all theater rooms
+        foreach (var screening in AllScreenings) // Iterate through all screenings
         {
-            var movie = AllMovies.FirstOrDefault(m => m.Id == screening.MovieId);
+            var movie = AllMovies.FirstOrDefault(m => m.Id == screening.MovieId); // Get the movie associated with the screening
             
-            var appointment = new Appointment
+            var appointment = new Appointment // Create an appointment object
             {
                 MovieId = screening.MovieId,
                 MovieName = screening.MovieName,
@@ -101,74 +99,70 @@
                 MovieEnd = screening.MovieStart.AddMinutes(movie.Duration),
                 AppointmentTitle = $"{screening.MovieName} ({screening.TheaterName})"
             };
-            Appointments.Add(appointment);
+            Appointments.Add(appointment); // Add the appointment to the list
         }
-        PreloadService.Hide();
+        PreloadService.Hide(); // Hide loading spinner
     }
 
-    
-    public class Appointment
+    public class Appointment // Class representing an appointment
     {
-        public int MovieId { get; set; }
-        public string MovieName { get; set; }
-        public int TheaterRoomId { get; set; }
-        public string TheaterRoomName { get; set; }
-        public DateTime MovieStart { get; set; }
-        public DateTime MovieEnd { get; set; }
-        public string AppointmentTitle { get; set; }
+        public int MovieId { get; set; } // ID of the movie
+        public string MovieName { get; set; } // Name of the movie
+        public int TheaterRoomId { get; set; } // ID of the theater room
+        public string TheaterRoomName { get; set; } // Name of the theater room
+        public DateTime MovieStart { get; set; } // Start time of the movie
+        public DateTime MovieEnd { get; set; } // End time of the movie
+        public string AppointmentTitle { get; set; } // Title of the appointment
     }
-    
-    void OnSlotRender(SchedulerSlotRenderEventArgs args)
+
+    private void OnSlotRender(SchedulerSlotRenderEventArgs args) // Method called when rendering a scheduler slot
     {
         // Highlight today in month view
-        if (args.View.Text == "Month" && args.Start.Date == DateTime.Today)
+        if (args.View.Text == "Month" && args.Start.Date == DateTime.Today) // Check if the view is month and the slot start date is today
         {
-            args.Attributes["style"] = "background: rgba(255,220,40,.2);";
+            args.Attributes["style"] = "background: rgba(255,220,40,.2);"; // Apply background color to highlight today's date
         }
-        
     }
 
-    
-    private async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
+    private async Task OnSlotSelect(SchedulerSlotSelectEventArgs args) // Method called when selecting a slot in the scheduler
     {
-        if (args.View.Text != "Year")
+        if (args.View.Text != "Year") // Check if the selected view is not year
         {
-            Appointment data = await DialogService.OpenAsync<AddAppointmentPage>("Add Screening",
+            Appointment data = await DialogService.OpenAsync<AddAppointmentPage>("Add Screening", // Open a dialog for adding a screening
                 new Dictionary<string, object> { { "Start", args.Start }, { "End", args.End } });
 
-            if (data != null)
+            if (data != null) // Check if data was returned from the dialog
             {
-
-                var addScreeningDto = new AddScreeningDto
+                var addScreeningDto = new AddScreeningDto // Create DTO for adding a screening
                 {
                     MovieId = data.MovieId,
                     MovieStart = data.MovieStart.SetKindUtc(),
                     TheaterRoomId = data.TheaterRoomId
                 };
-                
-                PreloadService.Show();
-                var result = await ScreeningService.AddScreening(addScreeningDto);
-                IsScreeningAddedSucces = true;
-                AllScreenings.Append(result);
-                AllScreenings = await ScreeningService.GetAllScreenings();
-                
-                Appointments.Add(data);
+
+                PreloadService.Show(); // Show loading spinner
+                var result = await ScreeningService.AddScreening(addScreeningDto); // Add the screening
+                IsScreeningAddedSuccess = true; // Set success flag
+                AllScreenings.Append(result); // Add the new screening to the collection
+                AllScreenings = await ScreeningService.GetAllScreenings(); // Refresh the list of screenings
+
+                Appointments.Add(data); // Add the appointment to the list
                 // Either call the Reload method or reassign the Data property of the Scheduler
-                await scheduler.Reload();
-                PreloadService.Hide();
+                await _scheduler.Reload(); // Reload the scheduler
+                PreloadService.Hide(); // Hide loading spinner
             }
         }
     }
 
-    private async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<Appointment> args)
+    private async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<Appointment> args) // Method called when selecting an appointment
     {
         Console.WriteLine("On appointment select");
     }
-    
-    private void OnAppointmentMouseEnter(SchedulerAppointmentMouseEventArgs<Appointment> args)
+
+    private void OnAppointmentMouseEnter(SchedulerAppointmentMouseEventArgs<Appointment> args) // Method called when mouse enters an appointment
     {
         Console.WriteLine("OnAppointmentMouseEnter");
-        TooltipService.Open(args.Element, ts =>
+        TooltipService.Open(args.Element, ts => // Open a tooltip on mouse enter
             @<RadzenStack Orientation="Orientation.Vertical" Gap="0" Class="rz-p-6" Style="min-width: 250px; max-width: 600px;">
                 <RadzenText TextStyle="TextStyle.H4" Class="rz-mb-4" Style="color: white">
                     @args.Data.MovieName
@@ -189,12 +183,11 @@
                         @args.Data.MovieEnd.ToString("hh:mm ⋅ dddd, MMMM d")
                     </RadzenText>
                 </RadzenStack>
-            </RadzenStack>, new TooltipOptions { Position = TooltipPosition.Right, Duration = null });
+            </RadzenStack>, new TooltipOptions { Position = TooltipPosition.Right, Duration = null }); // Set tooltip options
     }
-    
-    private void OnAppointmentMouseLeave(SchedulerAppointmentMouseEventArgs<Appointment> args)
+
+    private void OnAppointmentMouseLeave(SchedulerAppointmentMouseEventArgs<Appointment> args) // Method called when mouse leaves an appointment
     {
-        // TooltipService.Close();
+        TooltipService.Close(); // Close the tooltip
     }
-    
 }

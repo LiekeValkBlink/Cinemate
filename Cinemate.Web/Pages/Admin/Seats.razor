@@ -67,54 +67,53 @@
     </BodyTemplate>
 </Modal>
 
-@code {
-    [Inject] private PreloadService PreloadService { get; set; } = default!;
-    [Inject] private ISeatsService SeatsService { get; set; }
-    [Inject] private ITheaterRoomService TheaterRoomService { get; set; }
+@code { // C# code block
+    [Inject] private PreloadService PreloadService { get; set; } = default!; // Injected preload service
+    [Inject] private ISeatsService SeatsService { get; set; } // Injected seats service
+    [Inject] private ITheaterRoomService TheaterRoomService { get; set; } // Injected theater room service
 
-    private IEnumerable<TheaterRoomsWInfoDto> allTheaterRooms;
-    private IEnumerable<SeatsWInfoDto> allSeats;
-    private AddSeatsDto addSeatsDto = new AddSeatsDto();
-    private bool isSeatAddedSuccess { get; set; }
+    private IEnumerable<TheaterRoomsWInfoDto> allTheaterRooms; // Collection of all theater rooms
+    private IEnumerable<SeatsWInfoDto> allSeats; // Collection of all seats
+    private AddSeatsDto addSeatsDto = new AddSeatsDto(); // DTO for adding seats
+    private bool isSeatAddedSuccess { get; set; } // Flag to indicate if a seat was added successfully
 
-    private Modal addSeatModal = default!;
-    private Grid<SeatsWInfoDto> seatsGrid = default!;
+    private Modal addSeatModal = default!; // Reference to the add seat modal
+    private Grid<SeatsWInfoDto> seatsGrid = default!; // Reference to the seats grid
 
-    private async Task HandleValidSubmit()
+    private async Task HandleValidSubmit() // Method to handle valid form submission
     {
         try
         {
-            PreloadService.Show();
-            var result = await SeatsService.AddSeat(addSeatsDto);
-            await addSeatModal.HideAsync();
-            allSeats.Append(result);
-            allSeats = await SeatsService.GetAllSeats();
-            await seatsGrid.RefreshDataAsync();
-            PreloadService.Hide();
+            PreloadService.Show(); // Show loading spinner
+            var result = await SeatsService.AddSeat(addSeatsDto); // Add the seat
+            await addSeatModal.HideAsync(); // Hide the add seat modal
+            allSeats.Append(result); // Add the new seat to the collection
+            allSeats = await SeatsService.GetAllSeats(); // Refresh the list of seats
+            await seatsGrid.RefreshDataAsync(); // Refresh the seats grid
+            PreloadService.Hide(); // Hide loading spinner
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            Console.WriteLine(e); // Log the exception
+            throw; // Rethrow the exception
         }
     }
     
-    private async Task<GridDataProviderResult<SeatsWInfoDto>> DataProvider(GridDataProviderRequest<SeatsWInfoDto> request)
+    private async Task<GridDataProviderResult<SeatsWInfoDto>> DataProvider(GridDataProviderRequest<SeatsWInfoDto> request) // Method to provide data to the grid
     {
-        return await Task.FromResult(request.ApplyTo(allSeats));
+        return await Task.FromResult(request.ApplyTo(allSeats)); // Apply filtering, sorting, and paging to the data
     }
 
-    private async Task ShowModal()
+    private async Task ShowModal() // Method to show the add seat modal
     {
-        await addSeatModal.ShowAsync();
+        await addSeatModal.ShowAsync(); // Show the modal asynchronously
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-        PreloadService.Show();
-        allSeats = await SeatsService.GetAllSeats();
-        allTheaterRooms = await TheaterRoomService.GetAllTheaterRooms();
-        PreloadService.Hide();
+        PreloadService.Show(); // Show loading spinner
+        allSeats = await SeatsService.GetAllSeats(); // Get all seats
+        allTheaterRooms = await TheaterRoomService.GetAllTheaterRooms(); // Get all theater rooms
+        PreloadService.Hide(); // Hide loading spinner
     }
-
 }

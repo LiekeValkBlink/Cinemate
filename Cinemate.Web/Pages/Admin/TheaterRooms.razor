@@ -59,55 +59,52 @@
     </BodyTemplate>
 </Modal>
 
-@code {
-    [Inject] private PreloadService PreloadService { get; set; } = default!;
-    [Inject] private ITheaterRoomService TheaterRoomService { get; set; }
-    [Inject] private ISeatsService SeatsService { get; set; }
-    [Inject] private ITheaterService TheaterService { get; set; }
+@code { // C# code block
+    [Inject] private PreloadService PreloadService { get; set; } = default!; // Injected preload service
+    [Inject] private ITheaterRoomService TheaterRoomService { get; set; } // Injected theater room service
+    [Inject] private ISeatsService SeatsService { get; set; } // Injected seats service
+    [Inject] private ITheaterService TheaterService { get; set; } // Injected theater service
 
-    private IEnumerable<TheaterRoomsWInfoDto> AllTheaterRooms;
-    private IEnumerable<TheaterDto> AllTheaters { get; set; }
-    private AddTheaterRoomDto addTheaterRoomDto = new();
-    private bool IsTheaterRoomAddedSucces { get; set; }
+    private IEnumerable<TheaterRoomsWInfoDto> AllTheaterRooms; // Collection of all theater rooms
+    private IEnumerable<TheaterDto> AllTheaters { get; set; } // Collection of all theaters
+    private AddTheaterRoomDto addTheaterRoomDto = new(); // DTO for adding a theater room
+    private bool IsTheaterRoomAddedSucces { get; set; } // Flag to indicate if a theater room was added successfully
 
+    private Modal addTheaterModal = default!; // Reference to the add theater modal
+    BlazorBootstrap.Grid<TheaterRoomsWInfoDto> theaterRoomsGrid = default!; // Reference to the theater rooms grid
 
-    private Modal addTheaterModal = default!;
-    BlazorBootstrap.Grid<TheaterRoomsWInfoDto> theaterRoomsGrid = default!;
-
-    
-    private async Task ShowModal()
+    private async Task ShowModal() // Method to show the add theater modal
     {
-        await addTheaterModal.ShowAsync();
+        await addTheaterModal.ShowAsync(); // Show the modal asynchronously
     }
 
-    private async Task HandleValidSubmit()
+    private async Task HandleValidSubmit() // Method to handle valid form submission
     {
         try
         {
-            PreloadService.Show();
-            var result = await TheaterRoomService.AddTheaterRoom(addTheaterRoomDto);
-            IsTheaterRoomAddedSucces = true;
-            await addTheaterModal.HideAsync();
-            PreloadService.Hide();
+            PreloadService.Show(); // Show loading spinner
+            var result = await TheaterRoomService.AddTheaterRoom(addTheaterRoomDto); // Add the theater room
+            IsTheaterRoomAddedSucces = true; // Set success flag
+            await addTheaterModal.HideAsync(); // Hide the add theater modal
+            PreloadService.Hide(); // Hide loading spinner
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            Console.WriteLine(e); // Log the exception
+            throw; // Rethrow the exception
         }
     }
 
-    private async Task<GridDataProviderResult<TheaterRoomsWInfoDto>> TheaterRoomsDataProvider(GridDataProviderRequest<TheaterRoomsWInfoDto> request)
+    private async Task<GridDataProviderResult<TheaterRoomsWInfoDto>> TheaterRoomsDataProvider(GridDataProviderRequest<TheaterRoomsWInfoDto> request) // Method to provide data to the grid
     {
-        return await Task.FromResult(request.ApplyTo(AllTheaterRooms));
+        return await Task.FromResult(request.ApplyTo(AllTheaterRooms)); // Apply filtering, sorting, and paging to the data
     }
     
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-        PreloadService.Show();
-        AllTheaterRooms = await TheaterRoomService.GetAllTheaterRooms();
-        AllTheaters = await TheaterService.GetAllTheaters();
-        PreloadService.Hide();
+        PreloadService.Show(); // Show loading spinner
+        AllTheaterRooms = await TheaterRoomService.GetAllTheaterRooms(); // Get all theater rooms
+        AllTheaters = await TheaterService.GetAllTheaters(); // Get all theaters
+        PreloadService.Hide(); // Hide loading spinner
     }
-    
 }
