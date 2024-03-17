@@ -1,4 +1,6 @@
-﻿@inherits LayoutComponentBase
+﻿@using System.Globalization
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 
 <div class="page">
     <header>
@@ -9,5 +11,20 @@
     </main>
     <footer>
         <p>ⓒ Cinemate 2024</p>
+        <button @onclick="ChangeLanguage">Verander de taal</button>
     </footer>
 </div>
+
+@code {
+    private void ChangeLanguage()
+    {
+        var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+        var newCulture = currentCulture == "en-US" ? "nl-NL" : "en-US";
+        
+        CultureInfo.CurrentCulture = new CultureInfo(newCulture);
+        CultureInfo.CurrentUICulture = new CultureInfo(newCulture);
+
+        NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+    }
+
+}

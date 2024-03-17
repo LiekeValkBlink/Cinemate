@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Now in the theaters" xml:space="preserve">
+        <value>Nu in de bioscoop</value>
+    </data>
+    <data name="Free" xml:space="preserve">
+        <value>Vrij</value>
+    </data>
+    <data name="Movie Screen" xml:space="preserve">
+        <value>Filmscherm</value>
+    </data>
+    <data name="Selected" xml:space="preserve">
+        <value>Selected</value>
+    </data>
+    <data name="Occupied" xml:space="preserve">
+        <value>Gekozen</value>
+    </data>
+    <data name="Amount of tickets:" xml:space="preserve">
+        <value>Aantal Kaartjes:</value>
+    </data>
+    <data name="Assign Seats" xml:space="preserve">
+        <value>Stoelen Toewijzen</value>
+    </data>
+    <data name="Back" xml:space="preserve">
+        <value>Terug</value>
+    </data>
+    <data name="Confirm" xml:space="preserve">
+        <value>Bevestig je keuze</value>
+    </data>
+    <data name="Chose a movie" xml:space="preserve">
+        <value>Kies een voorstelling</value>
+    </data>
+    <data name="Pick-up Tickets" xml:space="preserve">
+        <value>Tickets ophalen</value>
+    </data>
+    <data name="Fill in your ticketcode here:" xml:space="preserve">
+        <value>Vul hier je ticketcode in:</value>
+    </data>
+    <data name="Redeem code" xml:space="preserve">
+        <value>Code verzilveren</value>
+    </data>
+    <data name="Your tickets:" xml:space="preserve">
+        <value>Uw tickets:</value>
+    </data>
+    <data name="Your reservation:" xml:space="preserve">
+        <value>Uw reservering:</value>
+    </data>
+    <data name="Your details" xml:space="preserve">
+        <value>Jouw gegevens</value>
+    </data>
+    <data name="Fields with a * are mandatory!" xml:space="preserve">
+        <value>Velden met een * zijn verplicht!</value>
+    </data>
+    <data name="First name *" xml:space="preserve">
+        <value>Voornaam *</value>
+    </data>
+    <data name="Last name *" xml:space="preserve">
+        <value>Achternaam *</value>
+    </data>
+    <data name="E-mailadress *" xml:space="preserve">
+        <value>E-mailadres *</value>
+    </data>
+    <data name="Repeat e-mailadress" xml:space="preserve">
+        <value>Herhaal e-mailadres</value>
+    </data>
+    <data name="Complete your order" xml:space="preserve">
+        <value>Maak jouw bestelling compleet</value>
+    </data>
+    <data name="Select a ticket type" xml:space="preserve">
+        <value>Selecteer een tickettype</value>
+    </data>
+    <data name="Popcorn arrangement" xml:space="preserve">
+        <value>Popcorn arrangement</value>
+    </data>
+    <data name="Add a medium bucket (250gr) of popcorn and a diet-coke to your order for only €2.50!" xml:space="preserve">
+        <value>Voeg nu een medium bak (250gr) popcorn en een cola-light toe aan jouw bestelling voor maar €2.50!</value>
+    </data>
+    <data name="I want a popcorn arrangement" xml:space="preserve">
+        <value>Ik wil het popcorn arrangement</value>
+    </data>
+    <data name="Total" xml:space="preserve">
+        <value>Totaal</value>
+    </data>
+    <data name="ticket for" xml:space="preserve">
+        <value>ticket voor</value>
+    </data>
+</root>

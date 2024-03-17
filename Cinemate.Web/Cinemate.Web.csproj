@@ -49,7 +49,9 @@
     <ItemGroup>
       <Content Include="Resources\en-US.Designer.cs" />
       <Content Include="Resources\en-US.resx" />
-      <Content Include="Resources\NL.Designer.cs" />
+      <Content Include="Resources\nl-NL.Designer.cs">
+        <DependentUpon>nl-NL.resx</DependentUpon>
+      </Content>
       <Content Include="Resources\NL.resx" />
     </ItemGroup>
 
@@ -62,6 +64,12 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>NL.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\nl-NL.Designer.cs">
+        <DependentUpon>nl-NL.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
