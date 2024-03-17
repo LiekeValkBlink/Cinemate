@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using NUnit.Framework.Legacy;
 
 namespace Cinemate.Web.Tests.Services;
 
@@ -51,7 +52,8 @@ public class MovieServiceTest
         var result = await _service.GetMovies();
 
         Assert.That(result, Is.Not.Empty);
-        Assert.That(result, Is.EquivalentTo(fakeMovies));
+        CollectionAssert.AreEquivalent(fakeMovies, result);
+        
     }
     
     [Test]

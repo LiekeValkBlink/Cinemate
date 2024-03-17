@@ -5,6 +5,7 @@ using System;
 using System.Globalization;
 using System.Threading.Tasks;
 using Cinemate.Web.Components.Web;
+using Microsoft.AspNetCore.Components.Web;
 
 
 namespace Cinemate.Web.Tests.Components.Web;
@@ -47,12 +48,14 @@ public class DateSelectorTest
                 date => callbackInvokedWithDate = date)));
     
         var futureDate = DateTime.Now.AddDays(3);
-        var futureDateButton = component.Find($"button:contains('{futureDate.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"))}')");
+        var futureDateString = futureDate.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"));
+        var futureDateButton = component.Find($"button:contains('{futureDateString}')");
 
-        await futureDateButton.ClickAsync();
+        await futureDateButton.ClickAsync(new MouseEventArgs()); // Fixed here
 
         Assert.That(callbackInvokedWithDate, Is.Not.Null);
         Assert.That(callbackInvokedWithDate.Value.Date, Is.EqualTo(futureDate.Date));
     }
+
 
 }

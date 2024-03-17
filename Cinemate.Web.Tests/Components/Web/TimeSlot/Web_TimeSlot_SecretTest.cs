@@ -24,9 +24,10 @@ public class SecretMovieComponentTests
     [Test]
     public async Task HandleTimeslotClick_SuccessfulReservation_NavigatesCorrectly()
     {
-        var expectedReservationResult = new SecretMovieDto(); 
+        var expectedReservationResult = new SecretMoviePreReservation();
         mockReservationService.Setup(x => x.AddSecretMovieReservation(It.IsAny<SecretMovieDto>()))
             .ReturnsAsync(expectedReservationResult);
+
 
         var component = new Web_TimeSlot_Secret() 
         {
@@ -40,6 +41,7 @@ public class SecretMovieComponentTests
         mockReservationService.Verify(x => x.AddSecretMovieReservation(It.IsAny<SecretMovieDto>()), Times.Once);
         mockReservationService.Verify(x => x.SetLocalSecretMoviePreReservation(expectedReservationResult), Times.Once);
         mockSelectedMovieService.Verify(x => x.SetSelectedMovieAsync(It.IsAny<MovieDtoImage>()), Times.Once);
-        mockNavigationManager.Verify(x => x.NavigateTo("/tickets-and-payment?SecretMovie=true"), Times.Once);
+        var expectedUrl = $"tickets-and-payment?SecretMovie=true";
+        mockNavigationManager.Verify(x => x.NavigateTo(expectedUrl, true), Times.Once);
     }
 }

@@ -2,8 +2,8 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts
 @inherits LayoutComponentBase
-@inject ISelectedMovieService SelectedMovieService
-@inject IJSRuntime JSRuntime
+
+
 
 @code {
     [Parameter] public string ImageUrl { get; set; }
@@ -18,6 +18,9 @@
 @code {
     [Inject] public IMovieService MovieService { get; set; }
     [Inject] protected PreloadService PreloadService { get; set; } = default!;
+    [Inject] public IJSRuntime JsRuntime { get; set; }
+    [Inject] public ISelectedMovieService SelectedMovieService { get; set; }
+    
 
     public IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
     public MovieDtoImage SelectedMovieWithImage { get; set; }
@@ -55,12 +58,12 @@
         private MovieDto movie;
 
 
-        private async Task SaveAndNavigate(MovieDtoImage movie)
+        public async Task SaveAndNavigate(MovieDtoImage movie)
         {
             if (movie != null)
             {
                 // Opslaan van de geselecteerde film met behulp van IMovieService
-                var selectedMovieService = new SelectedMovieService(JSRuntime);
+                var selectedMovieService = new SelectedMovieService(JsRuntime);
                 await selectedMovieService.SetSelectedMovieAsync(movie);
 
 

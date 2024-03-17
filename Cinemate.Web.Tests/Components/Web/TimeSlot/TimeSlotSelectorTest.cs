@@ -48,11 +48,15 @@ public class TimeSlotSelectorTest
             .Add(p => p.MovieId, movieId)
             .Add(p => p.SelectedDate, selectedDate));
 
-        await Task.Delay(100); 
+        await Task.Delay(100); // Wait for async operations to complete
+
+        // Using reflection to access the private property
         var screeningsProperty = component.Instance.GetType().GetProperty("FilteredScreenings", BindingFlags.NonPublic | BindingFlags.Instance);
-        var screenings = component.Instance.GetFilteredScreenings(); 
+        var screenings = (IEnumerable<ScreeningWithInfoDto>?)screeningsProperty?.GetValue(component.Instance);
+
         Assert.That(screenings, Is.Not.Null, "Screenings should not be null.");
         Assert.That(screenings, Is.Not.Empty, "There should be filtered screenings.");
         Assert.That(screenings, Has.All.Matches<ScreeningWithInfoDto>(s => s.MovieId == movieId && s.MovieStart.Date == selectedDate.Date), "All screenings should match the criteria.");
     }
+
 }

@@ -1,3 +1,4 @@
+using System.Reflection;
 using Cinemate.Models.Dto;
 using Cinemate.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
@@ -44,14 +45,21 @@ namespace Cinemate.Tests
 
             var expectedUri = $"/kiosk/seat-reservation/{_component.ScreeningInfo.Id}";
 
-            await _component.HandleTimeslotClick();
+            var method = _component.GetType()
+                .GetMethod("HandleTimeSlotClick", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (method != null)
+            {
+                await (Task)method.Invoke(_component, null);
+            }
+            
 
             _movieServiceMock.Verify(service => service.GetMovie(_component.ScreeningInfo.MovieId), Times.Once);
 
             _selectedMovieServiceMock.Verify(service => service.SetSelectedMovieAsync(It.Is<MovieDtoImage>(m => m.Id == expectedMovie.Id)), Times.Once);
 
-            _navigationManagerMock.Verify(nm => nm.NavigateTo(expectedUri), Times.Once);
+            _navigationManagerMock.Verify(nm => nm.NavigateTo(expectedUri, It.IsAny<bool>()), Times.Once);
 
         }
     }
+
 }

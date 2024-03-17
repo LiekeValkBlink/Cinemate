@@ -1,6 +1,4 @@
-using Cinemate.Models;
 using Cinemate.Models.Dto;
-using Cinemate.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Moq;
@@ -29,7 +27,7 @@ namespace Cinemate.Tests
         {
             var component = new Kiosk_MovieThumb()
             {
-                JSRuntime = _mockJSRuntime.Object,
+                JsRuntime = _mockJSRuntime.Object,
                 SelectedMovieService = _mockSelectedMovieService.Object,
                 NavigationManager = _mockNavigationManager.Object,
                 MovieId = 1 
@@ -48,12 +46,13 @@ namespace Cinemate.Tests
         [Test]
         public async Task SaveAndNavigate_WhenMovieIsNull_NavigatesToHomePage()
         {
-            var component = new Kiosk_MovieThumb()
-            {
-                JSRuntime = _mockJSRuntime.Object,
-                SelectedMovieService = _mockSelectedMovieService.Object,
-                NavigationManager = _mockNavigationManager.Object
-            };
+            var component = new Kiosk_MovieThumb();
+            
+                component.JsRuntime = _mockJSRuntime.Object;
+                component.SelectedMovieService = _mockSelectedMovieService.Object;
+                component.NavigationManager = _mockNavigationManager.Object;
+                component.MovieId = 1;
+            
             await component.SaveAndNavigate(null); 
 
             _mockNavigationManager.Verify(n => n.NavigateTo("/", true), Times.Once);

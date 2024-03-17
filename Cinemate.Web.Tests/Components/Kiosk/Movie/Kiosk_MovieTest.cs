@@ -43,7 +43,7 @@ namespace Cinemate.Tests
 
             await component.TestOnInitializedAsync();
 
-            Assert.That(component.AllMovies, Is.EqualTo(movies));
+            Assert.That(component.TestAllMovies, Is.EqualTo(movies));
         }
 
         [Test]
@@ -54,18 +54,22 @@ namespace Cinemate.Tests
 
             await component.TestSaveAndNavigate(movieDtoImage);
 
-            mockNavigationManager.Verify(navigation => navigation.NavigateTo($"kiosk/show-reservation/{movieId}"), Times.Once);
+            var expectedUrl = $"kiosk/show-reservation/{movieId}";
+            mockNavigationManager.Verify(navigation => navigation.NavigateTo(expectedUrl, true), Times.Once);
+
         }
     }
+    
     public class TestMovieComponent : Kiosk_Movie 
     {
-        public IMovieService MovieService { get; set; }
-        public IJSRuntime JSRuntime { get; set; }
-        public NavigationManager NavigationManager { get; set; }
+        public new IMovieService MovieService { get; set; }
+        public new IJSRuntime JSRuntime { get; set; }
+        public new NavigationManager NavigationManager { get; set; }
 
         public async Task TestOnInitializedAsync() => await OnInitializedAsync();
         public async Task TestSaveAndNavigate(MovieDtoImage movie) => await SaveAndNavigate(movie);
-        
-        public IEnumerable<MovieWithCategoryDto> AllMovies => base.AllMovies;
+
+        public IEnumerable<MovieWithCategoryDto> TestAllMovies => base.AllMovies;
     }
 }
+
