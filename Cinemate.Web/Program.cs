@@ -28,5 +28,6 @@ builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<ISelectedMovieService, SelectedMovieService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<SpinnerService>();
+builder.Services.AddScoped<TooltipService>();
 
 await builder.Build().RunAsync();
