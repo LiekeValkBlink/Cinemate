@@ -42,12 +42,10 @@ namespace Cinemate.Tests
                 .ReturnsAsync((SecretMovieDto dto) => new SecretMoviePreReservation { /* properties ter test */ });
 
             _razorComponent.SelectedDate = testDate;
-
-            // Using reflection to invoke LoadSecretMovieReservations
+            
             var methodInfo = _razorComponent.GetType().GetMethod("LoadSecretMovieReservations", BindingFlags.NonPublic | BindingFlags.Instance);
             await (Task)methodInfo.Invoke(_razorComponent, null);
-
-            // Using reflection to access secretMovieReservations
+            
             var fieldInfo = _razorComponent.GetType().GetField("secretMovieReservations", BindingFlags.NonPublic | BindingFlags.Instance);
             var secretMovieReservations = (List<SecretMoviePreReservation>)fieldInfo.GetValue(_razorComponent);
 

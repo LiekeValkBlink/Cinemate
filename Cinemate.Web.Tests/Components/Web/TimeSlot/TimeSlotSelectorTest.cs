@@ -48,9 +48,8 @@ public class TimeSlotSelectorTest
             .Add(p => p.MovieId, movieId)
             .Add(p => p.SelectedDate, selectedDate));
 
-        await Task.Delay(100); // Wait for async operations to complete
-
-        // Using reflection to access the private property
+        await Task.Delay(100); 
+        
         var screeningsProperty = component.Instance.GetType().GetProperty("FilteredScreenings", BindingFlags.NonPublic | BindingFlags.Instance);
         var screenings = (IEnumerable<ScreeningWithInfoDto>?)screeningsProperty?.GetValue(component.Instance);
 

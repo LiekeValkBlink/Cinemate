@@ -51,7 +51,7 @@ public class DateSelectorTest
         var futureDateString = futureDate.ToString("ddd dd MMM", CultureInfo.CreateSpecificCulture("nl-NL"));
         var futureDateButton = component.Find($"button:contains('{futureDateString}')");
 
-        await futureDateButton.ClickAsync(new MouseEventArgs()); // Fixed here
+        await futureDateButton.ClickAsync(new MouseEventArgs()); 
 
         Assert.That(callbackInvokedWithDate, Is.Not.Null);
         Assert.That(callbackInvokedWithDate.Value.Date, Is.EqualTo(futureDate.Date));

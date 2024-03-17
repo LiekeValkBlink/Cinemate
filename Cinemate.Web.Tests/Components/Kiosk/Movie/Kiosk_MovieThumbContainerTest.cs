@@ -15,7 +15,6 @@ namespace Cinemate.Tests
         [Test]
         public async Task OnInitializedAsync_PopulatesAllMoviesWithImage()
         {
-            // Arrange
             var mockMovieService = new Mock<IMovieService>();
             var expectedMovies = new List<MovieWithCategoryDto>
             {
@@ -28,11 +27,9 @@ namespace Cinemate.Tests
             {
                 MovieService = mockMovieService.Object
             };
-
-            // Act
+            
             await component.CallOnInitializedAsyncForTest();
 
-            // Assert
             Assert.That(component.AllMoviesWithImage, Is.Not.Null);
             Assert.That(component.AllMoviesWithImage.Count(), Is.EqualTo(expectedMovies.Count));
             Assert.That(component.AllMoviesWithImage.First().Title, Is.EqualTo(expectedMovies.First().Title));
