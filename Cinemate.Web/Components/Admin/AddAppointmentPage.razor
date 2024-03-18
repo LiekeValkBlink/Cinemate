@@ -1,0 +1,78 @@
+@using Cinemate.Web.Services.Contracts
+@using Cinemate.Models.Dto
+@using ButtonType = Radzen.ButtonType
+@inject DialogService DialogService
+
+<RadzenTemplateForm TItem="Screenings.Appointment" Data="@model" Submit="@OnSubmit">
+    <div class="row" style="margin-bottom: 16px">
+        <div class="col-md-3">
+            <RadzenLabel Text="Movie" />
+        </div>
+        <div class="col">
+            <RadzenDropDown @bind-Value="model.MovieId" Data="AllMovies" TextProperty="Title" ValueProperty="Id" Name="Movie" />
+            <RadzenRequiredValidator Text="Title is required" Component="Movie" /> <!-- Change Component to "DropDown" -->
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 16px">
+        <div class="col-md-3">
+            <RadzenLabel Text="Start" />
+        </div>
+        <div class="col">
+            <RadzenDatePicker @bind-Value="@model.MovieStart" Name="Start" ShowTime="true"/>
+            <RadzenRequiredValidator Text="Start is required" Component="Start" /> <!-- Change Component to "DatePicker" -->
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 16px">
+        <div class="col-md-3">
+            <RadzenLabel Text="Theater" />
+        </div>
+        <div class="col">
+            <RadzenDropDown @bind-Value="model.TheaterRoomId" Name="Theater" Data="AllTheatherRooms" TextProperty="Name" ValueProperty="Id" />
+            <RadzenRequiredValidator Text="Theater is required" Component="Theater" /> <!-- Change Component to "DropDown" -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col">
+            <RadzenButton ButtonType="ButtonType.Submit" Text="Save" />
+        </div>
+    </div>
+</RadzenTemplateForm>
+
+
+@code {
+    [Parameter]
+    public DateTime Start { get; set; }
+
+    [Parameter]
+    public DateTime End { get; set; }
+    
+    [Inject] private IMovieService MovieService { get; set; }
+    [Inject] private ITheaterRoomService TheaterRoomService { get; set; }
+
+    Screenings.Appointment model = new Screenings.Appointment();
+    private IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
+    private IEnumerable<TheaterRoomsWInfoDto> AllTheatherRooms { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine(Start);
+        model.MovieStart = Start;
+        model.MovieEnd = End;
+    }
+
+    void OnSubmit(Screenings.Appointment model)
+    {
+        var movie = AllMovies.FirstOrDefault(m => m.Id == this.model.MovieId);
+        var theater = AllTheatherRooms.FirstOrDefault(t => t.Id == this.model.TheaterRoomId);
+        model.MovieEnd = model.MovieStart.AddMinutes(movie.Duration);
+        model.AppointmentTitle =  $"{movie.Title} ({theater.Name})";
+        DialogService.Close(model);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllMovies = await MovieService.GetMovies();
+        AllTheatherRooms = await TheaterRoomService.GetAllTheaterRooms();
+    }
+}

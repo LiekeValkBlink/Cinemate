@@ -28,7 +28,6 @@
                   Responsive="true">
                 <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="Id" SortKeySelector="@((item) => item.Id)" HeaderText="ID" Sortable="true" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
                 <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="Name" SortKeySelector="@((item) => item.Name)" HeaderText="Name" Sortable="true">@context.Name</GridColumn>
-                <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="SeatsNo" SortKeySelector="@((item) => item.SeatsNo)" HeaderText="No. Seats" Sortable="true">@context.SeatsNo</GridColumn>
                 <GridColumn TItem="TheaterRoomsWInfoDto" PropertyName="TheaterName" SortKeySelector="@((item) => item.TheaterName)" HeaderText="Theater Name" Sortable="true">@context.TheaterName</GridColumn>
             </Grid>
         }
@@ -52,7 +51,7 @@
             </div>
             <div class="mb-3">
                 <label for="theaterRoomName" class="form-label">Room name</label>
-                <InputText id="theaterRoomName" class="form-control" @bind-Value="addTheaterRoomDto.Name" required></InputText>
+                <InputText id="theaterRoomName" class="form-control" @bind-Value="addTheaterRoomDto.Name" required/>
                 <ValidationMessage For="@(() => addTheaterRoomDto.Name)"/>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
