@@ -28,7 +28,7 @@
         {
             <form>
                 <label>Selecteer een tickettype</label>
-                <RadzenDropDown class="dropdown" @bind-Value="TicketType" Data=@TicketTypes Change="@OnTicketTypeChange" required/>
+                <RadzenDropDown @bind-Value="TicketType" Data=@TicketTypes Change="@OnTicketTypeChange" required/>
             </form> 
         }
         <div class="popcorn-arrangement">

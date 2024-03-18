@@ -35,8 +35,6 @@ table.movie-details-secondary {
     & tbody {
         & tr {
             & td:first-child {
-                width: 10rem;
-                
                 & p {
                     color: var(--light-purple);
                 }

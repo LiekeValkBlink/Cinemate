@@ -28,7 +28,6 @@
             & .col {
                 display: flex;
                 width: 50%;
-                justify-content: flex-end;
                 
                 &:last-of-type {
                     padding: 1rem;

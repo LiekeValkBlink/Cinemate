@@ -26,6 +26,8 @@
     }
 }
 
+
+
 table.movie-details-secondary {
     width: 100%;
     margin: 1rem 0;
@@ -33,8 +35,6 @@ table.movie-details-secondary {
     & tbody {
         & tr {
             & td:first-child {
-                width: 10rem;
-                
                 & p {
                     color: var(--light-purple);
                 }
