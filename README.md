@@ -55,7 +55,7 @@ git clone https://github.com/JeroenP98/carhop.git
 
 2. Start up your PostgreSQL database and run command
 ```postgresql
-CREATE DATABASE carhop;
+CREATE DATABASE cinemate;
 ```
 
 3. In your IDE, delete any migration directory's at cinemate.api/migrations
