@@ -6,7 +6,7 @@ namespace Cinemate.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class TheaterController: ControllerBase
+public class TheaterController : ControllerBase
 {
     private readonly ITheaterService _theaterService;
 
@@ -15,17 +15,20 @@ public class TheaterController: ControllerBase
         _theaterService = theaterService;
     }
     
+    // GET: api/Theater
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TheaterDto>>> GetAllTheaters()
     {
+        // Retrieve all theaters
         var theaters = await _theaterService.GetAllTheaters();
         return Ok(theaters);
     }
     
-
+    // GET: api/Theater/{id}
     [HttpGet("{id}")]
     public async Task<ActionResult<TheaterDto>> GetSingleTheater(int id)
     {
+        // Retrieve a single theater by ID
         var theater = await _theaterService.GetSingleTheater(id);
         if (theater == null)
         {
@@ -34,11 +37,13 @@ public class TheaterController: ControllerBase
         return Ok(theater);
     }
 
+    // POST: api/Theater
     [HttpPost]
     public async Task<ActionResult<TheaterDto>> AddTheater([FromBody] TheaterDto theaterDto)
     {
         try
         {
+            // Add a new theater
             var addedTheater = await _theaterService.AddTheater(theaterDto);
             return CreatedAtAction(nameof(GetSingleTheater), new { id = addedTheater.Id }, addedTheater);
         }
@@ -48,6 +53,7 @@ public class TheaterController: ControllerBase
         }
     }
 
+    // PUT: api/Theater/{id}
     [HttpPut("{id}")]
     public async Task<ActionResult<TheaterDto>> UpdateTheater(int id, [FromBody] TheaterDto theaterDto)
     {
@@ -58,6 +64,7 @@ public class TheaterController: ControllerBase
 
         try
         {
+            // Update an existing theater
             var updatedTheater = await _theaterService.UpdateTheater(theaterDto);
             return Ok(updatedTheater);
         }
@@ -71,11 +78,13 @@ public class TheaterController: ControllerBase
         }
     }
 
+    // DELETE: api/Theater/{id}
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteTheater(int id)
     {
         try
         {
+            // Delete a theater by ID
             await _theaterService.DeleteTheater(id);
             return NoContent(); // Return 204 if deletion is successful
         }
@@ -88,5 +97,4 @@ public class TheaterController: ControllerBase
             return BadRequest(ex.Message);
         }
     }
-    
 }

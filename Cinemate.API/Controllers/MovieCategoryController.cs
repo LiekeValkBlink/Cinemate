@@ -6,7 +6,7 @@ namespace Cinemate.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class MovieCategoryController: ControllerBase
+public class MovieCategoryController : ControllerBase
 {
     private readonly IMovieCategoryService _movieCategoryService;
 
@@ -15,6 +15,7 @@ public class MovieCategoryController: ControllerBase
         _movieCategoryService = movieCategoryService;
     }
 
+    // GET: api/MovieCategory
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MovieCategoryDto>>> GetAllMovieCategories()
     {
@@ -29,6 +30,7 @@ public class MovieCategoryController: ControllerBase
         }
     }
 
+    // GET: api/MovieCategory/{id}
     [HttpGet("{id}")]
     public async Task<ActionResult<MovieCategoryDto>> GetMovieCategory(int id)
     {
@@ -47,6 +49,7 @@ public class MovieCategoryController: ControllerBase
         }
     }
 
+    // POST: api/MovieCategory
     [HttpPost]
     public async Task<ActionResult<MovieCategoryDto>> AddMovieCategory([FromBody] AddMovieCategoryDto movieCategoryDto)
     {
@@ -61,6 +64,7 @@ public class MovieCategoryController: ControllerBase
         }
     }
 
+    // PUT: api/MovieCategory/{id}
     [HttpPut("{id}")]
     public async Task<ActionResult<MovieCategoryDto>> UpdateMovieCategory(int id, [FromBody] MovieCategoryDto movieCategoryDto)
     {
@@ -80,6 +84,7 @@ public class MovieCategoryController: ControllerBase
         }
     }
 
+    // DELETE: api/MovieCategory/{id}
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteMovieCategory(int id)
     {

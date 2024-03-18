@@ -6,7 +6,7 @@ namespace Cinemate.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class MovieController: ControllerBase
+public class MovieController : ControllerBase
 {
     private readonly IMovieService _movieService;
 
@@ -15,45 +15,47 @@ public class MovieController: ControllerBase
         _movieService = movieService;
     }
 
+    // POST: api/Movie/image/poster
     [HttpPost("image/poster")]
     public async Task<ActionResult> UploadFile(IFormFile file)
     {
+        // Check if file is provided
         if (file == null)
             return BadRequest("File is required");
-        
+
         // Get the file name
         var fileName = file.FileName;
-        // Get the extension
+        // Construct the file path
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images\posters", fileName);
-        
+
+        // Open a file stream to write the file
         await using var fileStream = new FileStream(filePath, FileMode.Create);
-        
-        // Copy the content to the new stream
+        // Copy the content of the uploaded file to the file stream
         await file.CopyToAsync(fileStream);
-        
 
         // Construct the URL to access the uploaded image
-        var imageUrl = $"{Request.Scheme}://{Request.Host}/Images/poster/{fileName}";
+        var imageUrl = $"{Request.Scheme}://{Request.Host}/Images/posters/{fileName}";
 
         return Ok(imageUrl);
     }
-    
+
+    // POST: api/Movie/image/screenshot
     [HttpPost("image/screenshot")]
     public async Task<ActionResult> UploadPosterFile(IFormFile file)
     {
+        // Check if file is provided
         if (file == null)
             return BadRequest("File is required");
-        
+
         // Get the file name
         var fileName = file.FileName;
-        // Get the extension
+        // Construct the file path
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images\screenshots", fileName);
-        
+
+        // Open a file stream to write the file
         await using var fileStream = new FileStream(filePath, FileMode.Create);
-        
-        // Copy the content to the new stream
+        // Copy the content of the uploaded file to the file stream
         await file.CopyToAsync(fileStream);
-        
 
         // Construct the URL to access the uploaded image
         var imageUrl = $"{Request.Scheme}://{Request.Host}/Images/screenshots/{fileName}";
@@ -61,6 +63,7 @@ public class MovieController: ControllerBase
         return Ok(imageUrl);
     }
 
+    // GET: api/Movie
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MovieWithCategoryDto>>> GetAllMovies()
     {
@@ -68,6 +71,7 @@ public class MovieController: ControllerBase
         return Ok(movies);
     }
 
+    // GET: api/Movie/{id:int}
     [HttpGet("{id:int}")]
     public async Task<ActionResult<MovieWithCategoryDto>> GetSingleMovie(int id)
     {
@@ -79,6 +83,7 @@ public class MovieController: ControllerBase
         return NotFound("Movie not found");
     }
 
+    // POST: api/Movie
     [HttpPost]
     public async Task<ActionResult<MovieWithCategoryDto>> AddMovie(MovieDto movieDto)
     {
@@ -90,12 +95,13 @@ public class MovieController: ControllerBase
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            return BadRequest($"an error occured {e.Message}");
+            return BadRequest($"An error occurred: {e.Message}");
         }
-        
+
     }
 
-    [HttpDelete]
+    // DELETE: api/Movie
+    [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteMovie(int id)
     {
         try
@@ -109,5 +115,5 @@ public class MovieController: ControllerBase
             return NotFound("Movie not found");
         }
     }
-    
+
 }

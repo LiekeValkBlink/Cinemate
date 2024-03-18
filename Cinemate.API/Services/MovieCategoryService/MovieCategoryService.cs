@@ -6,20 +6,33 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cinemate.API.Services.CategoryService;
 
-public class MovieCategoryService(CinemateDbContext dbContext, IMapper mapper) : IMovieCategoryService
+public class MovieCategoryService : IMovieCategoryService
 {
+    private readonly CinemateDbContext dbContext;
+    private readonly IMapper mapper;
+
+    // Constructor injection of CinemateDbContext and IMapper
+    public MovieCategoryService(CinemateDbContext dbContext, IMapper mapper)
+    {
+        this.dbContext = dbContext;
+        this.mapper = mapper;
+    }
+
+    // Retrieves all movie categories from the database
     public async Task<IEnumerable<MovieCategoryDto>> GetAllMovieCategories()
     {
         var movieCategories = await dbContext.MovieCategories.ToListAsync();
         return mapper.Map<IEnumerable<MovieCategoryDto>>(movieCategories);
     }
 
+    // Retrieves a single movie category by its ID from the database
     public async Task<MovieCategoryDto> GetMovieCategory(int id)
     {
         var movieCategory = await dbContext.MovieCategories.FindAsync(id);
         return mapper.Map<MovieCategoryDto>(movieCategory);
     }
 
+    // Adds a new movie category to the database
     public async Task<MovieCategoryDto> AddMovieCategory(AddMovieCategoryDto movieCategoryDto)
     {
         var movieCategory = mapper.Map<MovieCategory>(movieCategoryDto);
@@ -28,6 +41,7 @@ public class MovieCategoryService(CinemateDbContext dbContext, IMapper mapper) :
         return mapper.Map<MovieCategoryDto>(movieCategory);
     }
 
+    // Updates an existing movie category in the database
     public async Task<MovieCategoryDto> UpdateMovieCategory(MovieCategoryDto movieCategoryDto)
     {
         var existingCategory = await dbContext.MovieCategories.FindAsync(movieCategoryDto.Id);
@@ -41,6 +55,7 @@ public class MovieCategoryService(CinemateDbContext dbContext, IMapper mapper) :
         return mapper.Map<MovieCategoryDto>(existingCategory);
     }
 
+    // Deletes a movie category from the database
     public async Task DeleteMovieCategory(int id)
     {
         var movieCategory = await dbContext.MovieCategories.FindAsync(id);
