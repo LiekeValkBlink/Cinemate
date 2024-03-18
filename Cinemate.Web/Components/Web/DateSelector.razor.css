@@ -11,9 +11,12 @@
         background-color: unset;
         border: none;
         
-        &:hover, :active {
+        &:hover {
             background-color: var(--bright-purple);
-            border-radius: 4px;
+        }
+        
+        &:active {
+            background-color: var(--bright-purple); 
         }
     }
 

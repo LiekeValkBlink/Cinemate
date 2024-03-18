@@ -47,16 +47,17 @@ label {
     margin: 0.75rem 0 0.25rem 0;
 }
 
-input, select {
-    cursor: text;
+input, select, .dropdown {
+    height: auto !important;
+    cursor: text !important;
     color: var(--white) !important;
-    background-color: var(--medium-purple);
-    border: 1px solid var(--light-purple);
-    border-radius: 4px;
-    padding: 0.75rem 1rem;
+    background-color: var(--medium-purple) !important;
+    border: 1px solid var(--light-purple) !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 1rem !important;
     
     &::placeholder {
-        color: var(--light-purple);
+        color: var(--light-purple) !important;
     }
 }
 
