@@ -2,8 +2,9 @@
 @page "/seat-reservation"
 
 <div class="cinema-overview">
-    <div class="movie-screen"></div>
-    <p>Filmscherm</p>
+    <div class="movie-screen">
+        <p>Filmscherm</p>
+    </div>
 
     @foreach (var row in Enumerable.Range(0, seats.GetLength(0)))
     {
@@ -16,20 +17,22 @@
             }
         </div>
     }
-
-   
 </div>
 
-<div class="legenda-container">
-    <div class="seat" style="background-color: green;"></div><p>Vrij</p>
-    <div class="seat" style="background-color: yellow;"></div><p>Gekozen</p>
-    <div class="seat" style="background-color: red;"></div><p>Bezet</p>
-</div>
-
-<div class="seat-selection">
-    <label for="numberOfSeats">Aantal Kaartjes:</label>
-    <input type="number" id="numberOfSeats" @bind="numberOfSeats" />
-    <button class="primary-btn" @onclick="AssignSeats">Stoelen Toewijzen</button>
+<div class="interaction-container">
+    <div class="legenda-container">
+        <div class="seat free"></div><p>Vrij</p>
+        <div class="seat selected"></div><p>Gekozen</p>
+        <div class="seat occupied"></div><p>Bezet</p>
+    </div>
+    
+    <div class="seat-selection">
+        <form>
+            <label for="numberOfSeats">Selecteer het aantal kaartjes:</label>
+            <input type="number" id="numberOfSeats" @bind="numberOfSeats"/>
+        </form>
+        <button class="primary-btn" @onclick="AssignSeats">Stoelen Toewijzen</button>
+    </div>
 </div>
 
 <div class="page-navigation">
@@ -108,13 +111,13 @@
         switch (status)
         {
             case SeatStatus.Free:
-                return "green";
+                return "#2b1b3d";
             case SeatStatus.Selected:
-                return "yellow";
+                return "#6c42bf";
             case SeatStatus.Occupied:
-                return "red";
+                return "#19072c";
             default:
-                return "grey";
+                return "#2b1b3d";
         }
     }
     }
