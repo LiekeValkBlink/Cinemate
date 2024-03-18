@@ -50,7 +50,7 @@ With its user-friendly design and comprehensive features, the app provides a sea
 ### Installation
 1. Navigate to the desired directory and clone the repository
 ```bash
-git clone https://github.com/JeroenP98/carhop.git
+git clone https://github.com/LiekeValkBlink/Cinemate.git
 ```
 
 2. Start up your PostgreSQL database and run command
