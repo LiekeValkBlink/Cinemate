@@ -27,7 +27,7 @@
                   AllowFiltering="true"
                   AllowSorting="true"
                   AllowPaging="true"
-
+                  PageSize="20"
                   Responsive="true">
                 <GridColumn TItem="MovieWithCategoryDto" HeaderText="Image" Width="200px">
                   @{
@@ -95,8 +95,6 @@
                             }
                         </InputSelect>
                         <ValidationMessage For="@(() => movieDto.MovieCategoryId)"/>
-                        @* <RadzenLabel Text="Movie category" /> *@
-                        @* <RadzenDropDown @bind-Value="@movieDto.MovieCategoryId" Data="AllCategoryDtos" TextProperty="Name" ValueProperty="Id" /> *@
                     </div>
 
                     <div class="mb-3">
@@ -217,9 +215,6 @@
             throw;
         }
     }
-
-    
-
     
     // Method called when the file changes
     private async Task OnPosterFileChange(InputFileChangeEventArgs e)

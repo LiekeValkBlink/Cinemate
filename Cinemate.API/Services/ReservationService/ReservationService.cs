@@ -35,6 +35,7 @@ public class ReservationService: IReservationService
             MovieStart = r.Screening.MovieStart,
             MovieName = r.Screening.Movie.Title,
             Paid = r.Paid,
+            Price = r.Price,
             // Retrieve reserved seats for the reservation
             ReservedSeats = _dbContext.SeatReserved
                 .Where(sr => sr.ReservationId == r.Id)
@@ -141,6 +142,7 @@ public class ReservationService: IReservationService
                 MovieStart = reservation.Screening.MovieStart,
                 MovieName = reservation.Screening.Movie.Title,
                 Paid = reservation.Paid,
+                Price = reservation.Price,
                 ReservedSeats = await _dbContext.SeatReserved
                     .Include(sr => sr.Seat)
                     .Where(sr => sr.ReservationId == reservation.Id)

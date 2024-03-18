@@ -5,16 +5,18 @@ using Cinemate.Web.Services.Contracts;
 
 namespace Cinemate.Web.Services;
 
-public class SeatsService: ISeatsService
+// Service class responsible for handling seat-related operations
+public class SeatsService : ISeatsService
 {
-    
     private readonly HttpClient _httpClient;
 
+    // Constructor to initialize the service with an HttpClient instance
     public SeatsService(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
 
+    // Method to fetch all seats from the API
     public async Task<IEnumerable<SeatsWInfoDto>> GetAllSeats()
     {
         try
@@ -29,6 +31,7 @@ public class SeatsService: ISeatsService
         }
     }
 
+    // Method to fetch seats by theater room ID from the API
     public async Task<IEnumerable<SeatsWInfoDto>> GetSeatsByTheaterRoomId(int theaterRoomId)
     {
         try
@@ -43,20 +46,22 @@ public class SeatsService: ISeatsService
         }
     }
 
+    // Method to fetch reserved seats by screening ID from the API
     public async Task<IEnumerable<ReservedSeatDto>> GetReservedSeatsByScreeningId(int screeningId)
     {
         try
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ReservedSeatDto>>(
-                $"api/Seats/reserved-seats/{screeningId}");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ReservedSeatDto>>($"api/Seats/reserved-seats/{screeningId}");
         }
         catch (Exception e)
         {
+            // Log the exception or handle it as needed
             Console.WriteLine(e);
             throw;
         }
     }
 
+    // Method to fetch a single seat by its ID from the API
     public async Task<SeatsWInfoDto> GetSeatById(int id)
     {
         try
@@ -71,6 +76,7 @@ public class SeatsService: ISeatsService
         }
     }
 
+    // Method to add a new seat via the API
     public async Task<SeatsWInfoDto> AddSeat(AddSeatsDto seat)
     {
         try
@@ -93,6 +99,7 @@ public class SeatsService: ISeatsService
         }
     }
 
+    // Method to update an existing seat via the API
     public async Task<SeatsWInfoDto> UpdateSeat(int id, SeatsDto seat)
     {
         try
@@ -115,6 +122,7 @@ public class SeatsService: ISeatsService
         }
     }
 
+    // Method to delete a seat by its ID via the API
     public async Task DeleteSeat(int id)
     {
         try

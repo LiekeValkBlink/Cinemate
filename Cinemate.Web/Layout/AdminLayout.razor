@@ -1,5 +1,6 @@
 @inherits LayoutComponentBase
-
+<RadzenDialog />
+<RadzenTooltip />
 <HeadContent>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
@@ -9,9 +10,9 @@
 
 <div class="bb-page">
     <Sidebar @ref="sidebar"
-             IconName="IconName.BootstrapFill"
+             ImageSrc="http://localhost:5221/images/cinemate-favicon.svg"
              Title="Cinemate"
-             DataProvider="SidebarDataProvider" />
+             DataProvider="SidebarDataProvider"/>
 
     <main>
         <article class="content px-4">
@@ -19,9 +20,21 @@
         </article>
     </main>
     <Preload LoadingText="Loading..." />
+    
 
 
 </div>
+
+<style>
+    body {
+        --rz-tooltip-color: white; /* text color */
+        --rz-tooltip-background-color: var(--bright-purple);
+    }
+    :root {
+        --bb-sidebar-top-row-background-color: var(--medium-purple);
+    }
+</style>
+
 
 
 
@@ -41,7 +54,7 @@
     {
         navItems = new List<NavItem>
         {
-            new NavItem { Id = "1", Href = "/admin", IconName = IconName.House, Text = "Home"},
+            new NavItem { Id = "1", Href = "/admin/home", IconName = IconName.House, Text = "Home"},
             new NavItem { Id = "2", Href = "/admin/movies", IconName = IconName.Film, Text = "Movies"},
             new NavItem { Id = "3", Href = "/admin/movie-categories", IconName = IconName.Tags, Text = "Categories"},
             new NavItem { Id = "4", Href = "/admin/screenings", IconName = IconName.CollectionPlay, Text = "Screenings"},
