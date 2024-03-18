@@ -2,7 +2,8 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     color: var(--white);
     background-color: var(--dark-purple);
     
@@ -15,11 +16,10 @@
         background-color: var(--dark-purple);
         margin-bottom: 1.5rem;
         padding:  var(--page-padding);
+        z-index: 99;
     }
 
     & footer {
-        position: fixed;
-        bottom: 0;
         width: 100%;
         display: flex;
         align-items: center;

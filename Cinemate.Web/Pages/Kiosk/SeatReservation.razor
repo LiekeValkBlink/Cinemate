@@ -6,8 +6,9 @@
 @using Cinemate.Web.Services
 
 <div class="cinema-overview">
-    <div class="movie-screen"></div>
-    <p>Filmscherm</p>
+    <div class="movie-screen">
+        <p>Filmscherm</p>
+    </div>
 
     @* for each row in the theater, show each seat per row *@
     @foreach (var row in _allSeats.GroupBy(s => s.Row))
@@ -16,7 +17,7 @@
             @foreach (var seat in row)
             {
                 <div class="seat" style="background-color: @GetSeatBackgroundColor(seat.Id)"
-                    @onclick="() => SelectSeat(seat.Id)">
+                     @onclick="() => SelectSeat(seat.Id)">
                     @seat.Number
                 </div>
             }
@@ -25,10 +26,12 @@
     
 </div>
 
-<div class="legenda-container">
-    <div class="seat" style="background-color: green;"></div><p>Vrij</p>
-    <div class="seat" style="background-color: yellow;"></div><p>Gekozen</p>
-    <div class="seat" style="background-color: red;"></div><p>Bezet</p>
+<div class="interaction-container">
+    <div class="legenda-container">
+        <div class="seat free"></div><p>Vrij</p>
+        <div class="seat selected"></div><p>Gekozen</p>
+        <div class="seat occupied"></div><p>Bezet</p>
+    </div>
 </div>
 
 <div class="page-navigation">
@@ -109,14 +112,14 @@
             // Check if the seat is reserved or selected
             if (_reservedSeat.Any(r => r.Id == seatId))
             {
-                return "red"; // Occupied
+                return "#19072c"; // Occupied
             }
             else if (selectedSeats.Contains(seatId))
             {
-                return "yellow"; // Selected
+                return "#6c42bf"; // Selected
             }
         }
-        return "green"; // Free
+        return "#2b1b3d"; // Free
     }
     
     private void SelectSeat(int seatId)

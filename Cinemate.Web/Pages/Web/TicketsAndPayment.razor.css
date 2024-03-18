@@ -27,6 +27,7 @@
             
             & .col {
                 display: flex;
+                justify-content: flex-end;
                 width: 50%;
                 
                 &:last-of-type {

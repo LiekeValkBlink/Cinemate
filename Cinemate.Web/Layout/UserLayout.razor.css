@@ -15,6 +15,7 @@
         background-color: var(--dark-purple);
         margin-bottom: 1.5rem;
         padding:  var(--page-padding);
+        z-index: 99;
     }
 
     & main {
