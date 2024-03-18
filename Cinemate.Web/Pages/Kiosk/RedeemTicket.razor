@@ -8,8 +8,9 @@
     @* If the user was not sent via qr code, ask them to redeem their code *@
     @if (UrlTicket == null || UrlTicket == 0)
     {
-        <h2>Tickets ophalen</h2>
+        
         <div class="ticket_form">
+            <h2 class="title">Tickets ophalen</h2>
             <EditForm Model="RedeemedTicket" OnValidSubmit="@RedeemUserTicket">
                 <label for="ticket">Vul hier je ticketcode in:</label>
                 <InputNumber id="ticket" @bind-Value="RedeemedTicket"/>
@@ -17,32 +18,60 @@
             </EditForm>
         </div>
     }
+    
     @* After the reservation has been retreived, show a ticket for each seat *@
     @if (Reservation is not null)
     {
-        <h2>Uw tickets:</h2>
-        @foreach (var seat in Reservation.ReservedSeats)
-        {
-            <div class="ticket">
-                <h3>@Reservation.MovieName</h3>
-                <h4>@Reservation.MovieStart</h4>
-                <h4>Rij @seat.Row</h4>
-                <h4>Stoel @seat.Number</h4>
-                <h4>Promo's / Arrangementen:</h4>
-                @foreach (var promoCode in Reservation.PromoCodes)
-                {
-                    <ul>
-                        <li>@promoCode.Name</li>
-                    </ul>
-
-                }
-                <SfQRCodeGenerator ForeColor="#ffffff" BackgroundColor="#19072c" Width="200px" Height="150px" Value=@QrCodeValue>
-                    <QRCodeGeneratorDisplayText Text=" "></QRCodeGeneratorDisplayText>
-                </SfQRCodeGenerator>
-            </div>
-        }
+        <div class="tickets">
+        <h2 class="title">Uw tickets:</h2>
+        
+        
+        
+            @foreach (var seat in Reservation.ReservedSeats)
+            {
+            <RadzenCard class="rz-my-12 rz-mx-auto ticket" Style="max-width: 420px; background-color: #2b1b3d;">
+                <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="1rem" Class="rz-p-4">
+                    <RadzenImage Path="@imageUri" Style="width: 100px; height: 100px; border-radius: 50%;" />
+                    <RadzenStack Gap="0">
+                        <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0" Style="color: var(--white)" >Film</RadzenText>
+                        <RadzenText TextStyle="TextStyle.Body1" Style="color: var(--white)"><b>@Reservation.MovieName</b></RadzenText>
+                        <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0" Style="color: var(--white)">Start</RadzenText>
+                        <RadzenText TextStyle="TextStyle.Body1" Style="color: var(--white)"><b>@Reservation.MovieStart</b></RadzenText>
+                        <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0" Style="color: var(--white)">Promo's / Arrangementen:</RadzenText>
+                        <ul>
+                            @foreach (var promoCode in Reservation.PromoCodes)
+                            {
+                                <RadzenText TextStyle="TextStyle.Body1" Style="color: var(--white)"><b>@promoCode.Name</b></RadzenText>
+                            }
+                        </ul>
+                    </RadzenStack>
+                </RadzenStack>
+                <RadzenCard class="rz-background-color-primary-light rz-shadow-0 rz-border-radius-0 rz-p-8" style="margin: 1rem;);">
+                    <RadzenText TextStyle="TextStyle.H6" class="rz-color-on-primary-light"><strong>Ticket info</strong></RadzenText>
+                    <RadzenRow RowGap="0">
+                        <RadzenColumn SizeSM="4">
+                            <RadzenText TextStyle="TextStyle.Overline" class="rz-color-on-primary-light rz-display-flex rz-mt-4 rz-mb-0">Rij</RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1" class="rz-color-on-primary-light"><b>@seat.Row</b></RadzenText>
+                            <RadzenText TextStyle="TextStyle.Overline" class="rz-color-on-primary-light rz-display-flex rz-mt-4 rz-mb-0">Stoel</RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1" class="rz-color-on-primary-light"><b>@seat.Number</b></RadzenText>
+                        </RadzenColumn>
+                        <RadzenColumn SizeSM="8">
+                            <RadzenText TextStyle="TextStyle.Overline" class="rz-color-on-primary-light rz-display-flex rz-mt-4 rz-mb-0">Zaal</RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1" Style="color: var(--white)"><b>@Screening.TheaterName</b></RadzenText>
+                            <RadzenText TextStyle="TextStyle.Overline" class="rz-color-on-primary-light rz-display-flex rz-mt-4 rz-mb-0">Prijs</RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body1" class="rz-color-on-primary-light"><b>€@PricePerTicket.ToString()</b></RadzenText>
+                        </RadzenColumn>
+                    </RadzenRow>
+                </RadzenCard>
+                <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="0">
+                    <SfQRCodeGenerator ForeColor="#ffffff" BackgroundColor="#2b1b3d" Width="200px" Height="150px" Value=@QrCodeValue>
+                        <QRCodeGeneratorDisplayText Text=" "/>
+                    </SfQRCodeGenerator>
+                </RadzenStack>
+            </RadzenCard>
+            }
+        </div>
     }
-
 </div>
 
 
@@ -51,6 +80,7 @@
     // parameter for when the user was sent to this page directly via qr code or 
     [Parameter] public int UrlTicket { get; set; }
     [Inject] private IReservationService ReservationService { get; set; } = default!;
+    [Inject] private IScreeningService ScreeningService { get; set; } = default!;
     
     //The redeemed ticket number should correspond with the Reservation id
     private int RedeemedTicket { get; set; }
@@ -59,13 +89,21 @@
     // if there was an error retrieving the reservation, store the error message here
     private string ErrorMessage { get; set; } = default!;
     private ReservationDto Reservation { get; set; } = default!;
+    private ScreeningWithInfoDto Screening { get; set; }
+    private string imageUri = "";
+    public decimal PricePerTicket { get; set; }
 
     private async Task RedeemUserTicket()
     {
         try
         {
             Reservation = await ReservationService.GetSingleReservation(RedeemedTicket);
-            QrCodeValue = $"http://localhost:5221/kiosk/redeemticket/{RedeemedTicket}"; 
+            PricePerTicket = Math.Round(Reservation.Price / Reservation.ReservedSeats.Count, 2);
+            QrCodeValue = $"http://localhost:5221/kiosk/redeemticket/{RedeemedTicket}";
+
+            Screening = await ScreeningService.GetScreening(Reservation.ScreeningId);
+            
+            imageUri = $"https://localhost:7201/images/posters/movie_{Screening.MovieId}_image.jpg";
         }
         catch (Exception e)
         {

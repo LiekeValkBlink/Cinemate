@@ -47,53 +47,53 @@
     </BodyTemplate>
 </Modal>
 
-@code {
-    [Inject] protected PreloadService PreloadService { get; set; } = default!;
-    [Inject] public IMovieCategoryService MovieCategoryService { get; set; }
+@code { // C# code block
+    [Inject] protected PreloadService PreloadService { get; set; } = default!; // Injected preload service
+    [Inject] public IMovieCategoryService MovieCategoryService { get; set; } // Injected movie category service
     
-    private IEnumerable<MovieCategoryDto> AllMovieCategories = default!;
-    BlazorBootstrap.Grid<MovieCategoryDto> MovieCategoryGrid = default!;
+    private IEnumerable<MovieCategoryDto> AllMovieCategories = default!; // Collection of all movie categories
+    BlazorBootstrap.Grid<MovieCategoryDto> MovieCategoryGrid = default!; // Reference to the movie category grid
 
-    public AddMovieCategoryDto AddMovieCategoryDto = new AddMovieCategoryDto();
-    private Modal addMovieCategoryModal = default!;
-    public bool isMovieCategoryAddedSucces = false;
+    public AddMovieCategoryDto AddMovieCategoryDto = new AddMovieCategoryDto(); // DTO for adding a movie category
+    private Modal addMovieCategoryModal = default!; // Reference to the modal component
+    public bool isMovieCategoryAddedSucces = false; // Flag to indicate if the category was added successfully
 
 
-    private async Task HandleValidSubmit()
+    private async Task HandleValidSubmit() // Method to handle form submission
     {
         try
         {
-            PreloadService.Show();
-            var result = await MovieCategoryService.AddMovieCategory(AddMovieCategoryDto);
-            isMovieCategoryAddedSucces = true;
-            AllMovieCategories.Append(result);
-            await addMovieCategoryModal.HideAsync();
-            await MovieCategoryGrid.RefreshDataAsync();
-            PreloadService.Hide();
+            PreloadService.Show(); // Show loading spinner
+            var result = await MovieCategoryService.AddMovieCategory(AddMovieCategoryDto); // Add the category
+            isMovieCategoryAddedSucces = true; // Set success flag
+            AllMovieCategories.Append(result); // Add the new category to the collection
+            await addMovieCategoryModal.HideAsync(); // Hide the modal
+            await MovieCategoryGrid.RefreshDataAsync(); // Refresh the grid data
+            PreloadService.Hide(); // Hide loading spinner
 
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Console.WriteLine(e); // Log exception
             throw;
         }
     }
     
-    private async Task<GridDataProviderResult<MovieCategoryDto>> GridDataProvider(GridDataProviderRequest<MovieCategoryDto> request)
+    private async Task<GridDataProviderResult<MovieCategoryDto>> GridDataProvider(GridDataProviderRequest<MovieCategoryDto> request) // Method to provide data to the grid
     {
-        return await Task.FromResult(request.ApplyTo(AllMovieCategories));
+        return await Task.FromResult(request.ApplyTo(AllMovieCategories)); // Apply filtering, sorting, and paging to the data
     }
 
-    private async Task ShowAddMovieCategoryModal()
+    private async Task ShowAddMovieCategoryModal() // Method to show the add category modal
     {
-        await addMovieCategoryModal.ShowAsync();
+        await addMovieCategoryModal.ShowAsync(); // Show the modal asynchronously
     }
     
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-        PreloadService.Show();
-        AllMovieCategories = await MovieCategoryService.GetAllMovieCategories();
-        PreloadService.Hide();
+        PreloadService.Show(); // Show loading spinner
+        AllMovieCategories = await MovieCategoryService.GetAllMovieCategories(); // Get all movie categories
+        PreloadService.Hide(); // Hide loading spinner
     }
 
 }

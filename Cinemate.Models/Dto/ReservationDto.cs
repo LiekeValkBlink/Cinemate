@@ -7,6 +7,7 @@ public class ReservationDto
     public DateTime MovieStart { get; set; }
     public string MovieName { get; set; }
     public bool Paid { get; set; }
+    public decimal Price { get; set; }
     public List<SeatsWInfoDto> ReservedSeats { get; set; }
     public string TheaterRoomName { get; set; }
     public List<PromoCodeInfoDto> PromoCodes { get; set; }

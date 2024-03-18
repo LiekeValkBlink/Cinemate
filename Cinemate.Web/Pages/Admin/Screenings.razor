@@ -11,152 +11,87 @@
 
 <Card>
     <CardBody>
-        
-        <RadzenScheduler 
-            @ref="@scheduler" 
-            SlotRender=@OnSlotRender 
-            TItem="Appointment" 
-            Data="Appointments" 
-            StartProperty="MovieStart" 
-            EndProperty="MovieEnd" 
+        <h1 class="mb-3">Screenings</h1>
+        @if (IsScreeningAddedSuccess)
+        {
+            <Alert Color="AlertColor.Success"  Dismissable="true">
+                <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon>
+                Screening added successfully!
+            </Alert>
+        }   
+
+
+        <RadzenScheduler
+            @ref="@_scheduler"
+            SlotRender=@OnSlotRender
+            TItem="Appointment"
+            Data="Appointments"
+            StartProperty="MovieStart"
+            EndProperty="MovieEnd"
             TextProperty="AppointmentTitle"
             SlotSelect=@OnSlotSelect
             AppointmentSelect=@OnAppointmentSelect
             AppointmentMouseEnter=@OnAppointmentMouseEnter
             AppointmentMouseLeave=@OnAppointmentMouseLeave>
-            <RadzenDayView />
-            <RadzenWeekView />
-            <RadzenMonthView />
+            <RadzenDayView/>
+            <RadzenWeekView/>
+            <RadzenMonthView/>
         </RadzenScheduler>
         
-        @* @if (IsScreeningAddedSucces) *@
-        @* { *@
-        @*     <Alert Color="AlertColor.Success"  Dismissable="true"> *@
-        @*         <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon> *@
-        @*         Screening added successfully! *@
-        @*     </Alert> *@
-        @* } *@
-        @* *@
-        @* *@
-        @* *@
-        @* *@
-        @* <h1>Screenings</h1> *@
-        @* <Button Color="ButtonColor.Primary" class="my-4" @onclick="ShowModal">Add Screening</Button> *@
-        @* *@
-        @* @if (AllScreenings is not null) *@
-        @* { *@
-        @*     <Grid @ref="screeningGrid" *@
-        @*           TItem="ScreeningWithInfoDto" *@
-        @*           Class="table table-hover table-bordered table-striped" *@
-        @*           DataProvider="GridDataProvider" *@
-        @*           AllowFiltering="true" *@
-        @*           AllowSorting="true" *@
-        @*           AllowPaging="true" *@
-        @*           Responsive="true" *@
-        @*           PageSize="20"> *@
-        @*         <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn> *@
-        @*         <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Id" PropertyName="MovieId">@context.MovieId</GridColumn> *@
-        @*         <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Name" PropertyName="MovieName">@context.MovieName</GridColumn> *@
-        @*         <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Theater Room Id" PropertyName="TheaterRoomId">@context.TheaterRoomId</GridColumn> *@
-        @*         <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Theater Name" PropertyName="TheaterName">@context.TheaterName</GridColumn> *@
-        @*         <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Start" PropertyName="MovieStart">@context.MovieStart</GridColumn> *@
-        @* *@
-        @*     </Grid> *@
-        @* } *@
+        @if (AllScreenings is not null)
+        {
+            <Grid @ref="_screeningGrid"
+                  TItem="ScreeningWithInfoDto"
+                  Class="table table-hover table-bordered table-striped mt-5"
+                  DataProvider="GridDataProvider"
+                  AllowFiltering="true"
+                  AllowSorting="true"
+                  AllowPaging="true"
+                  Responsive="true"
+                  PageSize="20">
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Id" PropertyName="Id" SortKeySelector="@(item => item.Id)" IsDefaultSortColumn="true" SortDirection="SortDirection.Ascending">@context.Id</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Id" PropertyName="MovieId">@context.MovieId</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Name" PropertyName="MovieName">@context.MovieName</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Theater Room Id" PropertyName="TheaterRoomId">@context.TheaterRoomId</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Theater Name" PropertyName="TheaterName">@context.TheaterName</GridColumn>
+                <GridColumn TItem="ScreeningWithInfoDto" HeaderText="Movie Start" PropertyName="MovieStart">@context.MovieStart</GridColumn>
+        
+            </Grid>
+        }
     </CardBody>
 </Card>
 
-@* <Modal @ref="AddScreeningModal" Title="Add Screening"> *@
-@*     <BodyTemplate> *@
-@*         <EditForm Model="@addScreeningDto" OnValidSubmit="@HandleValidSubmit"> *@
-@*             <ValidationSummary /> *@
-@*              *@
-@*                         <div class="mb-3"> *@
-@*                             <label for="movieId" class="form-label">Movie</label> *@
-@*                             <select id="movieId" class="form-select" @bind="@addScreeningDto.MovieId"> *@
-@*                                 <option value="">Select a movie</option> *@
-@*                                 @foreach (var movie in AllMovies) *@
-@*                                 { *@
-@*                                     <option value="@movie.Id">@movie.Title</option> *@
-@*                                 } *@
-@*                             </select> *@
-@*                             <ValidationMessage For="@(() => addScreeningDto.MovieId)" /> *@
-@*                         </div> *@
-@*              *@
-@*                         <div class="mb-3"> *@
-@*                             <label for="theaterRoomId" class="form-label">Theater Room</label> *@
-@*                             <select id="theaterRoomId" class="form-select" @bind="@addScreeningDto.TheaterRoomId"> *@
-@*                                 <option value="">Select a theater room</option> *@
-@*                                 @foreach (var room in AllTheatherRooms) *@
-@*                                 { *@
-@*                                     <option value="@room.Id">@room.Name</option> *@
-@*                                 } *@
-@*                             </select> *@
-@*                             <ValidationMessage For="@(() => addScreeningDto.TheaterRoomId)" /> *@
-@*                         </div> *@
-@*              *@
-@*                         <div class="mb-3"> *@
-@*                             <RadzenLabel Text="Select starting time" Component="DatePickerWithTime"/> *@
-@*                             <RadzenDatePicker @bind-Value="@addScreeningDto.MovieStart" ShowTime="true" DateFormat="MM/dd/yyyy HH:mm" Name="DatePickerWithTime"></RadzenDatePicker> *@
-@*                         </div> *@
-@*              *@
-@*                         <button type="submit" class="btn btn-primary">Submit</button> *@
-@*         </EditForm> *@
-@*     </BodyTemplate> *@
-@* </Modal> *@
+@code { // C# code block
+    [Inject] private IScreeningService ScreeningService { get; set; } // Injected screening service
+    [Inject] protected PreloadService PreloadService { get; set; } = default!; // Injected preload service
+    [Inject] private IMovieService MovieService { get; set; } // Injected movie service
+    [Inject] private ITheaterRoomService TheaterRoomService { get; set; } // Injected theater room service
 
-@code {
-    [Inject] private IScreeningService ScreeningService { get; set; }
-    [Inject] protected PreloadService PreloadService { get; set; } = default!;
-    [Inject] private IMovieService MovieService { get; set; }
-    [Inject] private ITheaterRoomService TheaterRoomService { get; set; }
+    private IEnumerable<ScreeningWithInfoDto> AllScreenings { get; set; } // Collection of all screenings
+    private IEnumerable<MovieWithCategoryDto> AllMovies { get; set; } // Collection of all movies
+    private IEnumerable<TheaterRoomsWInfoDto> AllTheatherRooms { get; set; } // Collection of all theater rooms
+    private bool IsScreeningAddedSuccess { get; set; } // Flag to indicate if a screening was added successfully
 
-    private IEnumerable<ScreeningWithInfoDto> AllScreenings { get; set; }
-    private IEnumerable<MovieWithCategoryDto> AllMovies { get; set; }
-    private IEnumerable<TheaterRoomsWInfoDto> AllTheatherRooms { get; set; }
-    private bool IsScreeningAddedSucces { get; set; }
-    
-    private Grid<ScreeningWithInfoDto> screeningGrid = default!;
-    private Modal AddScreeningModal = default!;
-    
+    private Grid<ScreeningWithInfoDto> _screeningGrid = default!; // Reference to the screening grid
+    RadzenScheduler<Appointment> _scheduler; // Scheduler component for managing appointments
+    public IList<Appointment> Appointments = new List<Appointment>(); // List of appointments
 
-    private async Task<GridDataProviderResult<ScreeningWithInfoDto>> GridDataProvider(GridDataProviderRequest<ScreeningWithInfoDto> request)
+    private async Task<GridDataProviderResult<ScreeningWithInfoDto>> GridDataProvider(GridDataProviderRequest<ScreeningWithInfoDto> request) // Method to provide data to the grid
     {
-        return await Task.FromResult(request.ApplyTo(AllScreenings));
+        return await Task.FromResult(request.ApplyTo(AllScreenings)); // Apply filtering, sorting, and paging to the data
     }
 
-    // private async Task HandleValidSubmit()
-    // {
-    //     try
-    //     {
-    //         addScreeningDto.MovieStart = addScreeningDto.MovieStart.SetKindUtc();
-    //         PreloadService.Show();
-    //         var result = await ScreeningService.AddScreening(addScreeningDto);
-    //         IsScreeningAddedSucces = true;
-    //         await AddScreeningModal.HideAsync();
-    //         AllScreenings.Append(result);
-    //         AllScreenings = await ScreeningService.GetAllScreenings();
-    //         await screeningGrid.RefreshDataAsync();
-    //         PreloadService.Hide();
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Console.WriteLine(e);
-    //         throw;
-    //     }
-    // }
-    
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-        PreloadService.Show();
-        AllScreenings = await ScreeningService.GetAllScreenings();
-        AllMovies = await MovieService.GetMovies();
-        AllTheatherRooms = await TheaterRoomService.GetAllTheaterRooms();
-        foreach (var screening in AllScreenings)
+        PreloadService.Show(); // Show loading spinner
+        AllScreenings = await ScreeningService.GetAllScreenings(); // Get all screenings
+        AllMovies = await MovieService.GetMovies(); // Get all movies
+        AllTheatherRooms = await TheaterRoomService.GetAllTheaterRooms(); // Get all theater rooms
+        foreach (var screening in AllScreenings) // Iterate through all screenings
         {
-            var movie = AllMovies.FirstOrDefault(m => m.Id == screening.MovieId);
+            var movie = AllMovies.FirstOrDefault(m => m.Id == screening.MovieId); // Get the movie associated with the screening
             
-            var appointment = new Appointment
+            var appointment = new Appointment // Create an appointment object
             {
                 MovieId = screening.MovieId,
                 MovieName = screening.MovieName,
@@ -164,109 +99,95 @@
                 MovieEnd = screening.MovieStart.AddMinutes(movie.Duration),
                 AppointmentTitle = $"{screening.MovieName} ({screening.TheaterName})"
             };
-            Appointments.Add(appointment);
+            Appointments.Add(appointment); // Add the appointment to the list
         }
-        
-        PreloadService.Hide();
+        PreloadService.Hide(); // Hide loading spinner
     }
 
-    private async Task ShowModal()
+    public class Appointment // Class representing an appointment
     {
-        await AddScreeningModal.ShowAsync();
+        public int MovieId { get; set; } // ID of the movie
+        public string MovieName { get; set; } // Name of the movie
+        public int TheaterRoomId { get; set; } // ID of the theater room
+        public string TheaterRoomName { get; set; } // Name of the theater room
+        public DateTime MovieStart { get; set; } // Start time of the movie
+        public DateTime MovieEnd { get; set; } // End time of the movie
+        public string AppointmentTitle { get; set; } // Title of the appointment
     }
 
-    RadzenScheduler<Appointment> scheduler;
-
-    public class Appointment
-    {
-        public int MovieId { get; set; }
-        public string MovieName { get; set; }
-        public int TheaterRoomId { get; set; }
-        public string TheaterRoomName { get; set; }
-        public DateTime MovieStart { get; set; }
-        public DateTime MovieEnd { get; set; }
-        public string AppointmentTitle { get; set; }
-    }
-    
-    void OnSlotRender(SchedulerSlotRenderEventArgs args)
+    private void OnSlotRender(SchedulerSlotRenderEventArgs args) // Method called when rendering a scheduler slot
     {
         // Highlight today in month view
-        if (args.View.Text == "Month" && args.Start.Date == DateTime.Today)
+        if (args.View.Text == "Month" && args.Start.Date == DateTime.Today) // Check if the view is month and the slot start date is today
         {
-            args.Attributes["style"] = "background: rgba(255,220,40,.2);";
+            args.Attributes["style"] = "background: rgba(255,220,40,.2);"; // Apply background color to highlight today's date
         }
-        
     }
 
-    public IList<Appointment> Appointments = new List<Appointment>();
-    
-    async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
+    private async Task OnSlotSelect(SchedulerSlotSelectEventArgs args) // Method called when selecting a slot in the scheduler
     {
-        
-
-        if (args.View.Text != "Year")
+        if (args.View.Text != "Year") // Check if the selected view is not year
         {
-            Appointment data = await DialogService.OpenAsync<AddAppointmentPage>("Add Appointment",
+            Appointment data = await DialogService.OpenAsync<AddAppointmentPage>("Add Screening", // Open a dialog for adding a screening
                 new Dictionary<string, object> { { "Start", args.Start }, { "End", args.End } });
 
-            if (data != null)
+            if (data != null) // Check if data was returned from the dialog
             {
-
-                var addScreeningDto = new AddScreeningDto
+                var addScreeningDto = new AddScreeningDto // Create DTO for adding a screening
                 {
                     MovieId = data.MovieId,
                     MovieStart = data.MovieStart.SetKindUtc(),
                     TheaterRoomId = data.TheaterRoomId
                 };
-                
-                PreloadService.Show();
-                var result = await ScreeningService.AddScreening(addScreeningDto);
-                IsScreeningAddedSucces = true;
-                AllScreenings.Append(result);
-                AllScreenings = await ScreeningService.GetAllScreenings();
-                
-                Appointments.Add(data);
+
+                PreloadService.Show(); // Show loading spinner
+                var result = await ScreeningService.AddScreening(addScreeningDto); // Add the screening
+                IsScreeningAddedSuccess = true; // Set success flag
+                AllScreenings.Append(result); // Add the new screening to the collection
+                AllScreenings = await ScreeningService.GetAllScreenings(); // Refresh the list of screenings
+
+                Appointments.Add(data); // Add the appointment to the list
                 // Either call the Reload method or reassign the Data property of the Scheduler
-                await scheduler.Reload();
-                PreloadService.Hide();
+                await _scheduler.Reload(); // Reload the scheduler
+                PreloadService.Hide(); // Hide loading spinner
             }
         }
     }
 
-    async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<Appointment> args)
+    private async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<Appointment> args) // Method called when selecting an appointment
     {
         Console.WriteLine("On appointment select");
     }
-    
-    void OnAppointmentMouseEnter(SchedulerAppointmentMouseEventArgs<Appointment> args)
+
+    private void OnAppointmentMouseEnter(SchedulerAppointmentMouseEventArgs<Appointment> args) // Method called when mouse enters an appointment
     {
-        TooltipService.Open(args.Element, ts =>
-            @<RadzenStack Orientation="Orientation.Vertical" Gap="0" Class="rz-p-6" Style="min-width: 250px; max-width: 500px;">
-                <RadzenText TextStyle="TextStyle.H4" Class="rz-mb-4">
+        Console.WriteLine("OnAppointmentMouseEnter");
+        TooltipService.Open(args.Element, ts => // Open a tooltip on mouse enter
+            @<RadzenStack Orientation="Orientation.Vertical" Gap="0" Class="rz-p-6" Style="min-width: 250px; max-width: 600px;">
+                <RadzenText TextStyle="TextStyle.H4" Class="rz-mb-4" Style="color: white">
                     @args.Data.MovieName
                 </RadzenText>
                 <RadzenStack Orientation="Orientation.Horizontal" Gap="4px">
-                    <RadzenText TextStyle="TextStyle.Body2" Style=" width: 44px;">
+                    <RadzenText TextStyle="TextStyle.Body2" Style=" width: 44px; color: white">
                         <strong>Start</strong>
                     </RadzenText>
-                    <RadzenText TextStyle="TextStyle.Body2">
+                    <RadzenText TextStyle="TextStyle.Body2" Style="color: white">
                         @args.Data.MovieStart.ToString("hh:mm ⋅ dddd, MMMM d")
                     </RadzenText>
                 </RadzenStack>
                 <RadzenStack Orientation="Orientation.Horizontal" Gap="4px">
-                    <RadzenText TextStyle="TextStyle.Body2" Style="width: 44px;">
+                    <RadzenText TextStyle="TextStyle.Body2" Style="width: 44px; color: white">
                         <strong>End</strong>
                     </RadzenText>
-                    <RadzenText TextStyle="TextStyle.Body2">
+                    <RadzenText TextStyle="TextStyle.Body2" Style="color: white">
                         @args.Data.MovieEnd.ToString("hh:mm ⋅ dddd, MMMM d")
-        </RadzenText>
-        </RadzenStack>
-        </RadzenStack>, new TooltipOptions { Position = TooltipPosition.Right, Duration = null });
+                    </RadzenText>
+                </RadzenStack>
+            </RadzenStack>, new TooltipOptions { Position = TooltipPosition.Right, Duration = null }); // Set tooltip options
     }
 
-    
-    void OnAppointmentMouseLeave(SchedulerAppointmentMouseEventArgs<Appointment> args)
+    private void OnAppointmentMouseLeave(SchedulerAppointmentMouseEventArgs<Appointment> args) // Method called when mouse leaves an appointment
     {
-        TooltipService.Close();
+        TooltipService.Close(); // Close the tooltip
     }
 }

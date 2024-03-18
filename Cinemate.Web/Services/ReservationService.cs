@@ -6,94 +6,102 @@ using Microsoft.JSInterop;
 
 namespace Cinemate.Web.Services;
 
-public class ReservationService : IReservationService
-{
-    private readonly HttpClient _httpClient;
-    private readonly IJSRuntime _jsRuntime;
-    private const string ReservationKey = "ReservationService";
-    private const string SecretReservationKey = "SecretReservationService";
-
-
-    public ReservationService(HttpClient httpClient,IJSRuntime jsRuntime)
+// Service class responsible for handling reservation-related operations
+    public class ReservationService : IReservationService
     {
-        _httpClient = httpClient;
-        _jsRuntime = jsRuntime;
-    }
+        private readonly HttpClient _httpClient;
+        private readonly IJSRuntime _jsRuntime;
+        private const string ReservationKey = "ReservationService";
+        private const string SecretReservationKey = "SecretReservationService";
 
-    public async Task<PreReservationDto> GetLocalPreReservation()
-    {
-        var json = await _jsRuntime.InvokeAsync<string>("sessionStorage.getItem", ReservationKey);
-        return json != null ? JsonSerializer.Deserialize<PreReservationDto>(json) : null;
-
-    }
-
-    public async Task<SecretMoviePreReservation> GetLocalSecretMoviePreReservation()
-    {
-        var json = await _jsRuntime.InvokeAsync<string>("sessionStorage.getItem", SecretReservationKey);
-        return json != null ? JsonSerializer.Deserialize<SecretMoviePreReservation>(json) : null;
-    }
-
-    public async Task SetLocalPreReservation(PreReservationDto preReservation)
-    {
-        var json = JsonSerializer.Serialize(preReservation);
-        await _jsRuntime.InvokeVoidAsync("sessionStorage.setItem", ReservationKey, json);
-    }
-
-    public async Task SetLocalSecretMoviePreReservation(SecretMoviePreReservation preReservation)
-    {
-        var json = JsonSerializer.Serialize(preReservation);
-        await _jsRuntime.InvokeVoidAsync("sessionStorage.setItem", SecretReservationKey, json);
-    }
-
-    public async Task<IEnumerable<ReservationDto>> GetAllReservations()
-    {
-        try
+        // Constructor to initialize the service with an HttpClient instance and an IJSRuntime instance
+        public ReservationService(HttpClient httpClient, IJSRuntime jsRuntime)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ReservationDto>>("api/reservation");
+            _httpClient = httpClient;
+            _jsRuntime = jsRuntime;
         }
-        catch (HttpRequestException ex)
-        {
-            throw new Exception("Failed to fetch reservations. Please try again later.", ex);
-        }
-    }
 
-    public async Task<ReservationDto> AddReservation(AddReservationDto reservation)
-    {
-        try
+        // Method to retrieve a pre-reservation from local session storage
+        public async Task<PreReservationDto> GetLocalPreReservation()
         {
-            var response = await _httpClient.PostAsJsonAsync("api/reservation", reservation);
-            response.EnsureSuccessStatusCode(); // Throws if HTTP response status is not a success code
-            return await response.Content.ReadFromJsonAsync<ReservationDto>();
+            var json = await _jsRuntime.InvokeAsync<string>("sessionStorage.getItem", ReservationKey);
+            return json != null ? JsonSerializer.Deserialize<PreReservationDto>(json) : null;
         }
-        catch (HttpRequestException ex)
-        {
-            throw new Exception("Failed to add reservation. Please try again later.", ex);
-        }
-    }
 
-    public async Task<ReservationDto> GetSingleReservation(int id)
-    {
-        try
+        // Method to retrieve a pre-reservation for a secret movie from local session storage
+        public async Task<SecretMoviePreReservation> GetLocalSecretMoviePreReservation()
         {
-            return await _httpClient.GetFromJsonAsync<ReservationDto>($"api/reservation/{id}");
+            var json = await _jsRuntime.InvokeAsync<string>("sessionStorage.getItem", SecretReservationKey);
+            return json != null ? JsonSerializer.Deserialize<SecretMoviePreReservation>(json) : null;
         }
-        catch (HttpRequestException ex)
-        {
-            throw new Exception($"Failed to fetch reservation with ID {id}. Please try again later.", ex);
-        }
-    }
 
-    public async Task<SecretMoviePreReservation> AddSecretMovieReservation(SecretMovieDto secretMovie)
-    {
-        try
+        // Method to set a pre-reservation in local session storage
+        public async Task SetLocalPreReservation(PreReservationDto preReservation)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/reservation/secretmovie", secretMovie);
-            response.EnsureSuccessStatusCode(); // Throws if HTTP response status is not a success code
-            return await response.Content.ReadFromJsonAsync<SecretMoviePreReservation>();
+            var json = JsonSerializer.Serialize(preReservation);
+            await _jsRuntime.InvokeVoidAsync("sessionStorage.setItem", ReservationKey, json);
         }
-        catch (HttpRequestException ex)
+
+        // Method to set a pre-reservation for a secret movie in local session storage
+        public async Task SetLocalSecretMoviePreReservation(SecretMoviePreReservation preReservation)
         {
-            throw new Exception("Failed to add secret movie reservation. Please try again later.", ex);
+            var json = JsonSerializer.Serialize(preReservation);
+            await _jsRuntime.InvokeVoidAsync("sessionStorage.setItem", SecretReservationKey, json);
+        }
+
+        // Method to fetch all reservations from the API
+        public async Task<IEnumerable<ReservationDto>> GetAllReservations()
+        {
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<IEnumerable<ReservationDto>>("api/reservation");
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Failed to fetch reservations. Please try again later.", ex);
+            }
+        }
+
+        // Method to add a new reservation via the API
+        public async Task<ReservationDto> AddReservation(AddReservationDto reservation)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("api/reservation", reservation);
+                response.EnsureSuccessStatusCode(); // Throws if HTTP response status is not a success code
+                return await response.Content.ReadFromJsonAsync<ReservationDto>();
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Failed to add reservation. Please try again later.", ex);
+            }
+        }
+
+        // Method to fetch a single reservation by its ID from the API
+        public async Task<ReservationDto> GetSingleReservation(int id)
+        {
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<ReservationDto>($"api/reservation/{id}");
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception($"Failed to fetch reservation with ID {id}. Please try again later.", ex);
+            }
+        }
+
+        // Method to add a reservation for a secret movie via the API
+        public async Task<SecretMoviePreReservation> AddSecretMovieReservation(SecretMovieDto secretMovie)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("api/reservation/secretmovie", secretMovie);
+                response.EnsureSuccessStatusCode(); // Throws if HTTP response status is not a success code
+                return await response.Content.ReadFromJsonAsync<SecretMoviePreReservation>();
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Failed to add secret movie reservation. Please try again later.", ex);
+            }
         }
     }
-}

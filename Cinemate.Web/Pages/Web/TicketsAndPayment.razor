@@ -84,149 +84,146 @@
 </div>
 </EditForm>
 
-@code
-{
-    [Inject] private IReservationService ReservationService { get; set; }
-    [Inject] private IScreeningService ScreeningService { get; set; }
-    [Inject] NavigationManager NavigationManager { get; set; }
-    [Inject] private IUserService UserService { get; set; }
+@code { // C# code block
+    [Inject] private IReservationService ReservationService { get; set; } // Injected reservation service
+    [Inject] private IScreeningService ScreeningService { get; set; } // Injected screening service
+    [Inject] NavigationManager NavigationManager { get; set; } // Injected navigation manager
+    [Inject] private IUserService UserService { get; set; } // Injected user service
 
-    private PreReservationDto PreReservationDto { get; set; }
-    private SecretMoviePreReservation SecretMoviePreReservation { get; set; }
-    private ScreeningWithInfoDto ScreeningWithInfoDto { get; set; }
-    private AddReservationDto AddReservationDto = new AddReservationDto();
-    
+    private PreReservationDto PreReservationDto { get; set; } // Stores pre-reservation information
+    private SecretMoviePreReservation SecretMoviePreReservation { get; set; } // Stores secret movie pre-reservation information
+    private ScreeningWithInfoDto ScreeningWithInfoDto { get; set; } // Stores screening information
+    private AddReservationDto AddReservationDto = new AddReservationDto(); // DTO for adding a reservation
 
-    private bool SecretMovie;
-    private string FirstName { get; set; }
-    private string LastName { get; set; }
-    private string Email { get; set; }
-    private string Email2 { get; set; }
+    private bool SecretMovie; // Flag indicating if it's a secret movie
+    private string FirstName { get; set; } // First name of the user
+    private string LastName { get; set; } // Last name of the user
+    private string Email { get; set; } // Email of the user
+    private string Email2 { get; set; } // Confirmation email of the user
 
-    private string TicketType = "Normaal";
-    private List<string> TicketTypes = ["Normaal", "Kinder korting", "65 Plus", "Studentenkorting"];
-    private bool PopcornSelected { get; set; }
-    private decimal BasePrice = (decimal)8.5;
-    private decimal FinalPrice { get; set; }
-    private int NumOfSeats { get; set; }
-    private List<int> PromoCodes = [];
+    private string TicketType = "Normaal"; // Selected ticket type (default: Normaal)
+    private List<string> TicketTypes = ["Normaal", "Kinder korting", "65 Plus", "Studentenkorting"]; // List of available ticket types
+    private bool PopcornSelected { get; set; } // Flag indicating if popcorn is selected
+    private decimal BasePrice = (decimal)8.5; // Base price of a ticket
+    private decimal FinalPrice { get; set; } // Final price of the reservation
+    private int NumOfSeats { get; set; } // Number of seats selected
+    private List<int> PromoCodes = []; // List of promo codes
 
-
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() // Method called when the component is initialized
     {
-        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
-        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("SecretMovie", out var value))
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri); // Get the absolute URI
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("SecretMovie", out var value)) // Check if the URI contains a query parameter for a secret movie
         {
-            SecretMovie = Convert.ToBoolean(value);
-            SecretMovie = true;
+            SecretMovie = Convert.ToBoolean(value); // Parse the value of the query parameter
+            SecretMovie = true; // Set SecretMovie flag to true
         }
         else
         {
-            SecretMovie = false;
+            SecretMovie = false; // Set SecretMovie flag to false
         }
         
-        Console.WriteLine(SecretMovie);
-        switch (SecretMovie)
+        Console.WriteLine(SecretMovie); // Log the value of SecretMovie flag
+        switch (SecretMovie) // Switch statement based on the SecretMovie flag
         {
-            case false:
-                PreReservationDto = await ReservationService.GetLocalPreReservation();
-                NumOfSeats = PreReservationDto.SeatId.Count;
-                ScreeningWithInfoDto = await ScreeningService.GetScreening(PreReservationDto.ScreeningId);
-                FinalPrice = BasePrice * PreReservationDto.SeatId.Count;
+            case false: // If it's not a secret movie
+                PreReservationDto = await ReservationService.GetLocalPreReservation(); // Get pre-reservation details
+                NumOfSeats = PreReservationDto.SeatId.Count; // Get the number of seats selected
+                ScreeningWithInfoDto = await ScreeningService.GetScreening(PreReservationDto.ScreeningId); // Get screening details
+                FinalPrice = BasePrice * PreReservationDto.SeatId.Count; // Calculate final price
                 break;
-            case true:
-                SecretMoviePreReservation = await ReservationService.GetLocalSecretMoviePreReservation();
-                BasePrice = (decimal)6.50;
-                FinalPrice = BasePrice;
-                PromoCodes.Add(1);
+            case true: // If it's a secret movie
+                SecretMoviePreReservation = await ReservationService.GetLocalSecretMoviePreReservation(); // Get secret movie pre-reservation details
+                BasePrice = (decimal)6.50; // Update base price for secret movie
+                FinalPrice = BasePrice; // Set final price
+                PromoCodes.Add(1); // Add promo code for secret movie
                 break;
         }
     }
 
-    private async Task HandleValidSubmit()
+    private async Task HandleValidSubmit() // Method to handle form submission
     {
-        _spinnerService.Show();
+        _spinnerService.Show(); // Show spinner
 
-        var addUserDto = new AddUserDto
+        var addUserDto = new AddUserDto // Create DTO for adding a user
         {
-            Email = Email,
-            Name = $"{FirstName} {LastName}",
-            Password = "none",
-            SubscribedToNewsletter = false
+            Email = Email, // Set email
+            Name = $"{FirstName} {LastName}", // Set name
+            Password = "none", // Set password (temporary)
+            SubscribedToNewsletter = false // Set subscription status
         };
 
-        if (PopcornSelected)
+        if (PopcornSelected) // If popcorn is selected
         {
-            PromoCodes.Add(2);
+            PromoCodes.Add(2); // Add promo code for popcorn
         }
 
         try
         {
-            var result = await UserService.CreateUser(addUserDto);
-            if (result != null)
+            var result = await UserService.CreateUser(addUserDto); // Create user
+            if (result != null) // If user creation is successful
             {
-                if (SecretMovie == false)
+                if (SecretMovie == false) // If it's not a secret movie
                 {
-                    var reservation = new AddReservationDto
+                    var reservation = new AddReservationDto // Create reservation DTO
                     {
-                        Paid = true,
-                        PaymentType = "iDeal",
-                        Price = FinalPrice,
-                        PromoCode = PromoCodes,
-                        ScreeningId = PreReservationDto.ScreeningId,
-                        SeatId = PreReservationDto.SeatId,
-                        UserId = result.Id,
-                        EmployeeId = null
+                        Paid = true, // Set payment status
+                        PaymentType = "iDeal", // Set payment type
+                        Price = FinalPrice, // Set price
+                        PromoCode = PromoCodes, // Set promo codes
+                        ScreeningId = PreReservationDto.ScreeningId, // Set screening ID
+                        SeatId = PreReservationDto.SeatId, // Set seat IDs
+                        UserId = result.Id, // Set user ID
+                        EmployeeId = null // Set employee ID
                     };
 
-                    var addReservationResult = await ReservationService.AddReservation(reservation);
-                    if (addReservationResult != null)
+                    var addReservationResult = await ReservationService.AddReservation(reservation); // Add reservation
+                    if (addReservationResult != null) // If reservation is added successfully
                     {
-                        NavigationManager.NavigateTo($"/kiosk/RedeemTicket/{addReservationResult.Id}");
+                        NavigationManager.NavigateTo($"/kiosk/RedeemTicket/{addReservationResult.Id}"); // Navigate to ticket redemption page
                     }
                 }
-                else
+                else // If it's a secret movie
                 {
-                    Console.WriteLine($"seat to add: {SecretMoviePreReservation.SeatId}");
-                    var seats = new List<int>{SecretMoviePreReservation.SeatId};
-                    var secretReservation = new AddReservationDto
+                    Console.WriteLine($"seat to add: {SecretMoviePreReservation.SeatId}"); // Log selected seat for secret movie
+                    var seats = new List<int>{SecretMoviePreReservation.SeatId}; // Create list of seats
+                    var secretReservation = new AddReservationDto // Create reservation DTO for secret movie
                     {
-                        Paid = true,
-                        PaymentType = "iDeal",
-                        Price = FinalPrice,
-                        PromoCode = PromoCodes,
-                        ScreeningId = SecretMoviePreReservation.ScreeningId,
-                        SeatId = seats,
-                        UserId = result.Id,
-                        EmployeeId = null
+                        Paid = true, // Set payment status
+                        PaymentType = "iDeal", // Set payment type
+                        Price = FinalPrice, // Set price
+                        PromoCode = PromoCodes, // Set promo codes
+                        ScreeningId = SecretMoviePreReservation.ScreeningId, // Set screening ID
+                        SeatId = seats, // Set seat IDs
+                        UserId = result.Id, // Set user ID
+                        EmployeeId = null // Set employee ID
                     };
-                    var addReservationResult = await ReservationService.AddReservation(secretReservation);
-                    if (addReservationResult != null)
+                    var addReservationResult = await ReservationService.AddReservation(secretReservation); // Add reservation
+                    if (addReservationResult != null) // If reservation is added successfully
                     {
-                        NavigationManager.NavigateTo($"/kiosk/RedeemTicket/{addReservationResult.Id}");
+                        NavigationManager.NavigateTo($"/kiosk/RedeemTicket/{addReservationResult.Id}"); // Navigate to ticket redemption page
                     }
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception e) // Catch any exceptions
         {
-            Console.WriteLine(e);
-            throw;
+            Console.WriteLine(e); // Log exception
+            throw; // Throw exception
         }
-        _spinnerService.Hide();
+        _spinnerService.Hide(); // Hide spinner
     }
 
-    private void OnTicketTypeChange()
+    private void OnTicketTypeChange() // Method to handle ticket type change
     {
-        Console.WriteLine(TicketType);
+        Console.WriteLine(TicketType); // Log selected ticket type
         FinalPrice = BasePrice; // Reset total price to base price
 
-        if (!SecretMovie)
+        if (!SecretMovie) // If it's not a secret movie
         {
-            switch (TicketType)
+            switch (TicketType) // Switch statement based on selected ticket type
             {
-                case "Normaal":
-                    FinalPrice *= PreReservationDto.SeatId.Count; // Multiply by number of seats
+                case "Normaal": // If ticket type is Normaal
+                    FinalPrice *= PreReservationDto.SeatId.Count; // Multiply final price by number of seats
                     break;
                 case "Kinder korting":
                 case "65 Plus":
@@ -235,23 +232,22 @@
                     break;
             }
 
-            if (PopcornSelected)
+            if (PopcornSelected) // If popcorn is selected
             {
                 FinalPrice += (decimal)2.5 * PreReservationDto.SeatId.Count; // Add popcorn price per seat
             }
         }
-        else
+        else // If it's a secret movie
         {
-            if (PopcornSelected)
+            if (PopcornSelected) // If popcorn is selected
             {
                 FinalPrice += (decimal)2.5; // Add popcorn price once
             }
         }
     }
 
-    private void GoBack()
+    private void GoBack() // Method to navigate back
     {
-        NavigationManager.NavigateTo($"kiosk/seat-reservation/{PreReservationDto.ScreeningId}");
+        NavigationManager.NavigateTo($"kiosk/seat-reservation/{PreReservationDto.ScreeningId}"); // Navigate back to seat reservation page
     }
-    
 }
