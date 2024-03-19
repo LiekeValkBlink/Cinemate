@@ -104,7 +104,7 @@
 }
     private async Task LoadData()
     {
-        // Als SelectedKijkwijzers leeg is, kopiëren we alle films naar AllFilteredMoviesWithImage
+        // Als SelectedKijkwijzers leeg is, kopiï¿½ren we alle films naar AllFilteredMoviesWithImage
         if (SelectedKijkwijzers.Count == 0)
         {
 
@@ -185,7 +185,7 @@
 <div class="movie-container">
 
     <div >
-        <select multiple @onchange="HandleSelectChange">
+        <select id="kijkwijzer_dropdown" multiple @onchange="HandleSelectChange">
             @foreach (Kijkwijzer kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
             {
                 <option value="@kijkwijzer.ToString()" selected="@SelectedKijkwijzers.Contains(kijkwijzer)">

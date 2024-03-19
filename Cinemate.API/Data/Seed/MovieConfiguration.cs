@@ -36,7 +36,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                 Director = "James Cameron",
                 Cast = "Sam Worthington, Zoe Saldana, Sigourney Weaver",
                 Review = (decimal)7.8,
-                Kijkwijzers = "Alle leeftijden, 6 jaar,12 jaar,16 jaar,Geweld,Angst,Grof taalgebruik,Discriminatie,Drugs- en/of alcoholgebruik,Seks",
+                Kijkwijzers = "Alle leeftijden ,Angst",
                 ThreeDimensional = false
             },
             new Movie
