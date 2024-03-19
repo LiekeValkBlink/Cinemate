@@ -9,7 +9,7 @@
      
      private string? ImageBaseUrl = "/images/";
  
-     private IEnumerable<MovieWithCategoryDto>? AllMovies { get; set; }
+     public IEnumerable<MovieWithCategoryDto>? AllMovies { get; set; }
      private IEnumerable<MovieDtoImage>? AllMoviesWithImage { get; set; }
  
      protected override async Task OnInitializedAsync() {
@@ -61,7 +61,7 @@
     private MovieDto movie;
 
 
-    private async Task SaveAndNavigate(MovieDtoImage movie)
+    public async Task SaveAndNavigate(MovieDtoImage movie)
     {
         if (movie != null)
         {
