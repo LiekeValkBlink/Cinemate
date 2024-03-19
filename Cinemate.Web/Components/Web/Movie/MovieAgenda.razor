@@ -101,7 +101,7 @@
         AllScreenings = await ScreeningService?.GetAllScreenings();
 
         await LoadData();
-}
+    }
     private async Task LoadData()
     {
         // Als SelectedKijkwijzers leeg is, kopi�ren we alle films naar AllFilteredMoviesWithImage
@@ -121,8 +121,13 @@
                 var movieKijkwijzerDescriptions = movie.Kijkwijzers.Split(',');
                 var movieKijkwijzerValues = movieKijkwijzerDescriptions.Select(desc => KijkwijzerHelper.GetEnumValue(desc.Trim()));
 
-                // Vergelijk de enum-waarden van de film met de geselecteerde kijkwijzers
-                return movieKijkwijzerValues.Any(k => SelectedKijkwijzers.Contains(k));
+                // Controleer of alle geselecteerde kijkwijzers aanwezig zijn in de kijkwijzers van de film
+                var result = SelectedKijkwijzers.All(k => movieKijkwijzerValues.Contains(k));
+
+                // Voeg debuginformatie toe om de tussenliggende waarden te controleren
+                //Console.WriteLine($"Film: {movie.Title}, Kijkwijzers: {string.Join(", ", movieKijkwijzerValues)}, Geselecteerde kijkwijzers: {string.Join(", ", SelectedKijkwijzers)}, Resultaat: {result}");
+
+                return result;
             });
 
         }
