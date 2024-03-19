@@ -135,6 +135,25 @@
     {
         return date.Date == DateTime.Today;
     }
+
+    private string IsSelected(DateTime selectedDate2)
+    {
+        Console.WriteLine($"selectedDate2 = {selectedDate2}");
+        Console.WriteLine($"selectedDate = {selectedDate}");
+
+        if (selectedDate2 == DateTime.Today && this.selectedDate.Date == DateTime.Today)
+        {
+            return "selected";
+        } else if (this.selectedDate == selectedDate2)
+        {
+            return "selected";
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
    
 }
 
@@ -149,7 +168,7 @@
 
         //Console.WriteLine($"Datum: {date}, isSelected: {isSelected}"); // Controle
 
-        <button class="date-container @(isSelected ? "selected" : "") @(isToday ? "date-today" : "")" @onclick="() => SelectDate(date)">
+        <button class="date-container @(IsSelected(date)) @(isToday ? "date-today" : "")" @onclick="() => SelectDate(date)">
             @buttonText
         </button>
     }
