@@ -43,5 +43,17 @@
     gap: 0.625rem;
 }
 
+.options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: red; /* Rode achtergrond */
+    border-radius: 5px; /* Afgeronde hoeken */
+    padding: 10px; /* Optionele padding voor visuele scheiding */
+}
 
+    .options.active {
+        display: block;
+    }
 }

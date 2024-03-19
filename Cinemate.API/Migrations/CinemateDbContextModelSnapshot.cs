@@ -234,7 +234,7 @@ namespace Cinemate.API.Migrations
                             Description = "The Way of Water: Een vervolg op Avatar (2009).",
                             Director = "James Cameron",
                             Duration = 160,
-                            Kijkwijzers = "Alle leeftijden, 6 jaar,12 jaar,16 jaar,Geweld,Angst,Grof taalgebruik,Discriminatie,Drugs- en/of alcoholgebruik,Seks",
+                            Kijkwijzers = "Alle leeftijden ,Angst",
                             MovieCategoryId = 1,
                             ReleaseCountry = "US",
                             ReleaseYear = 2022,
@@ -553,232 +553,232 @@ namespace Cinemate.API.Migrations
                         new
                         {
                             Id = 2,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 81.5067193127452m,
-                            ScreeningId = 13,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EmployeeId = 5,
+                            EmployeeId = 1,
                             Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 47.3982675125708m,
-                            ScreeningId = 29,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 70.331592720334m,
+                            Price = 75.9032247383059m,
                             ScreeningId = 22,
                             UserId = 2
                         },
                         new
                         {
-                            Id = 5,
-                            EmployeeId = 3,
+                            Id = 3,
+                            EmployeeId = 4,
                             Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 83.8339322864098m,
-                            ScreeningId = 25,
-                            UserId = 1
+                            Price = 55.2508572326632m,
+                            ScreeningId = 20,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EmployeeId = 1,
+                            Paid = true,
+                            PaymentType = "Cash",
+                            Price = 50.2244734853833m,
+                            ScreeningId = 8,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EmployeeId = 5,
+                            Paid = true,
+                            PaymentType = "Cash",
+                            Price = 50.1091113491506m,
+                            ScreeningId = 12,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 6,
-                            EmployeeId = 1,
+                            EmployeeId = 4,
                             Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 80.8555683186158m,
-                            ScreeningId = 34,
+                            Price = 86.4211212946282m,
+                            ScreeningId = 22,
                             UserId = 5
                         },
                         new
                         {
                             Id = 7,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 84.035293912322m,
-                            ScreeningId = 12,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 8,
                             EmployeeId = 4,
-                            Paid = true,
+                            Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 70.0170729039745m,
-                            ScreeningId = 26,
+                            Price = 49.4332860808466m,
+                            ScreeningId = 6,
                             UserId = 5
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 8,
                             EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 35.7733051403328m,
-                            ScreeningId = 11,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 43.2370327394741m,
+                            ScreeningId = 8,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EmployeeId = 5,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 55.2527238655396m,
+                            ScreeningId = 14,
                             UserId = 5
                         },
                         new
                         {
                             Id = 10,
-                            EmployeeId = 5,
-                            Paid = false,
+                            EmployeeId = 1,
+                            Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 61.3185773285065m,
-                            ScreeningId = 11,
-                            UserId = 3
+                            Price = 61.5203313593171m,
+                            ScreeningId = 34,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 11,
                             EmployeeId = 5,
                             Paid = true,
-                            PaymentType = "Cash",
-                            Price = 63.8181623504461m,
-                            ScreeningId = 19,
-                            UserId = 3
+                            PaymentType = "Credit Card",
+                            Price = 53.0135123732625m,
+                            ScreeningId = 18,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 12,
-                            EmployeeId = 4,
+                            EmployeeId = 2,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 45.6300910966272m,
-                            ScreeningId = 33,
+                            Price = 77.9277910244869m,
+                            ScreeningId = 28,
                             UserId = 1
                         },
                         new
                         {
                             Id = 13,
-                            EmployeeId = 4,
+                            EmployeeId = 5,
                             Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 67.5089331324881m,
-                            ScreeningId = 3,
-                            UserId = 3
+                            PaymentType = "Cash",
+                            Price = 77.0280581560682m,
+                            ScreeningId = 35,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 14,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 27.4445797511834m,
-                            ScreeningId = 18,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 15,
                             EmployeeId = 3,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 68.6786561111447m,
-                            ScreeningId = 21,
+                            Price = 24.427167689668m,
+                            ScreeningId = 17,
                             UserId = 2
                         },
                         new
                         {
-                            Id = 16,
+                            Id = 15,
                             EmployeeId = 2,
-                            Paid = true,
+                            Paid = false,
+                            PaymentType = "Credit Card",
+                            Price = 10.5874633911263m,
+                            ScreeningId = 7,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            EmployeeId = 3,
+                            Paid = false,
                             PaymentType = "Cash",
-                            Price = 35.5486538764338m,
-                            ScreeningId = 11,
-                            UserId = 3
+                            Price = 94.9281358052271m,
+                            ScreeningId = 12,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 17,
                             EmployeeId = 5,
                             Paid = false,
-                            PaymentType = "Cash",
-                            Price = 31.6090265402508m,
+                            PaymentType = "Credit Card",
+                            Price = 91.6813916077338m,
                             ScreeningId = 15,
                             UserId = 1
                         },
                         new
                         {
                             Id = 18,
-                            EmployeeId = 3,
-                            Paid = true,
+                            EmployeeId = 1,
+                            Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 30.1914284176144m,
-                            ScreeningId = 13,
+                            Price = 75.0008299263604m,
+                            ScreeningId = 23,
                             UserId = 5
                         },
                         new
                         {
                             Id = 19,
-                            EmployeeId = 5,
+                            EmployeeId = 2,
                             Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 10.0890166782347m,
-                            ScreeningId = 21,
-                            UserId = 5
+                            PaymentType = "Cash",
+                            Price = 25.3744354930106m,
+                            ScreeningId = 13,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 20,
-                            EmployeeId = 2,
-                            Paid = true,
+                            EmployeeId = 3,
+                            Paid = false,
                             PaymentType = "Cash",
-                            Price = 58.8940759868129m,
-                            ScreeningId = 29,
-                            UserId = 1
+                            Price = 52.2160912682064m,
+                            ScreeningId = 13,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 21,
-                            EmployeeId = 4,
+                            EmployeeId = 2,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 65.5801318666018m,
-                            ScreeningId = 29,
+                            Price = 96.4960641325124m,
+                            ScreeningId = 31,
                             UserId = 3
                         },
                         new
                         {
                             Id = 22,
                             EmployeeId = 5,
-                            Paid = false,
+                            Paid = true,
                             PaymentType = "Cash",
-                            Price = 55.4473563968347m,
-                            ScreeningId = 25,
-                            UserId = 1
+                            Price = 6.5505846726462m,
+                            ScreeningId = 23,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 23,
-                            EmployeeId = 2,
+                            EmployeeId = 1,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 79.6393525067281m,
-                            ScreeningId = 15,
-                            UserId = 5
+                            Price = 9.29207962128094m,
+                            ScreeningId = 28,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 24,
                             EmployeeId = 1,
-                            Paid = false,
+                            Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 41.6529940149572m,
-                            ScreeningId = 6,
-                            UserId = 3
+                            Price = 80.832251160043m,
+                            ScreeningId = 16,
+                            UserId = 5
                         },
                         new
                         {
@@ -786,258 +786,258 @@ namespace Cinemate.API.Migrations
                             EmployeeId = 3,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 27.3485627128058m,
-                            ScreeningId = 2,
-                            UserId = 3
+                            Price = 78.5316614887985m,
+                            ScreeningId = 8,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 26,
                             EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 45.7206433858815m,
-                            ScreeningId = 28,
-                            UserId = 3
+                            Paid = false,
+                            PaymentType = "Credit Card",
+                            Price = 95.2091054439858m,
+                            ScreeningId = 13,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 27,
                             EmployeeId = 3,
-                            Paid = false,
+                            Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 88.2659365519085m,
-                            ScreeningId = 18,
-                            UserId = 3
+                            Price = 9.59081963386137m,
+                            ScreeningId = 13,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 28,
-                            EmployeeId = 4,
+                            EmployeeId = 3,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 90.2940876054778m,
-                            ScreeningId = 9,
-                            UserId = 1
+                            Price = 8.01631989174798m,
+                            ScreeningId = 4,
+                            UserId = 2
                         },
                         new
                         {
                             Id = 29,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 54.1877569192639m,
-                            ScreeningId = 14,
-                            UserId = 4
+                            EmployeeId = 2,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 95.0512488360809m,
+                            ScreeningId = 35,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 30,
-                            EmployeeId = 1,
+                            EmployeeId = 2,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 28.7847046925266m,
-                            ScreeningId = 9,
-                            UserId = 3
+                            Price = 16.0402103655291m,
+                            ScreeningId = 28,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 31,
                             EmployeeId = 4,
-                            Paid = false,
+                            Paid = true,
                             PaymentType = "Cash",
-                            Price = 86.7005665523849m,
-                            ScreeningId = 13,
-                            UserId = 3
+                            Price = 71.31983435267m,
+                            ScreeningId = 24,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 32,
-                            EmployeeId = 4,
-                            Paid = true,
+                            EmployeeId = 1,
+                            Paid = false,
                             PaymentType = "Cash",
-                            Price = 87.583704752121m,
-                            ScreeningId = 3,
+                            Price = 6.37238685095452m,
+                            ScreeningId = 11,
                             UserId = 3
                         },
                         new
                         {
                             Id = 33,
-                            EmployeeId = 5,
-                            Paid = false,
+                            EmployeeId = 2,
+                            Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 31.442371830293m,
-                            ScreeningId = 24,
-                            UserId = 1
+                            Price = 77.45595449375m,
+                            ScreeningId = 6,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 34,
-                            EmployeeId = 3,
+                            EmployeeId = 5,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 7.98271713585068m,
-                            ScreeningId = 32,
-                            UserId = 2
+                            Price = 53.1784794885366m,
+                            ScreeningId = 22,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 35,
                             EmployeeId = 2,
                             Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 29.0200628307309m,
-                            ScreeningId = 7,
+                            PaymentType = "Cash",
+                            Price = 82.1994902937233m,
+                            ScreeningId = 8,
                             UserId = 5
                         },
                         new
                         {
                             Id = 36,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 44.6189800370248m,
-                            ScreeningId = 26,
+                            EmployeeId = 4,
+                            Paid = true,
+                            PaymentType = "Credit Card",
+                            Price = 46.6281704882461m,
+                            ScreeningId = 24,
                             UserId = 4
                         },
                         new
                         {
                             Id = 37,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 14.9703364249849m,
-                            ScreeningId = 28,
-                            UserId = 4
+                            EmployeeId = 1,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 13.1644269143794m,
+                            ScreeningId = 33,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 38,
                             EmployeeId = 5,
-                            Paid = false,
+                            Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 90.041695178662m,
-                            ScreeningId = 31,
-                            UserId = 1
+                            Price = 64.113823477975m,
+                            ScreeningId = 2,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 39,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 6.22685775877866m,
-                            ScreeningId = 11,
-                            UserId = 5
+                            EmployeeId = 5,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 19.8085392421744m,
+                            ScreeningId = 33,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 40,
-                            EmployeeId = 2,
+                            EmployeeId = 1,
                             Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 42.766754142601m,
-                            ScreeningId = 10,
+                            PaymentType = "Cash",
+                            Price = 36.922775094694m,
+                            ScreeningId = 22,
                             UserId = 4
                         },
                         new
                         {
                             Id = 41,
-                            EmployeeId = 3,
-                            Paid = true,
+                            EmployeeId = 1,
+                            Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 50.3325385669737m,
-                            ScreeningId = 27,
-                            UserId = 4
+                            Price = 4.55135314931971m,
+                            ScreeningId = 31,
+                            UserId = 2
                         },
                         new
                         {
                             Id = 42,
-                            EmployeeId = 4,
+                            EmployeeId = 1,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 91.6143754356194m,
-                            ScreeningId = 23,
-                            UserId = 3
+                            Price = 82.726695454448m,
+                            ScreeningId = 12,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 43,
-                            EmployeeId = 3,
-                            Paid = true,
+                            EmployeeId = 4,
+                            Paid = false,
                             PaymentType = "Cash",
-                            Price = 91.9692993599544m,
+                            Price = 64.3730702850571m,
                             ScreeningId = 17,
-                            UserId = 3
+                            UserId = 4
                         },
                         new
                         {
                             Id = 44,
-                            EmployeeId = 5,
+                            EmployeeId = 4,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 79.1477608506855m,
-                            ScreeningId = 32,
-                            UserId = 2
+                            Price = 31.4381072060873m,
+                            ScreeningId = 34,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 45,
-                            EmployeeId = 1,
+                            EmployeeId = 5,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 99.1312442910157m,
-                            ScreeningId = 24,
-                            UserId = 3
+                            Price = 64.8958337775637m,
+                            ScreeningId = 20,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 46,
-                            EmployeeId = 1,
+                            EmployeeId = 5,
                             Paid = true,
-                            PaymentType = "Cash",
-                            Price = 46.1841492980366m,
-                            ScreeningId = 3,
-                            UserId = 2
+                            PaymentType = "Credit Card",
+                            Price = 84.041980760752m,
+                            ScreeningId = 35,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 47,
-                            EmployeeId = 3,
+                            EmployeeId = 1,
                             Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 20.2373871263704m,
-                            ScreeningId = 3,
-                            UserId = 4
+                            Price = 61.1277687829962m,
+                            ScreeningId = 16,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 48,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 60.4457502339468m,
-                            ScreeningId = 31,
-                            UserId = 4
+                            EmployeeId = 5,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 72.5334048999447m,
+                            ScreeningId = 9,
+                            UserId = 2
                         },
                         new
                         {
                             Id = 49,
-                            EmployeeId = 4,
-                            Paid = false,
+                            EmployeeId = 1,
+                            Paid = true,
                             PaymentType = "Cash",
-                            Price = 43.9717495626988m,
-                            ScreeningId = 8,
-                            UserId = 3
+                            Price = 23.9950832731385m,
+                            ScreeningId = 1,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 50,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 19.1072632082561m,
-                            ScreeningId = 28,
+                            EmployeeId = 5,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 36.1654861366416m,
+                            ScreeningId = 4,
                             UserId = 1
                         });
                 });
