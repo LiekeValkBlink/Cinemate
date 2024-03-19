@@ -26,7 +26,7 @@ public class MovieController : ControllerBase
         // Get the file name
         var fileName = file.FileName;
         // Construct the file path
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images\posters", fileName);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/Images/posters", fileName);
 
         // Open a file stream to write the file
         await using var fileStream = new FileStream(filePath, FileMode.Create);
@@ -50,7 +50,7 @@ public class MovieController : ControllerBase
         // Get the file name
         var fileName = file.FileName;
         // Construct the file path
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images\screenshots", fileName);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/Images/screenshots", fileName);
 
         // Open a file stream to write the file
         await using var fileStream = new FileStream(filePath, FileMode.Create);

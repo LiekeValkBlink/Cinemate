@@ -32,4 +32,8 @@
       <ProjectReference Include="..\Cinemate.Models\Cinemate.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Migrations\CinemateDbContextModelSnapshot.cs" />
+    </ItemGroup>
+
 </Project>
