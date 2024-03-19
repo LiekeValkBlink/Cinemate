@@ -50,6 +50,14 @@
                 <p>@(selectedMovie?.ReleaseYear)</p>
         </td>
     </tr>
+        <tr>
+            <td>
+                <p>Land van uitgave</p>
+            </td>
+            <td>
+                <p>@(selectedMovie?.ReleaseCountry)</p>
+            </td>
+        </tr>
     <tr>
         <td>
             <p>Regisseur</p>
@@ -69,4 +77,7 @@
     {
         selectedMovie = await SelectedMovieService.GetSelectedMovieAsync();
     }
+
+
+
 }

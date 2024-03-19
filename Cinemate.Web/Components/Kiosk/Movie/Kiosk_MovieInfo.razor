@@ -1,5 +1,10 @@
 @using Cinemate.Models.Dto
+@using Cinemate.Models.Enum
+@using Cinemate.Web.Services.Contracts
 @inject ISelectedMovieService SelectedMovieService
+
+
+
 
 <img class="movie-img-container" src="@(selectedMovie?.MovieScreenshotUrl)" alt="Movie screenshot" />
 
@@ -7,12 +12,30 @@
 
 <div class="movie-details-primary">
     <div class="mpa-rating">
-        <img class="mpa-icon" src="/images/kijkwijzer-6.svg" alt="Kijkwijzer - leeftijd 6"/>
-        <img class="mpa-icon" src="/images/kijkwijzer-eng.svg" alt="Kijkwijzer - eng"/>
-        <img class="mpa-icon" src="/images/kijkwijzer-geweld.svg" alt="Kijkwijzer - geweld"/>
+        @if (selectedMovie?.Kijkwijzers != null)
+        {
+
+            foreach (var description in descriptions)
+            {
+
+                if (selectedMovie.Kijkwijzers.Contains(description))
+                {
+                    Console.WriteLine(description);
+                    var safeFileName = GetSafeFileName(description);
+                    Console.WriteLine(safeFileName);
+                    var imagePath = $"/images/kijkwijzer/kijkwijzer-{safeFileName}.svg";
+                    Console.WriteLine(imagePath);
+
+                    // Gebruik relatief pad naar de afbeelding
+                    <img class="mpa-icon" src="@imagePath" alt="Kijkwijzer - @description" />
+                }
+            }
+        }
     </div>
-    <p class="movie-duration">@(selectedMovie?.Duration) minuten</p>
+    <p class="movie-duration">@selectedMovie?.Duration Minuten</p>
 </div>
+
+
 
 <p>@(selectedMovie?.Description)</p>
 
@@ -23,7 +46,8 @@
             <p>Bij Cinemate vanaf</p>
         </td>
         <td>
-            <p>Woensdag 22 november 2023</p>
+                <p>@(nextScreeningDateTime != null ? FormatDate(nextScreeningDateTime.Value) : "Nog geen voorstellingen beschikbaar")</p>
+
         </td>
     </tr>
     <tr>
@@ -50,6 +74,14 @@
                 <p>@(selectedMovie?.ReleaseYear)</p>
         </td>
     </tr>
+        <tr>
+            <td>
+                <p>Land van uitgave</p>
+            </td>
+            <td>
+                <p>@(selectedMovie?.ReleaseCountry)</p>
+            </td>
+        </tr>
     <tr>
         <td>
             <p>Regisseur</p>
@@ -76,5 +108,75 @@
     protected override async Task OnInitializedAsync()
     {
         selectedMovie = await SelectedMovieService.GetSelectedMovieAsync();
+        AllScreenings = await ScreeningService?.GetAllScreenings();
+
+        FindNextScreening();
+    }
+
+
+    public string FormatDate(DateTime date)
+    {
+        return date.ToString("dddd d MMMM yyyy");
+    }
+}
+
+
+@code {
+    //code om eerste screening datetime op te halen
+    [Inject] public IScreeningService? ScreeningService { get; set; }
+    [Inject] protected PreloadService PreloadService { get; set; } = default!;
+    IList<string> descriptions = KijkwijzerHelper.GetAllDescriptions();
+
+    private IEnumerable<ScreeningWithInfoDto>? AllScreenings { get; set; }
+
+        DateTime? nextScreeningDateTime;
+
+        private void FindNextScreening()
+        {
+            var screeningsForMovie = AllScreenings.Where(screening => screening.MovieId == selectedMovie.Id);
+            var sortedScreenings = screeningsForMovie.OrderBy(screening => screening.MovieStart);
+            var nextScreening = sortedScreenings.FirstOrDefault();
+            if (nextScreening != null)
+            {
+                nextScreeningDateTime = nextScreening.MovieStart;
+            }
+            else
+            {
+                nextScreeningDateTime = null; 
+            }
+
+    }
+
+
+}
+ @functions {
+    public string GetSafeFileName(string input)
+    {
+        return input.ToLower()
+            .Replace("Drugs- en/of alcoholgebruik", "drugsenalcoholgebruik")
+            .Replace("/", "-")
+            .Replace("&", "")
+            .Replace("é", "e")
+            .Replace("ë", "e")
+            .Replace("(", "")
+            .Replace(")", "")
+            .Replace("ó", "o")
+            .Replace("ö", "o")
+            .Replace("ü", "u")
+            .Replace("geweldseks", "geweld-seks")
+            .Replace("grofgeweld", "grof-geweld")
+            .Replace("zelfdoding", "zelf-doding")
+            .Replace("Alle leeftijden", "alleleeftijden")
+            .Replace("Angst", "angst")
+            .Replace("Discriminatie", "discriminatie")
+
+            .Replace("Geweld", "geweld")
+            .Replace("Grof taalgebruik", "groftaalgebruik")
+            .Replace("Seks", "seks")
+            .Replace("12 jaar", "twaalfjaar")
+            .Replace("16 jaar", "zestienjaar")
+            .Replace("6 jaar", "zesjaar")
+            .Replace(" ", "");
+
     }
 }
