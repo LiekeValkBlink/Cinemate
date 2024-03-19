@@ -152,27 +152,27 @@
 @code {
     private List<Kijkwijzer> SelectedKijkwijzers { get; set; } = new List<Kijkwijzer>();
 
-    private async Task HandleSelectChange(ChangeEventArgs e)
+    private async Task HandleCheckboxChangeAsync(Kijkwijzer kijkwijzer, ChangeEventArgs e)
     {
-        var selectedValues = ((string[])e.Value).ToList();
-
-        foreach (var value in selectedValues)
+        if ((bool)e.Value)
         {
-            if (Enum.TryParse(value, out Kijkwijzer kijkwijzer))
-            {
-                if (SelectedKijkwijzers.Contains(kijkwijzer))
-                {
-                    SelectedKijkwijzers.Remove(kijkwijzer);
-                }
-                else
-                {
-                    SelectedKijkwijzers.Add(kijkwijzer);
-                }
-            }
+            SelectedKijkwijzers.Add(kijkwijzer);
+        }
+        else
+        {
+            SelectedKijkwijzers.Remove(kijkwijzer);
         }
 
         await LoadData();
         await LoadSecretMovieReservations();
+
+
+    }
+
+
+    private void HandleCheckboxChange(Kijkwijzer kijkwijzer, ChangeEventArgs e)
+    {
+        _ = HandleCheckboxChangeAsync(kijkwijzer, e);
     }
 
 
@@ -184,18 +184,35 @@
  
 <div class="movie-container">
 
-    <div >
-        <select multiple @onchange="HandleSelectChange">
-            @foreach (Kijkwijzer kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
-            {
-                <option value="@kijkwijzer.ToString()" selected="@SelectedKijkwijzers.Contains(kijkwijzer)">
-                    @KijkwijzerHelper.GetDescription(kijkwijzer)
-                </option>
-            }
-        </select>
+    <div class="col-2 d-flex justify-content-end">
+        <div class="custom-select">
+            <div class="select-box" @onclick="ToggleOptions">
+                <span class="placeholder">Selecteer filter opties</span>
+                <i class="fa fa-chevron-down" @onclick:stopPropagation @onclick="ToggleOptions"></i>
+            </div>
+            <div class="options" style="@(_showOptions ? "" : "display: none;")">
+                @foreach (Kijkwijzer kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
+                {
+                    <div>
+                        <label>
+                            <input type="checkbox" checked="@SelectedKijkwijzers.Contains(kijkwijzer)" @onchange="e => HandleCheckboxChange(kijkwijzer, e)" />
+                            @KijkwijzerHelper.GetDescription(kijkwijzer)
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 
 
+    @code {
+    private bool _showOptions = false;
+
+    private void ToggleOptions()
+    {
+        _showOptions = !_showOptions;
+    }
+    }
 
     @if (AllFilteredMoviesWithImage == null || !AllFilteredMoviesWithImage.Any())
     {
