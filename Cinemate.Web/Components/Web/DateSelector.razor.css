@@ -1,5 +1,6 @@
 .date-selector-container {
     display: flex;
+    width: fit-content;
     border: 1px solid var(--white);
     border-radius: 4px;
     margin-top: 2rem;

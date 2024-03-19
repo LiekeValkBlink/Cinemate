@@ -2,7 +2,7 @@
 @page "/kiosk/RedeemTicket/{UrlTicket:int}"
 @using Cinemate.Web.Services.Contracts
 @using Cinemate.Models.Dto
-@layout MainLayout
+@layout DefaultLayout
 
 <div class="container">
     @* If the user was not sent via qr code, ask them to redeem their code *@
@@ -23,10 +23,6 @@
     @if (Reservation is not null)
     {
         <div class="tickets">
-        <h2 class="title">Uw tickets:</h2>
-        
-        
-        
             @foreach (var seat in Reservation.ReservedSeats)
             {
             <RadzenCard class="rz-my-12 rz-mx-auto ticket" Style="max-width: 420px; background-color: #2b1b3d;">
