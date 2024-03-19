@@ -112,13 +112,19 @@
         }
         else
         {
+            var allKijkwijzerDescriptions = KijkwijzerHelper.GetAllDescriptions();
+
             // Filter de films op basis van de geselecteerde kijkwijzers
             AllFilteredMoviesWithImage = AllMoviesWithImage.Where(movie =>
             {
-                // Split de komma-gescheiden kijkwijzers van de film en vergelijk elk element met de geselecteerde kijkwijzers
-                var movieKijkwijzers = movie.Kijkwijzers.Split(',').Select(k => Enum.Parse<Kijkwijzer>(k.Trim()));
-                return movieKijkwijzers.Any(k => SelectedKijkwijzers.Contains(k));
+                // Split de komma-gescheiden kijkwijzers van de film en converteer elk element naar de corresponderende enum-waarde
+                var movieKijkwijzerDescriptions = movie.Kijkwijzers.Split(',');
+                var movieKijkwijzerValues = movieKijkwijzerDescriptions.Select(desc => KijkwijzerHelper.GetEnumValue(desc.Trim()));
+
+                // Vergelijk de enum-waarden van de film met de geselecteerde kijkwijzers
+                return movieKijkwijzerValues.Any(k => SelectedKijkwijzers.Contains(k));
             });
+
         }
 
         // Filter de screenings op basis van de gefilterde films
@@ -146,28 +152,30 @@
 @code {
     private List<Kijkwijzer> SelectedKijkwijzers { get; set; } = new List<Kijkwijzer>();
 
-    private async Task HandleCheckboxChangeAsync(Kijkwijzer kijkwijzer, ChangeEventArgs e)
+    private async Task HandleSelectChange(ChangeEventArgs e)
     {
-        if ((bool)e.Value)
+        var selectedValues = ((string[])e.Value).ToList();
+
+        foreach (var value in selectedValues)
         {
-            SelectedKijkwijzers.Add(kijkwijzer);
-        }
-        else
-        {
-            SelectedKijkwijzers.Remove(kijkwijzer);
+            if (Enum.TryParse(value, out Kijkwijzer kijkwijzer))
+            {
+                if (SelectedKijkwijzers.Contains(kijkwijzer))
+                {
+                    SelectedKijkwijzers.Remove(kijkwijzer);
+                }
+                else
+                {
+                    SelectedKijkwijzers.Add(kijkwijzer);
+                }
+            }
         }
 
         await LoadData();
         await LoadSecretMovieReservations();
-
-
     }
 
 
-    private void HandleCheckboxChange(Kijkwijzer kijkwijzer, ChangeEventArgs e)
-    {
-        _ = HandleCheckboxChangeAsync(kijkwijzer, e);
-    }
 
 }
 
@@ -176,16 +184,18 @@
  
 <div class="movie-container">
 
-    <div class="col-2 d-flex justify-content-end">
-        @foreach (Kijkwijzer kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
-        {
-            <label>
-                <input type="checkbox" checked="@SelectedKijkwijzers.Contains(kijkwijzer)" @onchange="e => HandleCheckboxChange(kijkwijzer, e)" />
-                @KijkwijzerHelper.GetDescription(kijkwijzer)
-            </label>
-        }
-
+    <div >
+        <select multiple @onchange="HandleSelectChange">
+            @foreach (Kijkwijzer kijkwijzer in Enum.GetValues(typeof(Kijkwijzer)))
+            {
+                <option value="@kijkwijzer.ToString()" selected="@SelectedKijkwijzers.Contains(kijkwijzer)">
+                    @KijkwijzerHelper.GetDescription(kijkwijzer)
+                </option>
+            }
+        </select>
     </div>
+
+
 
     @if (AllFilteredMoviesWithImage == null || !AllFilteredMoviesWithImage.Any())
     {

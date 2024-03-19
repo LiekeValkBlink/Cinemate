@@ -1,6 +1,11 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Cinemate.Models.Enum;
+
+
 
 public enum Kijkwijzer
 {
@@ -82,5 +87,20 @@ public static class KijkwijzerHelper
         var fieldInfo = value.GetType().GetField(value.ToString());
         var attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
         return attributes.Length > 0 ? attributes[0].Description : value.ToString();
+    }
+
+
+
+    public static Kijkwijzer GetEnumValue(string description)
+    {
+        var values = Kijkwijzer.GetValues(typeof(Kijkwijzer)).Cast<Kijkwijzer>();
+        foreach (var value in values)
+        {
+            if (GetDescription(value) == description)
+            {
+                return value;
+            }
+        }
+        throw new ArgumentException($"No enum value found for description: {description}");
     }
 }

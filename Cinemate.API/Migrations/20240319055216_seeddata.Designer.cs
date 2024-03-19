@@ -12,13 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cinemate.API.Migrations
 {
     [DbContext(typeof(CinemateDbContext))]
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-    [Migration("20240318192402_SeedData")]
-    partial class SeedData
-========
-    [Migration("20240316154024_Seeddata")]
-    partial class Seeddata
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+    [Migration("20240319055216_seeddata")]
+    partial class seeddata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -561,829 +556,401 @@ namespace Cinemate.API.Migrations
                         new
                         {
                             Id = 2,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 85.3516254862192m,
-                            ScreeningId = 6,
-                            UserId = 1
-========
                             EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 16.4796250224781m,
-                            ScreeningId = 5,
-                            UserId = 5
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                        },
-                        new
-                        {
-                            Id = 3,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 84.1367964172212m,
-                            ScreeningId = 28,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EmployeeId = 4,
                             Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 42.6332978321947m,
-                            ScreeningId = 33,
-========
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 90.9574759880354m,
-                            ScreeningId = 25,
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 9.63117246924617m,
-                            ScreeningId = 26,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 5,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 21.7039731359266m,
-                            ScreeningId = 34,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 6,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 39.2477828918865m,
-                            ScreeningId = 19,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 48.285127786071m,
-                            ScreeningId = 24,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 40.3491827223963m,
-                            ScreeningId = 31,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 87.5972352445718m,
-========
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 15.1021380055202m,
-                            ScreeningId = 23,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 17.2883521725665m,
-                            ScreeningId = 1,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 7,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 22.8473308998111m,
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            Price = 81.5067193127452m,
                             ScreeningId = 13,
                             UserId = 1
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Id = 10,
+                            Id = 3,
                             EmployeeId = 5,
-                            Paid = false,
+                            Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 90.5418563913031m,
-                            ScreeningId = 6,
-                            UserId = 3
-========
-                            Id = 8,
-                            EmployeeId = 3,
-                            Paid = false,
+                            Price = 47.3982675125708m,
+                            ScreeningId = 29,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EmployeeId = 4,
+                            Paid = true,
                             PaymentType = "Cash",
-                            Price = 80.4613159639495m,
-                            ScreeningId = 6,
+                            Price = 70.331592720334m,
+                            ScreeningId = 22,
                             UserId = 2
                         },
                         new
                         {
-                            Id = 9,
-                            EmployeeId = 4,
+                            Id = 5,
+                            EmployeeId = 3,
                             Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 73.0837339679404m,
-                            ScreeningId = 8,
+                            Price = 83.8339322864098m,
+                            ScreeningId = 25,
                             UserId = 1
                         },
                         new
                         {
-                            Id = 10,
-                            EmployeeId = 2,
+                            Id = 6,
+                            EmployeeId = 1,
                             Paid = false,
-                            PaymentType = "Cash",
-                            Price = 41.3958848230837m,
-                            ScreeningId = 15,
+                            PaymentType = "Credit Card",
+                            Price = 80.8555683186158m,
+                            ScreeningId = 34,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EmployeeId = 1,
+                            Paid = true,
+                            PaymentType = "Credit Card",
+                            Price = 84.035293912322m,
+                            ScreeningId = 12,
                             UserId = 2
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EmployeeId = 4,
+                            Paid = true,
+                            PaymentType = "Credit Card",
+                            Price = 70.0170729039745m,
+                            ScreeningId = 26,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EmployeeId = 3,
+                            Paid = true,
+                            PaymentType = "Credit Card",
+                            Price = 35.7733051403328m,
+                            ScreeningId = 11,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EmployeeId = 5,
+                            Paid = false,
+                            PaymentType = "Credit Card",
+                            Price = 61.3185773285065m,
+                            ScreeningId = 11,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 11,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            EmployeeId = 2,
+                            EmployeeId = 5,
                             Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 64.7786655936211m,
-                            ScreeningId = 28,
-                            UserId = 5
-========
-                            EmployeeId = 4,
-                            Paid = false,
                             PaymentType = "Cash",
-                            Price = 11.8083684073787m,
-                            ScreeningId = 36,
-                            UserId = 2
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            Price = 63.8181623504461m,
+                            ScreeningId = 19,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 12,
-                            EmployeeId = 5,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 92.9022523399049m,
+                            EmployeeId = 4,
+                            Paid = true,
+                            PaymentType = "Cash",
+                            Price = 45.6300910966272m,
                             ScreeningId = 33,
-                            UserId = 3
+                            UserId = 1
                         },
                         new
                         {
                             Id = 13,
                             EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 71.9797827094003m,
-                            ScreeningId = 35,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 14,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 30.8635779120113m,
-                            ScreeningId = 29,
-                            UserId = 4
-========
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 99.47694350819m,
-                            ScreeningId = 10,
-                            UserId = 3
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                        },
-                        new
-                        {
-                            Id = 13,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 10.8146281639078m,
-                            ScreeningId = 18,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 14,
-                            EmployeeId = 5,
                             Paid = false,
-                            PaymentType = "Cash",
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Price = 58.9720539091296m,
-                            ScreeningId = 10,
-                            UserId = 4
-========
-                            Price = 10.7122186451941m,
-                            ScreeningId = 10,
+                            PaymentType = "Credit Card",
+                            Price = 67.5089331324881m,
+                            ScreeningId = 3,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 14,
+                            EmployeeId = 2,
+                            Paid = false,
+                            PaymentType = "Credit Card",
+                            Price = 27.4445797511834m,
+                            ScreeningId = 18,
                             UserId = 5
                         },
                         new
                         {
                             Id = 15,
-                            EmployeeId = 1,
+                            EmployeeId = 3,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 53.2009941983393m,
-                            ScreeningId = 32,
-                            UserId = 3
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            Price = 68.6786561111447m,
+                            ScreeningId = 21,
+                            UserId = 2
                         },
                         new
                         {
                             Id = 16,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 53.1742975233041m,
-                            ScreeningId = 22,
-                            UserId = 3
-========
-                            EmployeeId = 3,
+                            EmployeeId = 2,
                             Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 53.857524976332m,
-                            ScreeningId = 2,
-                            UserId = 1
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            PaymentType = "Cash",
+                            Price = 35.5486538764338m,
+                            ScreeningId = 11,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 17,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Price = 90.4297110882736m,
-                            ScreeningId = 14,
-========
-                            Price = 15.5959856949235m,
-                            ScreeningId = 16,
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            EmployeeId = 5,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 31.6090265402508m,
+                            ScreeningId = 15,
                             UserId = 1
                         },
                         new
                         {
                             Id = 18,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 17.166568585927m,
-                            ScreeningId = 35,
-                            UserId = 2
-========
-                            EmployeeId = 1,
                             Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 86.988549327484m,
-                            ScreeningId = 28,
-                            UserId = 1
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            Price = 30.1914284176144m,
+                            ScreeningId = 13,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 19,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            EmployeeId = 4,
+                            EmployeeId = 5,
                             Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 17.1040550383112m,
-                            ScreeningId = 29,
-                            UserId = 3
+                            Price = 10.0890166782347m,
+                            ScreeningId = 21,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 20,
-                            EmployeeId = 4,
+                            EmployeeId = 2,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 50.298512219972m,
-                            ScreeningId = 17,
-                            UserId = 2
+                            Price = 58.8940759868129m,
+                            ScreeningId = 29,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 21,
-                            EmployeeId = 1,
+                            EmployeeId = 4,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 47.4131432607288m,
-                            ScreeningId = 8,
+                            Price = 65.5801318666018m,
+                            ScreeningId = 29,
                             UserId = 3
                         },
                         new
                         {
                             Id = 22,
                             EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 24.3963543567511m,
-                            ScreeningId = 18,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 23,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 75.9461831838889m,
-                            ScreeningId = 24,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 24,
-                            EmployeeId = 4,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 54.4579236710954m,
-                            ScreeningId = 24,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 25,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 99.233205013555m,
-                            ScreeningId = 35,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 26,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 95.1250267702138m,
-                            ScreeningId = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 27,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 39.7115067236873m,
-                            ScreeningId = 9,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 28,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 31.7506371570688m,
-                            ScreeningId = 29,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 29,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 94.3805134585953m,
-                            ScreeningId = 5,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 30,
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 64.5739074868931m,
-                            ScreeningId = 8,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 31,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 41.6166705539498m,
-                            ScreeningId = 34,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 32,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 8.25166153986471m,
-                            ScreeningId = 21,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 33,
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 93.7889004235434m,
-                            ScreeningId = 17,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 34,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 46.3262148339229m,
-                            ScreeningId = 10,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 35,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 66.486715782788m,
-                            ScreeningId = 7,
-========
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 33.5607697106869m,
-                            ScreeningId = 15,
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                            UserId = 4
-                        },
-                        new
-                        {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Id = 36,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 77.9410165192202m,
-                            ScreeningId = 32,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 37,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 45.341366575696m,
-                            ScreeningId = 15,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 38,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 91.6174987780191m,
-                            ScreeningId = 14,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 39,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 84.9532525054866m,
-                            ScreeningId = 13,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 40,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 21.1813169722264m,
-                            ScreeningId = 33,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 41,
-                            EmployeeId = 1,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 75.6158270515274m,
-                            ScreeningId = 3,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 42,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 57.7216516518414m,
-                            ScreeningId = 16,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 43,
-                            EmployeeId = 3,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 59.8560919232327m,
-                            ScreeningId = 21,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 44,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 39.750938077587m,
-                            ScreeningId = 20,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 45,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 19.9576482361418m,
-                            ScreeningId = 32,
-                            UserId = 5
-========
-                            Id = 20,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 46.9507856033663m,
-                            ScreeningId = 19,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 21,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 66.345797644959m,
-                            ScreeningId = 29,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 22,
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 81.4552596554276m,
-                            ScreeningId = 26,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 23,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 66.038783500988m,
-                            ScreeningId = 22,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 24,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 14.6672615953741m,
-                            ScreeningId = 17,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 25,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 77.0485279370371m,
-                            ScreeningId = 1,
-                            UserId = 2
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                        },
-                        new
-                        {
-                            Id = 26,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 88.5250456599481m,
-                            ScreeningId = 29,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 27,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 41.1872909248783m,
-                            ScreeningId = 22,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 28,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 74.2743257031564m,
-                            ScreeningId = 32,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 29,
-                            EmployeeId = 2,
-                            Paid = true,
-                            PaymentType = "Cash",
-                            Price = 37.1913726428072m,
-                            ScreeningId = 5,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 30,
-                            EmployeeId = 3,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 42.5163996987308m,
-                            ScreeningId = 30,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 31,
-                            EmployeeId = 5,
-                            Paid = false,
-                            PaymentType = "Credit Card",
-                            Price = 31.954128119493m,
-                            ScreeningId = 6,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 32,
-                            EmployeeId = 1,
-                            Paid = true,
-                            PaymentType = "Cash",
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Price = 86.916095286946m,
+                            Price = 55.4473563968347m,
                             ScreeningId = 25,
-                            UserId = 2
-========
-                            Price = 96.447511141676m,
-                            ScreeningId = 3,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 23,
+                            EmployeeId = 2,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 79.6393525067281m,
+                            ScreeningId = 15,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 24,
+                            EmployeeId = 1,
+                            Paid = false,
+                            PaymentType = "Credit Card",
+                            Price = 41.6529940149572m,
+                            ScreeningId = 6,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 25,
+                            EmployeeId = 3,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 27.3485627128058m,
+                            ScreeningId = 2,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 26,
+                            EmployeeId = 5,
+                            Paid = true,
+                            PaymentType = "Cash",
+                            Price = 45.7206433858815m,
+                            ScreeningId = 28,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 27,
+                            EmployeeId = 3,
+                            Paid = false,
+                            PaymentType = "Credit Card",
+                            Price = 88.2659365519085m,
+                            ScreeningId = 18,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 28,
+                            EmployeeId = 4,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 90.2940876054778m,
+                            ScreeningId = 9,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 29,
+                            EmployeeId = 1,
+                            Paid = true,
+                            PaymentType = "Credit Card",
+                            Price = 54.1877569192639m,
+                            ScreeningId = 14,
                             UserId = 4
                         },
                         new
                         {
+                            Id = 30,
+                            EmployeeId = 1,
+                            Paid = true,
+                            PaymentType = "Cash",
+                            Price = 28.7847046925266m,
+                            ScreeningId = 9,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 31,
+                            EmployeeId = 4,
+                            Paid = false,
+                            PaymentType = "Cash",
+                            Price = 86.7005665523849m,
+                            ScreeningId = 13,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 32,
+                            EmployeeId = 4,
+                            Paid = true,
+                            PaymentType = "Cash",
+                            Price = 87.583704752121m,
+                            ScreeningId = 3,
+                            UserId = 3
+                        },
+                        new
+                        {
                             Id = 33,
-                            EmployeeId = 3,
+                            EmployeeId = 5,
                             Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 10.5342215715197m,
-                            ScreeningId = 16,
+                            Price = 31.442371830293m,
+                            ScreeningId = 24,
                             UserId = 1
                         },
                         new
                         {
                             Id = 34,
-                            EmployeeId = 5,
+                            EmployeeId = 3,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 8.99687860312152m,
-                            ScreeningId = 34,
-                            UserId = 3
+                            Price = 7.98271713585068m,
+                            ScreeningId = 32,
+                            UserId = 2
                         },
                         new
                         {
                             Id = 35,
                             EmployeeId = 2,
-                            Paid = true,
+                            Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 47.9469309746792m,
-                            ScreeningId = 31,
-                            UserId = 4
+                            Price = 29.0200628307309m,
+                            ScreeningId = 7,
+                            UserId = 5
                         },
                         new
                         {
                             Id = 36,
-                            EmployeeId = 3,
+                            EmployeeId = 2,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 53.7572790857993m,
-                            ScreeningId = 31,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 37,
-                            EmployeeId = 4,
-                            Paid = false,
-                            PaymentType = "Cash",
-                            Price = 55.8574281546237m,
-                            ScreeningId = 11,
-                            UserId = 5
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                        },
-                        new
-                        {
-                            Id = 38,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Price = 80.6291303365325m,
-                            ScreeningId = 14,
-========
-                            Price = 98.0212723703835m,
+                            Price = 44.6189800370248m,
                             ScreeningId = 26,
                             UserId = 4
                         },
                         new
                         {
-                            Id = 39,
-                            EmployeeId = 5,
+                            Id = 37,
+                            EmployeeId = 4,
                             Paid = true,
-                            PaymentType = "Cash",
-                            Price = 82.6182510776903m,
-                            ScreeningId = 20,
+                            PaymentType = "Credit Card",
+                            Price = 14.9703364249849m,
+                            ScreeningId = 28,
                             UserId = 4
                         },
                         new
                         {
-                            Id = 40,
-                            EmployeeId = 1,
+                            Id = 38,
+                            EmployeeId = 5,
+                            Paid = false,
+                            PaymentType = "Credit Card",
+                            Price = 90.041695178662m,
+                            ScreeningId = 31,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 39,
+                            EmployeeId = 3,
                             Paid = true,
                             PaymentType = "Credit Card",
-                            Price = 55.8649736192219m,
-                            ScreeningId = 6,
+                            Price = 6.22685775877866m,
+                            ScreeningId = 11,
                             UserId = 5
+                        },
+                        new
+                        {
+                            Id = 40,
+                            EmployeeId = 2,
+                            Paid = true,
+                            PaymentType = "Credit Card",
+                            Price = 42.766754142601m,
+                            ScreeningId = 10,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 41,
                             EmployeeId = 3,
                             Paid = true,
-                            PaymentType = "Cash",
-                            Price = 58.525282860645m,
-                            ScreeningId = 34,
+                            PaymentType = "Credit Card",
+                            Price = 50.3325385669737m,
+                            ScreeningId = 27,
                             UserId = 4
                         },
                         new
@@ -1392,110 +959,89 @@ namespace Cinemate.API.Migrations
                             EmployeeId = 4,
                             Paid = true,
                             PaymentType = "Cash",
-                            Price = 61.1966454918053m,
-                            ScreeningId = 11,
-                            UserId = 2
+                            Price = 91.6143754356194m,
+                            ScreeningId = 23,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 43,
-                            EmployeeId = 1,
+                            EmployeeId = 3,
                             Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 88.1790226327538m,
-                            ScreeningId = 9,
-                            UserId = 2
+                            PaymentType = "Cash",
+                            Price = 91.9692993599544m,
+                            ScreeningId = 17,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 44,
-                            EmployeeId = 4,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 52.4264863793354m,
-                            ScreeningId = 11,
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                            UserId = 1
-                        },
-                        new
-                        {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Id = 48,
                             EmployeeId = 5,
                             Paid = false,
                             PaymentType = "Cash",
-                            Price = 63.1384939552158m,
-========
-                            Id = 45,
-                            EmployeeId = 5,
-                            Paid = true,
-                            PaymentType = "Credit Card",
-                            Price = 85.2983403550372m,
-                            ScreeningId = 36,
+                            Price = 79.1477608506855m,
+                            ScreeningId = 32,
                             UserId = 2
+                        },
+                        new
+                        {
+                            Id = 45,
+                            EmployeeId = 1,
+                            Paid = true,
+                            PaymentType = "Cash",
+                            Price = 99.1312442910157m,
+                            ScreeningId = 24,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 46,
-                            EmployeeId = 4,
-                            Paid = false,
+                            EmployeeId = 1,
+                            Paid = true,
                             PaymentType = "Cash",
-                            Price = 89.2659229081342m,
+                            Price = 46.1841492980366m,
                             ScreeningId = 3,
-                            UserId = 1
+                            UserId = 2
                         },
                         new
                         {
                             Id = 47,
-                            EmployeeId = 1,
+                            EmployeeId = 3,
                             Paid = false,
                             PaymentType = "Credit Card",
-                            Price = 95.878050083848m,
-                            ScreeningId = 33,
-                            UserId = 5
+                            Price = 20.2373871263704m,
+                            ScreeningId = 3,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 48,
-                            EmployeeId = 2,
+                            EmployeeId = 3,
                             Paid = true,
-                            PaymentType = "Cash",
-                            Price = 26.7729332498608m,
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                            ScreeningId = 18,
-                            UserId = 5
+                            PaymentType = "Credit Card",
+                            Price = 60.4457502339468m,
+                            ScreeningId = 31,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 49,
-                            EmployeeId = 1,
-                            Paid = true,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            PaymentType = "Credit Card",
-                            Price = 59.1811315663083m,
-                            ScreeningId = 13,
-========
+                            EmployeeId = 4,
+                            Paid = false,
                             PaymentType = "Cash",
-                            Price = 16.9628500444499m,
-                            ScreeningId = 33,
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
-                            UserId = 1
+                            Price = 43.9717495626988m,
+                            ScreeningId = 8,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 50,
-                            EmployeeId = 2,
-                            Paid = false,
-                            PaymentType = "Cash",
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            Price = 47.9450865971519m,
-                            ScreeningId = 24,
+                            EmployeeId = 4,
+                            Paid = true,
+                            PaymentType = "Credit Card",
+                            Price = 19.1072632082561m,
+                            ScreeningId = 28,
                             UserId = 1
-========
-                            Price = 60.2314339815794m,
-                            ScreeningId = 11,
-                            UserId = 3
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         });
                 });
 
@@ -1555,1110 +1101,469 @@ namespace Cinemate.API.Migrations
                         {
                             Id = 1,
                             MovieId = 1,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 16, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 2,
                             MovieId = 2,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 16, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 3,
                             MovieId = 3,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 16, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 4,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
-========
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 16, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 5,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
-========
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 16, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 6,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
-========
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 16, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 7,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 18, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 16, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 8,
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 16, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 9,
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 16, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 10,
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 16, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 11,
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 16, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             Id = 8,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 18, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            Id = 12,
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 16, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 13,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 16, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 14,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 16, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             Id = 9,
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 10,
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 11,
                             MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 12,
                             MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            Id = 15,
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 16, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 13,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 14,
                             MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 15,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 16,
                             MovieId = 6,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 17, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 17,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
-========
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 17, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 18,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
-========
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 17, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 19,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
-========
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 17, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 20,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 17, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 21,
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 17, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 22,
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 17, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 23,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 17, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 24,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 17, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 21,
                             MovieId = 5,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 17, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 22,
                             MovieId = 6,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 17, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 23,
                             MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 24,
                             MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 25,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 26,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 27,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
-========
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 17, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 28,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 17, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 29,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 17, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 30,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 17, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 31,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 32,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 33,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             Id = 33,
                             MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            Id = 34,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 35,
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 18, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 34,
                             MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 35,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 36,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
-========
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 37,
                             MovieId = 7,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 23, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 38,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 39,
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 23, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 39,
                             MovieId = 10,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 18, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 23, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             Id = 40,
                             MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            Id = 41,
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 18, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 42,
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 18, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 23, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 41,
                             MovieId = 3,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 18, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 23, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 42,
                             MovieId = 4,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 23, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 43,
                             MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 44,
                             MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 18, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 45,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 18, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 101,
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 102,
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 103,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 104,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 105,
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 19, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 46,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 23, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 24, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 47,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 23, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 24, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 48,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 23, 20, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 24, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
-========
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 49,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 23, 20, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 24, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
-========
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 50,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 23, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
-========
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 19, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 51,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 23, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
-========
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 52,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 23, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 53,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             Id = 53,
                             MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 23, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            Id = 54,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 55,
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 19, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             Id = 54,
                             MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            Id = 56,
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 24, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             Id = 55,
                             MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            Id = 57,
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 24, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 56,
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 24, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 57,
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 24, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 58,
                             MovieId = 8,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 24, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 25, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
                         },
                         new
                         {
                             Id = 59,
                             MovieId = 9,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 24, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 25, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
                         },
                         new
                         {
                             Id = 60,
                             MovieId = 10,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 24, 20, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 20, 20, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 25, 20, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         },
                         new
                         {
                             Id = 61,
                             MovieId = 1,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 25, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 1
                         },
                         new
                         {
                             Id = 62,
                             MovieId = 2,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
-                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 25, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 2
                         },
                         new
                         {
                             Id = 63,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 25, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
-========
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 64,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 24, 21, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 25, 21, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
-========
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 65,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 24, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 25, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 3
-========
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 20, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 66,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 24, 22, 0, 0, 0, DateTimeKind.Utc),
+                            MovieStart = new DateTime(2024, 3, 25, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 4
-========
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
                         },
                         new
                         {
                             Id = 67,
-<<<<<<<< HEAD:Cinemate.API/Migrations/20240318192402_SeedData.Designer.cs
                             MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 24, 22, 0, 0, 0, DateTimeKind.Utc),
-========
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 68,
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 69,
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 70,
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 20, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 71,
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 72,
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 73,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 74,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 75,
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 21, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 76,
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 77,
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 78,
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 79,
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 80,
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 21, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 81,
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 82,
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 83,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 84,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 85,
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 21, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 86,
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 87,
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 88,
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 89,
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 90,
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 22, 20, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 91,
-                            MovieId = 1,
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 92,
-                            MovieId = 2,
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 93,
-                            MovieId = 3,
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 94,
-                            MovieId = 4,
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 95,
-                            MovieId = 5,
-                            MovieStart = new DateTime(2024, 3, 22, 21, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 5
-                        },
-                        new
-                        {
-                            Id = 96,
-                            MovieId = 6,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 1
-                        },
-                        new
-                        {
-                            Id = 97,
-                            MovieId = 7,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 2
-                        },
-                        new
-                        {
-                            Id = 98,
-                            MovieId = 8,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 3
-                        },
-                        new
-                        {
-                            Id = 99,
-                            MovieId = 9,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
-                            TheaterRoomId = 4
-                        },
-                        new
-                        {
-                            Id = 100,
-                            MovieId = 10,
-                            MovieStart = new DateTime(2024, 3, 22, 22, 0, 0, 0, DateTimeKind.Utc),
->>>>>>>> Kijkwijzer_Detailpagina:Cinemate.API/Migrations/20240316154024_Seeddata.Designer.cs
+                            MovieStart = new DateTime(2024, 3, 25, 22, 0, 0, 0, DateTimeKind.Utc),
                             TheaterRoomId = 5
                         });
                 });

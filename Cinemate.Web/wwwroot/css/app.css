@@ -99,3 +99,8 @@ input#DatePickerWithTime {
     color: black !important;
 }
 
+.movie-container select[multiple] option[selected] {
+    background-color: #19072c !important;
+    color: red;
+}
+
