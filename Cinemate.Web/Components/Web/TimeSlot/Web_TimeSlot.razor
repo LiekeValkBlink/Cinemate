@@ -1,11 +1,17 @@
 @using Cinemate.Models.Dto
 @using Cinemate.Web.Services.Contracts
-@inject ISelectedMovieService SelectedMovieService
-@inject NavigationManager NavigationManager
-@inject IJSRuntime JSRuntime
+@using Microsoft.AspNetCore.Components
+@using Microsoft.JSInterop
+
 
 @code {
     [Parameter] public ScreeningWithInfoDto ScreeningInfo { get; set; }
+    [Inject] public IMovieService? MovieService { get; set; }
+    [Inject] public ISelectedMovieService SelectedMovieService { get; set; }
+    [Inject] public NavigationManager NavigationManager { get; set; }
+    [Inject] public IJSRuntime JSRuntime { get; set; }
+    private MovieWithCategoryDto? Movie { get; set; }
+    private MovieDtoImage? MovieWithImage { get; set; }
 }
 
 <div @onclick="HandleTimeslotClick" class="time-slot-container">
@@ -16,9 +22,7 @@
     <i class="fa-solid fa-arrow-right"></i>
 </div>
 @code {
-    [Inject] public IMovieService? MovieService { get; set; }
-    private MovieWithCategoryDto? Movie { get; set; }
-    private MovieDtoImage? MovieWithImage { get; set; }
+
     
 }
 @code {
